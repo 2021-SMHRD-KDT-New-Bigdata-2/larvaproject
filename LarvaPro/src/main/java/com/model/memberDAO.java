@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -17,7 +19,8 @@ public class memberDAO {
 	//JDBC연결 메소드		 
 	public Connection getConnection() {
 	 
-	   Connection conn = null;
+	   Connection conn=null;
+	   
 	   String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
 	   String id = "campus_k3_1006";
 	   String pw = "smhrd3";
@@ -34,6 +37,7 @@ public class memberDAO {
 	
 	//회원가입 메소드
 	public int join(memberVO member) {
+
 		Connection conn=getConnection();
 		PreparedStatement psmt=null;
 		int cnt=0;
@@ -69,5 +73,42 @@ public class memberDAO {
 		}
 		return cnt;
 	}
+	
+	//로그인 메소드
+	public int login(String id, String pw) {
+			
+			Connection conn=getConnection();
+			PreparedStatement psmt=null;
+			ResultSet rs=null;
+			int cnt=0;
+			
+			try {
+				psmt=conn.prepareStatement("select * from member_info where mem_id = ? and mem_pw = ?");
+				psmt.setString(1, id);
+				psmt.setString(2, pw);
+				
+				rs=psmt.executeQuery();
+				System.out.println(rs);
+				if (rs!=null) {
+					cnt=1;
+				}
+				
+			}catch (Exception e) {
+			}finally {
+				try {
+					if (rs!=null) {
+						rs.close();
+					}
+					psmt.close();
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
+			}
+			return cnt;
+			
+	}
 }
+	
 

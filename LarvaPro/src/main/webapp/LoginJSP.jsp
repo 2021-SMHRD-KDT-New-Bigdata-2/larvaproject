@@ -115,8 +115,14 @@ span {
 
 </style>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+</script>
 <body>
+
+	
+	
+	
+	
         <div class="wrap">
         	<div style="width:260px; left:0; right:0; margin-left:35%; margin-top:5%;">
         		<div style="margin-left:15%; margin-bottom:10%">
@@ -129,9 +135,9 @@ span {
                     			<button type="button" class="togglebtn" onclick="register();co1();changeBtnColorLBtn()" id="regBtn">회원가입</button>
                 			</div>
             
-                			<form id="login" action="" class="input-group">
-                    		<input type="text" class="input-field" placeholder="아이디를 입력하세요" required>
-                    		<input type="password" class="input-field" placeholder="비밀번호를 입력하세요" required>
+                			<form id="login" action="LoginService" class="input-group" method="post">
+                    		<input type="text" class="input-field" placeholder="아이디를 입력하세요" name="loginId" required>
+                    		<input type="password" class="input-field" placeholder="비밀번호를 입력하세요" name="loginPw" required>
                     		<input type="checkbox" class="checkbox"><span>비밀번호 저장</span>
                     		<button class="submit">로그인</button>
                 		</form>
@@ -183,6 +189,7 @@ span {
 
                   
              })
+             
              
 
         </script>

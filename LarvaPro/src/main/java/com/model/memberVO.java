@@ -23,6 +23,12 @@ public class memberVO {
 		this.memSignUpDate = memSignUpDate;
 	}
 
+	public memberVO(String memId, String memPw) {
+		super();
+		this.memId = memId;
+		this.memPw = memPw;
+	}
+
 	public String getMemId() {
 		return memId;
 	}
