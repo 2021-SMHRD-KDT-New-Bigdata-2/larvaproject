@@ -136,19 +136,20 @@ create sequence post_comment_number
 	nocache;
 
 /* 쪽지 관리 테이블 */
-create table note(
-	nt_num number(5) not null
+create table message(
+	m_num number(5) not null
 	constraint note_pk primary key,
-	nt_send_id varchar2(20) not null,
-	nt_receive_id varchar2(20) not null,
-	nt_content varchar2(4000),
-	nt_send_date date not null,
-	nt_receive_date date not null,
-	nt_state number(1) not null
+	m_send_id varchar2(20) not null,
+	m_receive_id varchar2(20) not null,
+	m_content varchar2(4000),
+	m_send_date date not null,
+	m_receive_date date not null,
+	m_state number(1) not null
 );
 
+
 /* 쪽지 관리 번호 시퀀스 */
-create sequence note_number
+create sequence message_number
 	increment by 1
 	start with 1
 	minvalue 1
