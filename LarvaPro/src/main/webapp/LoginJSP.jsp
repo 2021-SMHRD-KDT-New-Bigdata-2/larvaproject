@@ -1,3 +1,4 @@
+<%@page import="com.model.memberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -112,6 +113,13 @@ span {
 }
 </style>
 </head>
+
+<% memberVO result= (memberVO)session.getAttribute("loginMemberSession");
+	String fail= (String)session.getAttribute("loginMemberFail");%>
+
+	
+	
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
 </script>
 <body>
@@ -137,6 +145,13 @@ span {
                     		<input type="password" class="input-field" placeholder="비밀번호를 입력하세요" name="loginPw" required>
                     		<input type="checkbox" class="checkbox"><span>비밀번호 저장</span>
                     		<button class="submit">로그인</button>
+                    		<%if(result!=null){%>
+                    			out.println("<script>alert('<%=result.getMemId()%>님, 환영합니다.');</script>");
+                    		<%}else if(fail!=null){%>
+                    			out.println("<script>alert('회원정보를 확인하세요.');</script>");
+                    		<%}%>
+							
+							
                 		</form>
                 		<form id="register" action="JoinService" class="input-group" method="post">
                     		<input type="text" class="input-field" placeholder="사용할 아이디를 입력하세요" name="id" required>

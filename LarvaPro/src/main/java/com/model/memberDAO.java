@@ -87,9 +87,9 @@ public class memberDAO {
 					psmt.setString(2, pw);
 					
 					rs=psmt.executeQuery();
-					System.out.println(rs);
-					if (rs!=null) {
-						cnt=1;
+					System.out.println(rs.next());
+					if (rs.next()) {
+						
 					}
 					
 				}catch (Exception e) {
