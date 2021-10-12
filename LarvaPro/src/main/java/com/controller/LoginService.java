@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.model.memberVO;
 import com.model.memberDAO;
 
 @WebServlet("/LoginService")
@@ -18,18 +20,21 @@ public class LoginService extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String id=request.getParameter("LoginId");
-		String pw=request.getParameter("LoginPw");
+		String id=request.getParameter("loginId");
+		String pw=request.getParameter("loginId");
 		
 		memberDAO Login=new memberDAO();
 		int cnt=Login.login(id,pw);
 		
+		memberVO memberInfo=new memberVO(id,pw);
+		HttpSession Session=request.getSession();
+		
 		if(cnt==1) {
-		      request.setAttribute("LoginName",id);
-		      RequestDispatcher rd=request.getRequestDispatcher("LoginSuccess.jsp");
-		      rd.forward(request, response);
-		}else{
-		      response.sendRedirect("loginFail");
+			Session.setAttribute("loginMemberSession", memberInfo);
+			response.sendRedirect("LoginJSP.jsp");
+		}else {
+			Session.setAttribute("loginMemberFail", "fail");
+			response.sendRedirect("LoginJSP.jsp");
 		}
 		
 	}
