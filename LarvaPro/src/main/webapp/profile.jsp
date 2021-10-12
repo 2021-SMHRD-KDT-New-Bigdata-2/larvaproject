@@ -112,11 +112,11 @@
                             <div class="pi-pic">
                                 <img src="img/agents/profile-agent.jpg" alt="">
                                 <div class="rating-point">
-                                    4.5
+                                    평점
                                 </div>
                             </div>
                             <div class="pi-text">
-                                <h5>Ashton Kutcher</h5>
+                                <h5>내 이름</h5>
                                 <span>Canada USA</span>
                                 <p>Since May 2019</p>
                             </div>
@@ -133,9 +133,9 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="profile-agent-newslatter">
-                            <h5>Send Message to Ashton</h5>
+                            
                             <form action="#">
-                                <input type="text" placeholder="Email">
+                           		<h3>Send Message</h5>
                                 <button type="submit"><i class="fa fa-send"></i></button>
                             </form>
                         </div>
@@ -157,8 +157,8 @@
                         </div>
                         <div class="pi-text">
                             <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-                            <div class="pt-price">$ 289.0<span>/month</span></div>
-                            <h5><a href="#">Home in Merrick Way</a></h5>
+                            
+                            <h5><a href="#">공모전 이름</a></h5>
                             <p><span class="icon_pin_alt"></span> 3 Middle Winchendon Rd, Rindge, NH 03461</p>
                             <ul>
                                 <li><i class="fa fa-object-group"></i> 2, 283</li>
@@ -168,13 +168,8 @@
                             </ul>
                             <div class="pi-agent">
                                 <div class="pa-item">
-                                    <div class="pa-info">
-                                        <img src="img/property/posted-by/pb-1.jpg" alt="">
-                                        <h6>Ashton Kutcher</h6>
-                                    </div>
-                                    <div class="pa-text">
-                                        123-455-688
-                                    </div>
+                                    
+                                    
                                 </div>
                             </div>
                         </div>
