@@ -39,7 +39,7 @@ public class MessageService extends HttpServlet {
 		} else {
 			System.out.println("메세지 전송 실패");
 		}
-				aaaaaa
+	
 		//response.sendRedirect("main.jsp");
 	}
 

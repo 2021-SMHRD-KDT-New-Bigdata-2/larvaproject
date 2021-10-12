@@ -41,7 +41,7 @@ public class MessageDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-	}aaaaaaaa
+	}
 	//메시지 입력
 	public int insertMessage(MessageVO vo) {
 		
