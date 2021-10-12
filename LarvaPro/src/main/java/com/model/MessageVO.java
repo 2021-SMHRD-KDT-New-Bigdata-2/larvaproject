@@ -2,15 +2,14 @@ package com.model;
 
 public class MessageVO {
 	
-	private int mNum;
-	private String mSendId;
-	private String mReceiveId;
-	private String mContent;
-	private String mSendDate;
-	private String mReceiveDate;
-	private int mState;
+	private int mNum; //메시지 번호
+	private String mSendId; //보낸 사람
+	private String mReceiveId; //받은 사람
+	private String mContent; // 내용
+	private String mSendDate; //보낸 일자
+	private String mReceiveDate; // 받은 일자
+	private int mState; //읽음 : 0, 읽지 않음 : 1
 	
-
 	public MessageVO(int mNum, String mSendId, String mReceiveId, String mContent, String mSendDate, String mReceiveDate, int mState) {
 		super();
 		this.mNum = mNum;

@@ -10,8 +10,7 @@
     <title>Aler | Template</title>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
@@ -25,6 +24,18 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
+<style>
+
+#noteHead{
+font-size:25px; 
+width:100px;
+}
+
+#noteContent{
+font-size: 18px;
+margin:1%;
+}
+</style>
 
 <body>
     <!-- Page Preloder -->
@@ -65,62 +76,49 @@
     <header class="header-section">
         <div class="hs-top">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-2">
+                <div class="ten">
                         <div class="logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-10">
-                        <div class="ht-widget">
-                            <ul>
-                                <li><i class="icon_mail_alt"></i> Aler.support@gmail.com</li>
-                                <li><i class="fa fa-mobile-phone"></i> 125-711-811 <span>125-668-886</span></li>
-                            </ul>
-                            <a href="#" class="hw-btn">Submit property</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="canvas-open">
-                    <span class="icon_menu"></span>
-                </div>
-            </div>
-        </div>
-        <div class="hs-nav">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-9">
+                        	<a href="./index.html"><img src="img/logo/kka1.png" alt=""></a>
+						</div>
                         <nav class="nav-menu">
-                            <ul>
-                                <li><a href="./index.html">Home</a></li>
-                                <li><a href="#">Properties</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./property.html">Property Grid</a></li>
-                                        <li><a href="./profile.html">Property List</a></li>
-                                        <li><a href="./property-details.html">Property Detail</a></li>
-                                        <li><a href="./property-comparison.html">Property Comperison</a></li>
-                                        <li><a href="./property-submit.html">Property Submit</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="./agents.html">Agents</a></li>
-                                <li class="active"><a href="./about.html">About</a></li>
-                                <li><a href="./blog.html">Blog</a></li>
-                                <li><a href="./contact.html">Contact</a></li>
+                            <ul style="text-align:center; margin-left:15%;"><!-- 인라인 속성으로 변한 li들을 텍스트로 인식해 중앙정렬 하게 만들어 줌. -->
+                                <li class="active">
+                                	<a href="./index.html">메인</a>
+                                	</li>
+                                		<li><a href="#">마이페이지</a>
+                                    		<ul class="dropdown" style="display:inline-block; width:150px;">
+                                        		<li style="margin-right:40%"><a href="./mypageProfile.html">내정보</a></li>
+                                        		<li style="margin-right:10%"><a href="./mypageContest.html">지원한 공모전</a></li>
+                                        		<li style="margin-right:38%"><a href="./mypageTeam.html">나의 팀</a></li>
+                                        		<li style="margin-right:40%"><a href="./mypageMessege.html">쪽지함</a></li>
+                                   			</ul>
+                                		</li>
+                                	<li><a href="./agents.html">공모전</a></li>
+                                	<li><a href="./about.html">팀원모집</a></li>
                             </ul>
                         </nav>
+                        	
+                        
                     </div>
-                    <div class="col-lg-3">
-                        <div class="hn-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                        </div>
-                    </div>
+                <div class="">
+                	<a href="login.html" style="margin-left:90%"><img src="img/logo/login1.png" alt=""></a>
                 </div>
             </div>
-        </div>
+            </div>
+            <div class="canvas-open">
+                    <span class="icon_menu"></span>
+             </div>
+
+        <div class="hs-nav">
+            <div class="container">
+            	<div class="row">
+                    <div class="pcntSearchText" style="margin:5%; margin-left:27%;">
+                    	<input class = "textBar" type="text" placeholder="원하는 공모전 검색!" size="50">
+                    	<button class="searchBtn">검색</button>
+             		</div>
+                </div>
+            </div>
+       </div>
     </header>
     <!-- Header End -->
 
@@ -130,10 +128,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <h4>About us</h4>
+                        <h4>내정보</h4>
                         <div class="bt-option">
-                            <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                            <span>About</span>
+                            <a href="./index.html"><i class="fa fa-home"></i>메인</a>
+                            <span>내정보</span>
                         </div>
                     </div>
                 </div>
@@ -142,135 +140,40 @@
     </section>
     <!-- Breadcrumb Section End -->
 
-    <!-- About Section Begin -->
-    <section class="about-section spad">
+    <!-- 내정보 섹션 -->
+    <section class="profile-section spad">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="about-text">
-                        <div class="at-title">
-                            <h3>Welcom to Aler REAL</h3>
-                            <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an
-                                unknown printer took a galley of type.</p>
-                        </div>
-                        <div class="at-feature">
-                            <div class="af-item">
-                                <div class="af-icon">
-                                    <img src="img/chooseus/chooseus-icon-1.png" alt="">
-                                </div>
-                                <div class="af-text">
-                                    <h6>Find your future home</h6>
-                                    <p>We help you find a new home by offering a smart real estate.</p>
-                                </div>
-                            </div>
-                            <div class="af-item">
-                                <div class="af-icon">
-                                    <img src="img/chooseus/chooseus-icon-2.png" alt="">
-                                </div>
-                                <div class="af-text">
-                                    <h6>Experienced agents</h6>
-                                    <p>Find an agent who knows your market best</p>
-                                </div>
-                            </div>
-                            <div class="af-item">
-                                <div class="af-icon">
-                                    <img src="img/chooseus/chooseus-icon-3.png" alt="">
-                                </div>
-                                <div class="af-text">
-                                    <h6>Buy or rent homes</h6>
-                                    <p>Millions of houses and apartments in your favourite cities</p>
-                                </div>
-                            </div>
-                            <div class="af-item">
-                                <div class="af-icon">
-                                    <img src="img/chooseus/chooseus-icon-4.png" alt="">
-                                </div>
-                                <div class="af-text">
-                                    <h6>List your own property</h6>
-                                    <p>Sign up now and sell or rent your own properties</p>
-                                </div>
+            <div class="profile-agent-content">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="profile-agent-info">
+                            <div class="pi-text">
+                                <h5>김기연</h5>
+                                <span>실버</span>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="about-pic set-bg" data-setbg="img/about-us.jpg">
-                        <a href="https://www.youtube.com/watch?v=8EJ3zbKTWQ8" class="play-btn video-popup">
-                            <i class="fa fa-play-circle"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- About Section End -->
-
-    <!-- Team Section Begin -->
-    <section class="team-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-8">
-                    <div class="section-title">
-                        <h4>Latest Property</h4>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="team-btn">
-                        <a href="#"><i class="fa fa-user"></i> ALL counselor</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="ts-item">
-                        <div class="ts-text">
-                            <img src="img/team/team-1.jpg" alt="">
-                            <h5>Ashton Kutcher</h5>
-                            <span>123-455-688</span>
-                            <p>Ipsum dolor amet, consectetur adipiscing elit, eiusmod tempor incididunt lorem.</p>
-                            <div class="ts-social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-envelope-o"></i></a>
-                            </div>
+                    <div class="col-lg-4">
+                        <div class="profile-agent-widget">
+                            <ul>
+                                <li>진행중인 공모전 갯수 <span style="color:red">3</span></li>
+                                <li>팀원 모집중인 공모전 갯수 <span style="color:red">1</span></li>
+                                <li>끝난 공모전 갯수 <span style="color:red">4</span></li>
+                            </ul>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="ts-item">
-                        <div class="ts-text">
-                            <img src="img/team/team-2.jpg" alt="">
-                            <h5>Ashton Kutcher</h5>
-                            <span>123-455-688</span>
-                            <p>Ipsum dolor amet, consectetur adipiscing elit, eiusmod tempor incididunt lorem.</p>
-                            <div class="ts-social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-envelope-o"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="ts-item">
-                        <div class="ts-text">
-                            <img src="img/team/team-3.jpg" alt="">
-                            <h5>Ashton Kutcher</h5>
-                            <span>123-455-688</span>
-                            <p>Ipsum dolor amet, consectetur adipiscing elit, eiusmod tempor incididunt lorem.</p>
-                            <div class="ts-social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-envelope-o"></i></a>
-                            </div>
+                    <div class="col-lg-4">
+                        <div class="profile-agent-newslatter">
+                            <h5 align="center" style="color:red;">평점</h5>
+                            <p align="center" style="color:blue; font-size:35px; margin:10%;">4.3</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Team Section End -->
-
+    <!-- 내정보 섹션 끝-->
+    
     <!-- 공모전 내역 섹션 -->
     <section class="testimonial-section spad">
         <div class="container">
@@ -328,6 +231,45 @@
         </div>
     </section>
     <!-- 공모전 내역 섹션 -->
+    
+    <!-- Property Comparison Section Begin -->
+    
+                        
+    <section class="contact-form-section spad">
+        <div class="section-title">
+            <h4 style="margin-left:26.5%">공모전 후기 작성(일기쓰기)</h4>
+              </div>
+        		<div class="container">
+            		<div class="row">
+                		<div class="col-lg-12">
+                   		 <div class="cf-content">
+                        		<form action="#" class="cc-form">
+                                	<div style="margin:2%">
+                                		<select name="">
+                                			<option value="" style="color:gray">참가 공모전</option>
+                            				<option value="">천하제일 무술대회</option>
+                            				<option value="">소주 많이먹기</option>
+                            				<option value="">햄최몇?</option>
+                        				</select>
+                        			</div>
+                        			<div style="float:left; margin-left:2%">
+                                		<select name="">
+                                			<option value="" style="color:gray">지원했던 직군</option>
+                            				<option value="">기획</option>
+                            				<option value="">개발</option>
+                            				<option value="">날먹</option>
+                        				</select>
+                        			</div>
+                            		<textarea placeholder="내용" style="margin:2%"></textarea>
+                            		<button type="submit" class="site-btn">보내기</button>
+                        		</form>
+                    		</div>
+                		</div>
+            		</div>
+        		</div>
+    		</section>
+ 
+    <!-- Property Comparison Section End -->
 
     <!-- Contact Section Begin -->
     <section class="contact-section">
@@ -370,14 +312,12 @@
             </div>
         </div>
         <div class="cs-map">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d735515.5813275519!2d-80.41163541934742!3d43.93644386501528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882a55bbf3de23d7%3A0x3ada5af229b47375!2sMono%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sbd!4v1583262687289!5m2!1sen!2sbd"
-                height="450" style="border:0;" allowfullscreen=""></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d735515.5813275519!2d-80.41163541934742!3d43.93644386501528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882a55bbf3de23d7%3A0x3ada5af229b47375!2sMono%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sbd!4v1583262687289!5m2!1sen!2sbd" height="450" style="border:0;" allowfullscreen=""></iframe>
         </div>
     </section>
     <!-- Contact Section End -->
 
-    <!-- Footer Section Begin -->
+        <!-- Footer Section Begin -->
     <footer class="footer-section">
         <div class="container">
             <div class="row">
