@@ -269,6 +269,7 @@ ol {
 /*---------------------
   Header
 -----------------------*/
+
 .hs-top {
 	margin-top : 70px;
   border-bottom: 2px solid #c0c0c0;
@@ -409,13 +410,16 @@ ol {
   display: none;
 }
 
+
 /*---------------------
   Hero
 -----------------------*/
 .hero-section {
   overflow: hidden;
-  background: #ffffff;
+  background: #800040;
   padding-bottom: 10px;
+  height : 500px;
+  width : 900px
 }
 
 .hs-slider.owl-carousel .owl-stage-outer {
@@ -432,9 +436,9 @@ ol {
   border-radius: 50%;
   line-height: 58px;
   text-align: center;
-  font-size: 30px;
+  font-size: 50px;
   color: red;
-  position: absolute;
+  
   right: 80px;
   left: -80px;
   top: 50%;
@@ -3231,7 +3235,7 @@ li .richText-btn[data-command=toggleCode] {
   Blog Hero
 -----------------------*/
 .blog-hero-section {
-  height: 640px;
+  height: 300px;
   display: flex;
   align-items: center;
   text-align: center;
@@ -4146,7 +4150,7 @@ li .richText-btn[data-command=toggleCode] {
   }
   .offcanvas-menu-wrapper .slicknav_nav li .dropdown {
     border-top: 1px solid #111111;
-    margin-left : 20px
+    margin-left : 30px
   }
 
 }

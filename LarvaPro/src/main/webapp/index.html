@@ -1,5 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="zxx">
+
 
 <head>
     <meta charset="UTF-8">
@@ -45,7 +47,7 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="om-widget">
-            <a href="login.html" class="hw-btn"><img src="img/logo/login1.png" alt=""></a>
+            <a href="loginJSP.jsp" class="hw-btn"><img src="img/logo/login1.png" alt=""></a>
         </div>
        
     </div>
@@ -60,99 +62,63 @@
                         	<a href="./index.html"><img src="img/logo/kka1.png" alt=""></a>
 						</div>
                         <nav class="nav-menu">
-                            <ul>
-                                <li class="active"><a href="./index.html">Home</a></li>
-                                <li><a href="#">마이페이지</a>
-                                    <ul class="dropdown">
-                                        <li><a href="./property.html">내정보</a></li>
-                                        <li><a href="./profile.html">지원한 공모전</a></li>
-                                        <li><a href="./property-details.html">팀</a></li>
-                                        <li><a href="./property-comparison.html">쪽지함</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="./agents.html">공모전</a></li>
-                                <li><a href="./about.html">팀원모집</a></li>
+                            <ul style="text-align:center; margin-left:15%;"><!-- 인라인 속성으로 변한 li들을 텍스트로 인식해 중앙정렬 하게 만들어 줌. -->
+                                <li class="active">
+                                	<a href="./index.html">메인</a>
+                                	</li>
+                                		<li><a href="#">마이페이지</a>
+                                    		<ul class="dropdown" style="display:inline-block; width:150px;">
+                                        		<li style="margin-right:40%"><a href="./property.html">내정보</a></li>
+                                        		<li style="margin-right:10%"><a href="./profile.html">지원한 공모전</a></li>
+                                        		<li style="margin-right:60%"><a href="./property-details.html">팀</a></li>
+                                        		<li style="margin-right:40%"><a href="./property-comparison.html">쪽지함</a></li>
+                                   			</ul>
+                                		</li>
+                                	<li><a href="./agents.html">공모전</a></li>
+                                	<li><a href="./about.html">팀원모집</a></li>
                             </ul>
                         </nav>
                         	
                         
                     </div>
                 <div class="">
-                	<a href="login.html"><img src="img/logo/login1.png" alt=""></a>
+                	<a href="loginJSP.jsp" style="margin-left:90%"><img src="img/logo/login1.png" alt=""></a>
                 </div>
             </div>
             </div>
             <div class="canvas-open">
                     <span class="icon_menu"></span>
              </div>
-        </div>
-        <div class="hs-nav">
+
+        <div class="hs-nav" style="border-bottom: 2px solid #c0c0c0;">
             <div class="container">
-            <div class="row">
-                    <div class="pcntSearchText">
-                    	<div calss = "pcntSearchTextBar">
-                    		<input class = "textBar" type="text" placeholder="원하는 공모전 검색!" size="50">
-                    	</div>
-                    </div>
-                    <div class="pcntSearchBtn">
-                    	<div>
-                    		<button>검색</button>
-                    	</div>
-                    </div>
-             </div>
+                    <div class="pcntSearchText" style="margin:5%; margin-left:27%; height :40px; width : 600px;border:2px solid #1b5ac2; background : #ffffff;"">
+                    	<input class = "textBar" type="text" placeholder="원하는 공모전 검색!" 
+                    	style="font-size : 16px; width : 500px;height:100%; padding : 10px; border : 0px; outline : none; float : left;">
+                    	<button class="searchBtn" style="width :50px;height :100%;border:0px;background : #1b5ac2; outline:none;float:right; color : #ffffff">검색</button>
+             		</div>
                 </div>
             </div>
+ 
         
     </header>
     <!-- Header End -->
 
     <!-- Hero Section Begin -->
-    <section class="hero-section">
-        <div class="container">
+    <section class="hero-section" style ="width : 1100px; height : 500px;
+    	 margin : 50px 0px 0px 400px;position: relative;" >
+        <div class="container" style = "width : 700px;  ">
             <div class="hs-slider owl-carousel">
                 <div class="hs-item set-bg" data-setbg="img/hero/gong1.jpg">
+                   
+                </div>
+                <div class="hs-item set-bg" data-setbg="img/hero/gongmoimg1.jpg">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <div class="hc-inner-text">
-                                <div class="hc-text">
-                                     <h4>공모전 제목</h4>
-                                    <p><span class="icon_pin_alt"></span>기업명</p>
-                                    <div class="label">조회 수 : " "</div>
-                                    기간<span>/년,월,일</span>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
-                <div class="hs-item set-bg" data-setbg="img/hero/gong2.jpg">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="hc-inner-text">
-                                 <div class="hc-text">
-                                     <h4>공모전 제목</h4>
-                                    <p><span class="icon_pin_alt"></span>기업명</p>
-                                    <div class="label">조회 수 : " "</div>
-                                    기간<span>/년,월,일</span>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hs-item set-bg" data-setbg="img/hero/gong3.jpg">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="hc-inner-text">
-                                <div class="hc-text">
-                                     <h4>공모전 제목</h4>
-                                    <p><span class="icon_pin_alt"></span>기업명</p>
-                                    <div class="label">조회 수 : " "</div>
-                                    기간<span>/년,월,일</span>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
+                <div class="hs-item set-bg" data-setbg="img/hero/gongmoimg2.jpg">
+                    
                 </div>
             </div>
         </div>
@@ -164,8 +130,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-7">
-                    <div class="section-title">
-                        <h4>어떤 공모전을 찾고 계시나요?</h4>
+                    <div class="section-title" >
+                        <h4>불타오르는 모임</h4>
                     </div>
                 </div>
                 <div class="col-lg-5">
@@ -173,15 +139,7 @@
                         <div class="cb-item">
 
                         </div>
-                    <div class="change-btn">
-                        <div class="cb-item">
-                            <label for="cb-keyword" class="active">
-                                #키워드#검색
-                                <input type="radio" id="cb-keyword">
-                            </label>
-                        </div>
-                        
-                    </div>
+                    
                 </div>
             </div>
             <div class="search-form-content">
