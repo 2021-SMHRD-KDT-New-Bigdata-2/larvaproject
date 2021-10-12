@@ -34,7 +34,7 @@ public class MessageVO {
 
 	public int getmNum() {
 		return mNum;
-	}
+	}aaaaaaa
 
 	public void setmNum(int mNum) {
 		this.mNum = mNum;
