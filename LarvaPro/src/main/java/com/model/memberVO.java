@@ -10,6 +10,10 @@ public class memberVO {
 	private String memAdress;
 	private String memSignUpDate;
 	
+	public memberVO() {
+		
+	}
+	
 	public memberVO(String memId, String memPw, String memUserName, String memNickName, String memEmail, String memTel,
 			String memAdress, String memSignUpDate) {
 		super();
