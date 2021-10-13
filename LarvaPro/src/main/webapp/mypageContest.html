@@ -36,6 +36,8 @@ font-size: 18px;
 margin:1%;
 }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+</script>
 
 <body>
     <!-- Page Preloder -->
@@ -98,8 +100,8 @@ margin:1%;
                             </ul>
                         </nav>
                     </div>
-                <div class="">
-                	<a href="login.html" style="margin-left:90%"><img src="img/logo/login1.png" alt=""></a>
+                <div>
+                	<a href="#" style="margin-left:85%;" id="loginBtn"><img src="img/logo/loginOff.png" width="180px" height="32px" style="margin:3%" /></a>
                 </div>
             </div>
             </div>
@@ -381,6 +383,20 @@ margin:1%;
         </div>
     </footer>
     <!-- Footer Section End -->
+    <script>
+
+    $(function(){
+    	$("#loginBtn img").mouseover(function(){
+    		$(this).attr("src","img/logo/loginOn.png");
+    	});
+    	$("#loginBtn img").mouseout(function(){
+    		$(this).attr("src","img/logo/loginOff.png");
+    	});
+    });
+ 
+
+
+    </script>
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
