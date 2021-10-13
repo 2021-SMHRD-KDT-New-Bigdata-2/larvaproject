@@ -23,15 +23,14 @@ public class LoginService extends HttpServlet {
 		String pw=request.getParameter("loginPw");
 		
 		memberDAO Login=new memberDAO();
-		int cnt=Login.login(id,pw);
+		memberVO memberInfo=Login.login(id,pw);
 		
-		memberVO memberInfo=new memberVO(id,pw);
 		HttpSession Session=request.getSession();
 		
-		if(cnt==1) {
-			Session.setAttribute("loginMemberSession", memberInfo.getMemId());
+		if(memberInfo!=null) {
+			Session.setAttribute("loginMemberSession", memberInfo);
 			response.sendRedirect("LoginJSP.jsp");
-		}else if(cnt==0) {
+		}else if(memberInfo==null) {
 			Session.setAttribute("loginMemberFail", "fail");
 			response.sendRedirect("LoginJSP.jsp");
 		}

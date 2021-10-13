@@ -1,13 +1,20 @@
+<%@page import="com.model.memberVO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="zxx">
-
+<% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession"); 
+if(memberInfo==null){
+	out.println("<script>alert('∑Œ±◊¿Œ¿Ã « ø‰«— º≠∫ÒΩ∫¿‘¥œ¥Ÿ. ∑Œ±◊¿Œ∆‰¿Ã¡ˆ∑Œ ¿Ãµø«’¥œ¥Ÿ.'); window.location='./LoginJSP.jsp';</script>");
+}
+%>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Aler Template">
     <meta name="keywords" content="Aler, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ÍπîÍºº | Template</title>
+    <title>Aler | Template</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -36,10 +43,8 @@ font-size: 18px;
 margin:1%;
 }
 </style>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
 </script>
-
 <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -75,7 +80,7 @@ margin:1%;
     </div>
     <!-- Offcanvas Menu Wrapper End -->
 
-    <!-- Ìó§Îìú ÏãúÏûë -->
+    <!-- «ÏµÂ Ω√¿€ -->
     <header class="header-section">
         <div class="hs-top">
             <div class="container">
@@ -84,43 +89,47 @@ margin:1%;
                         	<a href="./index.html"><img src="img/logo/kka1.png" alt=""></a>
 						</div>
                         <nav class="nav-menu">
-                            <ul style="text-align:center; margin-left:15%;"><!-- Ïù∏ÎùºÏù∏ ÏÜçÏÑ±ÏúºÎ°ú Î≥ÄÌïú liÎì§ÏùÑ ÌÖçÏä§Ìä∏Î°ú Ïù∏ÏãùÌï¥ Ï§ëÏïôÏ†ïÎ†¨ ÌïòÍ≤å ÎßåÎì§Ïñ¥ Ï§å. -->
-                                <li class="active">
-                                	<a href="./index.html">Î©îÏù∏</a>
+                            <ul style="text-align:center; margin-left:15%;"><!-- ¿Œ∂Û¿Œ º”º∫¿∏∑Œ ∫Ø«— liµÈ¿ª ≈ÿΩ∫∆Æ∑Œ ¿ŒΩƒ«ÿ ¡ﬂæ”¡§∑ƒ «œ∞‘ ∏∏µÈæÓ ¡‹. -->
+                                <li class="active" style="font-size : 10px">
+                                	<a href="./index.html">∏ﬁ¿Œ</a>
                                 	</li>
-                                		<li><a href="#">ÎßàÏù¥ÌéòÏù¥ÏßÄ</a>
+                                		<li><a href="#">∏∂¿Ã∆‰¿Ã¡ˆ</a>
                                     		<ul class="dropdown" style="display:inline-block; width:150px;">
-                                        		<li style="margin-right:40%"><a href="./mypageProfile.html">ÎÇ¥Ï†ïÎ≥¥</a></li>
-                                        		<li style="margin-right:10%"><a href="./mypageContest.html">ÏßÄÏõêÌïú Í≥µÎ™®Ï†Ñ</a></li>
-                                        		<li style="margin-right:38%"><a href="./mypageTeam.html">ÎÇòÏùò ÌåÄ</a></li>
-                                        		<li style="margin-right:40%"><a href="./mypageMessege.html">Ï™ΩÏßÄÌï®</a></li>
+                                        		<li style="margin-right:40%"><a href="./mypageProfileJSP.jsp">≥ª¡§∫∏</a></li>
+                                        		<li style="margin-right:10%"><a href="./mypageContestJSP.jsp">¡ˆø¯«— ∞¯∏¿¸</a></li>
+                                        		<li style="margin-right:38%"><a href="./mypageTeamJSP.jsp">≥™¿« ∆¿</a></li>
+                                        		<li style="margin-right:40%"><a href="./myPageMessageJSP.jsp">¬ ¡ˆ«‘</a></li>
                                    			</ul>
                                 		</li>
-                                	<li><a href="./agents.html">Í≥µÎ™®Ï†Ñ</a></li>
-                                	<li><a href="./about.html">ÌåÄÏõêÎ™®Ïßë</a></li>
+                                	<li><a href="./agents.html">∞¯∏¿¸</a></li>
+                                	<li><a href="./about.html">∆¿ø¯∏¡˝</a></li>
                             </ul>
                         </nav>
                     </div>
                 <div>
-                	<a href="#" style="margin-left:85%;" id="loginBtn"><img src="img/logo/logoutOff.png" width="180px" height="32px" style="margin:1%" /></a>
-                </div>
+            	<%if(memberInfo==null){
+            	out.print("<a href='./LoginJSP.jsp' style='margin-left:85%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
+            }else if(memberInfo!=null){
+            	out.print("<a href='./LogoutJSP.jsp' style='margin-left:90%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
+            }%>
+             	</div>
             </div>
             </div>
-        <div class="canvas-open">
-        <span class="icon_menu"></span>
-        </div>
-        <div class="hs-nav">
-            <div class="container">
-            	<div class="row">
-                    <div class="pcntSearchText" style="margin:5%; margin-left:27%;">
-                    	<input class = "textBar" type="text" placeholder="ÏõêÌïòÎäî Í≥µÎ™®Ï†Ñ Í≤ÄÏÉâ!" size="50">
-                    	<button class="searchBtn">Í≤ÄÏÉâ</button>
+            <div class="canvas-open">
+            <span class="icon_menu"></span>
+            </div>
+
+        	<div class="hs-nav" style="border-bottom: 2px solid #c0c0c0;">
+            	<div class="container">
+                    <div class="pcntSearchText" style="margin:5%; margin-left:26%; height :40px; width : 600px;border:2px solid #1b5ac2; background : #ffffff;"">
+                    	<input class = "textBar" type="text" placeholder="ø¯«œ¥¬ ∞¯∏¿¸ ∞Àªˆ!" 
+                    	style="font-size : 16px; width : 500px;height:100%; padding : 10px; border : 0px; outline : none; float : left;">
+                    	<button class="searchBtn" style="width :50px;height :100%;border:0px;background : #1b5ac2; outline:none;float:right; color : #ffffff">∞Àªˆ</button>
              		</div>
                 </div>
             </div>
-       </div>
-    </header>
-    <!-- Ìó§Îìú ÎÅù -->
+    	</header>
+    <!-- «ÏµÂ ≥° -->
 
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section spad set-bg" data-setbg="img/breadcrumb-bg.jpg">
@@ -128,10 +137,10 @@ margin:1%;
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <h4>ÎÇ¥Ï†ïÎ≥¥</h4>
+                        <h4>¡ˆø¯«— ∞¯∏¿¸</h4>
                         <div class="bt-option">
-                            <a href="./index.html"><i class="fa fa-home"></i>Î©îÏù∏</a>
-                            <span>ÎÇ¥Ï†ïÎ≥¥</span>
+                            <a href="./index.html"><i class="fa fa-home"></i>∏ﬁ¿Œ</a>
+                            <span>¡ˆø¯«— ∞¯∏¿¸</span>
                         </div>
                     </div>
                 </div>
@@ -140,7 +149,7 @@ margin:1%;
     </section>
     <!-- Breadcrumb Section End -->
 
-    <!-- ÎÇ¥Ï†ïÎ≥¥ ÏÑπÏÖò -->
+    <!-- ≥ª¡§∫∏ ºΩº« -->
     <section class="profile-section spad">
         <div class="container">
             <div class="profile-agent-content">
@@ -148,23 +157,23 @@ margin:1%;
                     <div class="col-lg-4">
                         <div class="profile-agent-info">
                             <div class="pi-text">
-                                <h5>ÍπÄÍ∏∞Ïó∞</h5>
-                                <span>Ïã§Î≤Ñ</span>
+                                <h5>±Ë±‚ø¨</h5>
+                                <span>Ω«πˆ</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="profile-agent-widget">
                             <ul>
-                                <li>ÏßÑÌñâÏ§ëÏù∏ Í≥µÎ™®Ï†Ñ Í∞ØÏàò <span style="color:red">3</span></li>
-                                <li>ÌåÄÏõê Î™®ÏßëÏ§ëÏù∏ Í≥µÎ™®Ï†Ñ Í∞ØÏàò <span style="color:red">1</span></li>
-                                <li>ÎÅùÎÇú Í≥µÎ™®Ï†Ñ Í∞ØÏàò <span style="color:red">4</span></li>
+                                <li><a href="#" style="color:black">¡¯«‡¡ﬂ¿Œ ∞¯∏¿¸ ∞πºˆ</a><span style="color:red">3</span></li>
+                                <li><a href="#" style="color:black">∆¿ø¯ ∏¡˝¡ﬂ¿Œ ∞¯∏¿¸ ∞πºˆ</a><span style="color:red">1</span></li>
+                                <li><a href="#" style="color:black">≥°≥≠ ∞¯∏¿¸ ∞πºˆ </a><span style="color:red">4</span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="profile-agent-newslatter">
-                            <h5 align="center" style="color:red;">ÌèâÏ†ê</h5>
+                            <h5 align="center" style="color:red;">∆Ú¡°</h5>
                             <p align="center" style="color:blue; font-size:35px; margin:10%;">4.3</p>
                         </div>
                     </div>
@@ -172,103 +181,104 @@ margin:1%;
             </div>
         </div>
     </section>
-    <!-- ÎÇ¥Ï†ïÎ≥¥ ÏÑπÏÖò ÎÅù-->
+    <!-- ≥ª¡§∫∏ ºΩº« ≥°-->
     
-    <!-- Í≥µÎ™®Ï†Ñ ÎÇ¥Ïó≠ ÏÑπÏÖò -->
-    <section class="testimonial-section spad">
+    <!-- ∞¯∏¿¸ ≥ªø™ ºΩº« -->
+    <section class="property-section profile-page spad">
         <div class="container">
             <div class="row">
+                <div class="col-lg-4">
+                    <div class="property-item">
+                        <div class="pi-pic set-bg" data-setbg="img/property/property-2.jpg">
+                            <div class="label">D-15</div>
+                        </div>
+                        <div class="pi-text">
+                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                            <div class="pt-price">10ø˘ 23¿œ<span>±Ó¡ˆ</span></div>
+                            <h5><a href="#">ø≠∑¡∂Û ¬¸±˙ ∞¯∏¿¸</a></h5>
+                            <ul>
+                                <li><i class="fa fa-object-group"></i> IT</li>
+                                <li><i class="fa fa-bathtub"></i> 5∏Ì</li>
+                                <li><i class="fa fa-bed"></i> ∆¿ø¯</li>
+                                <li style="color:red"><i class="fa fa-bed"></i> ∏¡˝¡ﬂ</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="property-item">
+                        <div class="pi-pic set-bg" data-setbg="img/property/property-3.jpg">
+                            <div class="label c-red">D-2</div>
+                        </div>
+                        <div class="pi-text">
+                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                            <div class="pt-price">10ø˘ 15¿œ<span>±Ó¡ˆ</span></div>
+                            <h5><a href="#">√µ«œ¡¶¿œ π´º˙¥Î»∏</a></h5>
+                            <ul>
+                                <li><i class="fa fa-object-group"></i> º“«¡∆Æø˛æÓ</li>
+                                <li><i class="fa fa-bathtub"></i> 3∏Ì</li>
+                                <li style="color:blue"><i class="fa fa-bed"></i> ∆¿¿Â</li>
+                                <li style="color:red"><i class="fa fa-bed"></i> ∏¡˝¡ﬂ</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="property-item">
+                        <div class="pi-pic set-bg" data-setbg="img/property/property-1.jpg">
+                            <div class="label c-red">D-3</div>
+                        </div>
+                        <div class="pi-text">
+                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                            <div class="pt-price">10ø˘ 16¿œ<span>±Ó¡ˆ</span></div>
+                            <h5><a href="#">µø∏Ìµø øÕ¿Œ¥Î»∏</a></h5>
+                            <ul>
+                                <li><i class="fa fa-object-group"></i> IT</li>
+                                <li><i class="fa fa-bathtub"></i> 5∏Ì</li>
+                                <li style="color:blue"><i class="fa fa-bed"></i> ∆¿¿Â</li>
+                                <li style="color:green"><i class="fa fa-bed"></i> ∏¡˝øœ∑·</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="property-item">
+                        <div class="pi-pic set-bg" data-setbg="img/property/property-5.jpg">
+                            <div class="label">D-20</div>
+                        </div>
+                        <div class="pi-text">
+                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                            <div class="pt-price">10ø˘ 30¿œ<span>±Ó¡ˆ</span></div>
+                            <h5><a href="#">º“¡÷ ∏π¿Ã∏‘±‚ ¥Î»∏</a></h5>
+                            <ul>
+                                <li><i class="fa fa-object-group"></i> º“«¡∆Æø˛æÓ</li>
+                                <li><i class="fa fa-bathtub"></i> 4∏Ì</li>
+                                <li><i class="fa fa-bed"></i> ∆¿ø¯</li>
+                                <li style="color:green"><i class="fa fa-bed"></i> ∏¡˝øœ∑·</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="col-lg-12">
-                    <div class="section-title">
-                        <h4>Î™®Îì† Í≥µÎ™®Ï†Ñ ÎÇ¥Ïó≠</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="row testimonial-slider owl-carousel">
-                <div class="col-lg-6">
-                    <div class="testimonial-item">
-                        <div class="ti-text">
-                            <a href="#"></a><img src="img/about-pic.jpg"></a>
-                        </div>
-                        <div class="ti-author">
-                        <a style="padding:1%; background-color: red; color:white;">ÏßÑÌñâÏ§ë</a>
-                            <div class="ta-text">
-                                <h5>Ï≤úÌïòÏ†úÏùº Î¨¥Ïà†ÎåÄÌöå</h5>
-                                <span>2021.09.10~2021.10.11</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial-item">
-                        <div class="ti-text">
-                            <img src="img/about-us.jpg">
-                        </div>
-                        <div class="ti-author">
-                        <a style="padding:1%; background-color: red; color:white;">ÏßÑÌñâÏ§ë</a>
-                            <div class="ta-text">
-                                <h5>ÏÜåÏ£º Ï°¥ÎÇòÎ®πÍ∏∞ ÎåÄÌöå</h5>
-                                <span>2021.09.10~2021.11.11</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial-item">
-                        <div class="ti-text">
-                            <img src="img/about-us.jpg">
-                        </div>
-                        <div class="ti-author">
-                        <a style="padding:1%; background-color: gray; color:white;">Ï¢ÖÎ£å</a>
-                            <div class="ta-text">
-                                <h5>ÌñÑÏµúÎ™á?</h5>
-                                <span>2021.09.10~2020.12.11</span>
-                            </div>
-                        </div>
+                    <div class="property-pagination">
+                        <a href="#">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#" class="icon"><span class="arrow_right"></span></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Í≥µÎ™®Ï†Ñ ÎÇ¥Ïó≠ ÏÑπÏÖò -->
+    <!-- ∞¯∏¿¸ ≥ªøÎ ºΩº« ≥° -->
     
-    <!-- Property Comparison Section Begin -->
     
-                        
-    <section class="contact-form-section spad">
-        <div class="section-title">
-            <h4 style="margin-left:26.5%">Í≥µÎ™®Ï†Ñ ÌõÑÍ∏∞ ÏûëÏÑ±(ÏùºÍ∏∞Ïì∞Í∏∞)</h4>
-              </div>
-        		<div class="container">
-            		<div class="row">
-                		<div class="col-lg-12">
-                   		 <div class="cf-content">
-                        		<form action="#" class="cc-form">
-                                	<div style="margin:2%">
-                                		<select name="">
-                                			<option value="" style="color:gray">Ï∞∏Í∞Ä Í≥µÎ™®Ï†Ñ</option>
-                            				<option value="">Ï≤úÌïòÏ†úÏùº Î¨¥Ïà†ÎåÄÌöå</option>
-                            				<option value="">ÏÜåÏ£º ÎßéÏù¥Î®πÍ∏∞</option>
-                            				<option value="">ÌñÑÏµúÎ™á?</option>
-                        				</select>
-                        			</div>
-                        			<div style="float:left; margin-left:2%">
-                                		<select name="">
-                                			<option value="" style="color:gray">ÏßÄÏõêÌñàÎçò ÏßÅÍµ∞</option>
-                            				<option value="">Í∏∞Ìöç</option>
-                            				<option value="">Í∞úÎ∞ú</option>
-                            				<option value="">ÎÇ†Î®π</option>
-                        				</select>
-                        			</div>
-                            		<textarea placeholder="ÎÇ¥Ïö©" style="margin:2%"></textarea>
-                            		<button type="submit" class="site-btn">Î≥¥ÎÇ¥Í∏∞</button>
-                        		</form>
-                    		</div>
-                		</div>
-            		</div>
-        		</div>
-    		</section>
- 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Property Comparison Section End -->
 
     <!-- Contact Section Begin -->
@@ -383,14 +393,25 @@ margin:1%;
     </footer>
     <!-- Footer Section End -->
     
-    <!-- Î°úÍ∑∏Ïù∏/ÌöåÏõêÍ∞ÄÏûÖ Î©îÏÜåÎìú -->
+    
     <script>
+    //∑Œ±◊¿Œ,»∏ø¯∞°¿‘ πˆ∆∞ ∏ﬁº“µÂ
     $(function(){
     	$("#loginBtn img").mouseover(function(){
     		$(this).attr("src","img/logo/loginOn.png");
     	});
     	$("#loginBtn img").mouseout(function(){
     		$(this).attr("src","img/logo/loginOff.png");
+    	});
+    });
+    
+    //∑Œ±◊æ∆øÙ πˆ∆∞ ∏ﬁº“µÂ
+    $(function(){
+    	$("#logoutBtn img").mouseover(function(){
+    		$(this).attr("src","img/logo/logoutOn.png");
+    	});
+    	$("#logoutBtn img").mouseout(function(){
+    		$(this).attr("src","img/logo/logoutOff.png");
     	});
     });
     </script>

@@ -36,23 +36,37 @@ public class memberDAO extends DBconnection {
 		}
 		
 		//로그인 메소드
-		public int login(String id, String pw) {
+		public memberVO login(String id, String pw) {
 				
 				getConnection();
-				
-				int cnt=0;
+				memberVO memberInfo=null;
+				String memId=null;
+				String memPw=null;
+				String memUserName=null;
+				String memNickName=null;
+				String memEmail=null;
+				String memTel=null;
+				String memAdress=null;
+				String memDate=null;
 				
 				try {
 					psmt=conn.prepareStatement("select * from member_info where mem_id = ? and mem_pw = ?");
 					psmt.setString(1, id);
 					psmt.setString(2, pw);
-					
 					rs=psmt.executeQuery();
-					if (rs.next()) {
-						cnt=1;
-					}
 					
+					if(rs.next()) {
+						memId=rs.getString(2);
+						memPw=rs.getString(3);
+						memUserName=rs.getString(4);
+						memNickName=rs.getString(5);
+						memEmail=rs.getString(6);
+						memTel=rs.getString(7);
+						memAdress=rs.getString(8);
+						memDate=rs.getString(9);
+					}
 				}catch (Exception e) {
+					return memberInfo;
 				}finally {
 					try {
 						dbClose();
@@ -61,7 +75,8 @@ public class memberDAO extends DBconnection {
 					}
 					
 				}
-				return cnt;
+				memberInfo=new memberVO(memId,memPw,memUserName,memNickName,memEmail,memTel,memAdress,memDate);
+				return memberInfo;
 				
 		}
 }

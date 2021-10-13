@@ -74,7 +74,7 @@ margin:1%;
     </div>
     <!-- Offcanvas Menu Wrapper End -->
 
-    <!-- Header Section Begin -->
+    <!-- 헤드 시작 -->
     <header class="header-section">
         <div class="hs-top">
             <div class="container">
@@ -83,7 +83,7 @@ margin:1%;
                         	<a href="./index.html"><img src="img/logo/kka1.png" alt=""></a>
 						</div>
                         <nav class="nav-menu">
-                            <ul style="text-align:center; margin-left:15%;"><!-- 인라인 속성으로 변한 li들을 텍스트로 인식해 중앙정렬 하게 만들어 줌. -->
+                            <ul style="text-align:center; margin-left:15%;">
                                 <li class="active">
                                 	<a href="./index.html">메인</a>
                                 	</li>
@@ -101,14 +101,13 @@ margin:1%;
                         </nav>
                     </div>
                 <div>
-                	<a href="#" style="margin-left:85%;" id="loginBtn"><img src="img/logo/loginOff.png" width="180px" height="32px" style="margin:3%" /></a>
+                	<a href="#" style="margin-left:85%;" id="loginBtn"><img src="img/logo/loginOff.png" width="180px" height="32px" style="margin:1%" /></a>
                 </div>
             </div>
             </div>
-            <div class="canvas-open">
-                    <span class="icon_menu"></span>
-             </div>
-
+        <div class="canvas-open">
+        <span class="icon_menu"></span>
+        </div>
         <div class="hs-nav">
             <div class="container">
             	<div class="row">
@@ -120,7 +119,7 @@ margin:1%;
             </div>
        </div>
     </header>
-    <!-- Header End -->
+    <!-- 헤드 끝 -->
 
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section spad set-bg" data-setbg="img/breadcrumb-bg.jpg">
@@ -383,8 +382,10 @@ margin:1%;
         </div>
     </footer>
     <!-- Footer Section End -->
+    
+    
     <script>
-
+    //로그인,회원가입 버튼 메소드
     $(function(){
     	$("#loginBtn img").mouseover(function(){
     		$(this).attr("src","img/logo/loginOn.png");
@@ -393,9 +394,17 @@ margin:1%;
     		$(this).attr("src","img/logo/loginOff.png");
     	});
     });
- 
-
-
+    
+    //로그아웃 버튼 메소드
+    $(function(){
+    	$("#logoutBtn img").mouseover(function(){
+    		$(this).attr("src","img/logo/logoutOn.png");
+    	});
+    	$("#logoutBtn img").mouseout(function(){
+    		$(this).attr("src","img/logo/loginOff.png");
+    	});
+    });
+    
     </script>
 
     <!-- Js Plugins -->
