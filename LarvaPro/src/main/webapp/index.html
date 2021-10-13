@@ -80,7 +80,7 @@
 						</div>
                         <nav class="nav-menu">
                             <ul style="text-align:center; margin-left:15%;"><!-- 인라인 속성으로 변한 li들을 텍스트로 인식해 중앙정렬 하게 만들어 줌. -->
-                                <li class="active">
+                                <li class="active" style="font-size : 10px">
                                 	<a href="./index.html">메인</a>
                                 	</li>
                                 		<li><a href="#">마이페이지</a>
@@ -145,150 +145,214 @@
     <!-- Hero Section End -->
 
     <!-- Search Section Begin -->
-    <section class="search-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7" >
-                    <div class="section-title" >
-                        <h4>불타오르는 모임</h4>
+
+
+   <!-- calendar Section Begin -->
+   	<div class="calbul">              
+		<div class="cal-left">
+		<div class="calendar">
+			<div class="section-title" >
+				<h5>공모전 일정</h5>
+			 <!-- calendar 태그 -->
+			 <div id='calendar-container'style="margin-top: 20px;padding:30px; width : 800px;">
+			 <div id='calendar'></div>
+			  </div>
+			  <script>
+			  (function(){
+			    $(function(){
+			      // calendar element 취득
+			      var calendarEl = $('#calendar')[0];
+			      // full-calendar 생성하기
+			      var calendar = new FullCalendar.Calendar(calendarEl, {
+			        height: '550px', // calendar 높이 설정
+			        expandRows: true, // 화면에 맞게 높이 재설정
+			        slotMinTime: '08:00', // Day 캘린더에서 시작 시간
+			        slotMaxTime: '20:00', // Day 캘린더에서 종료 시간
+			        // 해더에 표시할 툴바
+			        headerToolbar: {
+			          left: 'prev,next today',
+			          center: 'title',
+			          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+			        },
+			        initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
+			        initialDate: '2021-07-15', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
+			        navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
+			        editable: true, // 수정 가능?
+			        selectable: true, // 달력 일자 드래그 설정가능
+			        nowIndicator: true, // 현재 시간 마크
+			        dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
+			        locale: 'ko', // 한국어 설정
+			        eventAdd: function(obj) { // 이벤트가 추가되면 발생하는 이벤트
+			          console.log(obj);
+			        },
+			        eventChange: function(obj) { // 이벤트가 수정되면 발생하는 이벤트
+			          console.log(obj);
+			        },
+			        eventRemove: function(obj){ // 이벤트가 삭제되면 발생하는 이벤트
+			          console.log(obj);
+			        },
+			        select: function(arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
+			          var title = prompt('Event Title:');
+			          if (title) {
+			            calendar.addEvent({
+			              title: title,
+			              start: arg.start,
+			              end: arg.end,
+			              allDay: arg.allDay
+			            })
+			          }
+			          calendar.unselect()
+			        },
+			        // 이벤트 
+			        events: [
+			          {
+			            title: 'All Day Event',
+			            start: '2021-07-01',
+			          },
+			          {
+			            title: 'Long Event',
+			            start: '2021-07-07',
+			            end: '2021-07-10'
+			          },
+			          {
+			            groupId: 999,
+			            title: 'Repeating Event',
+			            start: '2021-07-09T16:00:00'
+			          },
+			          {
+			            groupId: 999,
+			            title: 'Repeating Event',
+			            start: '2021-07-16T16:00:00'
+			          },
+			          {
+			            title: 'Conference',
+			            start: '2021-07-11',
+			            end: '2021-07-13'
+			          },
+			          {
+			            title: 'Meeting',
+			            start: '2021-07-12T10:30:00',
+			            end: '2021-07-12T12:30:00'
+			          },
+			          {
+			            title: 'Lunch',
+			            start: '2021-07-12T12:00:00'
+			          },
+			          {
+			            title: 'Meeting',
+			            start: '2021-07-12T14:30:00'
+			          },
+			          {
+			            title: 'Happy Hour',
+			            start: '2021-07-12T17:30:00'
+			          },
+			          {
+			            title: 'Dinner',
+			            start: '2021-07-12T20:00:00'
+			          },
+			          {
+			            title: 'Birthday Party',
+			            start: '2021-07-13T07:00:00'
+			          },
+			          {
+			            title: 'Click for Google',
+			            url: 'http://google.com/', // 클릭시 해당 url로 이동
+			            start: '2021-07-28'
+			          }
+			        ]
+			      });
+			      // 캘린더 랜더링
+			      calendar.render();
+			    });
+			  })();
+			</script>
+				</div>
+			    <div id='calendar-container'>
+			    <div id='calendar'></div>
+			  	</div>
+			  	<script>
+			  	</script>
+		</div>
+		</div>
+	<div class="cal-right">
+		<div class="moim">
+			<div class="section-title">
+				<h5>불타는 모임</h5>
+			</div>
+ <section class="agent-section spad">
+        <div class="container" style="margin-left:-75px ;margin-top : -110px">
+            <div class="as-slider owl-carousel">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="as-item">
+                            <div class="as-pic">
+                                <img src="img/hero/gong1.jpg" alt="">
+                            </div>
+                            <div class="as-text" >
+                                <div class="at-title">
+                                    <h6></h6>
+                                  
+                                </div>
+                                <ul>
+                                    <li>Property <span>215</span></li>
+                                    <li>팀장 <span>닉네임</span></li>
+                                    <li>팀 인원 <span>1/4</span></li>
+                                </ul>
+                                <a href="#" class="primary-btn">지원하기</a>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                    	<h6>공모전 제목</h6>
+ <div class="col-lg-4 col-md-6">
+                        <div class="as-item">
+                            <div class="as-pic">
+                                <img src="img/hero/gong2.jpg" alt="">
+                            </div>
+                            <div class="as-text" >
+                                <div class="at-title">
+                                    <h6></h6>
+                                  
+                                </div>
+                                <ul>
+                                    <li>Property <span>215</span></li>
+                                    <li>팀장 <span>닉네임</span></li>
+                                    <li>팀 인원 <span>2/4</span></li>
+                                </ul>
+                                <a href="#" class="primary-btn">지원하기</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-5" style="margin-left: -100px;" >
-         	 		<div class="section-title" >
-          				<h4>달력</h4>
-          				  <!-- calendar 태그 -->
-  <div id='calendar-container'style="margin-top: 20px;padding:30px; width : 600px;">
-    <div id='calendar'></div>
-  </div>
-  <script>
-  (function(){
-    $(function(){
-      // calendar element 취득
-      var calendarEl = $('#calendar')[0];
-      // full-calendar 생성하기
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        height: '700px', // calendar 높이 설정
-        expandRows: true, // 화면에 맞게 높이 재설정
-        slotMinTime: '08:00', // Day 캘린더에서 시작 시간
-        slotMaxTime: '20:00', // Day 캘린더에서 종료 시간
-        // 해더에 표시할 툴바
-        headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-        },
-        initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
-        initialDate: '2021-07-15', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
-        navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
-        editable: true, // 수정 가능?
-        selectable: true, // 달력 일자 드래그 설정가능
-        nowIndicator: true, // 현재 시간 마크
-        dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
-        locale: 'ko', // 한국어 설정
-        eventAdd: function(obj) { // 이벤트가 추가되면 발생하는 이벤트
-          console.log(obj);
-        },
-        eventChange: function(obj) { // 이벤트가 수정되면 발생하는 이벤트
-          console.log(obj);
-        },
-        eventRemove: function(obj){ // 이벤트가 삭제되면 발생하는 이벤트
-          console.log(obj);
-        },
-        select: function(arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
-          var title = prompt('Event Title:');
-          if (title) {
-            calendar.addEvent({
-              title: title,
-              start: arg.start,
-              end: arg.end,
-              allDay: arg.allDay
-            })
-          }
-          calendar.unselect()
-        },
-        // 이벤트 
-        events: [
-          {
-            title: 'All Day Event',
-            start: '2021-07-01',
-          },
-          {
-            title: 'Long Event',
-            start: '2021-07-07',
-            end: '2021-07-10'
-          },
-          {
-            groupId: 999,
-            title: 'Repeating Event',
-            start: '2021-07-09T16:00:00'
-          },
-          {
-            groupId: 999,
-            title: 'Repeating Event',
-            start: '2021-07-16T16:00:00'
-          },
-          {
-            title: 'Conference',
-            start: '2021-07-11',
-            end: '2021-07-13'
-          },
-          {
-            title: 'Meeting',
-            start: '2021-07-12T10:30:00',
-            end: '2021-07-12T12:30:00'
-          },
-          {
-            title: 'Lunch',
-            start: '2021-07-12T12:00:00'
-          },
-          {
-            title: 'Meeting',
-            start: '2021-07-12T14:30:00'
-          },
-          {
-            title: 'Happy Hour',
-            start: '2021-07-12T17:30:00'
-          },
-          {
-            title: 'Dinner',
-            start: '2021-07-12T20:00:00'
-          },
-          {
-            title: 'Birthday Party',
-            start: '2021-07-13T07:00:00'
-          },
-          {
-            title: 'Click for Google',
-            url: 'http://google.com/', // 클릭시 해당 url로 이동
-            start: '2021-07-28'
-          }
-        ]
-      });
-      // 캘린더 랜더링
-      calendar.render();
-    });
-  })();
-</script>
-                 	</div>
+ <div class="col-lg-4 col-md-6">
+                        <div class="as-item">
+                            <div class="as-pic">
+                                <img src="img/hero/gong3.jpg" alt="">
+                            </div>
+                            <div class="as-text">
+                                <div class="at-title">
+                                    <h6></h6>
+                                  
+                                </div>
+                                <ul>
+                                    <li>Property <span>215</span></li>
+                                    <li>팀장 <span>닉네임</span></li>
+                                    <li>팀 인원 <span>3/4</span></li>
+                                </ul>
+                                <a href="#" class="primary-btn">지원하기</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        	
-          
-                       
-    </section>
-    <!-- Search Section End -->
-    
-    <!-- calendar Section Begin -->
-     <div id='calendar-container'>
-    <div id='calendar'></div>
-  	</div>
-  	<script>
-  	</script>
+        </div>
+    </section>	
+
+		</div>
+	</div>
+</div>
+
+	
+
   	
-  	<!-- calendar Section End -->
+<!-- calendar Section End -->
 
     <!-- Property Section Begin -->
     <section class="property-section latest-property-section spad">
