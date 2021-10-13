@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class MessageDAO {
+public class messageDAO {
 	
 	Connection conn = null;
 	PreparedStatement psmt = null;
@@ -43,7 +43,7 @@ public class MessageDAO {
 		}
 	}
 	//메시지 입력
-	public int insertMessage(MessageVO vo) {
+	public int insertMessage(messageVO vo) {
 		
 		int cnt = 0;
 		
@@ -68,9 +68,9 @@ public class MessageDAO {
 		return cnt;
 	}
 	//보낸 메시지 조회
-	public ArrayList<MessageVO> showSendMessage(String SendId) {
+	public ArrayList<messageVO> showSendMessage(String SendId) {
 		
-		ArrayList<MessageVO> message_list = new ArrayList<MessageVO>();
+		ArrayList<messageVO> message_list = new ArrayList<messageVO>();
 		
 		try {
 			getConnection();
@@ -90,7 +90,7 @@ public class MessageDAO {
 				String mReceiveDate = rs.getString("mReceiveDate");
 				int mState = rs.getInt("mState");
 				
-				MessageVO vo = new MessageVO(mNum, mSendId, mReceiveid, mContent, mSendDate, mReceiveDate, mState);
+				messageVO vo = new messageVO(mNum, mSendId, mReceiveid, mContent, mSendDate, mReceiveDate, mState);
 				message_list.add(vo);
 			}
 			
@@ -102,9 +102,9 @@ public class MessageDAO {
 		return message_list;
 	}
 	//받은 메시지 조회
-	public ArrayList<MessageVO> showReceiveMessage(String ReceiveId) {
+	public ArrayList<messageVO> showReceiveMessage(String ReceiveId) {
 		
-		ArrayList<MessageVO> message_list = new ArrayList<MessageVO>();
+		ArrayList<messageVO> message_list = new ArrayList<messageVO>();
 		
 		try {
 			getConnection();
@@ -124,7 +124,7 @@ public class MessageDAO {
 				String mReceiveDate = rs.getString("mReceiveDate");
 				int mState = rs.getInt("mState");
 				
-				MessageVO vo = new MessageVO(mNum, mSendId, mReceiveId, mContent, mSendDate, mReceiveDate, mState);
+				messageVO vo = new messageVO(mNum, mSendId, mReceiveId, mContent, mSendDate, mReceiveDate, mState);
 				message_list.add(vo);
 			}
 			

@@ -1,6 +1,6 @@
 package com.model;
 
-public class MessageVO {
+public class messageVO {
 	
 	private int mNum; //메시지 번호
 	private String mSendId; //보낸 사람
@@ -10,7 +10,7 @@ public class MessageVO {
 	private String mReceiveDate; // 받은 일자
 	private int mState; //읽음 : 0, 읽지 않음 : 1
 	
-	public MessageVO(int mNum, String mSendId, String mReceiveId, String mContent, String mSendDate, String mReceiveDate, int mState) {
+	public messageVO(int mNum, String mSendId, String mReceiveId, String mContent, String mSendDate, String mReceiveDate, int mState) {
 		super();
 		this.mNum = mNum;
 		this.mSendId = mSendId;
@@ -21,14 +21,11 @@ public class MessageVO {
 		this.mState = mState;
 	}
 
-	public MessageVO(String mSendId, String mReceiveId, String mContent, String mSendDate, String mReceiveDate, int mState) {
+	public messageVO(String mSendId, String mReceiveId, String mContent) {
 		super();
 		this.mSendId = mSendId;
 		this.mReceiveId = mReceiveId;
 		this.mContent = mContent;
-		this.mSendDate = mSendDate;
-		this.mReceiveDate = mReceiveDate;
-		this.mState = mState;
 	}
 
 	public int getmNum() {
