@@ -1,6 +1,6 @@
 package com.model;
 
-public class PostCommentVO {
+public class postcommentVO {
 	
 	private int pcNum; //댓글 번호
 	private int pcRpNum; //모집 게시판 번호
@@ -9,12 +9,13 @@ public class PostCommentVO {
 	private String pcContent; //내용
 	private String pcDate; //작성일자
 	
-	public PostCommentVO(String pcMemId, String pcContent, String pcDate) {
+	public postcommentVO(String pcMemId, String pcContent, String pcDate) {
 		super();
 		this.pcMemId = pcMemId;
 		this.pcContent = pcContent;
 		this.pcDate = pcDate;
 	}
+	
 	public int getPcNum() {
 		return pcNum;
 	}

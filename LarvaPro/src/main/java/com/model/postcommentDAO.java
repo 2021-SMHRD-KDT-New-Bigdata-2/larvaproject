@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class PostCommentDAO {
+public class postcommentDAO {
 	
 	Connection conn = null;
 	PreparedStatement psmt = null;
@@ -42,7 +42,7 @@ public class PostCommentDAO {
 		}
 	}
 	//´ñ±Û ÀÔ·Â
-	public int insetPostComment(PostCommentVO vo) {
+	public int insetPostComment(postcommentVO vo) {
 		
 		int cnt = 0;
 		

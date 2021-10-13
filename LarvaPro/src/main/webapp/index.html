@@ -10,6 +10,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Aler | Template</title>
+    
+    <!-- 켈린더 -->
+    <!-- jquery CDN -->
+    	<script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
+  		<script src="jquery-3.6.0.min.js"></script>
+  		<!-- fullcalendar CDN -->
+  		<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
+  		<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
+  		<!-- fullcalendar 언어 CDN -->
+  		<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
@@ -26,6 +36,13 @@
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+    
+    .imgPadding{
+    	padding-left: 10%;
+    	padding-right: 10%;
+    }
+    </style>
 </head>
 
 <body>
@@ -92,7 +109,7 @@
 
         <div class="hs-nav" style="border-bottom: 2px solid #c0c0c0;">
             <div class="container">
-                    <div class="pcntSearchText" style="margin:5%; margin-left:27%; height :40px; width : 600px;border:2px solid #1b5ac2; background : #ffffff;"">
+                    <div class="pcntSearchText" style="margin:5%; margin-left:26%; height :40px; width : 600px;border:2px solid #1b5ac2; background : #ffffff;"">
                     	<input class = "textBar" type="text" placeholder="원하는 공모전 검색!" 
                     	style="font-size : 16px; width : 500px;height:100%; padding : 10px; border : 0px; outline : none; float : left;">
                     	<button class="searchBtn" style="width :50px;height :100%;border:0px;background : #1b5ac2; outline:none;float:right; color : #ffffff">검색</button>
@@ -105,19 +122,21 @@
     <!-- Header End -->
 
     <!-- Hero Section Begin -->
-    <section class="hero-section" style ="width : 1100px; height : 500px;
-    	 margin : 50px 0px 0px 400px;position: relative;" >
-        <div class="container" style = "width : 700px;  ">
+    <section class="hero-section" style ="width : 1000px; height : 700px;
+    	 margin : 10px 0px 0px 440px; position: relative;" >
+        <div class="container" style = "width :650px;  ">
             <div class="hs-slider owl-carousel">
-                <div class="hs-item set-bg" data-setbg="img/hero/gong1.jpg">
-                   
+                <div class="hs-item set-bg">
+                   <img class = "imgPadding" src="img/hero/gong1.jpg" alt= none; >
                 </div>
-                <div class="hs-item set-bg" data-setbg="img/hero/gongmoimg1.jpg">
+                <div class="hs-item set-bg">
+                	<img class = "imgPadding" src="img/hero/gongmoimg1.jpg" alt= none;>
                     <div class="row">
                         
                     </div>
                 </div>
-                <div class="hs-item set-bg" data-setbg="img/hero/gongmoimg2.jpg">
+                <div class="hs-item set-bg" >
+                	<img class = "imgPadding" src="img/hero/gongmoimg2.jpg" alt= none;>
                     
                 </div>
             </div>
@@ -129,48 +148,147 @@
     <section class="search-section spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-7">
+                <div class="col-lg-7" >
                     <div class="section-title" >
                         <h4>불타오르는 모임</h4>
                     </div>
+                    <div>
+                    	<h6>공모전 제목</h6>
+                    </div>
                 </div>
-                <div class="col-lg-5">
-                	<div class="change-btn">
-                        <div class="cb-item">
-
-                        </div>
-                    
+                <div class="col-lg-5" style="margin-left: -100px;" >
+         	 		<div class="section-title" >
+          				<h4>달력</h4>
+          				  <!-- calendar 태그 -->
+  <div id='calendar-container'style="margin-top: 20px;padding:30px; width : 600px;">
+    <div id='calendar'></div>
+  </div>
+  <script>
+  (function(){
+    $(function(){
+      // calendar element 취득
+      var calendarEl = $('#calendar')[0];
+      // full-calendar 생성하기
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        height: '700px', // calendar 높이 설정
+        expandRows: true, // 화면에 맞게 높이 재설정
+        slotMinTime: '08:00', // Day 캘린더에서 시작 시간
+        slotMaxTime: '20:00', // Day 캘린더에서 종료 시간
+        // 해더에 표시할 툴바
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+        },
+        initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
+        initialDate: '2021-07-15', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
+        navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
+        editable: true, // 수정 가능?
+        selectable: true, // 달력 일자 드래그 설정가능
+        nowIndicator: true, // 현재 시간 마크
+        dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
+        locale: 'ko', // 한국어 설정
+        eventAdd: function(obj) { // 이벤트가 추가되면 발생하는 이벤트
+          console.log(obj);
+        },
+        eventChange: function(obj) { // 이벤트가 수정되면 발생하는 이벤트
+          console.log(obj);
+        },
+        eventRemove: function(obj){ // 이벤트가 삭제되면 발생하는 이벤트
+          console.log(obj);
+        },
+        select: function(arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
+          var title = prompt('Event Title:');
+          if (title) {
+            calendar.addEvent({
+              title: title,
+              start: arg.start,
+              end: arg.end,
+              allDay: arg.allDay
+            })
+          }
+          calendar.unselect()
+        },
+        // 이벤트 
+        events: [
+          {
+            title: 'All Day Event',
+            start: '2021-07-01',
+          },
+          {
+            title: 'Long Event',
+            start: '2021-07-07',
+            end: '2021-07-10'
+          },
+          {
+            groupId: 999,
+            title: 'Repeating Event',
+            start: '2021-07-09T16:00:00'
+          },
+          {
+            groupId: 999,
+            title: 'Repeating Event',
+            start: '2021-07-16T16:00:00'
+          },
+          {
+            title: 'Conference',
+            start: '2021-07-11',
+            end: '2021-07-13'
+          },
+          {
+            title: 'Meeting',
+            start: '2021-07-12T10:30:00',
+            end: '2021-07-12T12:30:00'
+          },
+          {
+            title: 'Lunch',
+            start: '2021-07-12T12:00:00'
+          },
+          {
+            title: 'Meeting',
+            start: '2021-07-12T14:30:00'
+          },
+          {
+            title: 'Happy Hour',
+            start: '2021-07-12T17:30:00'
+          },
+          {
+            title: 'Dinner',
+            start: '2021-07-12T20:00:00'
+          },
+          {
+            title: 'Birthday Party',
+            start: '2021-07-13T07:00:00'
+          },
+          {
+            title: 'Click for Google',
+            url: 'http://google.com/', // 클릭시 해당 url로 이동
+            start: '2021-07-28'
+          }
+        ]
+      });
+      // 캘린더 랜더링
+      calendar.render();
+    });
+  })();
+</script>
+                 	</div>
                 </div>
             </div>
-            <div class="search-form-content">
-                <form action="#" class="filter-form">
-                
-                    <div class="gongmoSearch">
-                    	<input type="text" placeholder="원하는 공모전 검색!">
-                    	<button type="button" class="search-btn sm-width">Search</button>
-                    </div>
-                    <div class="room-size-range-wrap sm-width">
-                        <div class="price-text">
-                            <label for="roomsizeRange">조회수:</label>
-                            <input type="text" id="roomsizeRange" readonly>
-                        </div>
-                        <div id="roomsize-range" class="slider"></div>
-                    </div>
-                    <div class="price-range-wrap sm-width">
-                        <div class="price-text">
-                            <label for="priceRange">기간:</label>
-                            <input type="text" id="priceRange" readonly>
-                        </div>
-                        <div id="price-range" class="slider"></div>
-                    </div>
-                    
-                	    
-                </form>
-          </div>
-          </div>
+        	
+          
                        
     </section>
     <!-- Search Section End -->
+    
+    <!-- calendar Section Begin -->
+     <div id='calendar-container'>
+    <div id='calendar'></div>
+  	</div>
+  	<script>
+  	</script>
+  	
+  	<!-- calendar Section End -->
 
     <!-- Property Section Begin -->
     <section class="property-section latest-property-section spad">
