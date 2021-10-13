@@ -2,7 +2,6 @@ package com.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +20,7 @@ public class LoginService extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id=request.getParameter("loginId");
-		String pw=request.getParameter("loginId");
+		String pw=request.getParameter("loginPw");
 		
 		memberDAO Login=new memberDAO();
 		int cnt=Login.login(id,pw);
@@ -30,9 +29,9 @@ public class LoginService extends HttpServlet {
 		HttpSession Session=request.getSession();
 		
 		if(cnt==1) {
-			Session.setAttribute("loginMemberSession", memberInfo);
+			Session.setAttribute("loginMemberSession", memberInfo.getMemId());
 			response.sendRedirect("LoginJSP.jsp");
-		}else {
+		}else if(cnt==0) {
 			Session.setAttribute("loginMemberFail", "fail");
 			response.sendRedirect("LoginJSP.jsp");
 		}
