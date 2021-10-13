@@ -155,7 +155,7 @@ ol {
 .set-bg {
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: top center;
+  background-position: relative;
   
 }
 
@@ -439,7 +439,7 @@ ol {
   text-align: center;
   font-size: 20px;
   color: red;
-  transform: translateY(-30px);
+  transform: translateY(-px);
   margin-top : -25%;
 }
 .hs-slider.owl-carousel .owl-nav button.owl-next {
@@ -1841,7 +1841,7 @@ ol {
   position: relative;
 }
 .pd-text .pd-widget .pd-agent .agent-text .at-title h6 {
-  color: #111111;
+  color: #000000;
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 6px;
@@ -1849,7 +1849,7 @@ ol {
 .pd-text .pd-widget .pd-agent .agent-text .at-title span {
   display: block;
   font-size: 12px;
-  color: #00C89E;
+  color: #00ffff;
   font-weight: 500;
 }
 .pd-text .pd-widget .pd-agent .agent-text .at-title .primary-btn {
@@ -2573,11 +2573,9 @@ li .richText-btn[data-command=toggleCode] {
   color: #00C89E;
   background: #ffffff;
 }
-.as-item:hover .as-text .at-title {
-  border-color: #33d3b3;
-}
+
 .as-item:hover .as-text .at-title h6 {
-  color: #ffffff;
+  color: #000000;
 }
 .as-item:hover .as-text ul li {
   color: #ffffff;
@@ -2585,6 +2583,28 @@ li .richText-btn[data-command=toggleCode] {
 .as-item:hover .as-text .primary-btn {
   background: #ffffff;
 }
+
+.calbul{
+	width : 100%;
+	height : 900px;
+}
+.calbul .cal-left{
+	width : 50%;
+	height : 800px;
+	float: left;
+}
+.calbul .cal-right{
+	width : 50%;
+	height : 800px;
+	float: right;
+}
+
+.calbul .calendar{
+	margin-left:150px;
+	margin-top:40px
+}
+
+
 .as-item .as-pic {
   width: 151px;
   height: 151px;
@@ -2592,8 +2612,30 @@ li .richText-btn[data-command=toggleCode] {
   margin: 0 auto;
   margin-bottom: 25px;
 }
+
+.calbul .moim{
+	margin-left : 80px;
+	margin-top : 50px;
+	width : 100%;
+	height : 40px;
+	float:top;
+}
+.calbul .moim1{
+	width : 100%;
+	height :350px;
+}
+.calbul .moim2{
+	width : 100%;
+	height : 350px;
+	float:bottom;
+}
+
+
+	
+
 .as-item .as-pic img {
-  border-radius: 50%;
+  
+  object-fit:cover;
 }
 .as-item .as-pic .rating-point {
   font-size: 16px;
@@ -2612,8 +2654,9 @@ li .richText-btn[data-command=toggleCode] {
   transition: all 0.2s;
 }
 .as-item .as-text .at-title {
-  border-bottom: 1px solid #e1e1e1;
-  padding-bottom: 15px;
+  border-bottom: 2px solid #ffffff;
+  margin-top: 110px;
+  margin-bottom: 20px;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
@@ -2626,7 +2669,7 @@ li .richText-btn[data-command=toggleCode] {
 }
 .as-item .as-text .at-title .rating-star i {
   font-size: 10px;
-  color: #ffb129;
+  color: #000000;
   margin-right: -4px;
 }
 .as-item .as-text ul {
@@ -2649,8 +2692,8 @@ li .richText-btn[data-command=toggleCode] {
   float: right;
 }
 .as-item .as-text .primary-btn {
-  background: #f2f2f2;
-  color: #00C89E;
+  background: #000000;
+  color: #0080ff;
   display: block;
   padding: 14px 20px;
   text-align: center;
