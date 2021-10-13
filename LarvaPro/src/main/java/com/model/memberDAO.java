@@ -1,44 +1,17 @@
 package com.model;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
-public class memberDAO {
-	
-	//JDBC연결 메소드		 
-		public Connection getConnection() {
-		 
-		   Connection conn=null;
-		   
-		   String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
-		   String id = "campus_k3_1006";
-		   String pw = "smhrd3";
-		   
-		   try {
-		       Class.forName("oracle.jdbc.driver.OracleDriver");
-		       conn = DriverManager.getConnection(url, id, pw);
-		   } catch (Exception e) {
-		       System.out.println("접속실패");
-			   e.printStackTrace();
-		   }
-		   return conn;
-		}
+public class memberDAO extends DBconnection {
 		
 		//회원가입 메소드
 		public int join(memberVO member) {
 
-			Connection conn=getConnection();
-			PreparedStatement psmt=null;
+			getConnection();
+			
 			int cnt=0;
 			
 			try {
-				psmt=conn.prepareStatement("insert into member_info values(?,?,?,?,?,?,?,?)");
+				
+				psmt=conn.prepareStatement("insert into member_info values(?,?,?,?,?,?,?,sysdate)");
 				psmt.setString(1, member.getMemId());
 				psmt.setString(2, member.getMemPw());
 				psmt.setString(3, member.getMemUserName());
@@ -46,12 +19,6 @@ public class memberDAO {
 				psmt.setString(5, member.getMemEmail());
 				psmt.setString(6, member.getMemTel());
 				psmt.setString(7, member.getMemAdress());
-				
-				//sql에 넣을 날짜값 구하기
-				Calendar cal=new GregorianCalendar();
-				Date nowDate=new Date(cal.getTimeInMillis());
-				
-				psmt.setDate(8, nowDate);
 						
 				cnt=psmt.executeUpdate();
 						
@@ -60,12 +27,7 @@ public class memberDAO {
 				e.printStackTrace();
 			}finally {
 				try {
-					if (conn!=null) {
-						conn.close();
-					}
-					if (psmt!=null) {
-						psmt.close();
-					}
+					dbClose();
 				}catch(Exception e) {
 					e.printStackTrace();
 				}
@@ -76,9 +38,8 @@ public class memberDAO {
 		//로그인 메소드
 		public int login(String id, String pw) {
 				
-				Connection conn=getConnection();
-				PreparedStatement psmt=null;
-				ResultSet rs=null;
+				getConnection();
+				
 				int cnt=0;
 				
 				try {
@@ -94,12 +55,8 @@ public class memberDAO {
 				}catch (Exception e) {
 				}finally {
 					try {
-						if (rs!=null) {
-							rs.close();
-						}
-						psmt.close();
-						conn.close();
-					} catch (SQLException e) {
+						dbClose();
+					} catch (Exception e) {
 						e.printStackTrace();
 					}
 					

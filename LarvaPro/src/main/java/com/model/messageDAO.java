@@ -1,55 +1,17 @@
 package com.model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class messageDAO {
+public class messageDAO extends DBconnection{
 	
-	Connection conn = null;
-	PreparedStatement psmt = null;
-	ResultSet rs = null;
-	//db 연결
-	public void getConnection() {
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			
-			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
-			String user = "campus_k3_1006 ";
-			String password = "smhrd3";
-					
-			//2. 데이터베이스 연결 객체(Connection) 생성
-			conn = DriverManager.getConnection(url, user, password);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	//db 연결 해제
-	public void dbClose() {
-		try {
-			if(rs != null) {
-				rs.close();
-			}
-			if(psmt != null) {
-				psmt.close();
-			}
-			if(conn != null) {
-				conn.close();
-			}
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 	//메시지 입력
 	public int insertMessage(messageVO vo) {
 		
 		int cnt = 0;
 		
 		try {
-			getConnection();
 			
+			getConnection();
 			
 			psmt = conn.prepareStatement("insert into message values(message_number.nextval,?,?,?,sysdate,sysdate,?)");
 			
@@ -107,6 +69,7 @@ public class messageDAO {
 		ArrayList<messageVO> message_list = new ArrayList<messageVO>();
 		
 		try {
+			
 			getConnection();
 			
 			psmt = conn.prepareStatement("select * from message where m_receive_id=?");
@@ -140,6 +103,7 @@ public class messageDAO {
 	public int deleteMessage(String mReceiveId) {
 		int cnt = 0;
 		try {
+			
 			getConnection();
 			
 			psmt = conn.prepareStatement("delete from message where m_receive_id=?");
@@ -161,6 +125,7 @@ public class messageDAO {
 		int cnt = 0;
 		
 		try {
+			
 			getConnection();
 			
 			psmt = conn.prepareStatement("delete from message where m_num=?");

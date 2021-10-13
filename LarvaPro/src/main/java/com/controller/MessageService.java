@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.model.messageDAO;
 import com.model.messageVO;
@@ -17,14 +18,18 @@ import com.model.memberVO;
 @WebServlet("/MessageService")
 public class MessageService extends HttpServlet {
 	
+	private static final long serialVersionUID = 1L;
+
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		memberVO vo1 = new memberVO();
+		//세션 요청
+		HttpSession session = request.getSession();
+		memberVO vo =(memberVO)session.getAttribute("loginMemberSession");
 		//post방식 인코딩
 		request.setCharacterEncoding("EUC-KR");
 		
 		//값 받아오기
-		String mSendId = vo1.getMemId();
+		String mSendId = vo.getMemId();
 		String mReceiveId = request.getParameter("ReceiveId");
 		String mContent = request.getParameter("Content");
 				
