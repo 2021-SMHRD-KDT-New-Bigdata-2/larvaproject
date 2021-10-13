@@ -1,5 +1,6 @@
 select * from all_tables;
 select * from all_sequences;
+select * from message;
 /*테이블 삭제*/
 drop table group_mem;
 drop table group_head;

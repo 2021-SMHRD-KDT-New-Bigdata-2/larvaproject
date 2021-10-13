@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.model.PostCommentDAO;
-import com.model.PostCommentVO;
+import com.model.postcommentDAO;
+import com.model.postcommentVO;
 
 @WebServlet("/PostCommentService")
 public class PostCommentService extends HttpServlet {
@@ -20,8 +20,8 @@ public class PostCommentService extends HttpServlet {
 		String pcContent  = request.getParameter("pcContent");
 		String pcDate  = request.getParameter("pcDate");
 		
-		PostCommentVO vo = new PostCommentVO(pcMemId, pcContent, pcDate);
-		PostCommentDAO dao = new PostCommentDAO();
+		postcommentVO vo = new postcommentVO(pcMemId, pcContent, pcDate);
+		postcommentDAO dao = new postcommentDAO();
 		
 		int cnt = dao.insetPostComment(vo);
 		
