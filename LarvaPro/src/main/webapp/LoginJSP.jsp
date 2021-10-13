@@ -113,13 +113,6 @@ span {
 }
 </style>
 </head>
-
-<% memberVO result= (memberVO)session.getAttribute("loginMemberSession");
-	String fail= (String)session.getAttribute("loginMemberFail");%>
-
-	
-	
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
 </script>
 <body>
@@ -128,7 +121,7 @@ span {
 	
 	
 	
-        <div class="wrap">
+        <div class="wrap" style="margin-left:8%">
         	<div style="width:260px; left:0; right:0; margin-left:35%; margin-top:5%;">
         		<div style="margin-left:15%; margin-bottom:10%">
         		<img src="img/KkalKkom.png" style="width:280px; height:70px;">
@@ -145,11 +138,17 @@ span {
                     		<input type="password" class="input-field" placeholder="비밀번호를 입력하세요" name="loginPw" required>
                     		<input type="checkbox" class="checkbox"><span>비밀번호 저장</span>
                     		<button class="submit">로그인</button>
-                    		<%if(result!=null){%>
-                    			out.println("<script>alert('<%=result.getMemId()%>님, 환영합니다.');</script>");
-                    		<%}else if(fail!=null){%>
+                    		<%
+                    		String result= (String)session.getAttribute("loginMemberSession");
+                    		String fail=(String)session.getAttribute("loginMemberFail");
+                    		
+                    		if(result!=null){
+                    			out.println("<script>alert('환영합니다.');</script>");
+                    			session.invalidate();
+                    		}else if(fail!=null){
                     			out.println("<script>alert('회원정보를 확인하세요.');</script>");
-                    		<%}%>
+                    			session.invalidate();
+                    		}%>
 							
 							
                 		</form>
