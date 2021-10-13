@@ -10,29 +10,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.model.MessageDAO;
-import com.model.MessageVO;
+import com.model.messageDAO;
+import com.model.messageVO;
+import com.model.memberVO;
 
 @WebServlet("/MessageService")
 public class MessageService extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		memberVO vo1 = new memberVO();
 		//post방식 인코딩
 		request.setCharacterEncoding("EUC-KR");
 		
 		//값 받아오기
-		String mSendId = request.getParameter("mSendId");
-		String mReceiveId = request.getParameter("mReceiveId");
-		String mContent = request.getParameter("mContent");
-		String mSendDate = request.getParameter("mSendDate");
-		String mReceiveDate = request.getParameter("mReceiveDate");
-		int mState = Integer.parseInt(request.getParameter("mState"));
+		String mSendId = vo1.getMemId();
+		String mReceiveId = request.getParameter("ReceiveId");
+		String mContent = request.getParameter("Content");
 				
-		MessageVO vo = new MessageVO(mSendId, mReceiveId, mContent, mSendDate, mReceiveDate, mState);
-		MessageDAO dao = new MessageDAO();
+		messageVO vo2 = new messageVO(mSendId, mReceiveId, mContent);
+		messageDAO dao = new messageDAO();
 				
-		int cnt = dao.insertMessage(vo);
+		int cnt = dao.insertMessage(vo2);
 				
 		if(cnt>0) {
 			System.out.println("메세지 전송 성공");
@@ -40,7 +39,7 @@ public class MessageService extends HttpServlet {
 			System.out.println("메세지 전송 실패");
 		}
 	
-		//response.sendRedirect("main.jsp");
+		response.sendRedirect("mypageMessageJSP.jsp");
 	}
 
 }
