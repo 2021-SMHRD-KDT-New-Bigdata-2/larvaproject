@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.model.postcommentDAO;
-import com.model.postcommentVO;
 
 @WebServlet("/PostCommentUpdateService")
 public class PostCommentUpdateService extends HttpServlet {
