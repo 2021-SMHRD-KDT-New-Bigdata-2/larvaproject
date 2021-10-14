@@ -158,10 +158,15 @@ if(memberInfo==null){
     <!-- Breadcrumb Section End -->
 	<%
 		messageDAO dao = new messageDAO();
-		ArrayList<messageVO>message_list = new ArrayList<messageVO>();
+		ArrayList<messageVO>sendMessage_list = new ArrayList<messageVO>();
 		if(memberInfo!=null){
-			message_list = dao.showSendMessage(memberInfo.getMemUserName());
+			sendMessage_list = dao.showSendMessage(memberInfo.getMemUserName());
 		}
+		ArrayList<messageVO>receiveMessage_list = new ArrayList<messageVO>();
+		if(memberInfo!=null){
+			receiveMessage_list = dao.showReceiveMessage(memberInfo.getMemUserName());
+		}
+		
 	%>
     <!-- Property Comparison Section Begin -->
     <div class="property-comparison-section spad">
@@ -178,14 +183,14 @@ if(memberInfo==null){
                                 	<td style="font-size: 25px; background-color: gray; color: white; width:100px;">쪽지 번호</td>
                                     <td style="font-size: 25px; background-color: gray; color: white; width:100px;">보낸 사람</td>
                                     <td style="font-size: 25px; background-color: gray; color: white; width:300px;">쪽지 내용</td>
-                                    <td style="font-size: 25px; background-color: gray; color: white; width:100px;">보낸 날짜</td>
+                                    <td style="font-size: 25px; background-color: gray; color: white; width:100px;">받은 날짜</td>
                                 </tr>
-                                <% for (int i = 0;i<message_list.size();i++){ %>
+                                <% for (int i = 0;i<receiveMessage_list.size();i++){ %>
                                 	<tr>
                                 		<td style="font-size: 15px"><%= i+1 %></td>
-	                                    <td style="font-size: 15px"><%= message_list.get(i).getmSendId() %></td>
-	                                    <td style="font-size: 15px"><%= message_list.get(i).getmContent() %></td>
-	                                    <td style="font-size: 15px"><%= message_list.get(i).getmReceiveDate() %></td>
+	                                    <td style="font-size: 15px"><%= receiveMessage_list.get(i).getmSendId() %></td>
+	                                    <td style="font-size: 15px"><%= receiveMessage_list.get(i).getmContent() %></td>
+	                                    <td style="font-size: 15px"><%= receiveMessage_list.get(i).getmReceiveDate() %></td>
                                 	</tr>
                                 <% }%>
                         	</tbody>
@@ -197,16 +202,16 @@ if(memberInfo==null){
                             <tbody>
                                 <tr>
                                 	<td style="font-size: 25px; background-color: gray; color: white; width:100px;">쪽지 번호</td>
-                                    <td style="font-size: 25px; background-color: gray; color: white; width:100px;">보낸 사람</td>
+                                    <td style="font-size: 25px; background-color: gray; color: white; width:100px;">받은 사람</td>
                                     <td style="font-size: 25px; background-color: gray; color: white; width:300px;">쪽지 내용</td>
                                     <td style="font-size: 25px; background-color: gray; color: white; width:100px;">보낸 날짜</td>
                                 </tr>
-                                <% for (int i = 0;i<message_list.size();i++){ %>
+                                <% for (int i = 0;i<sendMessage_list.size();i++){ %>
                                 	<tr>
                                 		<td style="font-size: 15px"><%= i+1 %></td>
-	                                    <td style="font-size: 15px"><%= message_list.get(i).getmReceiveId() %></td>
-	                                    <td style="font-size: 15px"><%= message_list.get(i).getmContent() %></td>
-	                                    <td style="font-size: 15px"><%= message_list.get(i).getmSendDate() %></td>
+	                                    <td style="font-size: 15px"><%= sendMessage_list.get(i).getmReceiveId() %></td>
+	                                    <td style="font-size: 15px"><%= sendMessage_list.get(i).getmContent() %></td>
+	                                    <td style="font-size: 15px"><%= sendMessage_list.get(i).getmReceiveDate() %></td>
                                 	</tr>
                                 <% }%>
                             </tbody>

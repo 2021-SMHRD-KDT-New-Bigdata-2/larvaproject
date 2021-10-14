@@ -20,6 +20,8 @@ public class messageVO {
 		this.mReceiveDate = mReceiveDate;
 		this.mState = mState;
 	}
+	
+	
 
 	public messageVO(String mSendId, String mReceiveId, String mContent) {
 		super();

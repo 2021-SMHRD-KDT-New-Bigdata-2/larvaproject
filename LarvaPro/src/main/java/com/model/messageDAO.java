@@ -44,13 +44,13 @@ public class messageDAO extends DBconnection{
 			rs=psmt.executeQuery();
 			
 			while(rs.next()) {
-				int mNum = rs.getInt("mNum");
-				String mSendId = rs.getString("mSendId");
-				String mReceiveid = rs.getString("mReceiveId");
-				String mContent = rs.getString("mContent");
-				String mSendDate = rs.getString("mSendDate");
-				String mReceiveDate = rs.getString("mReceiveDate");
-				int mState = rs.getInt("mState");
+				int mNum = rs.getInt("m_num");
+				String mSendId = rs.getString("m_send_id");
+				String mReceiveid = rs.getString("m_receive_id");
+				String mContent = rs.getString("m_content");
+				String mSendDate = rs.getString("m_send_date");
+				String mReceiveDate = rs.getString("m_receive_date");
+				int mState = rs.getInt("m_state");
 				
 				messageVO vo = new messageVO(mNum, mSendId, mReceiveid, mContent, mSendDate, mReceiveDate, mState);
 				message_list.add(vo);
@@ -79,13 +79,13 @@ public class messageDAO extends DBconnection{
 			rs=psmt.executeQuery();
 			
 			while(rs.next()) {
-				int mNum = rs.getInt("mNum");
-				String mSendId = rs.getString("mSendId");
-				String mReceiveId = rs.getString("mReceiveId");
-				String mContent = rs.getString("mContent");
-				String mSendDate = rs.getString("mSendDate");
-				String mReceiveDate = rs.getString("mReceiveDate");
-				int mState = rs.getInt("mState");
+				int mNum = rs.getInt("m_num");
+				String mSendId = rs.getString("m_send_id");
+				String mReceiveId = rs.getString("m_receive_id");
+				String mContent = rs.getString("m_content");
+				String mSendDate = rs.getString("m_send_date");
+				String mReceiveDate = rs.getString("m_receive_date");
+				int mState = rs.getInt("m_state");
 				
 				messageVO vo = new messageVO(mNum, mSendId, mReceiveId, mContent, mSendDate, mReceiveDate, mState);
 				message_list.add(vo);
