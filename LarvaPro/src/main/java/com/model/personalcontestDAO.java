@@ -55,8 +55,8 @@ public class personalcontestDAO extends DBconnection{
 		}
 		return cnt;
 	}
-	//개인 공모전 내역 삭제
-	public int deletePersonalConetest(String pcntNum) {
+	//개인 공모전 내역 선택 삭제
+	public int deleteOnePersonalConetest(String pcntNum) {
 			
 		int cnt = 0;
 			
@@ -77,4 +77,26 @@ public class personalcontestDAO extends DBconnection{
 		}
 		return cnt;
 	}
+	//개인 공모전 내역 선택 삭제
+		public int deleteAllPersonalConetest(String memId) {
+				
+			int cnt = 0;
+				
+			try {
+				
+				getConnection();
+					
+				psmt = conn.prepareStatement("delete from personal_contest where mem_id=?");
+					
+				psmt.setString(1, memId);
+					
+				cnt = psmt.executeUpdate();
+					
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				dbClose();
+			}
+			return cnt;
+		}
 }
