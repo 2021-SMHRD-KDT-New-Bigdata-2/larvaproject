@@ -1042,7 +1042,7 @@
     		$(this).attr("src","img/logo/logoutOn.png");
     	});
     	$("#logoutBtn img").mouseout(function(){
-    		$(this).attr("src","img/logo/loginOff.png");
+    		$(this).attr("src","img/logo/logoutOff.png");
     	});
     });
     </script>

@@ -7,11 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<% 
-	String JoinName=(String)request.getAttribute("JoinName");
+	<%
+	out.println("<script>alert('회원가입이 완료되었습니다. 메인으로 이동합니다.'); window.location='./mainPageJSP.jsp';</script>");
 	%>
-	
-	<%=JoinName%>님 환영합니다.
 
 </body>
 </html>

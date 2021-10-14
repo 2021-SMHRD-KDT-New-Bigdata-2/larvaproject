@@ -10,7 +10,9 @@
 <body>
 
 	<% memberVO memberSession = (memberVO)session.getAttribute("loginMemberSession");%>
-	<%=memberSession.getMemId()%>님 환영합니다.
+	<%
+	out.println("<script>alert(JoinName+'님, 회원가입이 완료되었습니다.'); window.location='./mainPageJSP.jsp';</script>");
+	%>
 
 </body>
 </html>

@@ -145,7 +145,8 @@ span {
                     		String fail=(String)session.getAttribute("loginMemberFail");
                     		
                     		if(result!=null){
-                    			out.println("<script>alert('환영합니다.');</script>");
+                    			out.println("<script>alert('환영합니다.'); window.location='./mainPageJSP.jsp';</script>");
+
                     			
                     		}else if(fail!=null){
                     			out.println("<script>alert('회원정보를 확인하세요.');</script>");
