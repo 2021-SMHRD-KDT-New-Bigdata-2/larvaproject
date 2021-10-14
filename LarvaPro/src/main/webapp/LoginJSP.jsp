@@ -141,7 +141,7 @@ span {
                     		
                     		<!-- 로그인 성공/실패 여부 -->
                     		<%
-                    		String result= (String)session.getAttribute("loginMemberSession");
+                    		memberVO result= (memberVO)session.getAttribute("loginMemberSession");
                     		String fail=(String)session.getAttribute("loginMemberFail");
                     		
                     		if(result!=null){
