@@ -249,7 +249,7 @@ margin:1%;
     
     
     
-    <div style="text-align: center; margin-top:3%">
+    <div style="text-align: center; margin-top:3% margin-bottom:5%"">
     	<button type="submit" >지원하기</button>
     </div>	
 	 <section class="mb-5">
