@@ -3,21 +3,20 @@
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="zxx">
-<% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession"); 
-if(memberInfo!=null){
-	out.println("<script>alert('로그인이 필요한 서비스입니다. 로그인페이지로 이동합니다.'); window.location='./LoginJSP.jsp';</script>");
-}
-%>
+<% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession");%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+</script>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Aler Template">
     <meta name="keywords" content="Aler, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>깔꼼 | Template</title>
+    <title>Aler | Template</title>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
@@ -31,21 +30,7 @@ if(memberInfo!=null){
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
-<style>
 
-#noteHead{
-font-size:25px; 
-width:100px;
-}
-
-#noteContent{
-font-size: 18px;
-margin:1%;
-}
-</style>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
-</script>
 
 <body>
     <!-- Page Preloder -->
@@ -82,7 +67,7 @@ margin:1%;
     </div>
     <!-- Offcanvas Menu Wrapper End -->
 
-   <!-- 헤드 시작 -->
+    <!-- 헤드 시작 -->
     <header class="header-section">
     	<div style="background-image: url('img/mainTopBig.png'); width:2000px; height:225px;">
         	<div class="hs-top" style="margin-top:10px; border-bottom: 0px; height:225px;">
@@ -132,201 +117,136 @@ margin:1%;
                 </div>
     	</header>
     <!-- 헤드 끝 -->
-
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section spad set-bg" data-setbg="img/grayPolygon.png">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb-text">
-                        <h4>내정보</h4>
-                        <div class="bt-option">
-                            <a href="./index.html"><i class="fa fa-home"></i>메인</a>
-                            <span>내정보</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
-
-    <!-- 내정보 섹션 -->
-    <section class="profile-section spad">
-        <div class="container">
-            <div class="profile-agent-content">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="profile-agent-info">
-                            <div class="pi-text">
-                                <h5>김기연</h5>
-                                <span>실버</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="profile-agent-widget">
-                            <ul>
-                                <li>진행중인 공모전 갯수 <span style="color:red">3</span></li>
-                                <li>팀원 모집중인 공모전 갯수 <span style="color:red">1</span></li>
-                                <li>끝난 공모전 갯수 <span style="color:red">4</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="profile-agent-newslatter">
-                            <h5 align="center" style="color:red;">평점</h5>
-                            <p align="center" style="color:blue; font-size:35px; margin:10%;">4.3</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- 내정보 섹션 끝-->
     
-    <!-- 공모전 내역 섹션 -->
-    <section class="testimonial-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h4>모든 공모전 내역</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="row testimonial-slider owl-carousel">
-                <div class="col-lg-6">
-                    <div class="testimonial-item">
-                        <div class="ti-text">
-                            <a href="#"></a><img src="img/about-pic.jpg"></a>
-                        </div>
-                        <div class="ti-author">
-                        <a style="padding:1%; background-color: red; color:white;">진행중</a>
-                            <div class="ta-text">
-                                <h5>천하제일 무술대회</h5>
-                                <span>2021.09.10~2021.10.11</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial-item">
-                        <div class="ti-text">
-                            <img src="img/about-us.jpg">
-                        </div>
-                        <div class="ti-author">
-                        <a style="padding:1%; background-color: red; color:white;">진행중</a>
-                            <div class="ta-text">
-                                <h5>소주 존나먹기 대회</h5>
-                                <span>2021.09.10~2021.11.11</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial-item">
-                        <div class="ti-text">
-                            <img src="img/about-us.jpg">
-                        </div>
-                        <div class="ti-author">
-                        <a style="padding:1%; background-color: gray; color:white;">종료</a>
-                            <div class="ta-text">
-                                <h5>햄최몇?</h5>
-                                <span>2021.09.10~2020.12.11</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- 공모전 내역 섹션 끝-->
-    
-    <!-- Property Comparison Section Begin -->                 
-    <section class="contact-form-section spad">
-        <div class="section-title">
-            <h4 style="margin-left:21.5%">공모전 후기 작성(일기쓰기)</h4>
-              </div>
-        		<div class="container">
-            		<div class="row">
-                		<div class="col-lg-12">
-                   		 <div class="cf-content">
-                        		<form action="#" class="cc-form">
-                                	<div style="margin:2%">
-                                		<select name="">
-                                			<option value="" style="color:gray">참가 공모전</option>
-                            				<option value="">천하제일 무술대회</option>
-                            				<option value="">소주 많이먹기</option>
-                            				<option value="">햄최몇?</option>
-                        				</select>
-                        			</div>
-                        			<div style="float:left; margin-left:2%">
-                                		<select name="">
-                                			<option value="" style="color:gray">지원했던 직군</option>
-                            				<option value="">기획</option>
-                            				<option value="">개발</option>
-                            				<option value="">날먹</option>
-                        				</select>
-                        			</div>
-                            		<textarea placeholder="내용" style="margin:2%"></textarea>
-                            		<button type="submit" class="site-btn">보내기</button>
-                        		</form>
-                    		</div>
-                		</div>
-            		</div>
-        		</div>
-    		</section>
-    <!-- Property Comparison Section End -->
 
-    <!-- Contact Section Begin -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="contact-info">
-                        <div class="ci-item">
-                            <div class="ci-icon">
-                                <i class="fa fa-map-marker"></i>
-                            </div>
-                            <div class="ci-text">
-                                <h5>Address</h5>
-                                <p>160 Pennsylvania Ave NW, Washington, Castle, PA 16101-5161</p>
+    <!-- Blog Details Section Begin -->
+    
+    
+    <section class="blog-details-section spad">
+    	<div><h3 class="fw-bolder mb-1" style="margin-left:20%"><b>공모전 대외활동 정보</b></h3>
+    		<hr style="width:1160px" color=black size=1px>
+    	</div>
+    		<div class="container mt-5" style="background-color : #F6F6F6; border-radius:10px; margin-top:-10%">
+            	<div>
+                	<div>
+                    <article>
+                        <header class="mb-4" style="padding:3%">
+                            <div class="section-title" style="padding-top:2%;">
+            				<h4>AI(인공지능)개발교육 고급과정 수강생 모집</h4>
+              				</div>
+                            <a class="badge bg-secondary text-decoration-none link-light" >IT</a>
+                            <a class="badge bg-secondary text-decoration-none link-light" >UCC/사진</a>
+                        </header>
+                        <figure class="mb-4" style="float:left; margin-left:5%"><img src="https://www.wevity.com/upload/contest/20211001103134_ddf5bb76.jpg" alt="..." /></figure>
+                        <section class="mb-5">
+                        	<hr width="350px">
+                      			<table class="content" style="margin-left:35%;">
+      							<tbody>
+        							<tr>
+          								<td width = "100" height="50"><b>분야</b></td><td> Ipsum</td>
+     					   			</tr>
+        							<tr>
+          								<td width = "100" height="50"><b>응모대상</b></td><td>Ipsum</td>
+     					   			</tr>
+        							<tr>
+          								<td width = "100" height="50"><b>주최/주관</b><td>Ipsum</td>
+     					   			</tr>
+      								<tr>
+          								<td width = "100" height="50"><b>후원/협찬</b></td><td>Ipsum</td>
+     					   			</tr>
+        							<tr>
+          								<td width = "100" height="50"><b>접수기간</b></td><td>Ipsum</td>
+     					   			</tr>
+     					   			<tr>
+          								<td width = "100" height="50"><b>총상금</b></td><td>Ipsum</td>
+     					   			</tr>
+				      			</tbody>
+   					 			</table>
+   					 			<hr style="width:350px">
+   					 		<div class="section-title" style="padding:3%"><h4>상세내용</h4></div>
+   					 		<div style="margin-left:3%">
+   					 		<p class="fs-5 mb-4">2021 부산청년주간 e스포츠 챌린지 (카트타고 LOL하자)<br>
+
+■ 게임종목 : 리그 오브 레전드(5인 1팀) / 카트라이더(4인 1팀, 스피드전)<br>
+<br>
+■ 모집대상 : 부산에 거주 또는 활동하는 만 15세 이상 34세 이하로 구성된 팀(공고일 기준)<br>
+- 게임별 선착순 16팀 : 신청 과정에 부산 거주, 활동 및 연령 확인 정보를 제출 확인 후 선착순 선정<br>
+<br>
+■ 대회기간 : 2021년 9월 24일(금) ~ 10월 2일(토)<br>
+<br>
+■ 대회장소 : 각 가정 또는 PC 접속이 가능한 곳<br>
+<br>
+■ 신청기간 : 2021년 9월 16일(목) 20:00 ~ 9월 22일(수) 15:00 ※게임별 선착순 16팀<br>
+<br>
+■ 신청방법 : 온라인 대회 관리 및 게임매칭 플랫폼 레벨업지지 부산청년주간 대회<br>
+- 리그 오브 레전드<br>
+- 카트라이더(스피드전)<br>
+※ 신청 시작 시간은 9/16(목) 20시입니다. 사전에 플랫폼 가입 및 세부 내용을 확인하실 수 있도록 대회 페이지를 미리 열어 놓았습니다.<br>
+<br>
+■ 시상내역 ※우승팀 시상은 10/4(월) 15:00~16:00 청년주간 행사에서 진행될 예정<br>
+- 최종 우승 2개 팀에 부산광역시장상 수여(리그 오브 레전드 1팀, 카트라이더 1팀)<br>
+- 우승팀과 샌드박스 프로팀 이벤트 경기 진행<br>
+<br>
+■ 문의 : 부산청년주간 기획단<br>
+- 051-241-7863<br>
+- busanyouthweek@gmail.com<br></p>
+               				</div>
+                     		<figure>
+                     		</figure>
+                        </section>
+                    </article>
+                    
+                    <!-- Comments section-->
+                    <section class="mb-5">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <!-- Comment form-->
+                                <form class="mb-4"><textarea class="form-control" rows="3" placeholder="댓글을 달아주세요"></textarea></form>
+                                <!-- Comment with nested comments-->
+                                <div class="d-flex mb-4">
+                                    <!-- Parent comment-->
+                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                    <div class="ms-3">
+                                        <div class="fw-bold">Commenter Name</div>
+                                        If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
+                                        <!-- Child comment 1-->
+                                        <div class="d-flex mt-4">
+                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                            <div class="ms-3">
+                                                <div class="fw-bold">Commenter Name</div>
+                                                And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
+                                            </div>
+                                        </div>
+                                        <!-- Child comment 2-->
+                                        <div class="d-flex mt-4">
+                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                            <div class="ms-3">
+                                                <div class="fw-bold">Commenter Name</div>
+                                                When you put money directly to a problem, it makes a good headline.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Single comment-->
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                    <div class="ms-3">
+                                        <div class="fw-bold">Commenter Name</div>
+                                        When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="ci-item">
-                            <div class="ci-icon">
-                                <i class="fa fa-mobile"></i>
-                            </div>
-                            <div class="ci-text">
-                                <h5>Phone</h5>
-                                <ul>
-                                    <li>125-711-811</li>
-                                    <li>125-668-886</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="ci-item">
-                            <div class="ci-icon">
-                                <i class="fa fa-headphones"></i>
-                            </div>
-                            <div class="ci-text">
-                                <h5>Support</h5>
-                                <p>Support.aler@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
+                    </section>
                 </div>
             </div>
         </div>
-        <div class="cs-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d735515.5813275519!2d-80.41163541934742!3d43.93644386501528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882a55bbf3de23d7%3A0x3ada5af229b47375!2sMono%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sbd!4v1583262687289!5m2!1sen!2sbd" height="450" style="border:0;" allowfullscreen=""></iframe>
-        </div>
+        <input type="button">
     </section>
     <!-- Contact Section End -->
 
-        <!-- Footer Section Begin -->
-    <footer class="footer-section">
+    <!-- Footer Section Begin -->
+    <footer class="footer-section" style="margin-left:5%">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6">
@@ -390,8 +310,8 @@ margin:1%;
         </div>
     </footer>
     <!-- Footer Section End -->
-    
-    <script>
+
+ <script>
     //로그인,회원가입 버튼 메소드
     $(function(){
     	$("#loginBtn img").mouseover(function(){
@@ -412,6 +332,8 @@ margin:1%;
     	});
     });
     </script>
+
+
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>

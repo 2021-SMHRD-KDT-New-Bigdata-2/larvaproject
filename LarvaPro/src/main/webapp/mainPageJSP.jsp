@@ -78,18 +78,24 @@
 
     <!-- 헤드 시작 -->
     <header class="header-section">
-        <div class="hs-top">
-            <div class="container">
-                <div class="ten">
+    	<div style="background-image: url('img/mainTopBig.png'); width:2000px; height:225px;">
+        	<div class="hs-top" style="margin-top:10px; border-bottom: 0px; height:225px;">
+            	<div class="container">
+                	<div class="ten" style="padding:3%">
                         <div class="logo">
-                        	<a href="./mainPageJSP.jsp"><img src="img/logo/kka1.png" alt=""></a>
+                        	<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png" style="witdh:162px; height:102px"></a>
 						</div>
-                        <nav class="nav-menu">
-                            <ul style="text-align:center; margin-left:15%;"><!-- 인라인 속성으로 변한 li들을 텍스트로 인식해 중앙정렬 하게 만들어 줌. -->
+                        <nav class="nav-menu" style="margin-top:5%;">
+                            <%if(memberInfo==null){
+            	out.print("<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
+            }else if(memberInfo!=null){
+            	out.print("<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
+            }%>
+                            <ul style="text-align:center; margin-left:7%;">
                                 <li class="active" style="font-size : 10px">
-                                	<a href="./index.html">메인</a>
+                                	<a href="./mainPageJSP.jsp" style="color:#ffffff;">메인</a>
                                 	</li>
-                                		<li><a href="#">마이페이지</a>
+                                		<li><a href="#" style="color:#ffffff;">마이페이지</a>
                                     		<ul class="dropdown" style="display:inline-block; width:150px;">
                                         		<li style="margin-right:40%"><a href="./mypageProfileJSP.jsp">내정보</a></li>
                                         		<li style="margin-right:10%"><a href="./mypageContestJSP.jsp">지원한 공모전</a></li>
@@ -97,38 +103,32 @@
                                         		<li style="margin-right:40%"><a href="./mypageMessageJSP.jsp">쪽지함</a></li>
                                    			</ul>
                                 		</li>
-                                	<li><a href="./agents.html">공모전</a></li>
-                                	<li><a href="./about.html">팀원모집</a></li>
+                                	<li><a href="./ContestBoardJSP.jsp" style="color:#ffffff;">공모전</a></li>
+                                	<li><a href="./teamBoardJSP.jsp" style="color:#ffffff;">팀원모집</a></li>
                             </ul>
                         </nav>
+                    	</div>
                     </div>
                 <div>
-            	<%if(memberInfo==null){
-            	out.print("<a href='./LoginJSP.jsp' style='margin-left:85%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
-            }else if(memberInfo!=null){
-            	out.print("<a href='./LogoutJSP.jsp' style='margin-left:90%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
-            }%>
+            	
              	</div>
             </div>
             </div>
             <div class="canvas-open">
             <span class="icon_menu"></span>
             </div>
-
-        	<div class="hs-nav" style="border-bottom: 2px solid #c0c0c0;">
-            	<div class="container">
-                    <div class="pcntSearchText" style="margin:5%; margin-left:26%; height :40px; width : 600px;border:2px solid #1b5ac2; background : #ffffff;"">
+            	<div style="padding:3%; background-color: #4169E1; box-shadow: 1px 1px gray; width: 2000px">
+                    <div class="pcntSearchText" style="margin-left:33%; height :40px; width : 600px;border:2px solid #1b5ac2; background : #ffffff;">
                     	<input class = "textBar" type="text" placeholder="원하는 공모전 검색!" 
-                    	style="font-size : 16px; width : 500px;height:100%; padding : 10px; border : 0px; outline : none; float : left;">
+                    	style="font-size : 16px; width : 500px; height:100%; padding : 10px; border : 0px; outline : none;">
                     	<button class="searchBtn" style="width :50px;height :100%;border:0px;background : #1b5ac2; outline:none;float:right; color : #ffffff">검색</button>
              		</div>
                 </div>
-            </div>
     	</header>
     <!-- 헤드 끝 -->
 
     <!-- Hero Section Begin -->
-    <section class="hero-section" style ="width : 1000px; height : 700px;
+    <section class="hero-section" style ="width : 1100px; height : 700px;
     	 margin : 10px 0px 0px 440px; position: relative;" >
         <div class="container" style = "width :650px;  ">
             <div class="hs-slider owl-carousel">
@@ -150,17 +150,14 @@
     </section>
     <!-- Hero Section End -->
 
-    <!-- Search Section Begin -->
-
-
    <!-- calendar Section Begin -->
    	<div class="calbul">              
 		<div class="cal-left">
-		<div class="calendar">
-			<div class="section-title" >
+		<div class="calendar" style="margin-left:430px;margin-top:70px;">
+			<div class="section-title" style="margin-left:10px">
 				<h5>공모전 일정</h5>
 			 <!-- calendar 태그 -->
-			 <div id='calendar-container'style="margin-top: 20px;padding:30px; width : 800px;">
+			 <div id='calendar-container'style="margin-top: 10px;padding:20px; width : 550px;margin-left:-15px">
 			 <div id='calendar'></div>
 			  </div>
 			  <script>
@@ -170,7 +167,7 @@
 			      var calendarEl = $('#calendar')[0];
 			      // full-calendar 생성하기
 			      var calendar = new FullCalendar.Calendar(calendarEl, {
-			        height: '550px', // calendar 높이 설정
+			        height: '495px', // calendar 높이 설정
 			        expandRows: true, // 화면에 맞게 높이 재설정
 			        slotMinTime: '08:00', // Day 캘린더에서 시작 시간
 			        slotMaxTime: '20:00', // Day 캘린더에서 종료 시간
@@ -282,14 +279,14 @@
 		</div>
 	<div class="cal-right">
 		<div class="moim">
-			<div class="section-title">
+			<div class="section-title" style="margin-left : -80px">
 				<h5>불타는 모임</h5>
 			</div>
  <section class="agent-section spad">
-        <div class="container" style="margin-left:-75px ;margin-top : -110px">
+        <div class="container" style="margin-left:-90px ;margin-top : -110px">
             <div class="as-slider owl-carousel">
                 <div class="row">
-                    <div class="col-lg-4 col-md-6">
+                    <div class="as-item1">
                         <div class="as-item">
                             <div class="as-pic">
                                 <img src="img/hero/gong1.jpg" alt="">
@@ -308,7 +305,7 @@
                             </div>
                         </div>
                     </div>
- <div class="col-lg-4 col-md-6">
+ <div class="as-item2">
                         <div class="as-item">
                             <div class="as-pic">
                                 <img src="img/hero/gong2.jpg" alt="">
@@ -327,7 +324,7 @@
                             </div>
                         </div>
                     </div>
- <div class="col-lg-4 col-md-6">
+ <div class="as-item3">
                         <div class="as-item">
                             <div class="as-pic">
                                 <img src="img/hero/gong3.jpg" alt="">
@@ -360,385 +357,49 @@
   	
 <!-- calendar Section End -->
 
-    <!-- Property Section Begin -->
-    <section class="property-section latest-property-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="section-title">
-                        <h4>Latest PROPERTY</h4>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <div class="property-controls">
-                        <ul>
-                            <li data-filter="all">All</li>
-                            <li data-filter=".apart">Apartment</li>
-                            <li data-filter=".house">House</li>
-                            <li data-filter=".office">Office</li>
-                            <li data-filter=".hotel">Hotel</li>
-                            <li data-filter=".restaurent">Restaurent</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row property-filter">
-                <div class="col-lg-4 col-md-6 mix all house">
-                    <div class="property-item">
-                        <div class="pi-pic set-bg" data-setbg="img/property/property-1.jpg">
-                            <div class="label">For rent</div>
-                        </div>
-                        <div class="pi-text">
-                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-                            <div class="pt-price">$ 289.0<span>/month</span></div>
-                            <h5><a href="#">Home in Merrick Way</a></h5>
-                            <p><span class="icon_pin_alt"></span> 3 Middle Winchendon Rd, Rindge, NH 03461</p>
-                            <ul>
-                                <li><i class="fa fa-object-group"></i> 2, 283</li>
-                                <li><i class="fa fa-bathtub"></i> 03</li>
-                                <li><i class="fa fa-bed"></i> 05</li>
-                                <li><i class="fa fa-automobile"></i> 01</li>
-                            </ul>
-                            <div class="pi-agent">
-                                <div class="pa-item">
-                                    <div class="pa-info">
-                                        <img src="img/property/posted-by/pb-1.jpg" alt="">
-                                        <h6>Ashton Kutcher</h6>
-                                    </div>
-                                    <div class="pa-text">
-                                        123-455-688
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mix all restaurent hotel">
-                    <div class="property-item">
-                        <div class="pi-pic set-bg" data-setbg="img/property/property-2.jpg">
-                            <div class="label c-red">For rent</div>
-                        </div>
-                        <div class="pi-text">
-                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-                            <div class="pt-price">$ 289.0</div>
-                            <h5><a href="#">Unimont Aurum</a></h5>
-                            <p><span class="icon_pin_alt"></span> Gut No.102, Opp. HP Petrol Pump, Karjat</p>
-                            <ul>
-                                <li><i class="fa fa-object-group"></i> 2, 283</li>
-                                <li><i class="fa fa-bathtub"></i> 03</li>
-                                <li><i class="fa fa-bed"></i> 05</li>
-                                <li><i class="fa fa-automobile"></i> 01</li>
-                            </ul>
-                            <div class="pi-agent">
-                                <div class="pa-item">
-                                    <div class="pa-info">
-                                        <img src="img/property/posted-by/pb-1.jpg" alt="">
-                                        <h6>Ashton Kutcher</h6>
-                                    </div>
-                                    <div class="pa-text">
-                                        123-455-688
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mix all apart office">
-                    <div class="property-item">
-                        <div class="pi-pic set-bg" data-setbg="img/property/property-2.jpg">
-                            <div class="label c-red">For rent</div>
-                        </div>
-                        <div class="pi-text">
-                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-                            <div class="pt-price">$ 289.0</div>
-                            <h5><a href="#">Vrindavan Flora</a></h5>
-                            <p><span class="icon_pin_alt"></span> No. 15, 16, 17-1A And 17-2, Rasayani, Rasayani</p>
-                            <ul>
-                                <li><i class="fa fa-object-group"></i> 2, 283</li>
-                                <li><i class="fa fa-bathtub"></i> 03</li>
-                                <li><i class="fa fa-bed"></i> 05</li>
-                                <li><i class="fa fa-automobile"></i> 01</li>
-                            </ul>
-                            <div class="pi-agent">
-                                <div class="pa-item">
-                                    <div class="pa-info">
-                                        <img src="img/property/posted-by/pb-1.jpg" alt="">
-                                        <h6>Ashton Kutcher</h6>
-                                    </div>
-                                    <div class="pa-text">
-                                        123-455-688
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mix all hotel restaruent">
-                    <div class="property-item">
-                        <div class="pi-pic set-bg" data-setbg="img/property/property-4.jpg">
-                            <div class="label c-red">For rent</div>
-                        </div>
-                        <div class="pi-text">
-                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-                            <div class="pt-price">$ 289.0</div>
-                            <h5><a href="#">Shramik Vaibhav</a></h5>
-                            <p><span class="icon_pin_alt"></span> 12 Pt at Shedung, Panvel, Raigarh, Navi Mumbai</p>
-                            <ul>
-                                <li><i class="fa fa-object-group"></i> 2, 283</li>
-                                <li><i class="fa fa-bathtub"></i> 03</li>
-                                <li><i class="fa fa-bed"></i> 05</li>
-                                <li><i class="fa fa-automobile"></i> 01</li>
-                            </ul>
-                            <div class="pi-agent">
-                                <div class="pa-item">
-                                    <div class="pa-info">
-                                        <img src="img/property/posted-by/pb-1.jpg" alt="">
-                                        <h6>Ashton Kutcher</h6>
-                                    </div>
-                                    <div class="pa-text">
-                                        123-455-688
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mix all office hotel">
-                    <div class="property-item">
-                        <div class="pi-pic set-bg" data-setbg="img/property/property-5.jpg">
-                            <div class="label c-magenta">For rent</div>
-                        </div>
-                        <div class="pi-text">
-                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-                            <div class="pt-price">$ 289.0</div>
-                            <h5><a href="#">Poddar Wondercity</a></h5>
-                            <p><span class="icon_pin_alt"></span> Badlapur East, Beyond Thane</p>
-                            <ul>
-                                <li><i class="fa fa-object-group"></i> 2, 283</li>
-                                <li><i class="fa fa-bathtub"></i> 03</li>
-                                <li><i class="fa fa-bed"></i> 05</li>
-                                <li><i class="fa fa-automobile"></i> 01</li>
-                            </ul>
-                            <div class="pi-agent">
-                                <div class="pa-item">
-                                    <div class="pa-info">
-                                        <img src="img/property/posted-by/pb-1.jpg" alt="">
-                                        <h6>Ashton Kutcher</h6>
-                                    </div>
-                                    <div class="pa-text">
-                                        123-455-688
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mix house apart office">
-                    <div class="property-item">
-                        <div class="pi-pic set-bg" data-setbg="img/property/property-6.jpg">
-                            <div class="label">For rent</div>
-                        </div>
-                        <div class="pi-text">
-                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-                            <div class="pt-price">$ 289.0<span>/month</span></div>
-                            <h5><a href="#">GoldCrest Residency</a></h5>
-                            <p><span class="icon_pin_alt"></span> No.7, Sector- 11, Ghansoli, Mumbai, Navi Mumbai</p>
-                            <ul>
-                                <li><i class="fa fa-object-group"></i> 2, 283</li>
-                                <li><i class="fa fa-bathtub"></i> 03</li>
-                                <li><i class="fa fa-bed"></i> 05</li>
-                                <li><i class="fa fa-automobile"></i> 01</li>
-                            </ul>
-                            <div class="pi-agent">
-                                <div class="pa-item">
-                                    <div class="pa-info">
-                                        <img src="img/property/posted-by/pb-1.jpg" alt="">
-                                        <h6>Ashton Kutcher</h6>
-                                    </div>
-                                    <div class="pa-text">
-                                        123-455-688
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Property Section End -->
-
-    <!-- Chooseus Section Begin -->
-    <section class="chooseus-section spad set-bg" data-setbg="img/chooseus/chooseus-bg.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="chooseus-text">
-                        <div class="section-title">
-                            <h4>Why choose us</h4>
-                        </div>
-                        <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                            printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    </div>
-                    <div class="chooseus-features">
-                        <div class="cf-item">
-                            <div class="cf-pic">
-                                <img src="img/chooseus/chooseus-icon-1.png" alt="">
-                            </div>
-                            <div class="cf-text">
-                                <h5>Find your future home</h5>
-                                <p>We help you find a new home by offering a smart real estate.</p>
-                            </div>
-                        </div>
-                        <div class="cf-item">
-                            <div class="cf-pic">
-                                <img src="img/chooseus/chooseus-icon-2.png" alt="">
-                            </div>
-                            <div class="cf-text">
-                                <h5>Buy or rent homes</h5>
-                                <p>Millions of houses and apartments in your favourite cities</p>
-                            </div>
-                        </div>
-                        <div class="cf-item">
-                            <div class="cf-pic">
-                                <img src="img/chooseus/chooseus-icon-3.png" alt="">
-                            </div>
-                            <div class="cf-text">
-                                <h5>Experienced agents</h5>
-                                <p>Find an agent who knows your market best</p>
-                            </div>
-                        </div>
-                        <div class="cf-item">
-                            <div class="cf-pic">
-                                <img src="img/chooseus/chooseus-icon-4.png" alt="">
-                            </div>
-                            <div class="cf-text">
-                                <h5>List your own property</h5>
-                                <p>Sign up now and sell or rent your own properties</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Chooseus Section End -->
-
-    <!-- Feature Property Section Begin -->
-    <section class="feature-property-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 p-0">
-                    <div class="feature-property-left">
-                        <div class="section-title">
-                            <h4>Feature PROPERTY</h4>
-                        </div>
-                        <ul>
-                            <li>Apartment</li>
-                            <li>House</li>
-                            <li>Office</li>
-                            <li>Hotel</li>
-                            <li>Villa</li>
-                            <li>Restaurent</li>
-                        </ul>
-                        <a href="#">View all property</a>
-                    </div>
-                </div>
-                <div class="col-lg-8 p-0">
-                    <div class="fp-slider owl-carousel">
-                        <div class="fp-item set-bg" data-setbg="img/feature-property/fp-1.jpg">
-                            <div class="fp-text">
-                                <h5 class="title">Home in Merrick Way</h5>
-                                <p><span class="icon_pin_alt"></span> 3 Middle Winchendon Rd, Rindge, NH 03461</p>
-                                <div class="label">For Rent</div>
-                                <h5>$ 289.0<span>/month</span></h5>
-                                <ul>
-                                    <li><i class="fa fa-object-group"></i> 2, 283</li>
-                                    <li><i class="fa fa-bathtub"></i> 03</li>
-                                    <li><i class="fa fa-bed"></i> 05</li>
-                                    <li><i class="fa fa-automobile"></i> 01</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="fp-item set-bg" data-setbg="img/feature-property/fp-2.jpg">
-                            <div class="fp-text">
-                                <h5 class="title">Home in Merrick Way</h5>
-                                <p><span class="icon_pin_alt"></span> 3 Middle Winchendon Rd, Rindge, NH 03461</p>
-                                <div class="label">For Rent</div>
-                                <h5>$ 289.0<span>/month</span></h5>
-                                <ul>
-                                    <li><i class="fa fa-object-group"></i> 2, 283</li>
-                                    <li><i class="fa fa-bathtub"></i> 03</li>
-                                    <li><i class="fa fa-bed"></i> 05</li>
-                                    <li><i class="fa fa-automobile"></i> 01</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Feature Property Section End -->
-
-    <!-- Team Section Begin -->
+ <!-- Team Section Begin -->
     <section class="team-section spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8">
-                    <div class="section-title">
-                        <h4>Latest Property</h4>
+                    <div class="section-title" style="margin-left : 60px">
+                        <h4>이달의 랭킹</h4>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="team-btn">
-                        <a href="#"><i class="fa fa-user"></i> ALL counselor</a>
-                    </div>
-                </div>
+                
             </div>
-            <div class="row">
+            <div class="row" style="margin-left : 50px">
                 <div class="col-md-4">
                     <div class="ts-item">
                         <div class="ts-text">
-                            <img src="img/team/team-1.jpg" alt="">
-                            <h5>Ashton Kutcher</h5>
-                            <span>123-455-688</span>
-                            <p>Ipsum dolor amet, consectetur adipiscing elit, eiusmod tempor incididunt lorem.</p>
-                            <div class="ts-social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-envelope-o"></i></a>
-                            </div>
+                            <img src="img/tiger/ho1.png" alt="">
+                            <h5>닉네임</h5>
+                            <span>인사말</span>
+                            <span>평점</span>
+                            <p>공모전 수상 내역</p>
+                            
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="ts-item">
                         <div class="ts-text">
-                            <img src="img/team/team-2.jpg" alt="">
-                            <h5>Ashton Kutcher</h5>
-                            <span>123-455-688</span>
-                            <p>Ipsum dolor amet, consectetur adipiscing elit, eiusmod tempor incididunt lorem.</p>
-                            <div class="ts-social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-envelope-o"></i></a>
-                            </div>
+                            <img src="img/tiger/ho2.png" alt="">
+                             <h5>닉네임</h5>
+                            <span>인사말</span>
+                            <span>평점</span>
+                            <p>공모전 수상 내역</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="ts-item">
                         <div class="ts-text">
-                            <img src="img/team/team-3.jpg" alt="">
-                            <h5>Ashton Kutcher</h5>
-                            <span>123-455-688</span>
-                            <p>Ipsum dolor amet, consectetur adipiscing elit, eiusmod tempor incididunt lorem.</p>
-                            <div class="ts-social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-envelope-o"></i></a>
-                            </div>
+                            <img src="img/tiger/ho3.png" alt="">
+                             <h5>닉네임</h5>
+                            <span>인사말</span>
+                            <span>평점</span>
+                            <p>공모전 수상 내역</p>
                         </div>
                     </div>
                 </div>
@@ -747,44 +408,7 @@
     </section>
     <!-- Team Section End -->
 
-    <!-- Categories Section Begin -->
-    <section class="categories-section">
-        <div class="cs-item-list">
-            <div class="cs-item set-bg" data-setbg="img/categories/cat-1.jpg">
-                <div class="cs-text">
-                    <h5>Apartment</h5>
-                    <span>230 property</span>
-                </div>
-            </div>
-            <div class="cs-item set-bg" data-setbg="img/categories/cat-2.jpg">
-                <div class="cs-text">
-                    <h5>Villa</h5>
-                    <span>230 property</span>
-                </div>
-            </div>
-            <div class="cs-item set-bg" data-setbg="img/categories/cat-3.jpg">
-                <div class="cs-text">
-                    <h5>House</h5>
-                    <span>230 property</span>
-                </div>
-            </div>
-            <div class="cs-item set-bg" data-setbg="img/categories/cat-4.jpg">
-                <div class="cs-text">
-                    <h5>Restaurent</h5>
-                    <span>230 property</span>
-                </div>
-            </div>
-            <div class="cs-item set-bg" data-setbg="img/categories/cat-5.jpg">
-                <div class="cs-text">
-                    <h5>Office</h5>
-                    <span>230 property</span>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Categories Section End -->
-
-    <!-- Testimonial Section Begin -->
+   <!-- Testimonial Section Begin -->
     <section class="testimonial-section spad">
         <div class="container">
             <div class="row">

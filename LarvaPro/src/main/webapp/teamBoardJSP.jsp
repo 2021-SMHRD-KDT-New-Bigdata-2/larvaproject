@@ -1,23 +1,21 @@
 <%@page import="com.model.memberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
 <html lang="zxx">
-<% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession"); 
-if(memberInfo!=null){
-	out.println("<script>alert('로그인이 필요한 서비스입니다. 로그인페이지로 이동합니다.'); window.location='./LoginJSP.jsp';</script>");
-}
-%>
+<% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession"); %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+</script>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Aler Template">
     <meta name="keywords" content="Aler, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>깔꼼 | Template</title>
+    <title>Aler | Template</title>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
@@ -31,21 +29,7 @@ if(memberInfo!=null){
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
-<style>
 
-#noteHead{
-font-size:25px; 
-width:100px;
-}
-
-#noteContent{
-font-size: 18px;
-margin:1%;
-}
-</style>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
-</script>
 
 <body>
     <!-- Page Preloder -->
@@ -132,201 +116,148 @@ margin:1%;
                 </div>
     	</header>
     <!-- 헤드 끝 -->
-
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section spad set-bg" data-setbg="img/grayPolygon.png">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="breadcrumb-text">
-                        <h4>내정보</h4>
-                        <div class="bt-option">
-                            <a href="./index.html"><i class="fa fa-home"></i>메인</a>
-                            <span>내정보</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
-
-    <!-- 내정보 섹션 -->
-    <section class="profile-section spad">
-        <div class="container">
-            <div class="profile-agent-content">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="profile-agent-info">
-                            <div class="pi-text">
-                                <h5>김기연</h5>
-                                <span>실버</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="profile-agent-widget">
-                            <ul>
-                                <li>진행중인 공모전 갯수 <span style="color:red">3</span></li>
-                                <li>팀원 모집중인 공모전 갯수 <span style="color:red">1</span></li>
-                                <li>끝난 공모전 갯수 <span style="color:red">4</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="profile-agent-newslatter">
-                            <h5 align="center" style="color:red;">평점</h5>
-                            <p align="center" style="color:blue; font-size:35px; margin:10%;">4.3</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- 내정보 섹션 끝-->
     
-    <!-- 공모전 내역 섹션 -->
-    <section class="testimonial-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h4>모든 공모전 내역</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="row testimonial-slider owl-carousel">
-                <div class="col-lg-6">
-                    <div class="testimonial-item">
-                        <div class="ti-text">
-                            <a href="#"></a><img src="img/about-pic.jpg"></a>
-                        </div>
-                        <div class="ti-author">
-                        <a style="padding:1%; background-color: red; color:white;">진행중</a>
-                            <div class="ta-text">
-                                <h5>천하제일 무술대회</h5>
-                                <span>2021.09.10~2021.10.11</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial-item">
-                        <div class="ti-text">
-                            <img src="img/about-us.jpg">
-                        </div>
-                        <div class="ti-author">
-                        <a style="padding:1%; background-color: red; color:white;">진행중</a>
-                            <div class="ta-text">
-                                <h5>소주 존나먹기 대회</h5>
-                                <span>2021.09.10~2021.11.11</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial-item">
-                        <div class="ti-text">
-                            <img src="img/about-us.jpg">
-                        </div>
-                        <div class="ti-author">
-                        <a style="padding:1%; background-color: gray; color:white;">종료</a>
-                            <div class="ta-text">
-                                <h5>햄최몇?</h5>
-                                <span>2021.09.10~2020.12.11</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- 공모전 내역 섹션 끝-->
-    
-    <!-- Property Comparison Section Begin -->                 
-    <section class="contact-form-section spad">
-        <div class="section-title">
-            <h4 style="margin-left:21.5%">공모전 후기 작성(일기쓰기)</h4>
-              </div>
-        		<div class="container">
-            		<div class="row">
-                		<div class="col-lg-12">
-                   		 <div class="cf-content">
-                        		<form action="#" class="cc-form">
-                                	<div style="margin:2%">
-                                		<select name="">
-                                			<option value="" style="color:gray">참가 공모전</option>
-                            				<option value="">천하제일 무술대회</option>
-                            				<option value="">소주 많이먹기</option>
-                            				<option value="">햄최몇?</option>
-                        				</select>
-                        			</div>
-                        			<div style="float:left; margin-left:2%">
-                                		<select name="">
-                                			<option value="" style="color:gray">지원했던 직군</option>
-                            				<option value="">기획</option>
-                            				<option value="">개발</option>
-                            				<option value="">날먹</option>
-                        				</select>
-                        			</div>
-                            		<textarea placeholder="내용" style="margin:2%"></textarea>
-                            		<button type="submit" class="site-btn">보내기</button>
-                        		</form>
-                    		</div>
-                		</div>
-            		</div>
-        		</div>
-    		</section>
-    <!-- Property Comparison Section End -->
 
-    <!-- Contact Section Begin -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="contact-info">
-                        <div class="ci-item">
-                            <div class="ci-icon">
-                                <i class="fa fa-map-marker"></i>
-                            </div>
-                            <div class="ci-text">
-                                <h5>Address</h5>
-                                <p>160 Pennsylvania Ave NW, Washington, Castle, PA 16101-5161</p>
-                            </div>
-                        </div>
-                        <div class="ci-item">
-                            <div class="ci-icon">
-                                <i class="fa fa-mobile"></i>
-                            </div>
-                            <div class="ci-text">
-                                <h5>Phone</h5>
-                                <ul>
-                                    <li>125-711-811</li>
-                                    <li>125-668-886</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="ci-item">
-                            <div class="ci-icon">
-                                <i class="fa fa-headphones"></i>
-                            </div>
-                            <div class="ci-text">
-                                <h5>Support</h5>
-                                <p>Support.aler@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="cs-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d735515.5813275519!2d-80.41163541934742!3d43.93644386501528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882a55bbf3de23d7%3A0x3ada5af229b47375!2sMono%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sbd!4v1583262687289!5m2!1sen!2sbd" height="450" style="border:0;" allowfullscreen=""></iframe>
-        </div>
+    <!-- Blog Details Section Begin -->
+    <section class="blog-details-section spad" style ="width : 1000px; clear : both; margin : auto;">
+ 	   <h1 class="fw-bolder mb-1"><b>팀원모집 게시판</b></h1>
+ 	   <div>
+ 	   	<button type="button" class="btn btn-primary" style="margin-bottom : 10px;float: right; background : #1b5ac2; color : #ffffff; border : 0; outline : 0">쓰기</button>
+      	<button type="button" class="btn btn-primary" style="margin-right : 10px; margin-bottom : 10px;float: right; background : #1b5ac2; color : #ffffff; border : 0; outline : 0">내글보기</button>
+      </div>
+      
+	<table class="table table-hover" style="width:1000px;" >
+
+  <thead>
+    <tr>
+      <th scope="col">번호</th>
+      <th scope="col">제목</th>
+      <th scope="col">작성자</th>
+      <th scope="col">날짜</th>
+      <th scope="col">조회수</th>
+      <th scope="col">댓글수</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Active</th>
+      <td><a href="applicationTeam.jsp">나랑 할사람?</a></td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr>
+      <th scope="row">Default</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr>
+      <th scope="row">Primary</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr >
+      <th scope="row">Secondary</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr >
+      <th scope="row">Success</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr >
+      <th scope="row">Danger</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr>
+      <th scope="row">Warning</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr >
+      <th scope="row">Info</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr>
+      <th scope="row">Light</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr >
+      <th scope="row">Dark</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+  </tbody>
+</table>
+<div style="margin-left:40%">
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <a class="page-link" href="#">&laquo;</a>
+    </li>
+    <li class="page-item active">
+      <a class="page-link" href="#">1</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">2</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">3</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">4</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">5</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="#">&raquo;</a>
+    </li>
+  </ul>
+</div>
+	
+	   <div class="input-group mb-3">
+      <input type="text" class="find"  placeholder="찾는 내용 입력" aria-label="Recipient's username" aria-describedby="button-addon2" style = "width : 500px; margin-top : 3%">
+      <button class="search" type="button" id="button-addon2" style="margin-top : 3%; background : #1b5ac2; color : #ffffff">Button</button>
+    </div>
+	
     </section>
     <!-- Contact Section End -->
+    
 
-        <!-- Footer Section Begin -->
-    <footer class="footer-section">
+    <!-- Footer Section Begin -->
+    <footer class="footer-section" style="margin-left:5%">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6">
@@ -390,8 +321,8 @@ margin:1%;
         </div>
     </footer>
     <!-- Footer Section End -->
-    
-    <script>
+
+<script>
     //로그인,회원가입 버튼 메소드
     $(function(){
     	$("#loginBtn img").mouseover(function(){
