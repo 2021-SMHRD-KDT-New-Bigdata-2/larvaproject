@@ -94,7 +94,7 @@
                                         		<li style="margin-right:40%"><a href="./mypageProfileJSP.jsp">내정보</a></li>
                                         		<li style="margin-right:10%"><a href="./mypageContestJSP.jsp">지원한 공모전</a></li>
                                         		<li style="margin-right:38%"><a href="./mypageTeamJSP.jsp">나의 팀</a></li>
-                                        		<li style="margin-right:40%"><a href="./mypageMessageJSP">쪽지함</a></li>
+                                        		<li style="margin-right:40%"><a href="./mypageMessageJSP.jsp">쪽지함</a></li>
                                    			</ul>
                                 		</li>
                                 	<li><a href="./agents.html">공모전</a></li>
