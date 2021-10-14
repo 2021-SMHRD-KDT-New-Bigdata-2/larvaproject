@@ -11,7 +11,7 @@
 
 	<% memberVO memberSession = (memberVO)session.getAttribute("loginMemberSession");%>
 	<%
-	out.println("<script>alert(JoinName+'님, 회원가입이 완료되었습니다.'); window.location='./mainPageJSP.jsp';</script>");
+	out.println("<script>alert(JoinName+'님, 회원가입이 완료되었습니다.'); window.location='./LoginJSP.jsp';</script>");
 	%>
 
 </body>
