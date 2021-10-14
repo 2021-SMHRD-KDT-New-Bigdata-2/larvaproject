@@ -145,14 +145,77 @@ margin:1%;
 	            </div>
        		 </div>
     	</section>
-    	<section class="profile-section spad">      	     
-        <div class="pi-text" style="margin-left:20%">
-        	<h1 style="margin-bottom: 2%">공모전 이름</h5>
-            <span style="margin-bottom:40%; ">공모전 내용</span>
-        </div>
-    	</section>
     	
-    	<section class="profile-section spad">
+    	<div class="container mt-5" style="background-color : #F6F6F6; border-radius:10px; margin-top:-10%">
+            	<div>
+                	<div>
+                    <article>
+                        <header class="mb-4" style="padding:3%">
+                            <div class="section-title" style="padding-top:2%;">
+            				<h4>AI(인공지능)개발교육 고급과정 수강생 모집</h4>
+              				</div>
+                        </header>
+                        <figure class="mb-4" style="float:left; margin-left:5%"><img src="https://www.wevity.com/upload/contest/20211001103134_ddf5bb76.jpg" alt="..." /></figure>
+                        <section class="mb-5">
+                        	<hr width="350px">
+                      			<table class="content" style="margin-left:35%;">
+      							<tbody>
+        							<tr>
+          								<td width = "100" height="50"><b>분야</b></td><td> Ipsum</td>
+     					   			</tr>
+        							<tr>
+          								<td width = "100" height="50"><b>응모대상</b></td><td>Ipsum</td>
+     					   			</tr>
+        							<tr>
+          								<td width = "100" height="50"><b>주최/주관</b><td>Ipsum</td>
+     					   			</tr>
+      								<tr>
+          								<td width = "100" height="50"><b>후원/협찬</b></td><td>Ipsum</td>
+     					   			</tr>
+        							<tr>
+          								<td width = "100" height="50"><b>접수기간</b></td><td>Ipsum</td>
+     					   			</tr>
+     					   			<tr>
+          								<td width = "100" height="50"><b>총상금</b></td><td>Ipsum</td>
+     					   			</tr>
+				      			</tbody>
+   					 			</table>
+   					 			<hr style="width:350px">
+   					 		<div class="section-title" style="padding:3%"><h4>상세내용</h4></div>
+   					 		<div style="margin-left:3%">
+   					 		<p class="fs-5 mb-4">2021 부산청년주간 e스포츠 챌린지 (카트타고 LOL하자)<br>
+
+■ 게임종목 : 리그 오브 레전드(5인 1팀) / 카트라이더(4인 1팀, 스피드전)<br>
+<br>
+■ 모집대상 : 부산에 거주 또는 활동하는 만 15세 이상 34세 이하로 구성된 팀(공고일 기준)<br>
+- 게임별 선착순 16팀 : 신청 과정에 부산 거주, 활동 및 연령 확인 정보를 제출 확인 후 선착순 선정<br>
+<br>
+■ 대회기간 : 2021년 9월 24일(금) ~ 10월 2일(토)<br>
+<br>
+■ 대회장소 : 각 가정 또는 PC 접속이 가능한 곳<br>
+<br>
+■ 신청기간 : 2021년 9월 16일(목) 20:00 ~ 9월 22일(수) 15:00 ※게임별 선착순 16팀<br>
+<br>
+■ 신청방법 : 온라인 대회 관리 및 게임매칭 플랫폼 레벨업지지 부산청년주간 대회<br>
+- 리그 오브 레전드<br>
+- 카트라이더(스피드전)<br>
+※ 신청 시작 시간은 9/16(목) 20시입니다. 사전에 플랫폼 가입 및 세부 내용을 확인하실 수 있도록 대회 페이지를 미리 열어 놓았습니다.<br>
+<br>
+■ 시상내역 ※우승팀 시상은 10/4(월) 15:00~16:00 청년주간 행사에서 진행될 예정<br>
+- 최종 우승 2개 팀에 부산광역시장상 수여(리그 오브 레전드 1팀, 카트라이더 1팀)<br>
+- 우승팀과 샌드박스 프로팀 이벤트 경기 진행<br>
+<br>
+■ 문의 : 부산청년주간 기획단<br>
+- 051-241-7863<br>
+- busanyouthweek@gmail.com<br></p>
+               				</div>
+                     		<figure>
+                     		</figure>
+                        </section>
+                    </article>
+                    
+                    <!-- Comments section-->
+                   
         <div class="container">
             <div class="profile-agent-content">
                 <div class="row">
@@ -189,7 +252,39 @@ margin:1%;
     <div style="text-align: center; margin-top:3%">
     	<button type="submit" >지원하기</button>
     </div>	
-	
+	 <section class="mb-5">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <!-- Comment form-->
+                                <form class="mb-4"><textarea class="form-control" rows="3" placeholder="댓글을 달아주세요"></textarea></form>
+                                <!-- Comment with nested comments-->
+                                <div class="d-flex mb-4">
+                                    <!-- Parent comment-->
+                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                    <div class="ms-3">
+                                        <div class="fw-bold">Commenter Name</div>
+                                        If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
+                                        <!-- Child comment 1-->
+                                        <div class="d-flex mt-4">
+                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                            <div class="ms-3">
+                                                <div class="fw-bold">Commenter Name</div>
+                                                And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
+                                            </div>
+                                        </div>
+                                        <!-- Child comment 2-->
+                                        <div class="d-flex mt-4">
+                                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                            <div class="ms-3">
+                                                <div class="fw-bold">Commenter Name</div>
+                                                When you put money directly to a problem, it makes a good headline.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                </div>
+                                </section>
 	
 	
 	
