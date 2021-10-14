@@ -34,7 +34,7 @@
     width: 238px;
     margin: 50px auto;
     position: relative;
-    box-shadow: 0 0 600px 10px purple;
+    box-shadow: 0em 3em 400px 4em rgb(10, 173, 248);
     border-radius: 30px;
 }
 #loginBtn {
