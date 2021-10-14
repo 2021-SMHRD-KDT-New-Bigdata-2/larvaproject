@@ -56,14 +56,14 @@ public class memberDAO extends DBconnection {
 					rs=psmt.executeQuery();
 					
 					if(rs.next()) {
-						memId=rs.getString(2);
-						memPw=rs.getString(3);
-						memUserName=rs.getString(4);
-						memNickName=rs.getString(5);
-						memEmail=rs.getString(6);
-						memTel=rs.getString(7);
-						memAdress=rs.getString(8);
-						memDate=rs.getString(9);
+						memId=rs.getString(1);
+						memPw=rs.getString(2);
+						memUserName=rs.getString(3);
+						memNickName=rs.getString(4);
+						memEmail=rs.getString(5);
+						memTel=rs.getString(6);
+						memAdress=rs.getString(7);
+						memDate=rs.getString(8);
 					}
 				}catch (Exception e) {
 					return memberInfo;
