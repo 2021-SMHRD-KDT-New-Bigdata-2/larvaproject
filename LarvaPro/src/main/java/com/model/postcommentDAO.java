@@ -11,7 +11,6 @@ public class postcommentDAO extends DBconnection {
 			
 			getConnection();
 			
-			//모집게시판 번호 조건 => 공모전 번호? 작성자 id? - 애매..
 			psmt = conn.prepareStatement("insert into post_comment values(post_comment_number.nextval,?,?,?,sysdate,?)");
 			
 			psmt.setInt(1, vo.getPcCntNum());
@@ -38,7 +37,6 @@ public class postcommentDAO extends DBconnection {
 			
 			getConnection();
 			
-			//모집게시판 번호 조건 => 공모전 번호? 작성자 id? - 애매..
 			psmt = conn.prepareStatement("update set pc_content=? where pc_num=?)");
 			
 			psmt.setString(1, content);

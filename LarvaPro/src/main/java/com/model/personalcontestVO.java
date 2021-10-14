@@ -9,6 +9,17 @@ public class personalcontestVO {
 	private String pcntContent;
 	private int pcntType;
 	
+	public personalcontestVO(int pcntNum, String memId, int cntNum, String pcntPosition, String pcntContent,
+			int pcntType) {
+		super();
+		this.pcntNum = pcntNum;
+		this.memId = memId;
+		this.cntNum = cntNum;
+		this.pcntPosition = pcntPosition;
+		this.pcntContent = pcntContent;
+		this.pcntType = pcntType;
+	}
+
 	public personalcontestVO(String memId, int cntNum, String pcntPosition, String pcntContent, int pcntType) {
 		super();
 		this.memId = memId;

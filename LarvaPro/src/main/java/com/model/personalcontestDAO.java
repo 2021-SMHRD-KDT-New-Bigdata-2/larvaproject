@@ -1,5 +1,7 @@
 package com.model;
 
+import java.util.ArrayList;
+
 public class personalcontestDAO extends DBconnection{
 	
 	//개인 공모전 내역 입력
@@ -27,6 +29,40 @@ public class personalcontestDAO extends DBconnection{
 			dbClose();
 		}
 		return cnt;
+	}
+	//개인 공모전 내역 조회
+	public ArrayList<personalcontestVO> showPersonalContest(String id) {
+		
+		ArrayList<personalcontestVO> personalContestList = new ArrayList<personalcontestVO>();
+		
+		try {
+			
+			getConnection();
+			
+			psmt = conn.prepareStatement("select * from personal_contest where mem_id=?");
+			
+			psmt.setString(1, id);
+			
+			rs=psmt.executeQuery();
+			
+			while(rs.next()) {
+				int pcntNum = rs.getInt("pcnt_num");
+				String memId = rs.getString("mem_id");
+				int cntNum = Integer.parseInt(rs.getString("cnt_num"));
+				String pcntPosition = rs.getString("pcnt_position");
+				String pcntContest = rs.getString("pcnt_content");
+				int pcntType = Integer.parseInt(rs.getString("pcnt_type"));
+				
+				personalcontestVO vo = new personalcontestVO(pcntNum, memId, cntNum, pcntPosition, pcntContest, pcntType);
+				personalContestList.add(vo);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return personalContestList;
 	}
 	//개인 공모전 내역 수정
 	public int updatePersonalContest(String cntNum, String position, String content, String type, String pcNum) {
