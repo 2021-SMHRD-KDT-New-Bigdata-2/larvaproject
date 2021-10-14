@@ -9,6 +9,17 @@ public class postcommentVO {
 	private String pcContent; //내용
 	private String pcDate; //작성일자
 	
+	
+	
+	public postcommentVO() {
+		super();
+	}
+
+	public postcommentVO(String pcContent) {
+		super();
+		this.pcContent = pcContent;
+	}
+
 	public postcommentVO(String pcMemId, String pcContent, String pcDate) {
 		super();
 		this.pcMemId = pcMemId;

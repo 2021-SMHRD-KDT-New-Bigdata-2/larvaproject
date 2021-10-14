@@ -1,13 +1,20 @@
+<%@page import="com.model.memberVO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="zxx">
-
+<% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession"); 
+if(memberInfo==null){
+	out.println("<script>alert('·Î±×ÀÎÀÌ ÇÊ¿äÇÑ ¼­ºñ½ºÀÔ´Ï´Ù. ·Î±×ÀÎÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.'); window.location='./LoginJSP.jsp';</script>");
+}
+%>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Aler Template">
     <meta name="keywords" content="Aler, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ê¹”ê¼¼ | Template</title>
+    <title>±ò²Ä | Template</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -50,7 +57,6 @@ margin:1%;
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
         <div class="canvas-close">
-        
             <span class="icon_close"></span>
         </div>
         <div class="logo">
@@ -76,7 +82,7 @@ margin:1%;
     </div>
     <!-- Offcanvas Menu Wrapper End -->
 
-    <!-- í—¤ë“œ ì‹œìž‘ -->
+    <!-- Çìµå ½ÃÀÛ -->
     <header class="header-section">
         <div class="hs-top">
             <div class="container">
@@ -85,43 +91,47 @@ margin:1%;
                         	<a href="./index.html"><img src="img/logo/kka1.png" alt=""></a>
 						</div>
                         <nav class="nav-menu">
-                            <ul style="text-align:center; margin-left:15%;"><!-- ì¸ë¼ì¸ ì†ì„±ìœ¼ë¡œ ë³€í•œ lië“¤ì„ í…ìŠ¤íŠ¸ë¡œ ì¸ì‹í•´ ì¤‘ì•™ì •ë ¬ í•˜ê²Œ ë§Œë“¤ì–´ ì¤Œ. -->
-                                <li class="active">
-                                	<a href="./index.html">ë©”ì¸</a>
+                            <ul style="text-align:center; margin-left:15%;"><!-- ÀÎ¶óÀÎ ¼Ó¼ºÀ¸·Î º¯ÇÑ liµéÀ» ÅØ½ºÆ®·Î ÀÎ½ÄÇØ Áß¾ÓÁ¤·Ä ÇÏ°Ô ¸¸µé¾î ÁÜ. -->
+                                <li class="active" style="font-size : 10px">
+                                	<a href="./index.html">¸ÞÀÎ</a>
                                 	</li>
-                                		<li><a href="#">ë§ˆì´íŽ˜ì´ì§€</a>
+                                		<li><a href="#">¸¶ÀÌÆäÀÌÁö</a>
                                     		<ul class="dropdown" style="display:inline-block; width:150px;">
-                                        		<li style="margin-right:40%"><a href="./mypageProfile.html">ë‚´ì •ë³´</a></li>
-                                        		<li style="margin-right:10%"><a href="./mypageContest.html">ì§€ì›í•œ ê³µëª¨ì „</a></li>
-                                        		<li style="margin-right:38%"><a href="./mypageTeam.html">ë‚˜ì˜ íŒ€</a></li>
-                                        		<li style="margin-right:40%"><a href="./mypageMessege.html">ìª½ì§€í•¨</a></li>
+                                        		<li style="margin-right:40%"><a href="./mypageProfileJSP.jsp">³»Á¤º¸</a></li>
+                                        		<li style="margin-right:10%"><a href="./mypageContestJSP.jsp">Áö¿øÇÑ °ø¸ðÀü</a></li>
+                                        		<li style="margin-right:38%"><a href="./mypageTeamJSP.jsp">³ªÀÇ ÆÀ</a></li>
+                                        		<li style="margin-right:40%"><a href="./myPageMessageJSP.jsp">ÂÊÁöÇÔ</a></li>
                                    			</ul>
                                 		</li>
-                                	<li><a href="./agents.html">ê³µëª¨ì „</a></li>
-                                	<li><a href="./about.html">íŒ€ì›ëª¨ì§‘</a></li>
+                                	<li><a href="./agents.html">°ø¸ðÀü</a></li>
+                                	<li><a href="./about.html">ÆÀ¿ø¸ðÁý</a></li>
                             </ul>
                         </nav>
                     </div>
                 <div>
-                	<a href="#" style="margin-left:85%;" id="loginBtn"><img src="img/logo/logoutOff.png" width="180px" height="32px" style="margin:1%" /></a>
-                </div>
+            	<%if(memberInfo==null){
+            	out.print("<a href='./LoginJSP.jsp' style='margin-left:85%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
+            }else if(memberInfo!=null){
+            	out.print("<a href='./LogoutJSP.jsp' style='margin-left:90%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
+            }%>
+             	</div>
             </div>
             </div>
-        <div class="canvas-open">
-        <span class="icon_menu"></span>
-        </div>
-        <div class="hs-nav">
-            <div class="container">
-            	<div class="row">
-                    <div class="pcntSearchText" style="margin:5%; margin-left:27%;">
-                    	<input class = "textBar" type="text" placeholder="ì›í•˜ëŠ” ê³µëª¨ì „ ê²€ìƒ‰!" size="50">
-                    	<button class="searchBtn">ê²€ìƒ‰</button>
+            <div class="canvas-open">
+            <span class="icon_menu"></span>
+            </div>
+
+        	<div class="hs-nav" style="border-bottom: 2px solid #c0c0c0;">
+            	<div class="container">
+                    <div class="pcntSearchText" style="margin:5%; margin-left:26%; height :40px; width : 600px;border:2px solid #1b5ac2; background : #ffffff;"">
+                    	<input class = "textBar" type="text" placeholder="¿øÇÏ´Â °ø¸ðÀü °Ë»ö!" 
+                    	style="font-size : 16px; width : 500px;height:100%; padding : 10px; border : 0px; outline : none; float : left;">
+                    	<button class="searchBtn" style="width :50px;height :100%;border:0px;background : #1b5ac2; outline:none;float:right; color : #ffffff">°Ë»ö</button>
              		</div>
                 </div>
             </div>
-       </div>
-    </header>
-    <!-- í—¤ë“œ ë -->
+    	</header>
+    <!-- Çìµå ³¡ -->
 
     <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section spad set-bg" data-setbg="img/breadcrumb-bg.jpg">
@@ -129,10 +139,10 @@ margin:1%;
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
-                        <h4>ë‚´ì •ë³´</h4>
+                        <h4>³»Á¤º¸</h4>
                         <div class="bt-option">
-                            <a href="./index.html"><i class="fa fa-home"></i>ë©”ì¸</a>
-                            <span>ë‚´ì •ë³´</span>
+                            <a href="./index.html"><i class="fa fa-home"></i>¸ÞÀÎ</a>
+                            <span>³»Á¤º¸</span>
                         </div>
                     </div>
                 </div>
@@ -141,7 +151,7 @@ margin:1%;
     </section>
     <!-- Breadcrumb Section End -->
 
-    <!-- ë‚´ì •ë³´ ì„¹ì…˜ -->
+    <!-- ³»Á¤º¸ ¼½¼Ç -->
     <section class="profile-section spad">
         <div class="container">
             <div class="profile-agent-content">
@@ -149,23 +159,23 @@ margin:1%;
                     <div class="col-lg-4">
                         <div class="profile-agent-info">
                             <div class="pi-text">
-                                <h5>ê¹€ê¸°ì—°</h5>
-                                <span>ì‹¤ë²„</span>
+                                <h5>±è±â¿¬</h5>
+                                <span>½Ç¹ö</span>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="profile-agent-widget">
                             <ul>
-                                <li>ì§„í–‰ì¤‘ì¸ ê³µëª¨ì „ ê°¯ìˆ˜ <span style="color:red">3</span></li>
-                                <li>íŒ€ì› ëª¨ì§‘ì¤‘ì¸ ê³µëª¨ì „ ê°¯ìˆ˜ <span style="color:red">1</span></li>
-                                <li>ëë‚œ ê³µëª¨ì „ ê°¯ìˆ˜ <span style="color:red">4</span></li>
+                                <li>ÁøÇàÁßÀÎ °ø¸ðÀü °¹¼ö <span style="color:red">3</span></li>
+                                <li>ÆÀ¿ø ¸ðÁýÁßÀÎ °ø¸ðÀü °¹¼ö <span style="color:red">1</span></li>
+                                <li>³¡³­ °ø¸ðÀü °¹¼ö <span style="color:red">4</span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <div class="profile-agent-newslatter">
-                            <h5 align="center" style="color:red;">í‰ì </h5>
+                            <h5 align="center" style="color:red;">ÆòÁ¡</h5>
                             <p align="center" style="color:blue; font-size:35px; margin:10%;">4.3</p>
                         </div>
                     </div>
@@ -173,15 +183,15 @@ margin:1%;
             </div>
         </div>
     </section>
-    <!-- ë‚´ì •ë³´ ì„¹ì…˜ ë-->
+    <!-- ³»Á¤º¸ ¼½¼Ç ³¡-->
     
-    <!-- ê³µëª¨ì „ ë‚´ì—­ ì„¹ì…˜ -->
+    <!-- °ø¸ðÀü ³»¿ª ¼½¼Ç -->
     <section class="testimonial-section spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h4>ì°¸ì—¬ì¤‘ì¸ ê³µëª¨ì „ ë‚´ì—­</h4>
+                        <h4>¸ðµç °ø¸ðÀü ³»¿ª</h4>
                     </div>
                 </div>
             </div>
@@ -189,12 +199,12 @@ margin:1%;
                 <div class="col-lg-6">
                     <div class="testimonial-item">
                         <div class="ti-text">
-                            <a href="#"><img src="img/about-us.jpg"></a>
+                            <a href="#"></a><img src="img/about-pic.jpg"></a>
                         </div>
                         <div class="ti-author">
-                        <a style="padding:1%; background-color: red; color:white; ">ì§„í–‰ì¤‘</a>
+                        <a style="padding:1%; background-color: red; color:white;">ÁøÇàÁß</a>
                             <div class="ta-text">
-                                <h5>ì²œí•˜ì œì¼ ë¬´ìˆ ëŒ€íšŒ</h5>
+                                <h5>ÃµÇÏÁ¦ÀÏ ¹«¼ú´ëÈ¸</h5>
                                 <span>2021.09.10~2021.10.11</span>
                             </div>
                         </div>
@@ -203,12 +213,12 @@ margin:1%;
                 <div class="col-lg-6">
                     <div class="testimonial-item">
                         <div class="ti-text">
-                            <a href="#"><img src="img/about-us.jpg"></a>
+                            <img src="img/about-us.jpg">
                         </div>
                         <div class="ti-author">
-                        <a style="padding:1%; background-color: red; color:white;">ì§„í–‰ì¤‘</a>
+                        <a style="padding:1%; background-color: red; color:white;">ÁøÇàÁß</a>
                             <div class="ta-text">
-                                <h5>ì†Œì£¼ ì¡´ë‚˜ë¨¹ê¸° ëŒ€íšŒ</h5>
+                                <h5>¼ÒÁÖ Á¸³ª¸Ô±â ´ëÈ¸</h5>
                                 <span>2021.09.10~2021.11.11</span>
                             </div>
                         </div>
@@ -217,12 +227,12 @@ margin:1%;
                 <div class="col-lg-6">
                     <div class="testimonial-item">
                         <div class="ti-text">
-                            <a href="#"><img src="img/about-us.jpg"></a>
+                            <img src="img/about-us.jpg">
                         </div>
                         <div class="ti-author">
-                        <a style="padding:1%; background-color: gray; color:white;">ë§ˆê°ìž„ë°•</a>
+                        <a style="padding:1%; background-color: gray; color:white;">Á¾·á</a>
                             <div class="ta-text">
-                                <h5>í–„ìµœëª‡?</h5>
+                                <h5>ÇÜÃÖ¸î?</h5>
                                 <span>2021.09.10~2020.12.11</span>
                             </div>
                         </div>
@@ -231,14 +241,14 @@ margin:1%;
             </div>
         </div>
     </section>
-    <!-- ê³µëª¨ì „ ë‚´ì—­ ì„¹ì…˜ -->
+    <!-- °ø¸ðÀü ³»¿ª ¼½¼Ç -->
     
     <!-- Property Comparison Section Begin -->
     
                         
     <section class="contact-form-section spad">
         <div class="section-title">
-            <h4 style="margin-left:20%">ê³µëª¨ì „ í›„ê¸° ìž‘ì„±(ì¼ê¸°ì“°ê¸°)</h4>
+            <h4 style="margin-left:26.5%">°ø¸ðÀü ÈÄ±â ÀÛ¼º(ÀÏ±â¾²±â)</h4>
               </div>
         		<div class="container">
             		<div class="row">
@@ -247,22 +257,22 @@ margin:1%;
                         		<form action="#" class="cc-form">
                                 	<div style="margin:2%">
                                 		<select name="">
-                                			<option value="" style="color:gray">ì°¸ê°€ ê³µëª¨ì „</option>
-                            				<option value="">ì²œí•˜ì œì¼ ë¬´ìˆ ëŒ€íšŒ</option>
-                            				<option value="">ì†Œì£¼ ë§Žì´ë¨¹ê¸°</option>
-                            				<option value="">í–„ìµœëª‡?</option>
+                                			<option value="" style="color:gray">Âü°¡ °ø¸ðÀü</option>
+                            				<option value="">ÃµÇÏÁ¦ÀÏ ¹«¼ú´ëÈ¸</option>
+                            				<option value="">¼ÒÁÖ ¸¹ÀÌ¸Ô±â</option>
+                            				<option value="">ÇÜÃÖ¸î?</option>
                         				</select>
                         			</div>
                         			<div style="float:left; margin-left:2%">
                                 		<select name="">
-                                			<option value="" style="color:gray">ì§€ì›í–ˆë˜ ì§êµ°</option>
-                            				<option value="">ê¸°íš</option>
-                            				<option value="">ê°œë°œ</option>
-                            				<option value="">ë‚ ë¨¹</option>
+                                			<option value="" style="color:gray">Áö¿øÇß´ø Á÷±º</option>
+                            				<option value="">±âÈ¹</option>
+                            				<option value="">°³¹ß</option>
+                            				<option value="">³¯¸Ô</option>
                         				</select>
                         			</div>
-                            		<textarea placeholder="ë‚´ìš©" style="margin:2%"></textarea>
-                            		<button type="submit" class="site-btn">ì €ìž¥í•˜ê¸°</button>
+                            		<textarea placeholder="³»¿ë" style="margin:2%"></textarea>
+                            		<button type="submit" class="site-btn">º¸³»±â</button>
                         		</form>
                     		</div>
                 		</div>
@@ -384,14 +394,24 @@ margin:1%;
     </footer>
     <!-- Footer Section End -->
     
-    <!-- ë¡œê·¸ì¸/íšŒì›ê°€ìž… ë©”ì†Œë“œ -->
     <script>
+    //·Î±×ÀÎ,È¸¿ø°¡ÀÔ ¹öÆ° ¸Þ¼Òµå
     $(function(){
     	$("#loginBtn img").mouseover(function(){
     		$(this).attr("src","img/logo/loginOn.png");
     	});
     	$("#loginBtn img").mouseout(function(){
     		$(this).attr("src","img/logo/loginOff.png");
+    	});
+    });
+    
+    //·Î±×¾Æ¿ô ¹öÆ° ¸Þ¼Òµå
+    $(function(){
+    	$("#logoutBtn img").mouseover(function(){
+    		$(this).attr("src","img/logo/logoutOn.png");
+    	});
+    	$("#logoutBtn img").mouseout(function(){
+    		$(this).attr("src","img/logo/logoutOff.png");
     	});
     });
     </script>

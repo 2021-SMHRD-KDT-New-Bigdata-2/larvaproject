@@ -12,7 +12,7 @@ public class postcommentDAO extends DBconnection {
 			getConnection();
 			
 			//모집게시판 번호 조건 => 공모전 번호? 작성자 id? - 애매..
-			psmt = conn.prepareStatement("insert into post_comment values(post_comment_number.nextval,(select rp_num from recruit_post where cnt_num=?),?,?,sysdate)");
+			psmt = conn.prepareStatement("insert into post_comment values(post_comment_number.nextval,?,?,?,sysdate,?)");
 			
 			psmt.setInt(1, vo.getPcCntNum());
 			psmt.setString(2, vo.getPcMemId());
@@ -28,6 +28,32 @@ public class postcommentDAO extends DBconnection {
 		}
 		return cnt;
 	}
+	
+	//댓글 수정
+	public int updatePostComment(String content, String num) {
+		
+		int cnt = 0;
+		
+		try {
+			
+			getConnection();
+			
+			//모집게시판 번호 조건 => 공모전 번호? 작성자 id? - 애매..
+			psmt = conn.prepareStatement("update set pc_content=? where pc_num=?)");
+			
+			psmt.setString(1, content);
+			psmt.setString(2, num);
+			
+			cnt = psmt.executeUpdate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return cnt;
+	}
+	
 	//댓글 삭제
 	public int deletePostComment(String pcNum) {
 			

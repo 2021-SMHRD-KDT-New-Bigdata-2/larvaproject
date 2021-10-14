@@ -138,13 +138,15 @@ span {
                     		<input type="password" class="input-field" placeholder="비밀번호를 입력하세요" name="loginPw" required>
                     		<input type="checkbox" class="checkbox"><span>비밀번호 저장</span>
                     		<button class="submit">로그인</button>
+                    		
+                    		<!-- 로그인 성공/실패 여부 -->
                     		<%
                     		String result= (String)session.getAttribute("loginMemberSession");
                     		String fail=(String)session.getAttribute("loginMemberFail");
                     		
                     		if(result!=null){
                     			out.println("<script>alert('환영합니다.');</script>");
-                    			session.invalidate();
+                    			
                     		}else if(fail!=null){
                     			out.println("<script>alert('회원정보를 확인하세요.');</script>");
                     			session.invalidate();

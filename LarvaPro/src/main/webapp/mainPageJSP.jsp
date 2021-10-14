@@ -1,6 +1,9 @@
-
+<%@page import="com.model.memberVO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="zxx">
+<% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession"); %>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Aler Template">
@@ -9,14 +12,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Aler | Template</title>
     
-    <!-- ì¼ˆë¦°ë” -->
+    <!-- ÄÌ¸°´õ -->
     <!-- jquery CDN -->
     	<script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
   		<script src="jquery-3.6.0.min.js"></script>
   		<!-- fullcalendar CDN -->
   		<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
   		<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
-  		<!-- fullcalendar ì–¸ì–´ CDN -->
+  		<!-- fullcalendar ¾ğ¾î CDN -->
   		<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
 
     <!-- Google Font -->
@@ -62,13 +65,18 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="om-widget">
-            <a href="loginJSP.jsp" class="hw-btn"><img src="img/logo/login1.png" alt=""></a>
+            <%if(memberInfo!=null){
+            	out.print("<a href='loginJSP.jsp' class='hw-btn'><img src='img/logo/loginOff.png' id='loginBtn'></a>");
+            }else{
+            	out.print("<a href='loginJSP.jsp' class='hw-btn'><img src='img/logo/logoutOff.png' id='logoutBtn'></a>");
+            }%>
+            
         </div>
        
     </div>
     <!-- Offcanvas Menu Wrapper End -->
 
-    <!-- Header Section Begin -->
+    <!-- Çìµå ½ÃÀÛ -->
     <header class="header-section">
         <div class="hs-top">
             <div class="container">
@@ -77,47 +85,47 @@
                         	<a href="./index.html"><img src="img/logo/kka1.png" alt=""></a>
 						</div>
                         <nav class="nav-menu">
-                            <ul style="text-align:center; margin-left:15%;"><!-- ì¸ë¼ì¸ ì†ì„±ìœ¼ë¡œ ë³€í•œ lië“¤ì„ í…ìŠ¤íŠ¸ë¡œ ì¸ì‹í•´ ì¤‘ì•™ì •ë ¬ í•˜ê²Œ ë§Œë“¤ì–´ ì¤Œ. -->
+                            <ul style="text-align:center; margin-left:15%;"><!-- ÀÎ¶óÀÎ ¼Ó¼ºÀ¸·Î º¯ÇÑ liµéÀ» ÅØ½ºÆ®·Î ÀÎ½ÄÇØ Áß¾ÓÁ¤·Ä ÇÏ°Ô ¸¸µé¾î ÁÜ. -->
                                 <li class="active" style="font-size : 10px">
-                                	<a href="./index.html">ë©”ì¸</a>
+                                	<a href="./index.html">¸ŞÀÎ</a>
                                 	</li>
-                                		<li><a href="#">ë§ˆì´í˜ì´ì§€</a>
+                                		<li><a href="#">¸¶ÀÌÆäÀÌÁö</a>
                                     		<ul class="dropdown" style="display:inline-block; width:150px;">
-                                        		<li style="margin-right:40%"><a href="./property.html">ë‚´ì •ë³´</a></li>
-                                        		<li style="margin-right:10%"><a href="./profile.html">ì§€ì›í•œ ê³µëª¨ì „</a></li>
-                                        		<li style="margin-right:60%"><a href="./property-details.html">íŒ€</a></li>
-                                        		<li style="margin-right:40%"><a href="./property-comparison.html">ìª½ì§€í•¨</a></li>
+                                        		<li style="margin-right:40%"><a href="./mypageProfileJSP.jsp">³»Á¤º¸</a></li>
+                                        		<li style="margin-right:10%"><a href="./mypageContestJSP.jsp">Áö¿øÇÑ °ø¸ğÀü</a></li>
+                                        		<li style="margin-right:38%"><a href="./mypageTeamJSP.jsp">³ªÀÇ ÆÀ</a></li>
+                                        		<li style="margin-right:40%"><a href="./mypageMessageJSP">ÂÊÁöÇÔ</a></li>
                                    			</ul>
                                 		</li>
-                                	<li><a href="./agents.html">ê³µëª¨ì „</a></li>
-                                	<li><a href="./about.html">íŒ€ì›ëª¨ì§‘</a></li>
+                                	<li><a href="./agents.html">°ø¸ğÀü</a></li>
+                                	<li><a href="./about.html">ÆÀ¿ø¸ğÁı</a></li>
                             </ul>
                         </nav>
-                        	
-                        
                     </div>
-                <div class="">
-                	<a href="loginJSP.jsp" style="margin-left:90%"><img src="img/logo/login1.png" alt=""></a>
-                </div>
+                <div>
+            	<%if(memberInfo==null){
+            	out.print("<a href='./LoginJSP.jsp' style='margin-left:85%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
+            }else if(memberInfo!=null){
+            	out.print("<a href='./LogoutJSP.jsp' style='margin-left:90%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
+            }%>
+             	</div>
             </div>
             </div>
             <div class="canvas-open">
-                    <span class="icon_menu"></span>
-             </div>
+            <span class="icon_menu"></span>
+            </div>
 
-        <div class="hs-nav" style="border-bottom: 2px solid #c0c0c0;">
-            <div class="container">
+        	<div class="hs-nav" style="border-bottom: 2px solid #c0c0c0;">
+            	<div class="container">
                     <div class="pcntSearchText" style="margin:5%; margin-left:26%; height :40px; width : 600px;border:2px solid #1b5ac2; background : #ffffff;"">
-                    	<input class = "textBar" type="text" placeholder="ì›í•˜ëŠ” ê³µëª¨ì „ ê²€ìƒ‰!" 
+                    	<input class = "textBar" type="text" placeholder="¿øÇÏ´Â °ø¸ğÀü °Ë»ö!" 
                     	style="font-size : 16px; width : 500px;height:100%; padding : 10px; border : 0px; outline : none; float : left;">
-                    	<button class="searchBtn" style="width :50px;height :100%;border:0px;background : #1b5ac2; outline:none;float:right; color : #ffffff">ê²€ìƒ‰</button>
+                    	<button class="searchBtn" style="width :50px;height :100%;border:0px;background : #1b5ac2; outline:none;float:right; color : #ffffff">°Ë»ö</button>
              		</div>
                 </div>
             </div>
- 
-        
-    </header>
-    <!-- Header End -->
+    	</header>
+    <!-- Çìµå ³¡ -->
 
     <!-- Hero Section Begin -->
     <section class="hero-section" style ="width : 1000px; height : 700px;
@@ -150,46 +158,46 @@
 		<div class="cal-left">
 		<div class="calendar">
 			<div class="section-title" >
-				<h5>ê³µëª¨ì „ ì¼ì •</h5>
-			 <!-- calendar íƒœê·¸ -->
+				<h5>°ø¸ğÀü ÀÏÁ¤</h5>
+			 <!-- calendar ÅÂ±× -->
 			 <div id='calendar-container'style="margin-top: 20px;padding:30px; width : 800px;">
 			 <div id='calendar'></div>
 			  </div>
 			  <script>
 			  (function(){
 			    $(function(){
-			      // calendar element ì·¨ë“
+			      // calendar element Ãëµæ
 			      var calendarEl = $('#calendar')[0];
-			      // full-calendar ìƒì„±í•˜ê¸°
+			      // full-calendar »ı¼ºÇÏ±â
 			      var calendar = new FullCalendar.Calendar(calendarEl, {
-			        height: '550px', // calendar ë†’ì´ ì„¤ì •
-			        expandRows: true, // í™”ë©´ì— ë§ê²Œ ë†’ì´ ì¬ì„¤ì •
-			        slotMinTime: '08:00', // Day ìº˜ë¦°ë”ì—ì„œ ì‹œì‘ ì‹œê°„
-			        slotMaxTime: '20:00', // Day ìº˜ë¦°ë”ì—ì„œ ì¢…ë£Œ ì‹œê°„
-			        // í•´ë”ì— í‘œì‹œí•  íˆ´ë°”
+			        height: '550px', // calendar ³ôÀÌ ¼³Á¤
+			        expandRows: true, // È­¸é¿¡ ¸Â°Ô ³ôÀÌ Àç¼³Á¤
+			        slotMinTime: '08:00', // Day Ä¶¸°´õ¿¡¼­ ½ÃÀÛ ½Ã°£
+			        slotMaxTime: '20:00', // Day Ä¶¸°´õ¿¡¼­ Á¾·á ½Ã°£
+			        // ÇØ´õ¿¡ Ç¥½ÃÇÒ Åø¹Ù
 			        headerToolbar: {
 			          left: 'prev,next today',
 			          center: 'title',
 			          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
 			        },
-			        initialView: 'dayGridMonth', // ì´ˆê¸° ë¡œë“œ ë ë•Œ ë³´ì´ëŠ” ìº˜ë¦°ë” í™”ë©´(ê¸°ë³¸ ì„¤ì •: ë‹¬)
-			        initialDate: '2021-07-15', // ì´ˆê¸° ë‚ ì§œ ì„¤ì • (ì„¤ì •í•˜ì§€ ì•Šìœ¼ë©´ ì˜¤ëŠ˜ ë‚ ì§œê°€ ë³´ì¸ë‹¤.)
-			        navLinks: true, // ë‚ ì§œë¥¼ ì„ íƒí•˜ë©´ Day ìº˜ë¦°ë”ë‚˜ Week ìº˜ë¦°ë”ë¡œ ë§í¬
-			        editable: true, // ìˆ˜ì • ê°€ëŠ¥?
-			        selectable: true, // ë‹¬ë ¥ ì¼ì ë“œë˜ê·¸ ì„¤ì •ê°€ëŠ¥
-			        nowIndicator: true, // í˜„ì¬ ì‹œê°„ ë§ˆí¬
-			        dayMaxEvents: true, // ì´ë²¤íŠ¸ê°€ ì˜¤ë²„ë˜ë©´ ë†’ì´ ì œí•œ (+ ëª‡ ê°œì‹ìœ¼ë¡œ í‘œí˜„)
-			        locale: 'ko', // í•œêµ­ì–´ ì„¤ì •
-			        eventAdd: function(obj) { // ì´ë²¤íŠ¸ê°€ ì¶”ê°€ë˜ë©´ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸
+			        initialView: 'dayGridMonth', // ÃÊ±â ·Îµå µÉ¶§ º¸ÀÌ´Â Ä¶¸°´õ È­¸é(±âº» ¼³Á¤: ´Ş)
+			        initialDate: '2021-07-15', // ÃÊ±â ³¯Â¥ ¼³Á¤ (¼³Á¤ÇÏÁö ¾ÊÀ¸¸é ¿À´Ã ³¯Â¥°¡ º¸ÀÎ´Ù.)
+			        navLinks: true, // ³¯Â¥¸¦ ¼±ÅÃÇÏ¸é Day Ä¶¸°´õ³ª Week Ä¶¸°´õ·Î ¸µÅ©
+			        editable: true, // ¼öÁ¤ °¡´É?
+			        selectable: true, // ´Ş·Â ÀÏÀÚ µå·¡±× ¼³Á¤°¡´É
+			        nowIndicator: true, // ÇöÀç ½Ã°£ ¸¶Å©
+			        dayMaxEvents: true, // ÀÌº¥Æ®°¡ ¿À¹öµÇ¸é ³ôÀÌ Á¦ÇÑ (+ ¸î °³½ÄÀ¸·Î Ç¥Çö)
+			        locale: 'ko', // ÇÑ±¹¾î ¼³Á¤
+			        eventAdd: function(obj) { // ÀÌº¥Æ®°¡ Ãß°¡µÇ¸é ¹ß»ıÇÏ´Â ÀÌº¥Æ®
 			          console.log(obj);
 			        },
-			        eventChange: function(obj) { // ì´ë²¤íŠ¸ê°€ ìˆ˜ì •ë˜ë©´ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸
+			        eventChange: function(obj) { // ÀÌº¥Æ®°¡ ¼öÁ¤µÇ¸é ¹ß»ıÇÏ´Â ÀÌº¥Æ®
 			          console.log(obj);
 			        },
-			        eventRemove: function(obj){ // ì´ë²¤íŠ¸ê°€ ì‚­ì œë˜ë©´ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸
+			        eventRemove: function(obj){ // ÀÌº¥Æ®°¡ »èÁ¦µÇ¸é ¹ß»ıÇÏ´Â ÀÌº¥Æ®
 			          console.log(obj);
 			        },
-			        select: function(arg) { // ìº˜ë¦°ë”ì—ì„œ ë“œë˜ê·¸ë¡œ ì´ë²¤íŠ¸ë¥¼ ìƒì„±í•  ìˆ˜ ìˆë‹¤.
+			        select: function(arg) { // Ä¶¸°´õ¿¡¼­ µå·¡±×·Î ÀÌº¥Æ®¸¦ »ı¼ºÇÒ ¼ö ÀÖ´Ù.
 			          var title = prompt('Event Title:');
 			          if (title) {
 			            calendar.addEvent({
@@ -201,7 +209,7 @@
 			          }
 			          calendar.unselect()
 			        },
-			        // ì´ë²¤íŠ¸ 
+			        // ÀÌº¥Æ® 
 			        events: [
 			          {
 			            title: 'All Day Event',
@@ -254,12 +262,12 @@
 			          },
 			          {
 			            title: 'Click for Google',
-			            url: 'http://google.com/', // í´ë¦­ì‹œ í•´ë‹¹ urlë¡œ ì´ë™
+			            url: 'http://google.com/', // Å¬¸¯½Ã ÇØ´ç url·Î ÀÌµ¿
 			            start: '2021-07-28'
 			          }
 			        ]
 			      });
-			      // ìº˜ë¦°ë” ëœë”ë§
+			      // Ä¶¸°´õ ·£´õ¸µ
 			      calendar.render();
 			    });
 			  })();
@@ -275,7 +283,7 @@
 	<div class="cal-right">
 		<div class="moim">
 			<div class="section-title">
-				<h5>ë¶ˆíƒ€ëŠ” ëª¨ì„</h5>
+				<h5>ºÒÅ¸´Â ¸ğÀÓ</h5>
 			</div>
  <section class="agent-section spad">
         <div class="container" style="margin-left:-75px ;margin-top : -110px">
@@ -293,10 +301,10 @@
                                 </div>
                                 <ul>
                                     <li>Property <span>215</span></li>
-                                    <li>íŒ€ì¥ <span>ë‹‰ë„¤ì„</span></li>
-                                    <li>íŒ€ ì¸ì› <span>1/4</span></li>
+                                    <li>ÆÀÀå <span>´Ğ³×ÀÓ</span></li>
+                                    <li>ÆÀ ÀÎ¿ø <span>1/4</span></li>
                                 </ul>
-                                <a href="#" class="primary-btn">ì§€ì›í•˜ê¸°</a>
+                                <a href="#" class="primary-btn">Áö¿øÇÏ±â</a>
                             </div>
                         </div>
                     </div>
@@ -312,10 +320,10 @@
                                 </div>
                                 <ul>
                                     <li>Property <span>215</span></li>
-                                    <li>íŒ€ì¥ <span>ë‹‰ë„¤ì„</span></li>
-                                    <li>íŒ€ ì¸ì› <span>2/4</span></li>
+                                    <li>ÆÀÀå <span>´Ğ³×ÀÓ</span></li>
+                                    <li>ÆÀ ÀÎ¿ø <span>2/4</span></li>
                                 </ul>
-                                <a href="#" class="primary-btn">ì§€ì›í•˜ê¸°</a>
+                                <a href="#" class="primary-btn">Áö¿øÇÏ±â</a>
                             </div>
                         </div>
                     </div>
@@ -331,10 +339,10 @@
                                 </div>
                                 <ul>
                                     <li>Property <span>215</span></li>
-                                    <li>íŒ€ì¥ <span>ë‹‰ë„¤ì„</span></li>
-                                    <li>íŒ€ ì¸ì› <span>3/4</span></li>
+                                    <li>ÆÀÀå <span>´Ğ³×ÀÓ</span></li>
+                                    <li>ÆÀ ÀÎ¿ø <span>3/4</span></li>
                                 </ul>
-                                <a href="#" class="primary-btn">ì§€ì›í•˜ê¸°</a>
+                                <a href="#" class="primary-btn">Áö¿øÇÏ±â</a>
                             </div>
                         </div>
                     </div>
@@ -569,7 +577,7 @@
                         <div class="section-title">
                             <h4>Why choose us</h4>
                         </div>
-                        <p>Lorem Ipsum has been the industryâ€™s standard dummy text ever since the 1500s, when an unknown
+                        <p>Lorem Ipsum has been the industry¡¯s standard dummy text ever since the 1500s, when an unknown
                             printer took a galley of type and scrambled it to make a type specimen book.</p>
                     </div>
                     <div class="chooseus-features">
@@ -1016,6 +1024,28 @@
         </div>
     </footer>
     <!-- Footer Section End -->
+    
+    <script>
+    //·Î±×ÀÎ,È¸¿ø°¡ÀÔ ¹öÆ° ¸Ş¼Òµå
+    $(function(){
+    	$("#loginBtn img").mouseover(function(){
+    		$(this).attr("src","img/logo/loginOn.png");
+    	});
+    	$("#loginBtn img").mouseout(function(){
+    		$(this).attr("src","img/logo/loginOff.png");
+    	});
+    });
+    
+    //·Î±×¾Æ¿ô ¹öÆ° ¸Ş¼Òµå
+    $(function(){
+    	$("#logoutBtn img").mouseover(function(){
+    		$(this).attr("src","img/logo/logoutOn.png");
+    	});
+    	$("#logoutBtn img").mouseout(function(){
+    		$(this).attr("src","img/logo/loginOff.png");
+    	});
+    });
+    </script>
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
