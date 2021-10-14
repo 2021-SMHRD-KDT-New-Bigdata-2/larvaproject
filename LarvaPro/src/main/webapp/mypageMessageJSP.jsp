@@ -94,7 +94,7 @@ if(memberInfo==null){
             <div class="container">
                 <div class="ten">
                         <div class="logo">
-                        	<a href="./index.html"><img src="img/logo/kka1.png" alt=""></a>
+                        	<a href="./mainPageJSP.jsp"><img src="img/logo/kka1.png" alt=""></a>
 						</div>
                         <nav class="nav-menu">
                             <ul style="text-align:center; margin-left:15%;"><!-- 인라인 속성으로 변한 li들을 텍스트로 인식해 중앙정렬 하게 만들어 줌. -->
