@@ -96,7 +96,7 @@
             	<div class="container">
                 	<div class="ten" style="padding:3%">
                         <div class="logo">
-                        	<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png" style="witdh:162px; height:102px"></a>
+                        	<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png"></a>
 						</div>
                         <nav class="nav-menu" style="margin-top:5%;">
                             <%if(memberInfo==null){
