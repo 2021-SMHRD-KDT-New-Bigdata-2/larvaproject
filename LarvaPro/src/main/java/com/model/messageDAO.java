@@ -63,6 +63,8 @@ public class messageDAO extends DBconnection{
 		}
 		return message_list;
 	}
+	
+	
 	//받은 메시지 조회
 	public ArrayList<messageVO> showReceiveMessage(String ReceiveId) {
 		

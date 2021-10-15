@@ -75,6 +75,7 @@ create table recruit_post(
 	constraint rp_cnt_num_fk foreign key(cnt_num)
 	references contest(cnt_num)
 );
+	
 
 /* 모집 게시판 번호 시퀀스 */
 create sequence recruit_post_number
@@ -100,6 +101,7 @@ create table personal_contest(
 	references contest(cnt_num)
 );
 
+
 /* 개인 공모전 내역 번호 시퀀스 */
 create sequence personal_contest_number
 	increment by 1
@@ -122,6 +124,7 @@ create table score(
 	constraint sc_cnt_num_fk foreign key (cnt_num)
 	references contest(cnt_num)
 );
+
 
 /* 평점 테이블 번호 시퀀스 */
 create sequence score_number

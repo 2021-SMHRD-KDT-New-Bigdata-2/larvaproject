@@ -28,13 +28,13 @@ public class ScoreService extends HttpServlet {
 		scoreDAO dao = new scoreDAO();
 		
 		int cnt = dao.insertScore(vo);
-				
+		
 		if(cnt>0) {
 			System.out.println("평점 입력 성공");
 		} else {
 			System.out.println("평점 입력 실패");
 		}
-	
+		
 		response.sendRedirect("main.jsp");
 		
 	}

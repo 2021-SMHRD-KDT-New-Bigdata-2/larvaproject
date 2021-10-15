@@ -1,13 +1,18 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.model.scoreDAO"%>
+<%@page import="com.model.personalcontestVO"%>
+<%@page import="com.model.scoreVO"%>
 <%@page import="com.model.memberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="zxx">
-<% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession"); 
-if(memberInfo!=null){
-	out.println("<script>alert('로그인이 필요한 서비스입니다. 로그인페이지로 이동합니다.'); window.location='./LoginJSP.jsp';</script>");
-}
-%>
+<% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession");
+	scoreDAO MS=new scoreDAO();
+	if(memberInfo==null){
+		out.println("<script>alert('로그인이 필요한 서비스입니다. 로그인페이지로 이동합니다.'); window.location='./LoginJSP.jsp';</script>");
+	}
+	%>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Aler Template">
@@ -159,8 +164,8 @@ margin:1%;
                     <div class="col-lg-4">
                         <div class="profile-agent-info">
                             <div class="pi-text">
-                                <h5>김기연</h5>
-                                <span>실버</span>
+                                <h5><%=memberInfo.getMemUserName() %></h5>
+                                <span>null</span>
                             </div>
                         </div>
                     </div>
@@ -176,7 +181,14 @@ margin:1%;
                     <div class="col-lg-4">
                         <div class="profile-agent-newslatter">
                             <h5 align="center" style="color:red;">평점</h5>
-                            <p align="center" style="color:blue; font-size:35px; margin:10%;">4.3</p>
+                            <p align="center" style="color:blue; font-size:35px; margin:10%;">
+                           	<%double avg=MS.showScore(memberInfo.getMemId());
+                           		if (avg==0){%>
+                           			평가없음
+                           		<%}else{%>
+                           			<%=avg %>
+                           		<%} %>
+                           	</p>
                         </div>
                     </div>
                 </div>
@@ -185,63 +197,6 @@ margin:1%;
     </section>
     <!-- 내정보 섹션 끝-->
     
-    <!-- 공모전 내역 섹션 -->
-    <section class="testimonial-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h4>모든 공모전 내역</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="row testimonial-slider owl-carousel">
-                <div class="col-lg-6">
-                    <div class="testimonial-item">
-                        <div class="ti-text">
-                            <a href="#"></a><img src="img/about-pic.jpg"></a>
-                        </div>
-                        <div class="ti-author">
-                        <a style="padding:1%; background-color: red; color:white;">진행중</a>
-                            <div class="ta-text">
-                                <h5>천하제일 무술대회</h5>
-                                <span>2021.09.10~2021.10.11</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial-item">
-                        <div class="ti-text">
-                            <img src="img/about-us.jpg">
-                        </div>
-                        <div class="ti-author">
-                        <a style="padding:1%; background-color: red; color:white;">진행중</a>
-                            <div class="ta-text">
-                                <h5>소주 존나먹기 대회</h5>
-                                <span>2021.09.10~2021.11.11</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial-item">
-                        <div class="ti-text">
-                            <img src="img/about-us.jpg">
-                        </div>
-                        <div class="ti-author">
-                        <a style="padding:1%; background-color: gray; color:white;">종료</a>
-                            <div class="ta-text">
-                                <h5>햄최몇?</h5>
-                                <span>2021.09.10~2020.12.11</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- 공모전 내역 섹션 끝-->
     
     <!-- Property Comparison Section Begin -->                 
     <section class="contact-form-section spad">

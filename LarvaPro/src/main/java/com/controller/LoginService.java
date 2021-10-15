@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.model.memberVO;
+import com.model.personalcontestVO;
+import com.model.scoreVO;
+
+
 import com.model.memberDAO;
 
 @WebServlet("/LoginService")
@@ -29,10 +33,8 @@ public class LoginService extends HttpServlet {
 		
 		if(memberInfo!=null) {
 			System.out.println("肺弊牢 己傍");
-			Session.setAttribute("loginMemberSession", memberInfo);
-			System.out.println("技记积己 己傍");
+			Session.setAttribute("loginMemberSession", memberInfo);//肺弊牢 技记 积己
 			response.sendRedirect("LoginJSP.jsp");
-			System.out.println("技记惯价 己傍");
 		}else if(memberInfo==null) {
 			System.out.print("肺弊牢 角菩");
 			Session.setAttribute("loginMemberFail", "fail");
