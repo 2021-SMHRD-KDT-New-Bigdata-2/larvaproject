@@ -1,3 +1,5 @@
+<%@page import="com.model.postVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.model.conDetailVO"%>
 <%@page import="com.model.memberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -6,6 +8,11 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession"); %>
+<% postVO pv = null;%>
+<% conDetailVO con= new conDetailVO(); 
+ 	ArrayList<conDetailVO> conArr = new ArrayList<conDetailVO>();
+ 	
+ %> 
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Aler Template">
@@ -128,26 +135,29 @@
                 </div>
     	</header>
     <!-- 헤드 끝 -->
- <% conDetailVO con= new conDetailVO(); %> 
+
 
     <!-- Hero Section Begin -->
     <section class="hero-section" style ="width : 1100px; height : 700px;
     	 margin : 10px 0px 0px 440px; position: relative;" >
+    	 
         <div class="container" style = "width :650px;  ">
             <div class="hs-slider owl-carousel">
                 <div class="hs-item set-bg">
-                   <a href="#"><img class = "imgPadding" src="<%=con.getConPostBig()%>" alt= none; ></a>
+                   <a href="#"><img class = "imgPadding" src="<%=conArr.get(0).getConPostBig() %>" alt="" ></a>
+                      
                 </div>
                 <div class="hs-item set-bg">
-                	<a href="#"><img class = "imgPadding" src="<%= con.getConPostBig() %>" alt= none;></a>
+                	<a href="#"><img class = "imgPadding" src="<%= conArr.get(1).getConPostBig() %>" alt=""></a>
                     <div class="row">
                         
                     </div>
                 </div>
                 <div class="hs-item set-bg" >
-                	<a href="#"><img class = "imgPadding" src="<%=con.getConPostBig() %>" alt= none;></a>
+                	<a href="#"><img class = "imgPadding" src="<%= conArr.get(2).getConPostBig() %>" alt=""></a>
                     
                 </div>
+               
                
             </div>
         </div>
@@ -211,61 +221,20 @@
 			          calendar.unselect()
 			        },
 			        // 이벤트 
+			        <%for(int i=0;i<conArr.size();i++){ %>
 			        events: [
 			          {
-			            title: 'All Day Event',
-			            start: '2021-07-01',
-			          },
-			          {
-			            title: 'Long Event',
-			            start: '2021-07-07',
-			            end: '2021-07-10'
-			          },
-			          {
-			            groupId: 999,
-			            title: 'Repeating Event',
-			            start: '2021-07-09T16:00:00'
-			          },
-			          {
-			            groupId: 999,
-			            title: 'Repeating Event',
-			            start: '2021-07-16T16:00:00'
-			          },
-			          {
-			            title: 'Conference',
-			            start: '2021-07-11',
-			            end: '2021-07-13'
-			          },
-			          {
-			            title: 'Meeting',
-			            start: '2021-07-12T10:30:00',
-			            end: '2021-07-12T12:30:00'
-			          },
-			          {
-			            title: 'Lunch',
-			            start: '2021-07-12T12:00:00'
-			          },
-			          {
-			            title: 'Meeting',
-			            start: '2021-07-12T14:30:00'
-			          },
-			          {
-			            title: 'Happy Hour',
-			            start: '2021-07-12T17:30:00'
-			          },
-			          {
-			            title: 'Dinner',
-			            start: '2021-07-12T20:00:00'
-			          },
-			          {
-			            title: 'Birthday Party',
-			            start: '2021-07-13T07:00:00'
-			          },
-			          {
-			            title: 'Click for Google',
-			            url: 'http://google.com/', // 클릭시 해당 url로 이동
-			            start: '2021-10-22'
+			            title: "<%=conArr.get(i).getConName() %>",
+			            start: '<%= conArr.get(i).getConFromDate()%>',
+			            end: '<%= conArr.get(i).getConToDate() %>'
 			          }
+			          <%}%>,
+			         
+			          //{
+			            //title: 'Click for Google',
+			            //url: 'http://google.com/', // 클릭시 해당 url로 이동
+			            //start: '2021-10-22'
+			          //}
 			        ]
 			      });
 			      // 캘린더 랜더링
@@ -286,6 +255,7 @@
 			<div class="section-title" style="margin-left : -80px">
 				<h5>불타는 모임</h5>
 			</div>
+ 
  <section class="agent-section spad">
         <div class="container" style="margin-left:-90px ;margin-top : -110px">
             <div class="as-slider owl-carousel">
@@ -301,8 +271,8 @@
                                   
                                 </div>
                                 <ul>
-                                    <li>Property <span>215</span></li>
-                                    <li>팀장 <span>닉네임</span></li>
+                                    <li>제목 <span>215</span></li>
+                                    <li>팀장 <span><%=pv.getMemId() %></span></li>
                                     <li>팀 인원 <span>1/4</span></li>
                                 </ul>
                                 <a href="#" class="primary-btn">지원하기</a>

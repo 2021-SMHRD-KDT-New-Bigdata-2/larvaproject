@@ -13,6 +13,7 @@ public class postVO {
 	private int rpProgress; //모집중,마감
 	
 	
+	
 
 	
 	public postVO(int rpNum, String memId, int cntNum, String rpTitle, int rpMemNum, int rpField, String rpContent,
