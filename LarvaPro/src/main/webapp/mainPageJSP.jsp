@@ -1,3 +1,4 @@
+<%@page import="com.model.conDetailDAO"%>
 <%@page import="com.model.postVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.model.conDetailVO"%>
@@ -8,10 +9,9 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession"); %>
-<% postVO pv = null;%>
-<% conDetailVO con= new conDetailVO(); 
+<% conDetailVO contest=null;
+	conDetailDAO contestDAO=new conDetailDAO();
  	ArrayList<conDetailVO> conArr = new ArrayList<conDetailVO>();
- 	
  %> 
 <head>
     <meta charset="UTF-8">
@@ -144,17 +144,17 @@
         <div class="container" style = "width :650px;  ">
             <div class="hs-slider owl-carousel">
                 <div class="hs-item set-bg">
-                   <a href="#"><img class = "imgPadding" src="<%=conArr.get(0).getConPostBig() %>" alt="" ></a>
+                   <a href="#"><img class = "imgPadding" src="<%= %>" alt="" ></a>
                       
                 </div>
                 <div class="hs-item set-bg">
-                	<a href="#"><img class = "imgPadding" src="<%= conArr.get(1).getConPostBig() %>" alt=""></a>
+                	<a href="#"><img class = "imgPadding" src="#" alt=""></a>
                     <div class="row">
                         
                     </div>
                 </div>
                 <div class="hs-item set-bg" >
-                	<a href="#"><img class = "imgPadding" src="<%= conArr.get(2).getConPostBig() %>" alt=""></a>
+                	<a href="#"><img class = "imgPadding" src="#" alt=""></a>
                     
                 </div>
                
@@ -272,7 +272,7 @@
                                 </div>
                                 <ul>
                                     <li>Á¦¸ñ <span>215</span></li>
-                                    <li>ÆÀÀå <span><%=pv.getMemId() %></span></li>
+                                    <li>ÆÀÀå <span>0</span></li>
                                     <li>ÆÀ ÀÎ¿ø <span>1/4</span></li>
                                 </ul>
                                 <a href="#" class="primary-btn">Áö¿øÇÏ±â</a>

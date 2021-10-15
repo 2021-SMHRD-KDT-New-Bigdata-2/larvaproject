@@ -93,7 +93,8 @@ public class conDetailDAO extends DBconnection{
 		return cnt;
 	}
 	
-		public ArrayList<conDetailVO> showConDetail(conDetailVO vo) {
+	//게시글 표현 메소드
+	public ArrayList<conDetailVO> showConDetail(conDetailVO vo) {
 			
 			ArrayList<conDetailVO> showConDetail_list = new ArrayList<conDetailVO>();
 			
@@ -121,6 +122,56 @@ public class conDetailDAO extends DBconnection{
 			}
 			return showConDetail_list;
 	}
+	
+	//특정 공모전 불러오기
+			public conDetailVO selectCon(int num) {
+				
+				getConnection();
+				conDetailVO contest=null;
+				
+				int cnt=0;
+				String name=null;
+				String host=null;
+				String filed=null;
+				String qualfication=null;
+				String fromDate=null;
+				String toDate=null;
+				String homepage=null;
+				String imgSmall=null;
+				String imgBig=null;
+				String content=null;
+				
+				int cnt_num=num;
+				
+				try {
+					psmt=conn.prepareStatement("select * from contest where cnt_num = ?");
+					psmt.setInt(1, cnt_num);
+					rs=psmt.executeQuery();
+										
+						cnt=rs.getInt(1);
+						name=rs.getString(2);
+						host=rs.getString(3);
+						filed=rs.getString(4);
+						qualfication=rs.getString(5);
+						fromDate=rs.getString(6);
+						toDate=rs.getString(7);
+						homepage=rs.getString(8);
+						imgSmall=rs.getString(9);
+						imgBig=rs.getString(10);
+						content=rs.getString(11);
+
+				}catch (Exception e) {
+				}finally {
+					try {
+						dbClose();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}			
+				}
+				contest=new conDetailVO(cnt, name, host, filed, qualfication, fromDate, toDate, homepage, imgSmall, imgBig, content);
+				return contest;
+
+			}
 }
 
 
