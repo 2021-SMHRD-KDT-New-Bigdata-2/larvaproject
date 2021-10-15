@@ -11,7 +11,7 @@ create table member_info(
 	mem_sign_up_date date not null
 );
 
-select * from Score;
+select * from contest;
 
 
 

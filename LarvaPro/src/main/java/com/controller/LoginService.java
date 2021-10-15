@@ -31,6 +31,7 @@ public class LoginService extends HttpServlet {
 		
 		HttpSession Session=request.getSession();
 		
+		
 		if(memberInfo!=null) {
 			System.out.println("로그인 성공");
 			Session.setAttribute("loginMemberSession", memberInfo);//로그인 세션 생성

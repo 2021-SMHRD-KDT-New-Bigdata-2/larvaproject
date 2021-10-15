@@ -145,16 +145,16 @@
     	 margin : 10px 0px 0px 440px; position: relative;">
         <div class="container" style = "width :650px;">
             <div class="hs-slider owl-carousel">
-                <div class="hs-item set-bg">
-                   	<a href="#"><img src="<%=contest100.getConPostBig()%>"></a>
+                <div>
+                   	<a href="#"><img src="<%=contest100.getConPostBig()%>" style="height:80%; width:80%"></a>
                 </div>
-                <div class="hs-item set-bg">
-                	<a href="#"><img src="<%=contest99.getConPostBig()%>"></a>
+                <div>
+                	<a href="#"><img src="<%=contest99.getConPostBig()%>" style="height:80%; width:80%"></a>
                 <div class="row">
                 </div>
                 </div>
-                <div class="hs-item set-bg">
-                	<a href="#"><img src="<%=contest98.getConPostBig()%>"></a>
+                <div>
+                	<a href="#"><img src="<%=contest98.getConPostBig()%>" style="height:80%; width:80%"></a>
                 </div>
             </div>
         </div>
@@ -324,7 +324,7 @@
 </div>
 
 	
-
+<div><img src="<%=contest99.getConPostSmall() %>"></div>
   	
 <!-- calendar Section End -->
 

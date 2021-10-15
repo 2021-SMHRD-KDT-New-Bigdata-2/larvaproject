@@ -160,7 +160,6 @@ public class conDetailDAO extends DBconnection{
 						imgBig=rs.getString(9);
 						imgSmall=rs.getString(10);
 						content=rs.getString(11);
-						System.out.println("°á°ú: "+imgSmall);
 					}
 							
 			
