@@ -156,17 +156,16 @@
 	private String conPostSmall; //작은 포스터
 	private String conContent; //공모전 상세 -->
 	
-		<% int i=0;
+		<% 
 			ArrayList<conDetailVO> list=new ArrayList<conDetailVO>();
 	  		conDetailDAO conDetailDAO=new conDetailDAO();
 	  		list=conDetailDAO.showConDetail(con);
-	  		
 	  	%>
 	  	
-	  	<% for(i=0;i<10;i++){ %>
+	  	<% for(int i=0;i<10;i++){ %>
     <tr>
       <th scope="row"><%=i+1%></th>
-      <td><a href="ContestDetailsJSP.jsp"><%=list.get(i).getConName() %></a></td>
+      <td style="color : black;"><a href="ContestDetailsJSP.jsp"><%=list.get(i).getConName() %></a></td>
       <td>admin</td>
       <td><%=list.get(i).getConFromDate()+"~"+list.get(i).getConToDate() %></td>
       <td><%="null" %></td>
