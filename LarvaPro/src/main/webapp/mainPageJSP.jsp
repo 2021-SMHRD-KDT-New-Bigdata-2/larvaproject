@@ -9,9 +9,13 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession"); %>
-<% conDetailVO contest=null;
+<% 
 	conDetailDAO contestDAO=new conDetailDAO();
  	ArrayList<conDetailVO> conArr = new ArrayList<conDetailVO>();
+ 	
+ 	conDetailVO contest100=contestDAO.selectCon(100);
+ 	conDetailVO contest99=contestDAO.selectCon(99);
+ 	conDetailVO contest98=contestDAO.selectCon(98);
  %> 
 <head>
     <meta charset="UTF-8">
@@ -136,29 +140,22 @@
     	</header>
     <!-- Çìµå ³¡ -->
 
-
     <!-- Hero Section Begin -->
     <section class="hero-section" style ="width : 1100px; height : 700px;
-    	 margin : 10px 0px 0px 440px; position: relative;" >
-    	 
-        <div class="container" style = "width :650px;  ">
+    	 margin : 10px 0px 0px 440px; position: relative;">
+        <div class="container" style = "width :650px;">
             <div class="hs-slider owl-carousel">
                 <div class="hs-item set-bg">
-                   <a href="#"><img class = "imgPadding" src="<%= %>" alt="" ></a>
-                      
+                   	<a href="#"><img src="<%=contest100.getConPostBig()%>"></a>
                 </div>
                 <div class="hs-item set-bg">
-                	<a href="#"><img class = "imgPadding" src="#" alt=""></a>
-                    <div class="row">
-                        
-                    </div>
+                	<a href="#"><img src="<%=contest99.getConPostBig()%>"></a>
+                <div class="row">
                 </div>
-                <div class="hs-item set-bg" >
-                	<a href="#"><img class = "imgPadding" src="#" alt=""></a>
-                    
                 </div>
-               
-               
+                <div class="hs-item set-bg">
+                	<a href="#"><img src="<%=contest98.getConPostBig()%>"></a>
+                </div>
             </div>
         </div>
     </section>
