@@ -1,9 +1,11 @@
+<%@page import="com.model.conDetailVO"%>
 <%@page import="com.model.memberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="zxx">
 <% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession");%>
+<% conDetailVO con=new conDetailVO(); %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
 </script>
 <head>
@@ -132,7 +134,7 @@
                     <article>
                         <header class="mb-4" style="padding:3%">
                             <div class="section-title" style="padding-top:2%;">
-            				<h4>AI(인공지능)개발교육 고급과정 수강생 모집</h4>
+            				<h4><%=con.getConName() %></h4>
               				</div>
                             <a class="badge bg-secondary text-decoration-none link-light" >IT</a>
                             <a class="badge bg-secondary text-decoration-none link-light" >UCC/사진</a>

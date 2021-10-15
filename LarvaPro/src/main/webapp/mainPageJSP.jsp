@@ -1,6 +1,8 @@
+<%@page import="com.model.conDetailVO"%>
 <%@page import="com.model.memberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+   
 <!DOCTYPE html>
 <html lang="zxx">
 <% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession"); %>
@@ -126,6 +128,7 @@
                 </div>
     	</header>
     <!-- 헤드 끝 -->
+ <% conDetailVO con= new conDetailVO(); %> 
 
     <!-- Hero Section Begin -->
     <section class="hero-section" style ="width : 1100px; height : 700px;
@@ -133,18 +136,19 @@
         <div class="container" style = "width :650px;  ">
             <div class="hs-slider owl-carousel">
                 <div class="hs-item set-bg">
-                   <img class = "imgPadding" src="img/hero/gong1.jpg" alt= none; >
+                   <a href="#"><img class = "imgPadding" src="<%=con.getConPostBig()%>" alt= none; ></a>
                 </div>
                 <div class="hs-item set-bg">
-                	<img class = "imgPadding" src="img/hero/gongmoimg1.jpg" alt= none;>
+                	<a href="#"><img class = "imgPadding" src="<%= con.getConPostBig() %>" alt= none;></a>
                     <div class="row">
                         
                     </div>
                 </div>
                 <div class="hs-item set-bg" >
-                	<img class = "imgPadding" src="img/hero/gongmoimg2.jpg" alt= none;>
+                	<a href="#"><img class = "imgPadding" src="<%=con.getConPostBig() %>" alt= none;></a>
                     
                 </div>
+               
             </div>
         </div>
     </section>
@@ -178,7 +182,7 @@
 			          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
 			        },
 			        initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
-			        initialDate: '2021-07-15', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
+			        initialDate: '2021-10-22', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
 			        navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
 			        editable: true, // 수정 가능?
 			        selectable: true, // 달력 일자 드래그 설정가능
@@ -260,7 +264,7 @@
 			          {
 			            title: 'Click for Google',
 			            url: 'http://google.com/', // 클릭시 해당 url로 이동
-			            start: '2021-07-28'
+			            start: '2021-10-22'
 			          }
 			        ]
 			      });
@@ -408,180 +412,7 @@
     </section>
     <!-- Team Section End -->
 
-   <!-- Testimonial Section Begin -->
-    <section class="testimonial-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h4>What our client says?</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="row testimonial-slider owl-carousel">
-                <div class="col-lg-6">
-                    <div class="testimonial-item">
-                        <div class="ti-text">
-                            <p>Lorem ipsum dolor amet, consectetur adipiscing elit, seiusmod tempor incididunt ut labore
-                                magna aliqua. Quis ipsum suspendisse ultrices gravida accumsan lacus vel facilisis.</p>
-                        </div>
-                        <div class="ti-author">
-                            <div class="ta-pic">
-                                <img src="img/testimonial-author/ta-1.jpg" alt="">
-                            </div>
-                            <div class="ta-text">
-                                <h5>Arise Naieh</h5>
-                                <span>Designer</span>
-                                <div class="ta-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial-item">
-                        <div class="ti-text">
-                            <p>Lorem ipsum dolor amet, consectetur adipiscing elit, seiusmod tempor incididunt ut labore
-                                magna aliqua. Quis ipsum suspendisse ultrices gravida accumsan lacus vel facilisis.</p>
-                        </div>
-                        <div class="ti-author">
-                            <div class="ta-pic">
-                                <img src="img/testimonial-author/ta-2.jpg" alt="">
-                            </div>
-                            <div class="ta-text">
-                                <h5>Arise Naieh</h5>
-                                <span>Designer</span>
-                                <div class="ta-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial-item">
-                        <div class="ti-text">
-                            <p>Lorem ipsum dolor amet, consectetur adipiscing elit, seiusmod tempor incididunt ut labore
-                                magna aliqua. Quis ipsum suspendisse ultrices gravida accumsan lacus vel facilisis.</p>
-                        </div>
-                        <div class="ti-author">
-                            <div class="ta-pic">
-                                <img src="img/testimonial-author/ta-1.jpg" alt="">
-                            </div>
-                            <div class="ta-text">
-                                <h5>Arise Naieh</h5>
-                                <span>Designer</span>
-                                <div class="ta-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Testimonial Section End -->
 
-    <!-- Logo Carousel Begin -->
-    <div class="logo-carousel">
-        <div class="container">
-            <div class="lc-slider owl-carousel">
-                <a href="#" class="lc-item">
-                    <div class="lc-item-inner">
-                        <img src="img/logo-carousel/lc-1.png" alt="">
-                    </div>
-                </a>
-                <a href="#" class="lc-item">
-                    <div class="lc-item-inner">
-                        <img src="img/logo-carousel/lc-2.png" alt="">
-                    </div>
-                </a>
-                <a href="#" class="lc-item">
-                    <div class="lc-item-inner">
-                        <img src="img/logo-carousel/lc-3.png" alt="">
-                    </div>
-                </a>
-                <a href="#" class="lc-item">
-                    <div class="lc-item-inner">
-                        <img src="img/logo-carousel/lc-4.png" alt="">
-                    </div>
-                </a>
-                <a href="#" class="lc-item">
-                    <div class="lc-item-inner">
-                        <img src="img/logo-carousel/lc-5.png" alt="">
-                    </div>
-                </a>
-                <a href="#" class="lc-item">
-                    <div class="lc-item-inner">
-                        <img src="img/logo-carousel/lc-6.png" alt="">
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-    <!-- Logo Carousel End -->
-
-    <!-- Contact Section Begin -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="contact-info">
-                        <div class="ci-item">
-                            <div class="ci-icon">
-                                <i class="fa fa-map-marker"></i>
-                            </div>
-                            <div class="ci-text">
-                                <h5>Address</h5>
-                                <p>160 Pennsylvania Ave NW, Washington, Castle, PA 16101-5161</p>
-                            </div>
-                        </div>
-                        <div class="ci-item">
-                            <div class="ci-icon">
-                                <i class="fa fa-mobile"></i>
-                            </div>
-                            <div class="ci-text">
-                                <h5>Phone</h5>
-                                <ul>
-                                    <li>125-711-811</li>
-                                    <li>125-668-886</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="ci-item">
-                            <div class="ci-icon">
-                                <i class="fa fa-headphones"></i>
-                            </div>
-                            <div class="ci-text">
-                                <h5>Support</h5>
-                                <p>Support.aler@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="cs-map">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d735515.5813275519!2d-80.41163541934742!3d43.93644386501528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882a55bbf3de23d7%3A0x3ada5af229b47375!2sMono%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sbd!4v1583262687289!5m2!1sen!2sbd"
-                height="450" style="border:0;" allowfullscreen=""></iframe>
-        </div>
-    </section>
-    <!-- Contact Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">
