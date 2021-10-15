@@ -35,7 +35,7 @@ public class postDAO extends DBconnection {
 	
 	//게시판 수정
 	
-public int updateRecruitPost(String cntNum, String title, String memNum, String field, String content, String date, String progress ) {
+public int updateRecruitPost(String cntNum, String title, String memNum, String field, String content, String progress ) {
 		
 		int cnt = 0;
 		
@@ -44,15 +44,14 @@ public int updateRecruitPost(String cntNum, String title, String memNum, String 
 			getConnection();
 			
 	
-			psmt = conn.prepareStatement("update recuit_post set cnt_num=?, rp_title=?, rp_mem_num=?, rp_field=?, rp_content=?, rp_date=?, rp_progress=?  where rp_num=?)");
+			psmt = conn.prepareStatement("update recuit_post set cnt_num=?, rp_title=?, rp_mem_num=?, rp_field=?, rp_content=?,  rp_progress=?  where rp_num=?)");
 			
 			psmt.setString(1, cntNum);
 			psmt.setString(2, title);
 			psmt.setString(3, memNum);
 			psmt.setString(4, field);
 			psmt.setString(5, content);
-			psmt.setString(6, date);
-			psmt.setString(7, progress);
+			psmt.setString(6, progress);
 			
 			cnt = psmt.executeUpdate();
 			
@@ -65,7 +64,7 @@ public int updateRecruitPost(String cntNum, String title, String memNum, String 
 	}
 	
 	//게시판 삭제
-	public int deleteRecruitPost(String cntNum) {
+	public int deleteRecruitPost(String rpNum) {
 	
 		int cnt = 0;
 		
@@ -73,9 +72,9 @@ public int updateRecruitPost(String cntNum, String title, String memNum, String 
 		
 			getConnection();
 			
-			psmt = conn.prepareStatement("delete from recruit_post where cnt_num=?");
+			psmt = conn.prepareStatement("delete from recruit_post where rp_num=?");
 			
-			psmt.setString(1, cntNum);
+			psmt.setString(1, rpNum);
 			
 			cnt = psmt.executeUpdate();
 			
