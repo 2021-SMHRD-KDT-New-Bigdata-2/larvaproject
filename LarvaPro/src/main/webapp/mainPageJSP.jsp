@@ -11,11 +11,14 @@
 <% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession"); %>
 <% 
 	conDetailDAO contestDAO=new conDetailDAO();
- 	ArrayList<conDetailVO> conArr = new ArrayList<conDetailVO>();
+ 	ArrayList<conDetailVO> conArr =contestDAO.calList();
  	
  	conDetailVO contest100=contestDAO.selectCon(100);
- 	conDetailVO contest99=contestDAO.selectCon(99);
- 	conDetailVO contest98=contestDAO.selectCon(98);
+ 	conDetailVO contest99=contestDAO.selectCon(73);
+ 	conDetailVO contest98=contestDAO.selectCon(50);
+ 	
+ 	// 공모전 ArrayList에 담아 가져와서!
+ 	
  %> 
 <head>
     <meta charset="UTF-8">
@@ -145,16 +148,16 @@
     	 margin : 10px 0px 0px 440px; position: relative;">
         <div class="container" style = "width :650px;">
             <div class="hs-slider owl-carousel">
-                <div>
-                   	<a href="#"><img src="<%=contest100.getConPostBig()%>" style="height:80%; width:80%"></a>
+                <div class="hs-item set-bg">
+                   	<a href="#"><img src="<%=contest100.getConPostBig()%>"></a>
                 </div>
-                <div>
-                	<a href="#"><img src="<%=contest99.getConPostBig()%>" style="height:80%; width:80%"></a>
+                <div class="hs-item set-bg">
+                	<a href="#"><img src="<%=contest99.getConPostBig()%>"></a>
                 <div class="row">
                 </div>
                 </div>
-                <div>
-                	<a href="#"><img src="<%=contest98.getConPostBig()%>" style="height:80%; width:80%"></a>
+                <div class="hs-item set-bg">
+                	<a href="#"><img src="<%=contest98.getConPostBig()%>"></a>
                 </div>
             </div>
         </div>
@@ -162,89 +165,94 @@
     <!-- Hero Section End -->
 
    <!-- calendar Section Begin -->
-   	<div class="calbul">              
-		<div class="cal-left">
-		<div class="calendar" style="margin-left:430px;margin-top:70px;">
-			<div class="section-title" style="margin-left:10px">
-				<h5>공모전 일정</h5>
-			 <!-- calendar 태그 -->
-			 <div id='calendar-container'style="margin-top: 10px;padding:20px; width : 550px;margin-left:-15px">
-			 <div id='calendar'></div>
-			  </div>
-			  <script>
-			  (function(){
-			    $(function(){
-			      // calendar element 취득
-			      var calendarEl = $('#calendar')[0];
-			      // full-calendar 생성하기
-			      var calendar = new FullCalendar.Calendar(calendarEl, {
-			        height: '495px', // calendar 높이 설정
-			        expandRows: true, // 화면에 맞게 높이 재설정
-			        slotMinTime: '08:00', // Day 캘린더에서 시작 시간
-			        slotMaxTime: '20:00', // Day 캘린더에서 종료 시간
-			        // 해더에 표시할 툴바
-			        headerToolbar: {
-			          left: 'prev,next today',
-			          center: 'title',
-			          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-			        },
-			        initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
-			        initialDate: '2021-10-22', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
-			        navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
-			        editable: true, // 수정 가능?
-			        selectable: true, // 달력 일자 드래그 설정가능
-			        nowIndicator: true, // 현재 시간 마크
-			        dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
-			        locale: 'ko', // 한국어 설정
-			        eventAdd: function(obj) { // 이벤트가 추가되면 발생하는 이벤트
-			          console.log(obj);
-			        },
-			        eventChange: function(obj) { // 이벤트가 수정되면 발생하는 이벤트
-			          console.log(obj);
-			        },
-			        eventRemove: function(obj){ // 이벤트가 삭제되면 발생하는 이벤트
-			          console.log(obj);
-			        },
-			        select: function(arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
-			          var title = prompt('Event Title:');
-			          if (title) {
-			            calendar.addEvent({
-			              title: title,
-			              start: arg.start,
-			              end: arg.end,
-			              allDay: arg.allDay
-			            })
-			          }
-			          calendar.unselect()
-			        },
-			        // 이벤트 
-			        <%for(int i=0;i<conArr.size();i++){ %>
-			        events: [
-			          {
-			            title: "<%=conArr.get(i).getConName() %>",
-			            start: '<%= conArr.get(i).getConFromDate()%>',
-			            end: '<%= conArr.get(i).getConToDate() %>'
-			          }
-			          <%}%>,
-			         
-			          //{
-			            //title: 'Click for Google',
-			            //url: 'http://google.com/', // 클릭시 해당 url로 이동
-			            //start: '2021-10-22'
-			          //}
-			        ]
-			      });
-			      // 캘린더 랜더링
-			      calendar.render();
-			    });
-			  })();
-			</script>
+   	<div class="calbul">
+      <div class="cal-left">
+      <div class="calendar" style="margin-left:430px;margin-top:70px;">
+         <div class="section-title" style="margin-left:10px">
+            <h5>공모전 일정</h5>
+          <!-- calendar 태그 -->
+          <div id='calendar-container'style="margin-top: 10px;padding:20px; width : 550px;margin-left:-15px">
+          <div id='calendar'></div>
+           </div>
+           <script>
+   (function(){
+             $(function(){
+               // calendar element 취득
+               var calendarEl = $('#calendar')[0];
+               // full-calendar 생성하기
+               var calendar = new FullCalendar.Calendar(calendarEl, {
+                 height: '495px', // calendar 높이 설정
+                 expandRows: true, // 화면에 맞게 높이 재설정
+                 slotMinTime: '08:00', // Day 캘린더에서 시작 시간
+                 slotMaxTime: '20:00', // Day 캘린더에서 종료 시간
+                 // 해더에 표시할 툴바
+                 headerToolbar: {
+                   left: 'prev,next today',
+                   center: 'title',
+                   right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                 },
+              initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
+                 initialDate: '2021-10-22', // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
+                 navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
+                 editable: true, // 수정 가능?
+                 selectable: true, // 달력 일자 드래그 설정가능
+                 nowIndicator: true, // 현재 시간 마크
+                 dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
+                 locale: 'ko', // 한국어 설정
+                 eventAdd: function(obj) { // 이벤트가 추가되면 발생하는 이벤트
+                   console.log(obj);
+                 },
+                 eventChange: function(obj) { // 이벤트가 수정되면 발생하는 이벤트
+                   console.log(obj);
+                 },
+                 eventRemove: function(obj){ // 이벤트가 삭제되면 발생하는 이벤트
+                   console.log(obj);
+                 },
+                 select: function(arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
+                   var title = prompt('Event Title:');
+                   if (title) {
+                     calendar.addEvent({
+                       title: title,
+                       start: arg.start,
+                       end: arg.end,
+                       allDay: arg.allDay
+                     })
+                   }
+                   calendar.unselect()
+                 },
+                 // 이벤트 
+                 
+        // 
+        events: [
+          
+        ]
+      });
+
+       // 여기서 이벤트 추가
+
+      		<%for(int i = 0; i < conArr.size(); i++){ %>
+      			     calendar.addEvent({
+				         title: '<%= conArr.get(i).getConName() %>',
+				         start: '<%= conArr.get(i).getConFromDate() %>',
+				         end: '<%= conArr.get(i).getConToDate() %>'
+			       })
+      			
+      		<% }  %>
+ 
+      // 캘린더 랜더링
+      calendar.render();
+    });
+  	
+             
+   
+   })();
+   
+   
+</script>
 				</div>
 			    <div id='calendar-container'>
 			    <div id='calendar'></div>
 			  	</div>
-			  	<script>
-			  	</script>
 		</div>
 		</div>
 	<div class="cal-right">
@@ -324,7 +332,7 @@
 </div>
 
 	
-<div><img src="<%=contest99.getConPostSmall() %>"></div>
+
   	
 <!-- calendar Section End -->
 

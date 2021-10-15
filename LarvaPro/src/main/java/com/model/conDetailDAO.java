@@ -208,6 +208,36 @@ public class conDetailDAO extends DBconnection{
 		}
 		return list; // list 반환
 	}
+	
+	//캘린더 구현시 필요한 메소드
+	public ArrayList<conDetailVO> calList() {
+		
+		getConnection();
+		ArrayList<conDetailVO> list = null;
+		
+		try {
+			
+			psmt=conn.prepareStatement("select * from contest where cnt_num < 20");
+			rs=psmt.executeQuery();
+			
+			if (rs.next()) {
+				list = new ArrayList<>(); 
+				do {
+					conDetailVO board = new conDetailVO();
+					board.setConName(rs.getString("cnt_name"));
+					board.setConFromDate(rs.getString("cnt_from_date"));
+					board.setConToDate(rs.getString("cnt_to_date"));
+
+					list.add(board);
+				} while (rs.next());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return list;
+	}
 }
 
 
