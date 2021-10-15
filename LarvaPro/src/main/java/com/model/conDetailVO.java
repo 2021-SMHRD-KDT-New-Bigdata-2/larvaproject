@@ -17,6 +17,15 @@ public class conDetailVO {
 	public conDetailVO() {
 		super();
 	}
+	
+
+	public conDetailVO(String conName, String conFromDate, String conToDate) {
+		super();
+		this.conName = conName;
+		this.conFromDate = conFromDate;
+		this.conToDate = conToDate;
+	}
+
 
 	public conDetailVO(int conNum, String conName, String conHost, String conField, String conQualfication,
 			String conFromDate, String conToDate, String conHomePage, String conPostBig, String conPostSmall,

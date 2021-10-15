@@ -1,5 +1,7 @@
 package com.model;
 
+import java.util.ArrayList;
+
 public class conDetailDAO extends DBconnection{
 	//  공모전 상세내용, 삽입.
 		public int insertConDetail(conDetailVO vo) {
@@ -91,13 +93,41 @@ public int deleteContest(String cntNum) {
 	return cnt;
 }
 
-	
-
-
-
-
-
-
-
-
+	public ArrayList<conDetailVO> showConDetail(conDetailVO vo) {
+		
+		ArrayList<conDetailVO> showConDetail_list = new ArrayList<conDetailVO>();
+		
+		try {
+			
+			getConnection();
+			
+			psmt = conn.prepareStatement("select * from contest");
+			
+			rs=psmt.executeQuery();
+			
+			while(rs.next()) {
+				String conName = rs.getString("cnt_name");
+				String conFromDate = rs.getString("cnt_fromdate");
+				String conToDate = rs.getString("cnt_to_date");
+				
+				conDetailVO vo2 = new conDetailVO(conName, conFromDate, conToDate);
+				showConDetail_list.add(vo2);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return showConDetail_list;
 }
+		
+		
+		
+	}
+
+
+
+
+
+

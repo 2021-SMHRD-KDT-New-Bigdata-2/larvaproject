@@ -1,8 +1,13 @@
+<%@page import="com.model.conDetailDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.model.conDetailVO"%>
 <%@page import="com.model.memberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <html lang="zxx">
-<% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession"); %>
+<% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession");%>
+<% conDetailVO con= new conDetailVO(); %>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
 </script>
 <head>
@@ -11,7 +16,7 @@
     <meta name="keywords" content="Aler, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Aler | Template</title>
+    <title>깔꼼</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
@@ -77,10 +82,10 @@
 						</div>
                         <nav class="nav-menu" style="margin-top:5%;">
                             <%if(memberInfo==null){
-            	out.print("<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
-            }else if(memberInfo!=null){
-            	out.print("<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
-            }%>
+            					out.print("<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
+           					 }else if(memberInfo!=null){
+            					out.print("<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
+            				 }%>
                             <ul style="text-align:center; margin-left:7%;">
                                 <li class="active" style="font-size : 10px">
                                 	<a href="./mainPageJSP.jsp" style="color:#ffffff;">메인</a>
@@ -139,86 +144,37 @@
     </tr>
   </thead>
   <tbody>
+  <!-- private int conNum; //공모전 번호
+	private String conName;// 공모전 이름
+	private String conHost;//주체,주관
+	private String conField; //응모분야
+	private String conQualfication; //참가자격
+	private String conFromDate; //시작날짜
+	private String conToDate; //끝 날짜
+	private String conHomePage; //홈페이지>>공모전 주체하는 홈페이지
+	private String conPostBig; //큰 포스터
+	private String conPostSmall; //작은 포스터
+	private String conContent; //공모전 상세 -->
+	
+		<% int i=0;
+			ArrayList<conDetailVO> list=new ArrayList<conDetailVO>();
+	  		conDetailDAO conDetailDAO=new conDetailDAO();
+	  		list=conDetailDAO.showConDetail(con);
+	  		
+	  	%>
+	  	
+	  	<% for(i=0;i<10;i++){ %>
     <tr>
-      <th scope="row">Active</th>
-      <td><a href="ContestDetailsJSP.jsp">제 1회 천하제일 무술대회</a></td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
+      <th scope="row"><%=i+1%></th>
+      <td><a href="ContestDetailsJSP.jsp"><%=list.get(i).getConName() %></a></td>
+      <td>admin</td>
+      <td><%=list.get(i).getConFromDate()+"~"+list.get(i).getConToDate() %></td>
+      <td><%="null" %></td>
+      <td><%="null" %></td>
     </tr>
-    <tr>
-      <th scope="row">Default</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr>
-      <th scope="row">Primary</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr >
-      <th scope="row">Secondary</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr >
-      <th scope="row">Success</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr >
-      <th scope="row">Danger</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr>
-      <th scope="row">Warning</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr >
-      <th scope="row">Info</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr>
-      <th scope="row">Light</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
-    <tr >
-      <th scope="row">Dark</th>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-      <td>Column content</td>
-    </tr>
+    	<%}%>
+    
+    
   </tbody>
 </table>
 <div style="margin-left:40%">
