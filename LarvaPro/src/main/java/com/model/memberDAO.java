@@ -49,6 +49,7 @@ public class memberDAO extends DBconnection {
 				String memTel=null;
 				String memAdress=null;
 				String memDate=null;
+				int memLevel=0;
 				
 				try {
 					
@@ -67,8 +68,9 @@ public class memberDAO extends DBconnection {
 						memTel=rs.getString(6);
 						memAdress=rs.getString(7);
 						memDate=rs.getString(8);
+						memLevel=rs.getInt(9);
 						
-						memberInfo=new memberVO(memId,memPw,memUserName,memNickName,memEmail,memTel,memAdress,memDate);
+						memberInfo=new memberVO(memId,memPw,memUserName,memNickName,memEmail,memTel,memAdress,memDate,memLevel);
 					}
 				}catch (Exception e) {
 					return memberInfo;
@@ -80,6 +82,43 @@ public class memberDAO extends DBconnection {
 					}
 				}
 				return memberInfo;
+		}
+		
+		//레벨업 메소드 (해당 아이디,상승할 레벨)
+		public void levelUp(String id,int levelUp) {
+			
+			int nowLevel=0;
+			int result=0;
+			
+			try {
+				getConnection();
+				
+				psmt = conn.prepareStatement("select*from member_info where mem_id=?");
+				
+				psmt.setString(1, id);
+				rs=psmt.executeQuery();
+				
+				if(rs.next()) {
+					nowLevel=rs.getInt(9);
+				}
+				
+				nowLevel+=levelUp;
+				
+				psmt =conn.prepareStatement("update mem_info set mem_level=? where mem_id=?");
+				
+				psmt.setInt(1, nowLevel);
+				psmt.setString(2,id);
+				
+				result=psmt.executeUpdate();
+				
+				if(result>0) {
+					System.out.println("레벨업~");
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				dbClose();
+			}
 		}
 		
 }

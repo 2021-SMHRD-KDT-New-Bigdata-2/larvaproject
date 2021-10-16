@@ -1,6 +1,10 @@
 select * from all_tables;
 select * from all_sequences;
 select * from message;
+
+
+select*from member_info
+
 /*테이블 삭제*/
 drop table group_mem;
 drop table group_head;
@@ -12,6 +16,7 @@ drop table recruit_post;
 drop table contest;
 drop table member_info;
 select * from contest;
+
 /*시퀀스삭제*/
 drop sequence contest_number;
 drop sequence recruit_post_number;

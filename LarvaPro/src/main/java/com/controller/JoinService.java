@@ -30,7 +30,7 @@ public class JoinService extends HttpServlet {
 		String tel=request.getParameter("tel");
 		String address=request.getParameter("address");
 
-		memberVO memberInfo=new memberVO(id, pw, name, nick, email, tel, address, tel);
+		memberVO memberInfo=new memberVO(id, pw, name, nick, email, tel, address, tel,1);
 		memberDAO membershipJoin=new memberDAO();
 
 		int cnt=membershipJoin.join(memberInfo);
