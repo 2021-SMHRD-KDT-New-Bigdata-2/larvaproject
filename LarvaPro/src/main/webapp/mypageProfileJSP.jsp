@@ -54,11 +54,27 @@ if (memberInfo == null) {
 	font-size: 18px;
 	margin: 1%;
 }
-</style>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
-	
+.menu a {
+	cursor: pointer;
+}
+
+.menu .hide {
+	display: none;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$(".menu>a").click(function() {
+			var submenu = $(this).next("ul");
+			if (submenu.is(":visible")) {
+				submenu.slideUp();
+			} else {
+				submenu.slideDown();
+			}
+		});
+	});
 </script>
 
 <body>
@@ -246,162 +262,117 @@ if (memberInfo == null) {
 	</section>
 	<!-- 내정보 섹션 끝-->
 
-	<table class="table table-hover" style="width: 1000px;">
-			<thead>
-				<tr>
-					<th scope="col">번호</th>
-					<th scope="col">제목</th>
-					<th scope="col">작성자</th>
-					<th scope="col">날짜</th>
-					<th scope="col">조회수</th>
-					<th scope="col">댓글수</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th scope="row">Active</th>
-					<td><a href="applicationTeam.jsp">나랑 할사람?</a></td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-				</tr>
-				<tr>
-					<th scope="row">Default</th>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-				</tr>
-				<tr>
-					<th scope="row">Primary</th>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-				</tr>
-				<tr>
-					<th scope="row">Secondary</th>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-				</tr>
-				<tr>
-					<th scope="row">Success</th>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-				</tr>
-				<tr>
-					<th scope="row">Danger</th>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-				</tr>
-				<tr>
-					<th scope="row">Warning</th>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-				</tr>
-				<tr>
-					<th scope="row">Info</th>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-				</tr>
-				<tr>
-					<th scope="row">Light</th>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-				</tr>
-				<tr>
-					<th scope="row">Dark</th>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-				</tr>
-			</tbody>
-		</table>
-		<div style="margin-left: 40%">
-			<ul class="pagination">
-				<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
-				</li>
-				<li class="page-item active"><a class="page-link" href="#">1</a>
-				</li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">4</a></li>
-				<li class="page-item"><a class="page-link" href="#">5</a></li>
-				<li class="page-item"><a class="page-link" href="#">&raquo;</a>
-				</li>
-			</ul>
-		</div>
-
-	<!-- 공모전 후기(일기쓰기) 작성 섹션 -->
-	<section class="contact-form-section spad">
-		<div class="section-title">
-			<h4 style="margin-left: 21.5%">공모전 후기 작성(일기쓰기)</h4>
-		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="cf-content">
-						<form action="myDairyService" class="cc-form"
-							style="height: 400px">
-							<div style="margin: 2%">
-								<select name="contestNum">
-									<option disabled style="color: gray" selected>참가 공모전</option>
-									<%
-									if (memberInfo != null) {
-										personalcontestDAO MCL = new personalcontestDAO();//내가 참여한 공모전 DAO호출
-										conDetailDAO CDAO = new conDetailDAO();//공모전 DAO 호출
-										ArrayList<personalcontestVO> myConList = MCL.showPersonalContest(memberInfo.getMemId());//내가 참여한 공모전의 정보를 ArrayList에 추가
-
-										for (int i = 0; i < myConList.size(); i++) {
-											out.print("<option value='" + (myConList.get(i)).getPcntNum() + "'>"
-											+ CDAO.selectCon(myConList.get(i).getPcntNum()).getConName() + "</option>");
-										}
-									}
-									%>
-								</select>
-							</div>
-							<div style="float: left; margin-left: 2%">
-								<select name="position">
-									<option disabled value="" style="color: gray" selected>지원한
-										직군</option>
-									<option value="기획">기획</option>
-									<option value="개발">개발</option>
-									<option value="디자인">디자인</option>
-								</select>
-							</div>
-							<textarea placeholder="내용" style="margin: 2%" name="Dairy"></textarea>
-							<button type="submit" class="site-btn"
-								style="background-color: #4169E1">작성하기</button>
-						</form>
+	<!-- 내 일기 섹션 -->
+	<div class="section-title" style="margin-top: 5%">
+		<h4 style="margin-left: 21.5%">내 일기</h4>
+	</div>
+	<table class="table table-hover"
+		style="width: 1100px; margin-left: 21.5%">
+		<thead>
+			<tr>
+				<th scope="col" style="width: 100px"></th>
+				<th scope="col" style="width: 600px">참여 공모전 이름</th>
+				<th scope="col" style="width: 100px">역할</th>
+				<th scope="col" style="width: 300px">마감일</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%
+			if (memberInfo != null) {
+				personalcontestDAO MCL = new personalcontestDAO();//내가 참여한 공모전 DAO호출
+				conDetailDAO CDAO = new conDetailDAO();//공모전 DAO 호출
+				ArrayList<personalcontestVO> myConList = MCL.showPersonalContest(memberInfo.getMemId());//내가 참여한 공모전의 정보를 ArrayList에 추가
+				for (int i = 0; i < myConList.size(); i++) {
+					if (myConList.get(i).getPcntContent() == null) {
+			%>
+			<tr>
+				<td style="color: blue">작성 전</td>
+				<th style="background-color: #B8D7FF">
+					<div>
+						<ul>
+							<li class="menu" style="list-style:none"><a><%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConName()%></a>
+								<ul class="hide" style="list-style:none">
+									<li>
+										<section class="contact-form-section spad">
+											<div class="container">
+												<div class="row">
+													<div class="col-lg-12">
+														<div class="cf-content">
+															<form action="myDairyService" class="cc-form">
+																<div style="float: left; margin-left: 2%">
+																	<select name="position">
+																		<option disabled value="" style="color: gray" selected>지원한
+																			직군</option>
+																		<option value="기획">기획</option>
+																		<option value="개발">개발</option>
+																		<option value="디자인">디자인</option>
+																	</select>
+																</div>
+																<textarea placeholder="내용" style="margin: 2%"
+																	name="Dairy"></textarea>
+																<button type="submit" class="site-btn"
+																	style="background-color: #4169E1" name="contestNum"
+																	value="<%=myConList.get(i).getPcntNum()%>">작성하기</button>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</section>
+									</li>
+								</ul></li>
+						</ul>
 					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- 공모전 후기(일기쓰기) 작성 섹션 끝 -->
+				</th>
+				<th style="background-color: #B8D7FF"><%=myConList.get(i).getPcntPosition()%></td>
+				<th style="background-color: #B8D7FF">~<%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConToDate()%>
+					까지
+				</th>
+			</tr>
+			<%
+			} else {
+			%>
+			<tr>
+				<td style="color: gray">작성완료</td>
+				<td>
+					<div>
+						<ul>
+							<li class="menu" style="list-style:none"><a><%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConName()%></a>
+								<ul class="hide" style="list-style:none">
+									<li>
+										<section class="contact-form-section spad">
+											<div class="container">
+												<div class="row">
+													<div class="col-lg-12">
+														<div class="cf-content">
+															<form action="myDairyService" class="cc-form">
+																<div style="float: left; margin-left: 2%">
+																	<%=myConList.get(i).getPcntContent() %>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</section>
+									</li>
+								</ul></li>
+						</ul>
+					</div>
+				</td>
+				<td><%=myConList.get(i).getPcntPosition()%></td>
+				<td>~<%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConToDate()%>
+					까지
+				</td>
+			</tr>
+			<%
+			}
+			}
+			}
+			%>
+		</tbody>
+	</table>
+	<!-- 내 일기 섹션 끝 -->
 
 	<!-- Footer Section Begin -->
 	<footer class="footer-section">
