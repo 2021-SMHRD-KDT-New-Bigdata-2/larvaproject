@@ -151,10 +151,10 @@
                 <div class="hs-item set-bg">
                    	<a href="#"><img src="<%=contest100.getConPostBig()%>"></a>
                 </div>
+                
                 <div class="hs-item set-bg">
                 	<a href="#"><img src="<%=contest90.getConPostBig()%>"></a>
-                <div class="row">
-                </div>
+               
                 </div>
                 <div class="hs-item set-bg">
                 	<a href="#"><img src="<%=contest50.getConPostBig()%>"></a>
