@@ -145,7 +145,7 @@
 
     <!-- Hero Section Begin -->
     <section class="hero-section" style ="width : 1100px; height : 700px;
-    	 margin : 10px 0px 0px 440px; position: relative;">
+    	 margin : 40px 0px 0px 440px; position: relative;">
         <div class="container" style = "width :650px;">
             <div class="hs-slider owl-carousel">
                 <div class="hs-item set-bg">
@@ -165,7 +165,7 @@
     <!-- Hero Section End -->
 
    <!-- calendar Section Begin -->
-   	<div class="calbul">
+   	<div class="calbul" style="margin-top : 30px">
       <div class="cal-left">
       <div class="calendar" style="margin-left:430px;margin-top:70px;">
          <div class="section-title" style="margin-left:10px">
@@ -257,18 +257,18 @@
 		</div>
 	<div class="cal-right">
 		<div class="moim">
-			<div class="section-title" style="margin-left : -80px">
+			<div class="section-title" style="margin-left : -60px">
 				<h5>불타는 모임</h5>
 			</div>
  
  <section class="agent-section spad">
-        <div class="container" style="margin-left:-90px ;margin-top : -110px">
+        <div class="container" style="margin-left:-70px ;margin-top : -110px">
             <div class="as-slider owl-carousel">
                 <div class="row">
-                    <div class="as-item1">
-                        <div class="as-item">
+                    <div class="as-item1" style=" padding-right:5px">
+                        <div class="as-item" style="box-shadow : 2px 3px 8px 0px gray;width :190px;">
                             <div class="as-pic">
-                                <img src="<%=contest100.getConPostSmall() %>" alt="">
+                                <img src="img/hero/gong1.jpg" alt="">
                             </div>
                             <div class="as-text" >
                                 <div class="at-title">
@@ -284,10 +284,11 @@
                             </div>
                         </div>
                     </div>
- <div class="as-item2">
-                        <div class="as-item">
+                    <div class="row"></div>
+ 					<div class="as-item2" style=" padding-right:5px">
+                        <div class="as-item"style="box-shadow : 2px 3px 8px 0px gray;width :190px;">
                             <div class="as-pic">
-                                <img src="<%=contest90.getConPostSmall() %>" alt="">
+                                <img src="img/hero/gong2.jpg" alt="">
                             </div>
                             <div class="as-text" >
                                 <div class="at-title">
@@ -303,10 +304,11 @@
                             </div>
                         </div>
                     </div>
- <div class="as-item3">
-                        <div class="as-item">
+                    <div class="row"></div>
+ 					<div class="as-item3">
+                        <div class="as-item"style="box-shadow : 2px 3px 8px 0px gray;width :190px;">
                             <div class="as-pic">
-                                <img src="<%=contest50.getConPostSmall() %>" alt="">
+                                <img src="img/hero/gong3.jpg" alt="">
                             </div>
                             <div class="as-text">
                                 <div class="at-title">
