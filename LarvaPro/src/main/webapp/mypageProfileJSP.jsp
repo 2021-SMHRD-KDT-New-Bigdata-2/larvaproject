@@ -6,29 +6,15 @@
 <%@page import="com.model.personalcontestVO"%>
 <%@page import="com.model.scoreVO"%>
 <%@page import="com.model.memberVO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx">
 <%
 memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
 scoreDAO MS = new scoreDAO();
 if (memberInfo == null) {
-	out.println("<script>alert('·Î±×ÀÎÀÌ ÇÊ¿äÇÑ ¼­ºñ½ºÀÔ´Ï´Ù. ·Î±×ÀÎÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.'); window.location='./LoginJSP.jsp';</script>");
-}
-%>
-<%
-ArrayList<String> myConName = new ArrayList<String>();
-
-if (memberInfo != null) {
-	personalcontestDAO MCL = new personalcontestDAO();//³»°¡ Âü¿©ÇÑ °ø¸ğÀü DAOÈ£Ãâ
-	conDetailDAO CDAO = new conDetailDAO();//°ø¸ğÀü DAO È£Ãâ
-	ArrayList<personalcontestVO> myConList = MCL.showPersonalContest(memberInfo.getMemId());//³»°¡ Âü¿©ÇÑ °ø¸ğÀüÀÇ Á¤º¸¸¦ ArrayList¿¡ Ãß°¡
-	conDetailVO contest = null;//select Æû¿¡ Ãâ·ÂÇÏ±âÀ§ÇØ °ø¸ğÀüÀÇ Á¤º¸¸¦ ´ãÀ» ¸ğµ¨»ı¼º
-
-	for (int i = 0; i < myConList.size(); i++) {
-		myConName.add(CDAO.selectCon(myConList.get(i).getCntNum()).getConName());
-	}
+	out.println("<script>alert('ë¡œê·¸ì¸ì´ í•„ìš”í•œ ì„œë¹„ìŠ¤ì…ë‹ˆë‹¤. ë¡œê·¸ì¸í˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.'); window.location='./LoginJSP.jsp';</script>");
 }
 %>
 <head>
@@ -37,7 +23,7 @@ if (memberInfo != null) {
 <meta name="keywords" content="Aler, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>±ò²Ä | Template</title>
+<title>ê¹”ê¼¼ | Template</title>
 
 <!-- Google Font -->
 <link
@@ -109,7 +95,7 @@ if (memberInfo != null) {
 	</div>
 	<!-- Offcanvas Menu Wrapper End -->
 
-	<!-- Çìµå ½ÃÀÛ -->
+	<!-- í—¤ë“œ ì‹œì‘ -->
 	<header class="header-section">
 		<div
 			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 225px;">
@@ -133,21 +119,21 @@ if (memberInfo != null) {
 							%>
 							<ul style="text-align: center; margin-left: 7%;">
 								<li class="active" style="font-size: 10px"><a
-									href="./mainPageJSP.jsp" style="color: #ffffff;">¸ŞÀÎ</a></li>
-								<li><a href="#" style="color: #ffffff;">¸¶ÀÌÆäÀÌÁö</a>
+									href="./mainPageJSP.jsp" style="color: #ffffff;">ë©”ì¸</a></li>
+								<li><a href="#" style="color: #ffffff;">ë§ˆì´í˜ì´ì§€</a>
 									<ul class="dropdown"
 										style="display: inline-block; width: 150px;">
 										<li style="margin-right: 40%"><a
-											href="./mypageProfileJSP.jsp">³»Á¤º¸</a></li>
+											href="./mypageProfileJSP.jsp">ë‚´ì •ë³´</a></li>
 										<li style="margin-right: 10%"><a
-											href="./mypageContestJSP.jsp">Áö¿øÇÑ °ø¸ğÀü</a></li>
+											href="./mypageContestJSP.jsp">ì§€ì›í•œ ê³µëª¨ì „</a></li>
 										<li style="margin-right: 38%"><a
-											href="./mypageTeamJSP.jsp">³ªÀÇ ÆÀ</a></li>
+											href="./mypageTeamJSP.jsp">ë‚˜ì˜ íŒ€</a></li>
 										<li style="margin-right: 40%"><a
-											href="./mypageMessageJSP.jsp">ÂÊÁöÇÔ</a></li>
+											href="./mypageMessageJSP.jsp">ìª½ì§€í•¨</a></li>
 									</ul></li>
-								<li><a href="./ContestBoardJSP.jsp" style="color: #ffffff;">°ø¸ğÀü</a></li>
-								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">ÆÀ¿ø¸ğÁı</a></li>
+								<li><a href="./ContestBoardJSP.jsp" style="color: #ffffff;">ê³µëª¨ì „</a></li>
+								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">íŒ€ì›ëª¨ì§‘</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -162,14 +148,14 @@ if (memberInfo != null) {
 			style="padding: 3%; background-color: #4169E1; box-shadow: 1px 1px gray; width: 2000px">
 			<div class="pcntSearchText"
 				style="margin-left: 33%; height: 40px; width: 600px; border: 2px solid #1b5ac2; background: #ffffff;">
-				<input class="textBar" type="text" placeholder="¿øÇÏ´Â °ø¸ğÀü °Ë»ö!"
+				<input class="textBar" type="text" placeholder="ì›í•˜ëŠ” ê³µëª¨ì „ ê²€ìƒ‰!"
 					style="font-size: 16px; width: 500px; height: 100%; padding: 10px; border: 0px; outline: none;">
 				<button class="searchBtn"
-					style="width: 50px; height: 100%; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">°Ë»ö</button>
+					style="width: 50px; height: 100%; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">ê²€ìƒ‰</button>
 			</div>
 		</div>
 	</header>
-	<!-- Çìµå ³¡ -->
+	<!-- í—¤ë“œ ë -->
 
 	<!-- Breadcrumb Section Begin -->
 	<section class="breadcrumb-section spad set-bg"
@@ -178,9 +164,9 @@ if (memberInfo != null) {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb-text">
-						<h4>³»Á¤º¸</h4>
+						<h4>ë‚´ì •ë³´</h4>
 						<div class="bt-option">
-							<a href="./index.html"><i class="fa fa-home"></i>¸ŞÀÎ</a> <span>³»Á¤º¸</span>
+							<a href="./index.html"><i class="fa fa-home"></i>ë©”ì¸</a> <span>ë‚´ì •ë³´</span>
 						</div>
 					</div>
 				</div>
@@ -189,10 +175,10 @@ if (memberInfo != null) {
 	</section>
 	<!-- Breadcrumb Section End -->
 
-	<!-- ³»Á¤º¸ ¼½¼Ç -->
+	<!-- ë‚´ì •ë³´ ì„¹ì…˜ -->
 	<section class="profile-section spad">
 		<div class="section-title">
-			<h4 style="margin-left: 21.5%">³»Á¤º¸</h4>
+			<h4 style="margin-left: 21.5%">ë‚´ì •ë³´</h4>
 		</div>
 		<div class="container" style="margin-left: 20%">
 			<div class="profile-agent-content">
@@ -211,12 +197,12 @@ if (memberInfo != null) {
 								%>
 								<%
 								if (memberInfo != null) {
-									out.print("<h5>"+memberInfo.getMemUserName()+"</h5>");
+									out.print("<h5>" + memberInfo.getMemUserName() + "</h5>");
 								}
 								%>
 								<%
 								if (memberInfo != null) {
-									out.print("<span>Level: "+memberInfo.getMemLevel()+"</span>");
+									out.print("<span>Level: " + memberInfo.getMemLevel() + "</span>");
 								}
 								%>
 							</div>
@@ -225,15 +211,15 @@ if (memberInfo != null) {
 					<div class="col-lg-4">
 						<div class="profile-agent-widget">
 							<ul>
-								<li>ÁøÇàÁßÀÎ °ø¸ğÀü °¹¼ö <span style="color: red">3</span></li>
-								<li>ÆÀ¿ø ¸ğÁıÁßÀÎ °ø¸ğÀü °¹¼ö <span style="color: red">1</span></li>
-								<li>³¡³­ °ø¸ğÀü °¹¼ö <span style="color: red">4</span></li>
+								<li>ì§„í–‰ì¤‘ì¸ ê³µëª¨ì „ ê°¯ìˆ˜ <span style="color: red">3</span></li>
+								<li>íŒ€ì› ëª¨ì§‘ì¤‘ì¸ ê³µëª¨ì „ ê°¯ìˆ˜ <span style="color: red">1</span></li>
+								<li>ëë‚œ ê³µëª¨ì „ ê°¯ìˆ˜ <span style="color: red">4</span></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-lg-4">
 						<div class="profile-agent-newslatter">
-							<h5 align="center" style="color: red;">ÆòÁ¡</h5>
+							<h5 align="center" style="color: red;">í‰ì </h5>
 							<p align="center"
 								style="color: blue; font-size: 35px; margin: 10%;">
 								<%
@@ -242,7 +228,7 @@ if (memberInfo != null) {
 									if (avg == 0) {
 								%>
 							
-							<h6 align="center">´ç½ÅÀ» Æò°¡ÇÑ »ç¶÷ÀÌ ¾ø½À´Ï´Ù</h6>
+							<h6 align="center">ë‹¹ì‹ ì„ í‰ê°€í•œ ì‚¬ëŒì´ ì—†ìŠµë‹ˆë‹¤</h6>
 							<%
 							} else {
 							%>
@@ -258,48 +244,164 @@ if (memberInfo != null) {
 			</div>
 		</div>
 	</section>
-	<!-- ³»Á¤º¸ ¼½¼Ç ³¡-->
+	<!-- ë‚´ì •ë³´ ì„¹ì…˜ ë-->
 
+	<table class="table table-hover" style="width: 1000px;">
+			<thead>
+				<tr>
+					<th scope="col">ë²ˆí˜¸</th>
+					<th scope="col">ì œëª©</th>
+					<th scope="col">ì‘ì„±ì</th>
+					<th scope="col">ë‚ ì§œ</th>
+					<th scope="col">ì¡°íšŒìˆ˜</th>
+					<th scope="col">ëŒ“ê¸€ìˆ˜</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">Active</th>
+					<td><a href="applicationTeam.jsp">ë‚˜ë‘ í• ì‚¬ëŒ?</a></td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+				</tr>
+				<tr>
+					<th scope="row">Default</th>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+				</tr>
+				<tr>
+					<th scope="row">Primary</th>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+				</tr>
+				<tr>
+					<th scope="row">Secondary</th>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+				</tr>
+				<tr>
+					<th scope="row">Success</th>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+				</tr>
+				<tr>
+					<th scope="row">Danger</th>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+				</tr>
+				<tr>
+					<th scope="row">Warning</th>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+				</tr>
+				<tr>
+					<th scope="row">Info</th>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+				</tr>
+				<tr>
+					<th scope="row">Light</th>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+				</tr>
+				<tr>
+					<th scope="row">Dark</th>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+				</tr>
+			</tbody>
+		</table>
+		<div style="margin-left: 40%">
+			<ul class="pagination">
+				<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
+				</li>
+				<li class="page-item active"><a class="page-link" href="#">1</a>
+				</li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#">4</a></li>
+				<li class="page-item"><a class="page-link" href="#">5</a></li>
+				<li class="page-item"><a class="page-link" href="#">&raquo;</a>
+				</li>
+			</ul>
+		</div>
 
-	<!-- Property Comparison Section Begin -->
+	<!-- ê³µëª¨ì „ í›„ê¸°(ì¼ê¸°ì“°ê¸°) ì‘ì„± ì„¹ì…˜ -->
 	<section class="contact-form-section spad">
 		<div class="section-title">
-			<h4 style="margin-left: 21.5%">°ø¸ğÀü ÈÄ±â ÀÛ¼º(ÀÏ±â¾²±â)</h4>
+			<h4 style="margin-left: 21.5%">ê³µëª¨ì „ í›„ê¸° ì‘ì„±(ì¼ê¸°ì“°ê¸°)</h4>
 		</div>
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="cf-content">
-						<form action="#" class="cc-form" style="height:400px">
+						<form action="myDairyService" class="cc-form"
+							style="height: 400px">
 							<div style="margin: 2%">
-								<select name="contest" size="3">
-									<option disabled style="color: gray" selected>Âü°¡ °ø¸ğÀü</option>
+								<select name="contestNum">
+									<option disabled style="color: gray" selected>ì°¸ê°€ ê³µëª¨ì „</option>
 									<%
 									if (memberInfo != null) {
-										for (int i = 0; i < myConName.size(); i++) {
-											out.print("<option>" + myConName.get(i) + "</option>");
+										personalcontestDAO MCL = new personalcontestDAO();//ë‚´ê°€ ì°¸ì—¬í•œ ê³µëª¨ì „ DAOí˜¸ì¶œ
+										conDetailDAO CDAO = new conDetailDAO();//ê³µëª¨ì „ DAO í˜¸ì¶œ
+										ArrayList<personalcontestVO> myConList = MCL.showPersonalContest(memberInfo.getMemId());//ë‚´ê°€ ì°¸ì—¬í•œ ê³µëª¨ì „ì˜ ì •ë³´ë¥¼ ArrayListì— ì¶”ê°€
+
+										for (int i = 0; i < myConList.size(); i++) {
+											out.print("<option value='" + (myConList.get(i)).getPcntNum() + "'>"
+											+ CDAO.selectCon(myConList.get(i).getPcntNum()).getConName() + "</option>");
 										}
 									}
 									%>
 								</select>
 							</div>
 							<div style="float: left; margin-left: 2%">
-								<select name="role">
-									<option disabled value="" style="color: gray" selected>Áö¿øÇÑ	Á÷±º</option>
-									<option value="produce">±âÈ¹</option>
-									<option value="R&D">°³¹ß</option>
-									<option value="desigen">µğÀÚÀÎ</option>
+								<select name="position">
+									<option disabled value="" style="color: gray" selected>ì§€ì›í•œ
+										ì§êµ°</option>
+									<option value="ê¸°íš">ê¸°íš</option>
+									<option value="ê°œë°œ">ê°œë°œ</option>
+									<option value="ë””ìì¸">ë””ìì¸</option>
 								</select>
 							</div>
-							<textarea placeholder="³»¿ë" style="margin: 2%"></textarea>
-							<button type="submit" class="site-btn" style="background-color:#4169E1">ÀÛ¼ºÇÏ±â</button>
+							<textarea placeholder="ë‚´ìš©" style="margin: 2%" name="Dairy"></textarea>
+							<button type="submit" class="site-btn"
+								style="background-color: #4169E1">ì‘ì„±í•˜ê¸°</button>
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Property Comparison Section End -->
+	<!-- ê³µëª¨ì „ í›„ê¸°(ì¼ê¸°ì“°ê¸°) ì‘ì„± ì„¹ì…˜ ë -->
 
 	<!-- Footer Section Begin -->
 	<footer class="footer-section">
@@ -376,7 +478,7 @@ if (memberInfo != null) {
 	<!-- Footer Section End -->
 
 	<script>
-		//·Î±×ÀÎ,È¸¿ø°¡ÀÔ ¹öÆ° ¸Ş¼Òµå
+		//ë¡œê·¸ì¸,íšŒì›ê°€ì… ë²„íŠ¼ ë©”ì†Œë“œ
 		$(function() {
 			$("#loginBtn img").mouseover(function() {
 				$(this).attr("src", "img/logo/loginOn.png");
@@ -386,7 +488,7 @@ if (memberInfo != null) {
 			});
 		});
 
-		//·Î±×¾Æ¿ô ¹öÆ° ¸Ş¼Òµå
+		//ë¡œê·¸ì•„ì›ƒ ë²„íŠ¼ ë©”ì†Œë“œ
 		$(function() {
 			$("#logoutBtn img").mouseover(function() {
 				$(this).attr("src", "img/logo/logoutOn.png");

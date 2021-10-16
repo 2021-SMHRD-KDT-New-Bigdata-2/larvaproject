@@ -141,4 +141,31 @@ public class personalcontestDAO extends DBconnection {
 		}
 		return cnt;
 	}
+
+	// 개인 공모전 내역 중 개인일기,지원분야 수정(매개변수 : 개인 공모전 번호,지원분야,일기)
+	public int updateDairy(String pcntNum, String position, String content) {
+
+		int cnt = 0;
+
+		try {
+
+			getConnection();
+
+			psmt = conn
+					.prepareStatement("update personal_contest set pcnt_content=? , pcnt_position=? where pcnt_num=?");
+
+			psmt.setString(1, content);
+			psmt.setString(2, position);
+			psmt.setString(3, pcntNum);
+
+			cnt = psmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return cnt;
+	}
+
 }

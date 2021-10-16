@@ -269,6 +269,9 @@ conDetailVO contest50 = contestDAO.selectCon(50);
 				</div>
 			</div>
 		</div>
+		
+		
+		
 		<div class="cal-right">
 			<div class="moim">
 				<div class="section-title" style="margin-left: -60px">
