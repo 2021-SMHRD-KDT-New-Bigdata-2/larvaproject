@@ -1,3 +1,6 @@
+<%@page import="com.model.conDetailDAO"%>
+<%@page import="com.model.conDetailVO"%>
+<%@page import="com.model.personalcontestDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.model.scoreDAO"%>
 <%@page import="com.model.personalcontestVO"%>
@@ -12,6 +15,20 @@ memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
 scoreDAO MS = new scoreDAO();
 if (memberInfo == null) {
 	out.println("<script>alert('로그인이 필요한 서비스입니다. 로그인페이지로 이동합니다.'); window.location='./LoginJSP.jsp';</script>");
+}
+%>
+<%
+ArrayList<String> myConName = new ArrayList<String>();
+
+if (memberInfo != null) {
+	personalcontestDAO MCL = new personalcontestDAO();//내가 참여한 공모전 DAO호출
+	conDetailDAO CDAO = new conDetailDAO();//공모전 DAO 호출
+	ArrayList<personalcontestVO> myConList = MCL.showPersonalContest(memberInfo.getMemId());//내가 참여한 공모전의 정보를 ArrayList에 추가
+	conDetailVO contest = null;//select 폼에 출력하기위해 공모전의 정보를 담을 모델생성
+
+	for (int i = 0; i < myConList.size(); i++) {
+		myConName.add(CDAO.selectCon(myConList.get(i).getCntNum()).getConName());
+	}
 }
 %>
 <head>
@@ -184,16 +201,24 @@ if (memberInfo == null) {
 						<div class="profile-agent-info">
 							<div class="pi-text">
 								<%
-								if (memberInfo.getMemLevel() < 33) {
+								if (memberInfo != null && memberInfo.getMemLevel() < 33) {
 									out.println("<img src='img/tiger/rank01.png'>");
-								} else if (memberInfo.getMemLevel() < 66) {
+								} else if (memberInfo != null && memberInfo.getMemLevel() < 66) {
 									out.println("<img src='img/tiger/rank02.png'>");
-								} else if (memberInfo.getMemLevel() <= 99) {
+								} else if (memberInfo != null && memberInfo.getMemLevel() <= 99) {
 									out.println("<img src=img/tiger/rank03.png>");
 								}
 								%>
-								<h5><%=memberInfo.getMemUserName()%></h5>
-								<span>Level: <%=memberInfo.getMemLevel()%></span>
+								<%
+								if (memberInfo != null) {
+									out.print("<h5>"+memberInfo.getMemUserName()+"</h5>");
+								}
+								%>
+								<%
+								if (memberInfo != null) {
+									out.print("<span>Level: "+memberInfo.getMemLevel()+"</span>");
+								}
+								%>
 							</div>
 						</div>
 					</div>
@@ -212,8 +237,9 @@ if (memberInfo == null) {
 							<p align="center"
 								style="color: blue; font-size: 35px; margin: 10%;">
 								<%
-								double avg = MS.showScore(memberInfo.getMemId());
-								if (avg == 0) {
+								if (memberInfo != null) {
+									double avg = MS.showScore(memberInfo.getMemId());
+									if (avg == 0) {
 								%>
 							
 							<h6 align="center">당신을 평가한 사람이 없습니다</h6>
@@ -222,6 +248,7 @@ if (memberInfo == null) {
 							%>
 							<%=avg%>
 							<%
+							}
 							}
 							%>
 							</p>
@@ -243,25 +270,29 @@ if (memberInfo == null) {
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="cf-content">
-						<form action="#" class="cc-form">
+						<form action="#" class="cc-form" style="height:400px">
 							<div style="margin: 2%">
-								<select name="">
-									<option value="" style="color: gray">참가 공모전</option>
-									<option value="">천하제일 무술대회</option>
-									<option value="">소주 많이먹기</option>
-									<option value="">햄최몇?</option>
+								<select name="contest" size="3">
+									<option disabled style="color: gray" selected>참가 공모전</option>
+									<%
+									if (memberInfo != null) {
+										for (int i = 0; i < myConName.size(); i++) {
+											out.print("<option>" + myConName.get(i) + "</option>");
+										}
+									}
+									%>
 								</select>
 							</div>
 							<div style="float: left; margin-left: 2%">
-								<select name="">
-									<option value="" style="color: gray">지원했던 직군</option>
-									<option value="">기획</option>
-									<option value="">개발</option>
-									<option value="">날먹</option>
+								<select name="role">
+									<option disabled value="" style="color: gray" selected>지원한	직군</option>
+									<option value="produce">기획</option>
+									<option value="R&D">개발</option>
+									<option value="desigen">디자인</option>
 								</select>
 							</div>
 							<textarea placeholder="내용" style="margin: 2%"></textarea>
-							<button type="submit" class="site-btn">보내기</button>
+							<button type="submit" class="site-btn" style="background-color:#4169E1">작성하기</button>
 						</form>
 					</div>
 				</div>
@@ -269,55 +300,6 @@ if (memberInfo == null) {
 		</div>
 	</section>
 	<!-- Property Comparison Section End -->
-
-	<!-- Contact Section Begin -->
-	<section class="contact-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="contact-info">
-						<div class="ci-item">
-							<div class="ci-icon">
-								<i class="fa fa-map-marker"></i>
-							</div>
-							<div class="ci-text">
-								<h5>Address</h5>
-								<p>160 Pennsylvania Ave NW, Washington, Castle, PA
-									16101-5161</p>
-							</div>
-						</div>
-						<div class="ci-item">
-							<div class="ci-icon">
-								<i class="fa fa-mobile"></i>
-							</div>
-							<div class="ci-text">
-								<h5>Phone</h5>
-								<ul>
-									<li>125-711-811</li>
-									<li>125-668-886</li>
-								</ul>
-							</div>
-						</div>
-						<div class="ci-item">
-							<div class="ci-icon">
-								<i class="fa fa-headphones"></i>
-							</div>
-							<div class="ci-text">
-								<h5>Support</h5>
-								<p>Support.aler@gmail.com</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="cs-map">
-			<iframe
-				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d735515.5813275519!2d-80.41163541934742!3d43.93644386501528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882a55bbf3de23d7%3A0x3ada5af229b47375!2sMono%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sbd!4v1583262687289!5m2!1sen!2sbd"
-				height="450" style="border: 0;" allowfullscreen=""></iframe>
-		</div>
-	</section>
-	<!-- Contact Section End -->
 
 	<!-- Footer Section Begin -->
 	<footer class="footer-section">

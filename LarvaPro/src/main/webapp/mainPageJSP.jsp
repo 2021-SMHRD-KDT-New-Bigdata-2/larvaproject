@@ -8,18 +8,19 @@
 
 <!DOCTYPE html>
 <html lang="zxx">
-<% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession"); %>
-<% 
-	conDetailDAO contestDAO=new conDetailDAO();
- 	ArrayList<conDetailVO> conArr =contestDAO.calList();
- 	
- 	conDetailVO contest100=contestDAO.selectCon(100);
- 	conDetailVO contest90=contestDAO.selectCon(90);
- 	conDetailVO contest50=contestDAO.selectCon(50);
- 	
- 	// 공모전 ArrayList에 담아 가져와서!
- 	
- %>
+<%
+memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
+%>
+<%
+conDetailDAO contestDAO = new conDetailDAO();
+ArrayList<conDetailVO> conArr = contestDAO.calList();
+
+conDetailVO contest100 = contestDAO.selectCon(100);
+conDetailVO contest90 = contestDAO.selectCon(90);
+conDetailVO contest50 = contestDAO.selectCon(50);
+
+// 공모전 ArrayList에 담아 가져와서!
+%>
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="Aler Template">
@@ -86,11 +87,13 @@
 		</div>
 		<div id="mobile-menu-wrap"></div>
 		<div class="om-widget">
-			<%if(memberInfo!=null){
-            	out.print("<a href='loginJSP.jsp' class='hw-btn'><img src='img/logo/loginOff.png' id='loginBtn'></a>");
-            }else{
-            	out.print("<a href='loginJSP.jsp' class='hw-btn'><img src='img/logo/logoutOff.png' id='logoutBtn'></a>");
-            }%>
+			<%
+			if (memberInfo != null) {
+				out.print("<a href='loginJSP.jsp' class='hw-btn'><img src='img/logo/loginOff.png' id='loginBtn'></a>");
+			} else {
+				out.print("<a href='loginJSP.jsp' class='hw-btn'><img src='img/logo/logoutOff.png' id='logoutBtn'></a>");
+			}
+			%>
 
 		</div>
 
@@ -109,11 +112,15 @@
 							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png"></a>
 						</div>
 						<nav class="nav-menu" style="margin-top: 5%;">
-							<%if(memberInfo==null){
-            	out.print("<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
-            }else if(memberInfo!=null){
-            	out.print("<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
-            }%>
+							<%
+							if (memberInfo == null) {
+								out.print(
+								"<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
+							} else if (memberInfo != null) {
+								out.print(
+								"<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
+							}
+							%>
 							<ul style="text-align: center; margin-left: 7%;">
 								<li class="active" style="font-size: 10px"><a
 									href="./mainPageJSP.jsp" style="color: #ffffff;">메인</a></li>
@@ -242,25 +249,20 @@
 
        // 여기서 이벤트 추가s
 
-      		<%for(int i = 0; i < conArr.size(); i+= 5){ %>
+      		<%for (int i = 0; i < conArr.size(); i += 5) {%>
       			     calendar.addEvent({
-				         title: '<%= conArr.get(i).getConName() %>',
-				         start: '<%= conArr.get(i).getConFromDate() %>',
-				         end: '<%= conArr.get(i).getConToDate() %>'
-			       })
-      			
-      		<% }  %>
- 
-      // 캘린더 랜더링
-      calendar.render();
-    });
-  	
-             
-   
-   })();
-   
-   
-</script>
+				         title: '<%=conArr.get(i).getConName()%>',
+				         start: '<%=conArr.get(i).getConFromDate()%>',
+				         end: '<%=conArr.get(i).getConToDate()%>
+						'
+										})
+					<%}%>
+						// 캘린더 랜더링
+								calendar.render();
+							});
+
+						})();
+					</script>
 				</div>
 				<div id='calendar-container'>
 					<div id='calendar'></div>
@@ -363,25 +365,23 @@
 						<h4>이달의 랭킹</h4>
 					</div>
 				</div>
-
 			</div>
 			<div class="row" style="margin-left: 50px">
 				<div class="col-md-4">
 					<div class="ts-item">
 						<div class="ts-text">
-							<p style="color:red">level:99</p>
+							<p style="color: red">level:99</p>
 							<img src="img/tiger/tiger03.png" alt="">
 							<h5>닉네임</h5>
 							<span>인사말</span> <span>평점</span>
 							<p>공모전 수상 내역</p>
-
 						</div>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="ts-item">
 						<div class="ts-text">
-							<p style="color:red">level:76</p>
+							<p style="color: red">level:76</p>
 							<img src="img/tiger/tiger02.png" alt="">
 							<h5>닉네임</h5>
 							<span>인사말</span> <span>평점</span>
@@ -392,7 +392,7 @@
 				<div class="col-md-4">
 					<div class="ts-item">
 						<div class="ts-text">
-							<p style="color:red">level:22</p>
+							<p style="color: red">level:22</p>
 							<img src="img/tiger/tiger01.png" alt="">
 							<h5>닉네임</h5>
 							<span>인사말</span> <span>평점</span>
@@ -468,7 +468,9 @@
 				<p>
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					Copyright &copy;
-					<script>document.write(new Date().getFullYear());</script>
+					<script>
+						document.write(new Date().getFullYear());
+					</script>
 					All rights reserved | This template is made with <i
 						class="fa fa-heart" aria-hidden="true"></i> by <a
 						href="https://colorlib.com" target="_blank">Colorlib</a>
@@ -480,26 +482,26 @@
 	<!-- Footer Section End -->
 
 	<script>
-    //로그인,회원가입 버튼 메소드
-    $(function(){
-    	$("#loginBtn img").mouseover(function(){
-    		$(this).attr("src","img/logo/loginOn.png");
-    	});
-    	$("#loginBtn img").mouseout(function(){
-    		$(this).attr("src","img/logo/loginOff.png");
-    	});
-    });
-    
-    //로그아웃 버튼 메소드
-    $(function(){
-    	$("#logoutBtn img").mouseover(function(){
-    		$(this).attr("src","img/logo/logoutOn.png");
-    	});
-    	$("#logoutBtn img").mouseout(function(){
-    		$(this).attr("src","img/logo/logoutOff.png");
-    	});
-    });
-    </script>
+		//로그인,회원가입 버튼 메소드
+		$(function() {
+			$("#loginBtn img").mouseover(function() {
+				$(this).attr("src", "img/logo/loginOn.png");
+			});
+			$("#loginBtn img").mouseout(function() {
+				$(this).attr("src", "img/logo/loginOff.png");
+			});
+		});
+
+		//로그아웃 버튼 메소드
+		$(function() {
+			$("#logoutBtn img").mouseover(function() {
+				$(this).attr("src", "img/logo/logoutOn.png");
+			});
+			$("#logoutBtn img").mouseout(function() {
+				$(this).attr("src", "img/logo/logoutOff.png");
+			});
+		});
+	</script>
 
 	<!-- Js Plugins -->
 	<script src="js/jquery-3.3.1.min.js"></script>
