@@ -144,7 +144,7 @@ span {
                     		memberVO result= (memberVO)session.getAttribute("loginMemberSession");
                     		String fail=(String)session.getAttribute("loginMemberFail");
                     		
-                    		if(result!=null){
+                    		if(result==null){
                     			out.println("<script>alert('환영합니다.'); window.location='./mainPageJSP.jsp';</script>");
 
                     			

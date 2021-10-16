@@ -268,7 +268,7 @@
                     <div class="as-item1">
                         <div class="as-item">
                             <div class="as-pic">
-                                <img src="img/hero/gong1.jpg" alt="">
+                                <img src="<%=contest100.getConPostSmall() %>" alt="">
                             </div>
                             <div class="as-text" >
                                 <div class="at-title">
@@ -287,7 +287,7 @@
  <div class="as-item2">
                         <div class="as-item">
                             <div class="as-pic">
-                                <img src="img/hero/gong2.jpg" alt="">
+                                <img src="<%=contest90.getConPostSmall() %>" alt="">
                             </div>
                             <div class="as-text" >
                                 <div class="at-title">
@@ -306,7 +306,7 @@
  <div class="as-item3">
                         <div class="as-item">
                             <div class="as-pic">
-                                <img src="img/hero/gong3.jpg" alt="">
+                                <img src="<%=contest50.getConPostSmall() %>" alt="">
                             </div>
                             <div class="as-text">
                                 <div class="at-title">
