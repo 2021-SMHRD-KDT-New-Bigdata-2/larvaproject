@@ -11,7 +11,7 @@ public class memberDAO extends DBconnection {
 			
 			try {
 				
-				psmt=conn.prepareStatement("insert into member_info values(?,?,?,?,?,?,?,sysdate)");
+				psmt=conn.prepareStatement("insert into member_info values(?,?,?,?,?,?,?,sysdate,1,'아직 인삿말이 없습니다.')");
 				psmt.setString(1, member.getMemId());
 				psmt.setString(2, member.getMemPw());
 				psmt.setString(3, member.getMemUserName());
@@ -49,7 +49,8 @@ public class memberDAO extends DBconnection {
 				String memTel=null;
 				String memAdress=null;
 				String memDate=null;
-				int memLevel=0;
+				int memLevel=1;
+				String memHi="아직 인삿말이 없습니다.";
 				
 				try {
 					
@@ -69,8 +70,9 @@ public class memberDAO extends DBconnection {
 						memAdress=rs.getString(7);
 						memDate=rs.getString(8);
 						memLevel=rs.getInt(9);
+						memHi=rs.getString(10);
 						
-						memberInfo=new memberVO(memId,memPw,memUserName,memNickName,memEmail,memTel,memAdress,memDate,memLevel);
+						memberInfo=new memberVO(memId,memPw,memUserName,memNickName,memEmail,memTel,memAdress,memDate,memLevel,memHi);
 					}
 				}catch (Exception e) {
 					return memberInfo;
@@ -113,6 +115,43 @@ public class memberDAO extends DBconnection {
 				
 				if(result>0) {
 					System.out.println("레벨업~");
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			} finally {
+				dbClose();
+			}
+		}
+		
+		//인삿말 변경 메소드
+		public void changeHi(String id,String hi) {
+			
+			String nowHi=null;
+			int result=0;
+			
+			try {
+				getConnection();
+				
+				psmt = conn.prepareStatement("select*from member_info where mem_id=?");
+				
+				psmt.setString(1, id);
+				rs=psmt.executeQuery();
+				
+				if(rs.next()) {
+					nowHi=rs.getString(10);
+				}
+				
+				nowHi=hi;
+				
+				psmt =conn.prepareStatement("update member_info set mem_Hi=? where mem_id=?");
+				
+				psmt.setString(1, nowHi);
+				psmt.setString(2,id);
+				
+				result=psmt.executeUpdate();
+				
+				if(result>0) {
+					System.out.println("인삿말 변경완료");
 				}
 			} catch(Exception e) {
 				e.printStackTrace();

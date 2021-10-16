@@ -10,13 +10,14 @@ public class memberVO {
 	private String memAdress;
 	private String memSignUpDate;
 	private int memLevel;
+	private String memHi;
 	
 	public memberVO() {
 		
 	}
 	
 	public memberVO(String memId, String memPw, String memUserName, String memNickName, String memEmail, String memTel,
-			String memAdress, String memSignUpDate, int memLevel) {
+			String memAdress, String memSignUpDate, int memLevel, String memHi) {
 		super();
 		this.memId = memId;
 		this.memPw = memPw;
@@ -27,10 +28,19 @@ public class memberVO {
 		this.memAdress = memAdress;
 		this.memSignUpDate = memSignUpDate;
 		this.memLevel = memLevel;
+		this.memHi = memHi;
 	}
 
 	public String getMemId() {
 		return memId;
+	}
+
+	public String getMemHi() {
+		return memHi;
+	}
+
+	public void setMemHi(String memHi) {
+		this.memHi = memHi;
 	}
 
 	public void setMemId(String memId) {

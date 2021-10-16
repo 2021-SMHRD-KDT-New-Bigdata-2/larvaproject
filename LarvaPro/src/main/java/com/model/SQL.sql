@@ -11,7 +11,7 @@ create table member_info(
 	mem_sign_up_date date not null
 );
 
-
+alter table member_info add mem_hi varchar2(100)
 
 /* 공모전 테이블 */
 create table contest(
