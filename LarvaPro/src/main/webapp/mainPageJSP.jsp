@@ -14,8 +14,8 @@
  	ArrayList<conDetailVO> conArr =contestDAO.calList();
  	
  	conDetailVO contest100=contestDAO.selectCon(100);
- 	conDetailVO contest99=contestDAO.selectCon(73);
- 	conDetailVO contest98=contestDAO.selectCon(50);
+ 	conDetailVO contest90=contestDAO.selectCon(90);
+ 	conDetailVO contest50=contestDAO.selectCon(50);
  	
  	// 공모전 ArrayList에 담아 가져와서!
  	
@@ -152,12 +152,12 @@
                    	<a href="#"><img src="<%=contest100.getConPostBig()%>"></a>
                 </div>
                 <div class="hs-item set-bg">
-                	<a href="#"><img src="<%=contest99.getConPostBig()%>"></a>
+                	<a href="#"><img src="<%=contest90.getConPostBig()%>"></a>
                 <div class="row">
                 </div>
                 </div>
                 <div class="hs-item set-bg">
-                	<a href="#"><img src="<%=contest98.getConPostBig()%>"></a>
+                	<a href="#"><img src="<%=contest50.getConPostBig()%>"></a>
                 </div>
             </div>
         </div>
