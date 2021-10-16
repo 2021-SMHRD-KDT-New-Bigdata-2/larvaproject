@@ -22,7 +22,6 @@ public class DBconnection {
 					
 			//2. 데이터베이스 연결 객체(Connection) 생성
 			conn = DriverManager.getConnection(url, user, password);
-			System.out.println("연결성공");
 		} catch (Exception e) {
 			System.out.println("연결실패");
 			e.printStackTrace();

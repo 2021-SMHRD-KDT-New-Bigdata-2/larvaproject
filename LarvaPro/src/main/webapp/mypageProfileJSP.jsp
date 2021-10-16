@@ -191,6 +191,27 @@ if (memberInfo == null) {
 	</section>
 	<!-- Breadcrumb Section End -->
 
+	<%
+	if (memberInfo != null) {
+		personalcontestDAO MCL = new personalcontestDAO();//내가 참여한 공모전 DAO호출
+		conDetailDAO CDAO = new conDetailDAO();//공모전 DAO 호출
+		ArrayList<personalcontestVO> myConList = MCL.showPersonalContest(memberInfo.getMemId());//내가 참여한 공모전의 정보를 ArrayList에 추가
+
+		int mojip = 0;
+		int hanuenjung = 0;
+		int end = 0;
+
+		for (int i = 0; i < myConList.size(); i++) {
+			if (myConList.get(i).getPcntType() == 0) {
+		mojip++;
+			} else if (myConList.get(i).getPcntType() == 1) {
+		hanuenjung++;
+			} else if (myConList.get(i).getPcntType() == 2) {
+		end++;
+			}
+		}
+	%>
+
 	<!-- 내정보 섹션 -->
 	<section class="profile-section spad">
 		<div class="section-title">
@@ -201,16 +222,18 @@ if (memberInfo == null) {
 				<div class="row">
 					<div class="col-lg-4">
 						<div class="profile-agent-info">
-							<div class="pi-text">
+							<div class="pi-text" style="padding-top:0px">
+							<div style="width:70px; height:70px">
 								<%
 								if (memberInfo != null && memberInfo.getMemLevel() < 33) {
-									out.println("<img src='img/tiger/rank01.png'>");
+									out.println("<img src='img/tiger/tiger_profile01.png'>");
 								} else if (memberInfo != null && memberInfo.getMemLevel() < 66) {
-									out.println("<img src='img/tiger/rank02.png'>");
+									out.println("<img src='img/tiger/tiger_profile02.png'>");
 								} else if (memberInfo != null && memberInfo.getMemLevel() <= 99) {
-									out.println("<img src=img/tiger/rank03.png>");
+									out.println("<img src=img/tiger/tiger_profile03.png>");
 								}
 								%>
+								</div>
 								<%
 								if (memberInfo != null) {
 									out.print("<h5>" + memberInfo.getMemUserName() + "</h5>");
@@ -227,9 +250,9 @@ if (memberInfo == null) {
 					<div class="col-lg-4">
 						<div class="profile-agent-widget">
 							<ul>
-								<li>진행중인 공모전 갯수 <span style="color: red">3</span></li>
-								<li>팀원 모집중인 공모전 갯수 <span style="color: red">1</span></li>
-								<li>끝난 공모전 갯수 <span style="color: red">4</span></li>
+								<li>팀원 모집중인 공모전 갯수 <span style="color: red"><%=mojip%></span></li>
+								<li>현재 참가중인 공모전 갯수 <span style="color: red"><%=hanuenjung%></span></li>
+								<li>끝난 공모전 갯수 <span style="color: red"><%=end%></span></li>
 							</ul>
 						</div>
 					</div>
@@ -278,20 +301,16 @@ if (memberInfo == null) {
 		</thead>
 		<tbody>
 			<%
-			if (memberInfo != null) {
-				personalcontestDAO MCL = new personalcontestDAO();//내가 참여한 공모전 DAO호출
-				conDetailDAO CDAO = new conDetailDAO();//공모전 DAO 호출
-				ArrayList<personalcontestVO> myConList = MCL.showPersonalContest(memberInfo.getMemId());//내가 참여한 공모전의 정보를 ArrayList에 추가
-				for (int i = 0; i < myConList.size(); i++) {
-					if (myConList.get(i).getPcntContent() == null) {
+			for (int i = 0; i < myConList.size(); i++) {
+				if (myConList.get(i).getPcntContent() == null) {
 			%>
 			<tr>
 				<td style="color: blue">작성 전</td>
 				<th style="background-color: #B8D7FF">
 					<div>
 						<ul>
-							<li class="menu" style="list-style:none"><a><%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConName()%></a>
-								<ul class="hide" style="list-style:none">
+							<li class="menu" style="list-style: none"><a><%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConName()%></a>
+								<ul class="hide" style="list-style: none">
 									<li>
 										<section class="contact-form-section spad">
 											<div class="container">
@@ -324,7 +343,8 @@ if (memberInfo == null) {
 						</ul>
 					</div>
 				</th>
-				<th style="background-color: #B8D7FF"><%=myConList.get(i).getPcntPosition()%></td>
+				<th style="background-color: #B8D7FF"><%=myConList.get(i).getPcntPosition()%>
+				</td>
 				<th style="background-color: #B8D7FF">~<%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConToDate()%>
 					까지
 				</th>
@@ -337,8 +357,8 @@ if (memberInfo == null) {
 				<td>
 					<div>
 						<ul>
-							<li class="menu" style="list-style:none"><a><%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConName()%></a>
-								<ul class="hide" style="list-style:none">
+							<li class="menu" style="list-style: none"><a><%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConName()%></a>
+								<ul class="hide" style="list-style: none">
 									<li>
 										<section class="contact-form-section spad">
 											<div class="container">
@@ -347,7 +367,7 @@ if (memberInfo == null) {
 														<div class="cf-content">
 															<form action="myDairyService" class="cc-form">
 																<div style="float: left; margin-left: 2%">
-																	<%=myConList.get(i).getPcntContent() %>
+																	<%=myConList.get(i).getPcntContent()%>
 																</div>
 															</form>
 														</div>

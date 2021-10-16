@@ -167,9 +167,9 @@
       <th scope="row"><%=i+1%></th>
       <td style="color : black;"><a href="ContestDetailsJSP.jsp"><%=list.get(i).getConName() %></a></td>
       <td>admin</td>
-      <td><%=list.get(i).getConFromDate()+"~"+list.get(i).getConToDate() %></td>
-      <td><%="null" %></td>
-      <td><%="null" %></td>
+      <td><%=list.get(i).getConFromDate()+"~<br>"+list.get(i).getConToDate() %></td>
+      <td><%=0 %></td>
+      <td><%=0 %></td>
     </tr>
     	<%}%>
     

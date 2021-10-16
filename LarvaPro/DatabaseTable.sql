@@ -10,7 +10,8 @@ drop table score;
 drop table recruit_post;
 drop table contest;
 drop table member_info;
-select * from contest;
+
+select * from personal_contest;
 
 /*시퀀스삭제*/
 drop sequence contest_number;

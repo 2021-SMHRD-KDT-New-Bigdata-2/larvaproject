@@ -3,6 +3,7 @@ package com.model;
 import java.util.ArrayList;
 
 public class conDetailDAO extends DBconnection{
+	
 	//  공모전 상세내용, 삽입.
 	public int insertConDetail(conDetailVO vo) {
 		
@@ -13,7 +14,6 @@ public class conDetailDAO extends DBconnection{
 			getConnection();
 			
 			psmt = conn.prepareStatement("insert into contest values(contest_number.nextval,?,?,?,?,?,?,?,?,?,?)");
-			
 			
 			psmt.setString(1, vo.getConName());
 			psmt.setString(2, vo.getConHost());
@@ -46,8 +46,6 @@ public class conDetailDAO extends DBconnection{
 			getConnection();
 			
 			psmt = conn.prepareStatement("update contest set cnt_name=?, cnt_host=?, cnt_field=?, cnt_qualification=?, cnt_from_date=?, cnt_to_date=?, cnt_homepage=?, cnt_img_big=?, cnt_img_small=?,cnt_content=?");
-			
-			
 			
 			psmt.setString(1, conName );
 			psmt.setString(2,conHost );
@@ -108,8 +106,8 @@ public class conDetailDAO extends DBconnection{
 				
 				while(rs.next()) {
 					String conName = rs.getString("cnt_name");
-					String conFromDate = rs.getString("cnt_from_date");
-					String conToDate = rs.getString("cnt_to_date");
+					String conFromDate = rs.getString("cnt_from_date").substring(0, 10);
+					String conToDate = rs.getString("cnt_to_date").substring(0, 10);
 					
 					conDetailVO vo2 = new conDetailVO(conName, conFromDate, conToDate);
 					showConDetail_list.add(vo2);
@@ -154,8 +152,10 @@ public class conDetailDAO extends DBconnection{
 						host=rs.getString(3);
 						filed=rs.getString(4);
 						qualfication=rs.getString(5);
-						fromDate=rs.getString(6);
-						toDate=rs.getString(7);
+						
+						fromDate=rs.getString(6).substring(0, 10);;
+						toDate=rs.getString(7).substring(0, 10);;
+						
 						homepage=rs.getString(8);
 						imgBig=rs.getString(9);
 						imgSmall=rs.getString(10);
@@ -195,8 +195,8 @@ public class conDetailDAO extends DBconnection{
 					// 반복할 때마다 ExboardDTO 객체를 생성 및 데이터 저장
 					conDetailVO board = new conDetailVO();
 					board.setConName(rs.getString("cnt_name"));
-					board.setConFromDate(rs.getString("cnt_from_date"));
-					board.setConToDate(rs.getString("cnt_to_date"));
+					board.setConFromDate(rs.getString("cnt_from_date").substring(0, 10));
+					board.setConToDate(rs.getString("cnt_to_date").substring(0, 10));
 
 					list.add(board); // list에 0번 인덱스부터 board 객체의 참조값을 저장
 				} while (rs.next());
@@ -225,8 +225,8 @@ public class conDetailDAO extends DBconnection{
 				do {
 					conDetailVO board = new conDetailVO();
 					board.setConName(rs.getString("cnt_name"));
-					board.setConFromDate(rs.getString("cnt_from_date"));
-					board.setConToDate(rs.getString("cnt_to_date"));
+					board.setConFromDate(rs.getString("cnt_from_date").substring(0, 10));
+					board.setConToDate(rs.getString("cnt_to_date").substring(0,10));
 
 					list.add(board);
 				} while (rs.next());
