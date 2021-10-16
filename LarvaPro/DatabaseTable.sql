@@ -11,8 +11,6 @@ drop table recruit_post;
 drop table contest;
 drop table member_info;
 
-select * from personal_contest;
-
 /*시퀀스삭제*/
 drop sequence contest_number;
 drop sequence recruit_post_number;
@@ -34,7 +32,7 @@ create table member_info(
 	mem_sign_up_date date not null
 );
 	
-	select*from personal_contest
+	select*from member_info
 
 /* 공모전 테이블 */
 create table contest(

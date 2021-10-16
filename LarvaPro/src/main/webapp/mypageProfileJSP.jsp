@@ -213,7 +213,7 @@ if (memberInfo == null) {
 	%>
 
 	<!-- 내정보 섹션 -->
-	<section class="profile-section spad">
+	<section class="profile-section spad" style="margin-bottom:10%">
 		<div class="section-title">
 			<h4 style="margin-left: 21.5%">내정보</h4>
 		</div>
@@ -222,17 +222,17 @@ if (memberInfo == null) {
 				<div class="row">
 					<div class="col-lg-4">
 						<div class="profile-agent-info">
-							<div class="pi-text" style="padding-top:0px">
-							<div style="width:70px; height:70px">
-								<%
-								if (memberInfo != null && memberInfo.getMemLevel() < 33) {
-									out.println("<img src='img/tiger/tiger_profile01.png'>");
-								} else if (memberInfo != null && memberInfo.getMemLevel() < 66) {
-									out.println("<img src='img/tiger/tiger_profile02.png'>");
-								} else if (memberInfo != null && memberInfo.getMemLevel() <= 99) {
-									out.println("<img src=img/tiger/tiger_profile03.png>");
-								}
-								%>
+							<div class="pi-text" style="padding-top: 0px">
+								<div style="width: 70px; height: 70px">
+									<%
+									if (memberInfo != null && memberInfo.getMemLevel() < 33) {
+										out.println("<img src='img/tiger/tiger_profile01.png'>");
+									} else if (memberInfo != null && memberInfo.getMemLevel() < 66) {
+										out.println("<img src='img/tiger/tiger_profile02.png'>");
+									} else if (memberInfo != null && memberInfo.getMemLevel() <= 99) {
+										out.println("<img src=img/tiger/tiger_profile03.png>");
+									}
+									%>
 								</div>
 								<%
 								if (memberInfo != null) {
@@ -285,113 +285,233 @@ if (memberInfo == null) {
 	</section>
 	<!-- 내정보 섹션 끝-->
 
-	<!-- 내 일기 섹션 -->
-	<div class="section-title" style="margin-top: 5%">
-		<h4 style="margin-left: 21.5%">내 일기</h4>
+
+	<div style="margin-bottom: 10%">
+		<div class="section-title" style="margin-top: 5%">
+			<h4 style="margin-left: 21.5%">개인정보 수정</h4>
+		</div>
+		<form action="memberInfoUpdate" method="post">
+			<table class="table table-hover"
+				style="width: 1100px; margin-left: 21.5%">
+				<tbody>
+					<tr>
+						<th style="width: 250px; background-color: #dcdcdc">이름</th>
+						<td style="width: 350px">
+							<div>
+								<ul>
+									<li class="menu" style="list-style: none"><a><%=memberInfo.getMemUserName() %></a>
+										<ul class="hide" style="list-style: none">
+											<li><input type="text"
+												value="<%=memberInfo.getMemUserName() %>" name="name"></li>
+										</ul></li>
+								</ul>
+							</div>
+						</td>
+						<th style="width: 250px; background-color: #dcdcdc">비밀번호</th>
+						<td style="width: 350px"><div>
+								<ul>
+									<li class="menu" style="list-style: none"><a
+										style="color: red">변경하기</a>
+										<ul class="hide" style="list-style: none">
+											<li><input type="password"
+												value="<%=memberInfo.getMemPw() %>" name="pw"></li>
+										</ul></li>
+								</ul>
+							</div></td>
+					</tr>
+					<tr>
+						<th style="width: 250px; background-color: #dcdcdc">닉네임</th>
+						<td style="width: 350px"><div>
+								<ul>
+									<li class="menu" style="list-style: none"><a><%=memberInfo.getMemNickName() %></a>
+										<ul class="hide" style="list-style: none">
+											<li><input type="text"
+												value="<%=memberInfo.getMemNickName() %>" name="nick"></li>
+										</ul></li>
+								</ul>
+							</div></td>
+						<th style="width: 250px; background-color: #dcdcdc">주소</th>
+						<td style="width: 350px"><div>
+								<ul>
+									<li class="menu" style="list-style: none"><a><%=memberInfo.getMemAdress() %></a>
+										<ul class="hide" style="list-style: none">
+											<li><input type="text"
+												value="<%=memberInfo.getMemAdress() %>" name="add"></li>
+										</ul></li>
+								</ul>
+							</div></td>
+					</tr>
+					<tr>
+						<th style="width: 250px; background-color: #dcdcdc">이메일</th>
+						<td style="width: 350px"><div>
+								<ul>
+									<li class="menu" style="list-style: none"><a><%=memberInfo.getMemEmail() %></a>
+										<ul class="hide" style="list-style: none">
+											<li><input type="email"
+												value="<%=memberInfo.getMemEmail() %>" name="email"></li>
+										</ul></li>
+								</ul>
+							</div></td>
+						<th style="width: 250px; background-color: #dcdcdc">현재 레벨</th>
+						<td style="width: 350px"><%=memberInfo.getMemLevel() %></td>
+					</tr>
+					<tr>
+						<th style="width: 250px; background-color: #dcdcdc">전화번호</th>
+						<td style="width: 350px"><div>
+								<ul>
+									<li class="menu" style="list-style: none"><a><%=memberInfo.getMemTel() %></a>
+										<ul class="hide" style="list-style: none">
+											<li><input type="text"
+												value="<%=memberInfo.getMemTel() %>" name="tel"></li>
+										</ul></li>
+								</ul>
+							</div></td>
+						<th style="width: 250px; background-color: #dcdcdc">가입 날짜</th>
+						<td style="width: 350px"><%=memberInfo.getMemSignUpDate() %></td>
+					</tr>
+					<tr>
+						<th style="width: 250px; background-color: #dcdcdc">인삿말</th>
+						<td style="width: 350px"><div>
+								<ul>
+									<li class="menu" style="list-style: none"><a><%=memberInfo.getMemHi() %></a>
+										<ul class="hide" style="list-style: none">
+											<li><input type="text"
+												value="<%=memberInfo.getMemHi() %>" name="hi"></li>
+										</ul></li>
+								</ul>
+							</div></td>
+						<th style="width: 250px"></th>
+						<td style="width: 350px"></td>
+					</tr>
+				</tbody>
+			</table>
+			<div style="margin-left:45%">
+			<button type="submit"
+								class="site-btn" style="background-color: #4169E1"
+								name="memberInfoUpdate" value="<%=memberInfo.getMemId()%>">회원정보 수정</button></div>
+		</form>
 	</div>
-	<table class="table table-hover"
-		style="width: 1100px; margin-left: 21.5%">
-		<thead>
-			<tr>
-				<th scope="col" style="width: 100px"></th>
-				<th scope="col" style="width: 600px">참여 공모전 이름</th>
-				<th scope="col" style="width: 100px">역할</th>
-				<th scope="col" style="width: 300px">마감일</th>
-			</tr>
-		</thead>
-		<tbody>
-			<%
-			for (int i = 0; i < myConList.size(); i++) {
-				if (myConList.get(i).getPcntContent() == null) {
-			%>
-			<tr>
-				<td style="color: blue">작성 전</td>
-				<th style="background-color: #B8D7FF">
-					<div>
-						<ul>
-							<li class="menu" style="list-style: none"><a><%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConName()%></a>
-								<ul class="hide" style="list-style: none">
-									<li>
-										<section class="contact-form-section spad">
-											<div class="container">
-												<div class="row">
-													<div class="col-lg-12">
-														<div class="cf-content">
-															<form action="myDairyService" class="cc-form">
-																<div style="float: left; margin-left: 2%">
-																	<select name="position">
-																		<option disabled value="" style="color: gray" selected>지원한
-																			직군</option>
-																		<option value="기획">기획</option>
-																		<option value="개발">개발</option>
-																		<option value="디자인">디자인</option>
-																	</select>
-																</div>
-																<textarea placeholder="내용" style="margin: 2%"
-																	name="Dairy"></textarea>
-																<button type="submit" class="site-btn"
-																	style="background-color: #4169E1" name="contestNum"
-																	value="<%=myConList.get(i).getPcntNum()%>">작성하기</button>
-															</form>
+
+
+	<!-- 내 일기 섹션 -->
+	<div style="margin-bottom: 10%">
+		<div class="section-title" style="margin-top: 5%">
+			<h4 style="margin-left: 21.5%">내 일기</h4>
+		</div>
+		<table class="table table-hover"
+			style="width: 1100px; margin-left: 21.5%">
+			<thead>
+				<tr>
+					<th scope="col" style="width: 100px"></th>
+					<th scope="col" style="width: 600px">참여 공모전 이름</th>
+					<th scope="col" style="width: 100px">역할</th>
+					<th scope="col" style="width: 300px">마감일</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%
+				if (myConList.size() == 0) {
+				%>
+				<tr>
+					<th></th>
+					<td>아직 참가한 공모전이 없습니다.</td>
+					<th></th>
+				</tr>
+				<%
+				} else if (myConList.size() > 0) {
+				for (int i = 0; i < myConList.size(); i++) {
+					if (myConList.get(i).getPcntContent() == null) {
+				%>
+				<tr>
+					<td style="color: blue">작성 전</td>
+					<th style="background-color: #B8D7FF">
+						<div>
+							<ul>
+								<li class="menu" style="list-style: none"><a><%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConName()%></a>
+									<ul class="hide" style="list-style: none">
+										<li>
+											<section class="contact-form-section spad">
+												<div class="container">
+													<div class="row">
+														<div class="col-lg-12">
+															<div class="cf-content">
+																<form action="myDairyService" class="cc-form">
+																	<div style="float: left; margin-left: 2%">
+																		<select name="position">
+																			<option disabled value="" style="color: gray"
+																				selected>지원한 직군</option>
+																			<option value="기획">기획</option>
+																			<option value="개발">개발</option>
+																			<option value="디자인">디자인</option>
+																		</select>
+																	</div>
+																	<textarea placeholder="내용" style="margin: 2%"
+																		name="Dairy"></textarea>
+																	<button type="submit" class="site-btn"
+																		style="background-color: #4169E1" name="contestNum"
+																		value="<%=myConList.get(i).getPcntNum()%>">작성하기</button>
+																</form>
+															</div>
 														</div>
 													</div>
 												</div>
-											</div>
-										</section>
-									</li>
-								</ul></li>
-						</ul>
-					</div>
-				</th>
-				<th style="background-color: #B8D7FF"><%=myConList.get(i).getPcntPosition()%>
-				</td>
-				<th style="background-color: #B8D7FF">~<%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConToDate()%>
-					까지
-				</th>
-			</tr>
-			<%
-			} else {
-			%>
-			<tr>
-				<td style="color: gray">작성완료</td>
-				<td>
-					<div>
-						<ul>
-							<li class="menu" style="list-style: none"><a><%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConName()%></a>
-								<ul class="hide" style="list-style: none">
-									<li>
-										<section class="contact-form-section spad">
-											<div class="container">
-												<div class="row">
-													<div class="col-lg-12">
-														<div class="cf-content">
-															<form action="myDairyService" class="cc-form">
-																<div style="float: left; margin-left: 2%">
-																	<%=myConList.get(i).getPcntContent()%>
-																</div>
-															</form>
+											</section>
+										</li>
+									</ul></li>
+							</ul>
+						</div>
+					</th>
+					<th style="background-color: #B8D7FF"><%=myConList.get(i).getPcntPosition()%>
+					</td>
+					<th style="background-color: #B8D7FF">~<%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConToDate()%>
+						까지
+					</th>
+				</tr>
+				<%
+				} else {
+				%>
+				<tr>
+					<td style="color: gray">작성완료</td>
+					<td>
+						<div>
+							<ul>
+								<li class="menu" style="list-style: none"><a><%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConName()%></a>
+									<ul class="hide" style="list-style: none">
+										<li>
+											<section class="contact-form-section spad">
+												<div class="container">
+													<div class="row">
+														<div class="col-lg-12">
+															<div class="cf-content">
+																<form action="myDairyService" class="cc-form">
+																	<div style="float: left; margin-left: 2%">
+																		<%=myConList.get(i).getPcntContent()%>
+																	</div>
+																</form>
+															</div>
 														</div>
 													</div>
 												</div>
-											</div>
-										</section>
-									</li>
-								</ul></li>
-						</ul>
-					</div>
-				</td>
-				<td><%=myConList.get(i).getPcntPosition()%></td>
-				<td>~<%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConToDate()%>
-					까지
-				</td>
-			</tr>
-			<%
-			}
-			}
-			}
-			%>
-		</tbody>
-	</table>
+											</section>
+										</li>
+									</ul></li>
+							</ul>
+						</div>
+					</td>
+					<td><%=myConList.get(i).getPcntPosition()%></td>
+					<td>~<%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConToDate()%>
+						까지
+					</td>
+				</tr>
+				<%
+				}
+				}
+				}
+				}
+				%>
+			</tbody>
+		</table>
+	</div>
 	<!-- 내 일기 섹션 끝 -->
 
 	<!-- Footer Section Begin -->
