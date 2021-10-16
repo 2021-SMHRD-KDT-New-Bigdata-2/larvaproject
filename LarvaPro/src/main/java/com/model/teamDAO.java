@@ -13,31 +13,13 @@ public class teamDAO extends DBconnection{
 			
 			getConnection();
 			
-			psmt = conn.prepareStatement("insert into group_head values(group_head_number.nextval,?)");
+			psmt = conn.prepareStatement("insert into team_member values(?,?,?,?)");
 			
-			psmt.setString(1, vo.getGhMemId());
+			psmt.setString(1, vo.getMemId());
+			psmt.setInt(2, vo.getCntNum());
+			psmt.setInt(3, vo.getTmNum());
+			psmt.setInt(4, vo.getTmType());
 			
-			cnt = psmt.executeUpdate();
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		} finally {
-			dbClose();
-		}
-		return cnt;
-	}
-	//ÆÀ Âü°¡
-	public int joinTeam(teamVO vo) {
-		
-		int cnt = 0;
-		
-		try {
-			
-			getConnection();
-			
-			psmt = conn.prepareStatement("insert into group_head values(group_mem_number.nextval,?)");
-			
-			psmt.setString(1, vo.getGmMemId());
 			
 			cnt = psmt.executeUpdate();
 			
@@ -48,73 +30,26 @@ public class teamDAO extends DBconnection{
 		}
 		return cnt;
 	}
-	//ÆÀ ÇØÁ¦
-	public int disbandTeam(String num, String memId) {
+	//ÆÀ¿ø ÀÌ¸§ Á¶È¸
+	public ArrayList<teamVO> showTeamMemberId(int cnt_num,int tm_num) {
 		
-		int cnt = 0;
-		
-		try {
-			
-			getConnection();
-			
-			psmt = conn.prepareStatement("delete from group_head where gh_num=?,mem_id=?");
-			
-			psmt.setString(1, num);
-			psmt.setString(2, memId);
-			
-			cnt = psmt.executeUpdate();
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			dbClose();
-		}
-		return cnt;
-	}
-	//ÆÀ ³»º¸³»±â, ÆÀ ³ª°¡±â
-	public int leaveTeam(String num, String memId) {
-		
-		int cnt = 0;
-		
-		try {
-			
-			getConnection();
-			
-			psmt = conn.prepareStatement("delete from group_mem where gh_num=?,mem_id=?");
-			
-			psmt.setString(1, num);
-			psmt.setString(2, memId);
-			
-			cnt = psmt.executeUpdate();
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			dbClose();
-		}
-		return cnt;
-	}
-	//ÆÀ¿ø Á¶È¸
-	public ArrayList<teamVO> showTeamMember(String num) {
-		
-		ArrayList<teamVO> teamMem_list = new ArrayList<teamVO>();
+		ArrayList<teamVO> teamMemNum_list = new ArrayList<teamVO>();
 		
 		try {
 			getConnection();
 			
-			psmt = conn.prepareStatement("select gh.gh_num as num, gh.mem_id as head, gm.mem_id as member from group_head gh, group_mem gm where gh.gh_num = gm.gh_num and gm.gh_num=?");
+			psmt = conn.prepareStatement("select distinct mem_id from team_member where cnt_num=? and tm_num=?");
 			
-			psmt.setString(1, num);
+			psmt.setInt(1, cnt_num);
+			psmt.setInt(2, tm_num);
 			
 			rs=psmt.executeQuery();
 			
 			while(rs.next()) {
-				int ghnum = rs.getInt("gh.gh_num");
-				String ghMemId = rs.getString("gh.mem_id");
-				String gmMemId = rs.getString("gm.mem_id");
+				String ghMemId = rs.getString("mem_id");
 				
-				teamVO vo = new teamVO(ghnum, ghMemId, gmMemId);
-				teamMem_list.add(vo);
+				teamVO vo = new teamVO(ghMemId);
+				teamMemNum_list.add(vo);
 			}
 			
 		} catch (Exception e) {
@@ -122,7 +57,64 @@ public class teamDAO extends DBconnection{
 		} finally {
 			dbClose();
 		}
-		return teamMem_list;
+		return teamMemNum_list;
+	}
+	//ÆÀ¿ø ¼ö Á¶È¸
+	public ArrayList<teamVO> showTeamMemberNum(int cnt_num,int tm_num) {
+		
+		ArrayList<teamVO> teamMemNum_list = new ArrayList<teamVO>();
+		
+		try {
+			getConnection();
+			
+			psmt = conn.prepareStatement("select count(distinct mem_id) from team_member where tm_num=?");
+			
+			psmt.setInt(1, cnt_num);
+			psmt.setInt(2, tm_num);
+			
+			rs=psmt.executeQuery();
+			
+			while(rs.next()) {
+				String ghMemId = rs.getString("mem_id");
+				
+				teamVO vo = new teamVO(ghMemId);
+				teamMemNum_list.add(vo);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return teamMemNum_list;
+	}
+	//±×·ì ¹øÈ£
+	public ArrayList<teamVO> searchTeamNum(String memId) {
+		
+		ArrayList<teamVO> teamMemId_list = new ArrayList<teamVO>();
+		
+		try {
+			getConnection();
+			
+			psmt = conn.prepareStatement("select tm_num from team_member where mem_id=?");
+			
+			psmt.setString(1, memId);
+			
+			rs=psmt.executeQuery();
+			
+			while(rs.next()) {
+				String tmMemId = rs.getString("mem_id");
+				int tmNum = rs.getInt("tm_num");
+				
+				teamVO vo = new teamVO(tmMemId, tmNum);
+				teamMemId_list.add(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose();
+		}
+		return teamMemId_list;
 	}
 }
 

@@ -2,43 +2,47 @@ package com.model;
 
 public class teamVO {
 	
-	private int ghNum;
-	private String ghMemId;
-	private String gmMemId;
+	private String MemId;
+	private int cntNum;
+	private int tmNum;
+	private int tmType;
 	
-	public teamVO(int ghNum, String ghMemId, String gmMemId) {
+	public teamVO(String memId) {
 		super();
-		this.ghNum = ghNum;
-		this.ghMemId = ghMemId;
-		this.gmMemId = gmMemId;
-	}
-
-	public int getGhNum() {
-		return ghNum;
-	}
-
-	public void setGhNum(int ghNum) {
-		this.ghNum = ghNum;
-	}
-
-	public String getGhMemId() {
-		return ghMemId;
-	}
-
-	public void setGhMemId(String ghMemId) {
-		this.ghMemId = ghMemId;
-	}
-
-	public String getGmMemId() {
-		return gmMemId;
-	}
-
-	public void setGmMemId(String gmMemId) {
-		this.gmMemId = gmMemId;
+		MemId = memId;
 	}
 	
-	
-	
+	public teamVO(String memId, int tmNum) {
+		super();
+		MemId = memId;
+		this.tmNum = tmNum;
+	}
+
+
+	public String getMemId() {
+		return MemId;
+	}
+	public void setMemId(String memId) {
+		MemId = memId;
+	}
+	public int getCntNum() {
+		return cntNum;
+	}
+	public void setCntNum(int cntNum) {
+		this.cntNum = cntNum;
+	}
+	public int getTmNum() {
+		return tmNum;
+	}
+	public void setTmNum(int tmNum) {
+		this.tmNum = tmNum;
+	}
+	public int getTmType() {
+		return tmType;
+	}
+	public void setTmType(int tmType) {
+		this.tmType = tmType;
+	}
 	
 	
 }
