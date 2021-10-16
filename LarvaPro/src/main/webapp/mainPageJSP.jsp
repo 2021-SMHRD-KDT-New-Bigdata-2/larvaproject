@@ -228,9 +228,9 @@
         ]
       });
 
-       // 여기서 이벤트 추가
+       // 여기서 이벤트 추가s
 
-      		<%for(int i = 0; i < conArr.size(); i++){ %>
+      		<%for(int i = 0; i < conArr.size(); i+= 5){ %>
       			     calendar.addEvent({
 				         title: '<%= conArr.get(i).getConName() %>',
 				         start: '<%= conArr.get(i).getConFromDate() %>',

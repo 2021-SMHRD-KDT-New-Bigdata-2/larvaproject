@@ -217,7 +217,7 @@ public class conDetailDAO extends DBconnection{
 		
 		try {
 			
-			psmt=conn.prepareStatement("select * from contest where cnt_num < 20");
+			psmt=conn.prepareStatement("select * from contest where 80< cnt_num and  cnt_num < 100");
 			rs=psmt.executeQuery();
 			
 			if (rs.next()) {
