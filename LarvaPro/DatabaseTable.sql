@@ -1,13 +1,8 @@
 select * from all_tables;
 select * from all_sequences;
-select * from message;
-
-
-select*from pesonal_contest
 
 /*테이블 삭제*/
-drop table group_mem;
-drop table group_head;
+drop table team_member;
 drop table note;
 drop table post_comment;
 drop table personal_contest;
@@ -107,8 +102,6 @@ create table personal_contest(
 	constraint pcnt_cnt_num_fk foreign key(cnt_num)
 	references contest(cnt_num)
 );
-
-
 /* 개인 공모전 내역 번호 시퀀스 */
 create sequence personal_contest_number
 	increment by 1
@@ -117,7 +110,7 @@ create sequence personal_contest_number
 	maxvalue 99999
 	nocycle
 	nocache;
-
+select gh_num from group_head gh, group_mem gm where mem_id='b';
 /* 평점 테이블 */
 create table score(
 	sc_num number(5) not null
@@ -187,31 +180,15 @@ create sequence message_number
 	nocache;
 
 /* 파티장 정보 테이블 */
-/*create table group_head(
-	gh_num number(5) not null
-	constraint group_head_pk primary key,
+create table team_member(
 	mem_id varchar2(20) not null,
-	constraint group_head_fk foreign key(mem_id)
-	references member_info (mem_id)
+	cnt_num number(5) not null,
+	tm_num number(5) not null,
+	tm_type number(1) not null,
+	constraint team_member_id_fk foreign key(mem_id)
+	references member_info (mem_id),
+	constraint team_member_cnt_fk foreign key(cnt_num)
+	references contest (cnt_num)
 );
-  
 
-/* 파티장 정보 번호 시퀀스 */
-create sequence gh_number
-	increment by 1
-	start with 1
-	minvalue 1
-	maxvalue 99999
-	nocycle
-	nocache;
-
-/* 파티원 정보 테이블 */
-create table group_mem(
-	gh_num number(5) not null,
-	mem_id varchar(20) not null,
-	constraint gm_gh_num_fk foreign key(gh_num)
-	references group_head(gh_num),
-	constraint gm_mem_id_fk foreign key(mem_id)
-	references member_info(mem_id)
-);*/
 
