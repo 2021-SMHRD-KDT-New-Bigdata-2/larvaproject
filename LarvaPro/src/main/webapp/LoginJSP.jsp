@@ -144,15 +144,13 @@ span {
                     		memberVO result= (memberVO)session.getAttribute("loginMemberSession");
                     		String fail=(String)session.getAttribute("loginMemberFail");
                     		
-                    		if(result==null){
-                    			out.println("<script>alert('환영합니다.'); window.location='./mainPageJSP.jsp';</script>");
-
+                    		if(result!=null){
+                    			out.println("<script>window.location='./mainPageJSP.jsp';</script>");
                     			
                     		}else if(fail!=null){
                     			out.println("<script>alert('회원정보를 확인하세요.');</script>");
                     			session.invalidate();
                     		}%>
-							
 							
                 		</form>
                 		<form id="register" action="JoinService" class="input-group" method="post">

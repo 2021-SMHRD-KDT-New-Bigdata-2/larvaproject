@@ -158,12 +158,25 @@ margin:1%;
 
     <!-- 내정보 섹션 -->
     <section class="profile-section spad">
-        <div class="container">
+    	<div class="section-title">
+            <h4 style="margin-left:21.5%">내정보</h4>
+              </div>
+        <div class="container" style="margin-left:20%">
             <div class="profile-agent-content">
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="profile-agent-info">
                             <div class="pi-text">
+                                <%if(memberInfo.getMemLevel()<33){
+                                	out.println("<img src='img/tiger/rank01.png'>");
+                                	}
+                                	else if(memberInfo.getMemLevel()<66){
+                                	out.println("<img src='img/tiger/rank02.png'>");
+                                	}
+                                	else if(memberInfo.getMemLevel()<=99){
+                                	out.println("<img src=img/tiger/rank03.png>");
+                                	}
+                                %>
                                 <h5><%=memberInfo.getMemUserName() %></h5>
                                 <span>Level: <%=memberInfo.getMemLevel() %></span>
                             </div>
@@ -184,7 +197,7 @@ margin:1%;
                             <p align="center" style="color:blue; font-size:35px; margin:10%;">
                            	<%double avg=MS.showScore(memberInfo.getMemId());
                            		if (avg==0){%>
-                           			평가없음
+                           			<h6 align="center">당신을 평가한 사람이 없습니다</h6>
                            		<%}else{%>
                            			<%=avg %>
                            		<%} %>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession"); 
-if(memberInfo!=null){
+if(memberInfo==null){
 	out.println("<script>alert('로그인이 필요한 서비스입니다. 로그인페이지로 이동합니다.'); window.location='./LoginJSP.jsp';</script>");
 }
 %>
