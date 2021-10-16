@@ -3,7 +3,7 @@ select * from all_sequences;
 select * from message;
 
 
-select*from member_info
+select*from pesonal_contest
 
 /*테이블 삭제*/
 drop table group_mem;
@@ -38,7 +38,7 @@ create table member_info(
 	mem_sign_up_date date not null
 );
 	
-	select*from member_info
+	select*from personal_contest
 
 /* 공모전 테이블 */
 create table contest(

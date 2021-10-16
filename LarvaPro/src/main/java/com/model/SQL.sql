@@ -11,7 +11,7 @@ create table member_info(
 	mem_sign_up_date date not null
 );
 
-select * from contest;
+update member_info set mem_level=99 where mem_id='sksms0431'
 
 
 

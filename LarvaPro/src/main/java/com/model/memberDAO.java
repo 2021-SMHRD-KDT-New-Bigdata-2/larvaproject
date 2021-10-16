@@ -104,7 +104,7 @@ public class memberDAO extends DBconnection {
 				
 				nowLevel+=levelUp;
 				
-				psmt =conn.prepareStatement("update mem_info set mem_level=? where mem_id=?");
+				psmt =conn.prepareStatement("update member_info set mem_level=? where mem_id=?");
 				
 				psmt.setInt(1, nowLevel);
 				psmt.setString(2,id);

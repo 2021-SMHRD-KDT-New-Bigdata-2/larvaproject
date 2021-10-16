@@ -165,7 +165,7 @@ margin:1%;
                         <div class="profile-agent-info">
                             <div class="pi-text">
                                 <h5><%=memberInfo.getMemUserName() %></h5>
-                                <span><%=memberInfo.getMemLevel() %></span>
+                                <span>Level: <%=memberInfo.getMemLevel() %></span>
                             </div>
                         </div>
                     </div>
