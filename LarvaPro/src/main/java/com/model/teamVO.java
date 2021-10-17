@@ -18,6 +18,12 @@ public class teamVO {
 		this.tmNum = tmNum;
 	}
 
+	public teamVO(String memId, int cntNum, int tmNum) {
+		super();
+		MemId = memId;
+		this.cntNum = cntNum;
+		this.tmNum = tmNum;
+	}
 
 	public teamVO(String memId, int cntNum, int tmNum, int tmType) {
 		super();

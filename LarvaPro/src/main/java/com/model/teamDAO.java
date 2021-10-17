@@ -67,7 +67,7 @@ public class teamDAO extends DBconnection {
 		try {
 			getConnection();
 
-			psmt = conn.prepareStatement("select distinct mem_id from team_member cnt_num=? and tm_num=?");
+			psmt = conn.prepareStatement("select distinct mem_id from team_member where cnt_num=? and tm_num=?");
 
 			psmt.setInt(1, tm_num);
 			psmt.setInt(2, cnt_num);
@@ -97,7 +97,7 @@ public class teamDAO extends DBconnection {
 		try {
 			getConnection();
 
-			psmt = conn.prepareStatement("select count(distinct mem_id) from team_member where tm_num=?");
+			psmt = conn.prepareStatement("select count(distinct mem_id) from team_member where cnt_num=? and tm_num=?");
 
 			psmt.setInt(1, cnt_num);
 			psmt.setInt(2, tm_num);
@@ -120,14 +120,14 @@ public class teamDAO extends DBconnection {
 	}
 
 	// 그룹 번호
-	public ArrayList<teamVO> searchTeamNum(String memId) {
+	public ArrayList<teamVO> searchTeamNum(String memId, int cnt_num) {
 
 		ArrayList<teamVO> teamMemId_list = new ArrayList<teamVO>();
 
 		try {
 			getConnection();
 
-			psmt = conn.prepareStatement("select tm_num from team_member where mem_id=?");
+			psmt = conn.prepareStatement("select tm_num from team_member where mem_id=? and cnt_num=?");
 
 			psmt.setString(1, memId);
 
@@ -135,9 +135,10 @@ public class teamDAO extends DBconnection {
 
 			while (rs.next()) {
 				String tmMemId = rs.getString("mem_id");
+				int cntNum = rs.getInt("cnt_num");
 				int tmNum = rs.getInt("tm_num");
 
-				teamVO vo = new teamVO(tmMemId, tmNum);
+				teamVO vo = new teamVO(tmMemId, cntNum, tmNum);
 				teamMemId_list.add(vo);
 			}
 		} catch (Exception e) {
