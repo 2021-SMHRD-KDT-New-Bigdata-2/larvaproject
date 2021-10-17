@@ -1,8 +1,9 @@
 package com.model;
 
 import java.util.ArrayList;
-
+import java.util.List;
 public class conDetailDAO extends DBconnection{
+	
 	
 	//  공모전 상세내용, 삽입.
 	public int insertConDetail(conDetailVO vo) {
@@ -177,37 +178,33 @@ public class conDetailDAO extends DBconnection{
 			}
 
 	//리스트 페이지에 보여줄 로직(페이징 처리)
-	public ArrayList<conDetailVO> getList(int startRow, int endRow) {
-		// 페이징 처리를 위한 sql / 인라인뷰, rownum 사용
-		String sql = "select * from "
-				+ "(select cnt_name, cnt_from_date,cnt_to_date from "
-				+ "(select * from contest)) where cnt_num between ? and ?";
-		ArrayList<conDetailVO> list = null;
-		try {
-			getConnection(); // 커넥션을 얻어옴
-			psmt = conn.prepareStatement(sql); // sql 정의
-			psmt.setInt(1, startRow); // sql 물음표에 값 매핑
-			psmt.setInt(2, endRow);
-			rs = psmt.executeQuery(); // sql 실행
-			if (rs.next()) { // 데이터베이스에 데이터가 있으면 실행
-				list = new ArrayList<>(); // list 객체 생성
-				do {
-					// 반복할 때마다 ExboardDTO 객체를 생성 및 데이터 저장
-					conDetailVO board = new conDetailVO();
-					board.setConName(rs.getString("cnt_name"));
-					board.setConFromDate(rs.getString("cnt_from_date").substring(0, 10));
-					board.setConToDate(rs.getString("cnt_to_date").substring(0, 10));
+			public List<conDetailVO> getList() {
+				// 페이징 처리를 위한 sql / 인라인뷰, rownum 사용
+				String sql = "select * from contest";	
+				List<conDetailVO> list = null;
+				try {
+					getConnection(); // 커넥션을 얻어옴
+					psmt = conn.prepareStatement(sql); // sql 정의
+					rs = psmt.executeQuery(); // sql 실행
+					if (rs.next()) { // 데이터베이스에 데이터가 있으면 실행
+						list = new ArrayList<>(); // list 객체 생성
+						do {
+							// 반복할 때마다 ExboardDTO 객체를 생성 및 데이터 저장
+							conDetailVO board = new conDetailVO();
+							board.setConName(rs.getString("cnt_name"));
+							board.setConFromDate(rs.getString("cnt_from_date").substring(0, 10));
+							board.setConToDate(rs.getString("cnt_to_date").substring(0, 10));
 
-					list.add(board); // list에 0번 인덱스부터 board 객체의 참조값을 저장
-				} while (rs.next());
+							list.add(board); // list에 0번 인덱스부터 board 객체의 참조값을 저장
+						} while (rs.next());
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					dbClose(); // DB 연결 종료 / Connection 반환
+				}
+				return list; // list 반환
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			dbClose(); // DB 연결 종료 / Connection 반환
-		}
-		return list; // list 반환
-	}
 	
 	//캘린더 구현시 필요한 메소드
 	public ArrayList<conDetailVO> calList() {

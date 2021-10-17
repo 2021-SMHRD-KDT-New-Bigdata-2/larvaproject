@@ -1,5 +1,8 @@
+<%@page import="java.util.List"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.model.conDetailDAO"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="com.model.conDetailVO"%>
 <%@page import="com.model.memberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -7,6 +10,12 @@
 <html lang="zxx">
 <% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession");%>
 <% conDetailVO con= new conDetailVO(); %>
+<%
+	conDetailDAO manager = new conDetailDAO();
+	List<conDetailVO> list = manager.getList(); // getList 메서드 호출
+	
+%>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
 </script>
@@ -156,22 +165,24 @@
 	private String conPostSmall; //작은 포스터
 	private String conContent; //공모전 상세 -->
 	
-		<% 
-			ArrayList<conDetailVO> list=new ArrayList<conDetailVO>();
-	  		conDetailDAO conDetailDAO=new conDetailDAO();
-	  		list=conDetailDAO.showConDetail(con);
-	  	%>
+			<%
+				if(list != null){ // 데이터베이스에 데이터가 있으면
+					for (int i = 0; i < list.size(); i++) {
+					conDetailVO board = list.get(i); // 반환된 list에 담긴 참조값 할당
+			%>
+			<tr>
+
+
 	  	
-	  	<% for(int i=0;i<10;i++){ %>
     <tr>
       <th scope="row"><%=i+1%></th>
-      <td style="color : black;"><a href="ContestDetailsJSP.jsp"><%=list.get(i).getConName() %></a></td>
+      <td><a href="ContestDetailsJSP.jsp" style="color : black;"><%=list.get(i).getConName() %></a></td>
       <td>admin</td>
       <td><%=list.get(i).getConFromDate()+"~<br>"+list.get(i).getConToDate() %></td>
       <td><%=0 %></td>
       <td><%=0 %></td>
     </tr>
-    	<%}%>
+    	<%}}%>
     
     
   </tbody>
