@@ -153,23 +153,24 @@ if(memberInfo==null){
 	</header>
 	<!-- 헤드 끝 -->
 
-	<!-- Breadcrumb Section Begin -->
+	<!-- 중간 헤드 시작 -->
 	<section class="breadcrumb-section spad set-bg"
-		data-setbg="img/grayPolygon.png">
+		data-setbg="img/grayPolygon.png" style="width:2000px">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb-text">
 						<h4>지원한 공모전</h4>
 						<div class="bt-option">
-							<a href="./index.html"><i class="fa fa-home"></i>메인</a><span>지원한	공모전</span>
+							<a href="./index.html"><i class="fa fa-home"></i>메인</a><span>지원한
+								공모전</span>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Breadcrumb Section End -->
+	<!-- 중간 헤드 끝 -->
 
 	<!-- 내정보 섹션 -->
 	<section class="profile-section spad">
@@ -230,18 +231,16 @@ if(memberInfo==null){
 						<div class="pi-pic set-bg"
 							data-setbg="img/property/property-2.jpg">
 							<!-- 남은 일자 -->
-							<div class="label">
-								D-15
-							</div>
+							<div class="label">D-15</div>
 						</div>
 						<div class="pi-text">
 							<!-- 마지막 일자 -->
 							<a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-							<div class="pt-price"><%=condao.selectCon(pc_list.get(i).getPcntNum()).getConToDate()%><span>까지</span></div>
+							<div class="pt-price"><%=condao.selectCon(pc_list.get(i).getPcntNum()).getConToDate()%><span>까지</span>
+							</div>
 							<!-- 제목 -->
 							<h5>
-								<a href="#">
-									<%
+								<a href="#"> <%
 										
 									condao.selectCon(pc_list.get(i).getPcntNum()).getConName();
 									%>
@@ -249,20 +248,16 @@ if(memberInfo==null){
 							</h5>
 							<ul>
 								<!-- 분야 -->
-								<li><i class="fa fa-object-group"></i>
-									<%=condao.selectCon(pc_list.get(i).getPcntNum()).getConField()%>
+								<li><i class="fa fa-object-group"></i> <%=condao.selectCon(pc_list.get(i).getPcntNum()).getConField()%>
 								</li>
 								<!-- 인원수 -->
-								<li><i class="fa fa-bathtub"></i>
-									<%=teamdao.showTeamMemberNum(condao.selectCon(pc_list.get(i).getPcntNum()).getConNum(),teamdao.searchTeamNum(memberInfo.getMemId())) %>
+								<li><i class="fa fa-bathtub"></i> <%=teamdao.showTeamMemberNum(condao.selectCon(pc_list.get(i).getPcntNum()).getConNum(),teamdao.searchTeamNum(memberInfo.getMemId())) %>
 								</li>
 								<!-- 팀원들 이름 -->
-								<li><i class="fa fa-bed"></i>
-									<%=teamdao.showTeamMemberId(condao.selectCon(pc_list.get(i).getPcntNum()).getConNum(),teamdao.searchTeamNum(memberInfo.getMemId()))) %>
+								<li><i class="fa fa-bed"></i> <%=teamdao.showTeamMemberId(condao.selectCon(pc_list.get(i).getPcntNum()).getConNum(),teamdao.searchTeamNum(memberInfo.getMemId()))) %>
 								</li>
 								<!-- 모집여부 -->
-								<li style="color: red"><i class="fa fa-bed"></i>
-								</li>
+								<li style="color: red"><i class="fa fa-bed"></i></li>
 							</ul>
 						</div>
 					</div>

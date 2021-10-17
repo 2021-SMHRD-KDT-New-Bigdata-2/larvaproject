@@ -19,6 +19,14 @@ public class teamVO {
 	}
 
 
+	public teamVO(String memId, int cntNum, int tmNum, int tmType) {
+		super();
+		MemId = memId;
+		this.cntNum = cntNum;
+		this.tmNum = tmNum;
+		this.tmType = tmType;
+	}
+
 	public String getMemId() {
 		return MemId;
 	}

@@ -139,8 +139,8 @@ if(memberInfo==null){
     	</header>
     <!-- 헤드 끝 -->
 
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section spad set-bg" data-setbg="img/grayPolygon.png">
+    <!-- 중간 헤드 시작 -->
+    <section class="breadcrumb-section spad set-bg" data-setbg="img/grayPolygon.png" style="width: 2000px">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -155,7 +155,8 @@ if(memberInfo==null){
             </div>
         </div>
     </section>
-    <!-- Breadcrumb Section End -->
+    <!-- 중간 헤드 끝 -->
+    
 	<%
 		messageDAO dao = new messageDAO();
 		ArrayList<messageVO>sendMessage_list = new ArrayList<messageVO>();
@@ -168,8 +169,8 @@ if(memberInfo==null){
 		}
 		
 	%>
-    <!-- Property Comparison Section Begin -->
-    <div class="property-comparison-section spad">
+    <!-- 쪽지함 시작 -->
+    <div class="property-comparison-section spad" style="margin-left:30%">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 p-0">
@@ -234,7 +235,7 @@ if(memberInfo==null){
             </div>
         </div>
     </div>
-    <!-- Property Comparison Section End -->
+    <!-- 쪽지함 끝 -->
 
     <!-- Contact Section Begin -->
     <section class="contact-section">
