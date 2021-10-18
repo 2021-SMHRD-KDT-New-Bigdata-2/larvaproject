@@ -265,6 +265,7 @@
 			teamDAO teamdao = new teamDAO();
 	
 			ArrayList<teamVO> team_list = new ArrayList<teamVO>();
+			
 	
 			team_list = teamdao.selectMyTeam(memberInfo.getMemId());
 	%>
@@ -281,10 +282,18 @@
 				%>
 				<div class="col-lg-4">
 					<div class="property-item">
-						<div class="pi-pic set-bg"
-							data-setbg="img/property/property-2.jpg">
+						<div class="pi-pic set-bg">
+							<img src="<%= request.getContextPath() + CDAO.bringSmallImg(team_list.get(i).getCntNum()) %>"/>
 							<!-- 남은 일자 -->
-							<div class="label">D-15</div>
+							<div class="label">
+								<%
+									int date = CDAO.oneContestD_Day(team_list.get(i).getCntNum());
+									if(date>0){ %>
+										+<%=date%>
+									<%}else{%>
+										-<%=date%>
+								<%} %>
+							</div>
 						</div>
 						<div class="pi-text">
 							<!-- 마지막 일자 -->
@@ -316,13 +325,17 @@
 								<!-- 모집여부 -->
 								<li style="color: red"><i class="fa fa-bed"></i>
 									<%
-										 int maxnum = teamdao.selectMyTeam(memberInfo.getMemId()).get(i).getTmFull();
-										 int currentnum = teamdao.showTeamMemberNum(teamdao.searchTeamNum(memberInfo.getMemId()).get(i).getTmNum());
-										 if (currentnum < maxnum) {
-										 	out.print("모집 중");
-										 } else if (currentnum >= maxnum) {
-										 	out.print("모집 완료");
-										 }
+										if(date<=0){
+											int maxnum = teamdao.selectMyTeam(memberInfo.getMemId()).get(i).getTmFull();
+											int nownum = teamdao.showTeamMemberNum(teamdao.searchTeamNum(memberInfo.getMemId()).get(i).getTmNum());
+											if (nownum < maxnum) {
+												out.print("모집 중");
+											} else if (nownum >= maxnum) {
+												out.print("모집 완료");
+											}
+										}else{
+											out.print("모집 완료");
+										}
 									 %>
 								 </li>
 							</ul>
