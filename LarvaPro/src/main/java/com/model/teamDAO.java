@@ -91,26 +91,22 @@ public class teamDAO extends DBconnection {
 		return teamMemNum_list;
 	}
 
-	// 팀원 수 조회
-	public ArrayList<teamVO> showTeamMemberNum(int cnt_num, int tm_num) {
+	// 해당 팀번호의 팀원 수 조회
+	public int showTeamMemberNum(int tm_num) {
 
-		ArrayList<teamVO> teamMemNum_list = new ArrayList<teamVO>();
+		int teamMemberCnt = 0;
 
 		try {
 			getConnection();
 
-			psmt = conn.prepareStatement("select count(distinct mem_id) from team_member where tm_num=?");
+			psmt = conn.prepareStatement("select count(mem_id) AS CNT from team_member where tm_num=?");
 
-			psmt.setInt(1, cnt_num);
-			psmt.setInt(2, tm_num);
+			psmt.setInt(1, tm_num);
 
 			rs = psmt.executeQuery();
 
-			while (rs.next()) {
-				String ghMemId = rs.getString("mem_id");
-
-				teamVO vo = new teamVO(ghMemId);
-				teamMemNum_list.add(vo);
+			if (rs.next()) {
+				teamMemberCnt = rs.getInt("cnt");
 			}
 
 		} catch (Exception e) {
@@ -118,10 +114,10 @@ public class teamDAO extends DBconnection {
 		} finally {
 			dbClose();
 		}
-		return teamMemNum_list;
+		return teamMemberCnt;
 	}
 
-	// 팀 정보 호출 (개인정보를 매개변수로 해당하는 모든 팀 정보 호출)
+	// 팀 정보 호출 (회원 아이디를 매개변수로 받아 해당하는 아이디의 모든 팀 정보 호출)
 	public ArrayList<teamVO> selectMyTeam(String memId) {
 
 		ArrayList<teamVO> teamMemId_list = new ArrayList<teamVO>();

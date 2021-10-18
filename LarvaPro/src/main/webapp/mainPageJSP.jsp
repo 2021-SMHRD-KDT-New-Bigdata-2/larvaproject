@@ -384,11 +384,11 @@ memberVO anotherMemberInfo=null;
 					<div class="ts-item">
 						<div class="ts-text">
 							<p style="color: red"><%=level.get(i) %></p>
-									<%if (memberInfo != null || level.get(i) < 100) {%>
+									<%if (level.get(i) > 66) {%>
 										<img src='img/tiger/tiger03.png'>
-									<%} else if (memberInfo != null || level.get(i) < 66) { %>
+									<%} else if (level.get(i) < 66 && level.get(i) > 33 ) { %>
 										<img src='img/tiger/tiger02.png'>
-									<%} else if (memberInfo != null || level.get(i) < 33) {%>
+									<%} else if ( level.get(i) < 33) {%>
 										<img src='img/tiger/tiger01.png'>
 									<%} %>
 							<h5><%=anotherMemberInfo.getMemNickName() %></h5>
