@@ -30,34 +30,26 @@ public class teamDAO extends DBconnection {
 		return cnt;
 	}
 
-	// 모든 팀 정보 조회(마이페이지에서 가져올 때)
-	public ArrayList<teamVO> showAllTeam() {
-
-		ArrayList<teamVO> teamMemNum_list = new ArrayList<teamVO>();
-
-		try {
-			getConnection();
-
-			psmt = conn.prepareStatement("select * from team_member");
-			rs = psmt.executeQuery();
-
-			while (rs.next()) {
-				String mem_id = rs.getString("mem_id");
-				int cnt_num=rs.getInt("cnt_num");
-				int tm_num=rs.getInt("tm_num");
-				int tm_type=rs.getInt("tm_type");
-
-				teamVO vo = new teamVO(mem_id,cnt_num,tm_num,tm_type);
-				teamMemNum_list.add(vo);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			dbClose();
-		}
-		return teamMemNum_list;
-	}
+	/*
+	 * // 모든 팀 정보 조회(마이페이지에서 가져올 때) public ArrayList<teamVO> showAllTeam() {
+	 * 
+	 * ArrayList<teamVO> teamMemNum_list = new ArrayList<teamVO>();
+	 * 
+	 * try { getConnection();
+	 * 
+	 * psmt = conn.prepareStatement("select * from team_member"); rs =
+	 * psmt.executeQuery();
+	 * 
+	 * while (rs.next()) { String mem_id = rs.getString("mem_id"); int
+	 * cnt_num=rs.getInt("cnt_num"); int tm_num=rs.getInt("tm_num"); int
+	 * tm_type=rs.getInt("tm_type");
+	 * 
+	 * teamVO vo = new teamVO(mem_id,cnt_num,tm_num,tm_type);
+	 * teamMemNum_list.add(vo); }
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); } finally { dbClose(); } return
+	 * teamMemNum_list; }
+	 */
 
 	// 팀원 이름 조회(게시판에서 사용할 때)
 	public ArrayList<teamVO> showTeamMemberId(int cnt_num, int tm_num) {
@@ -67,7 +59,7 @@ public class teamDAO extends DBconnection {
 		try {
 			getConnection();
 
-			psmt = conn.prepareStatement("select distinct mem_id from team_member where cnt_num=? and tm_num=?");
+			psmt = conn.prepareStatement("select distinct mem_id from team_member cnt_num=? and tm_num=?");
 
 			psmt.setInt(1, tm_num);
 			psmt.setInt(2, cnt_num);
@@ -97,7 +89,7 @@ public class teamDAO extends DBconnection {
 		try {
 			getConnection();
 
-			psmt = conn.prepareStatement("select count(distinct mem_id) from team_member where cnt_num=? and tm_num=?");
+			psmt = conn.prepareStatement("select count(distinct mem_id) from team_member where tm_num=?");
 
 			psmt.setInt(1, cnt_num);
 			psmt.setInt(2, tm_num);
@@ -119,26 +111,30 @@ public class teamDAO extends DBconnection {
 		return teamMemNum_list;
 	}
 
-	// 그룹 번호
-	public ArrayList<teamVO> searchTeamNum(String memId, int cnt_num) {
+	// 팀 정보 호출 (개인정보를 매개변수로 해당하는 모든 팀 정보 호출)
+	public ArrayList<teamVO> selectMyTeam(String memId) {
 
 		ArrayList<teamVO> teamMemId_list = new ArrayList<teamVO>();
 
 		try {
 			getConnection();
 
-			psmt = conn.prepareStatement("select tm_num from team_member where mem_id=? and cnt_num=?");
+			psmt = conn.prepareStatement("select * from team_member where mem_id=?");
 
 			psmt.setString(1, memId);
 
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
-				String tmMemId = rs.getString("mem_id");
-				int cntNum = rs.getInt("cnt_num");
-				int tmNum = rs.getInt("tm_num");
 
-				teamVO vo = new teamVO(tmMemId, cntNum, tmNum);
+				String mem_Id = rs.getString("mem_id");
+				int cnt_Num = rs.getInt("cnt_num");
+				int tm_Num = rs.getInt("tm_num");
+				int tm_Type = rs.getInt("tm_type");
+				String position = rs.getString("position");
+				int tm_full = rs.getInt("tm_full");
+
+				teamVO vo = new teamVO(mem_Id, cnt_Num, tm_Num, tm_Type, position, tm_full);
 				teamMemId_list.add(vo);
 			}
 		} catch (Exception e) {

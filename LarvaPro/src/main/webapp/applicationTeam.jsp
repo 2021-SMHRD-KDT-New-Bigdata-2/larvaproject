@@ -128,24 +128,7 @@ margin:1%;
                 </div>
     	</header>
     <!-- 헤드 끝 -->
-    
-	<body>
-		<section class="breadcrumb-section spad set-bg" data-setbg="img/breadcrumb-bg.jpg">
-        	<div class="container">
-	            <div class="row">
-	                <div class="col-lg-12">
-	                    <div class="breadcrumb-text">
-	                        <h4>팀 지원</h4>
-	                        <div class="bt-option">
-	                            <a href="./index.html"><i class="fa fa-home"></i>메인</a>
-	                            <span>팀원 모집</span>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-       		 </div>
-    	</section>
-    	
+   	
     	<div class="container mt-5" style="background-color : #F6F6F6; border-radius:10px; margin-top:-10%">
            	<div>
                 <div>
