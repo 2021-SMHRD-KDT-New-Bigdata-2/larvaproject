@@ -1,21 +1,15 @@
-<%@page import="com.model.conDetailDAO"%>
-<%@page import="com.model.conDetailVO"%>
-<%@page import="com.model.personalcontestDAO"%>
+<%@page import="com.model.teamVO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.model.scoreDAO"%>
-<%@page import="com.model.personalcontestVO"%>
-<%@page import="com.model.scoreVO"%>
+<%@page import="com.model.conDetailVO"%>
+<%@page import="com.model.conDetailDAO"%>
+<%@page import="com.model.teamDAO"%>
 <%@page import="com.model.memberVO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="zxx">
 <%
 memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
-scoreDAO MS = new scoreDAO();
-if (memberInfo == null) {
-	out.println("<script>alert('ë¡œê·¸ì¸ì´ í•„ìš”í•œ ì„œë¹„ìŠ¤ì…ë‹ˆë‹¤. ë¡œê·¸ì¸í˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.'); window.location='./LoginJSP.jsp';</script>");
-}
 %>
 <head>
 <meta charset="UTF-8">
@@ -23,7 +17,7 @@ if (memberInfo == null) {
 <meta name="keywords" content="Aler, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>ê¹”ê¼¼ | Template</title>
+<title>Aler | Template</title>
 
 <!-- Google Font -->
 <link
@@ -44,38 +38,8 @@ if (memberInfo == null) {
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
-<style>
-#noteHead {
-	font-size: 25px;
-	width: 100px;
-}
 
-#noteContent {
-	font-size: 18px;
-	margin: 1%;
-}
 
-.menu a {
-	cursor: pointer;
-}
-
-.menu .hide {
-	display: none;
-}
-</style>
-<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-<script>
-	$(document).ready(function() {
-		$(".menu>a").click(function() {
-			var submenu = $(this).next("ul");
-			if (submenu.is(":visible")) {
-				submenu.slideUp();
-			} else {
-				submenu.slideDown();
-			}
-		});
-	});
-</script>
 
 <body>
 	<!-- Page Preloder -->
@@ -110,8 +74,9 @@ if (memberInfo == null) {
 		</div>
 	</div>
 	<!-- Offcanvas Menu Wrapper End -->
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 
-	<!-- í—¤ë“œ ì‹œì‘ -->
+	<!-- Çìµå ½ÃÀÛ -->
 	<header class="header-section">
 		<div
 			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 225px;">
@@ -120,8 +85,7 @@ if (memberInfo == null) {
 				<div class="container">
 					<div class="ten" style="padding: 3%">
 						<div class="logo">
-							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png"
-								style="witdh: 162px; height: 102px"></a>
+							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png"></a>
 						</div>
 						<nav class="nav-menu" style="margin-top: 5%;">
 							<%
@@ -135,21 +99,21 @@ if (memberInfo == null) {
 							%>
 							<ul style="text-align: center; margin-left: 7%;">
 								<li class="active" style="font-size: 10px"><a
-									href="./mainPageJSP.jsp" style="color: #ffffff;">ë©”ì¸</a></li>
-								<li><a href="#" style="color: #ffffff;">ë§ˆì´í˜ì´ì§€</a>
+									href="./mainPageJSP.jsp" style="color: #ffffff;">¸ŞÀÎ</a></li>
+								<li><a href="#" style="color: #ffffff;">¸¶ÀÌÆäÀÌÁö</a>
 									<ul class="dropdown"
 										style="display: inline-block; width: 150px;">
 										<li style="margin-right: 40%"><a
-											href="./mypageProfileJSP.jsp">ë‚´ì •ë³´</a></li>
+											href="./mypageProfileJSP.jsp">³»Á¤º¸</a></li>
 										<li style="margin-right: 10%"><a
-											href="./mypageContestJSP.jsp">ì§€ì›í•œ ê³µëª¨ì „</a></li>
+											href="./mypageContestJSP.jsp">Áö¿øÇÑ °ø¸ğÀü</a></li>
 										<li style="margin-right: 38%"><a
-											href="./mypageTeamJSP.jsp">ë‚˜ì˜ íŒ€</a></li>
+											href="./mypageTeamJSP.jsp">³ªÀÇ ÆÀ</a></li>
 										<li style="margin-right: 40%"><a
-											href="./mypageMessageJSP.jsp">ìª½ì§€í•¨</a></li>
+											href="./mypageMessageJSP.jsp">ÂÊÁöÇÔ</a></li>
 									</ul></li>
-								<li><a href="./ContestBoardJSP.jsp" style="color: #ffffff;">ê³µëª¨ì „</a></li>
-								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">íŒ€ì›ëª¨ì§‘</a></li>
+								<li><a href="./ContestBoardJSP.jsp" style="color: #ffffff;">°ø¸ğÀü</a></li>
+								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">ÆÀ¿ø¸ğÁı</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -164,359 +128,75 @@ if (memberInfo == null) {
 			style="padding: 3%; background-color: #4169E1; box-shadow: 1px 1px gray; width: 2000px">
 			<div class="pcntSearchText"
 				style="margin-left: 33%; height: 40px; width: 600px; border: 2px solid #1b5ac2; background: #ffffff;">
-				<input class="textBar" type="text" placeholder="ì›í•˜ëŠ” ê³µëª¨ì „ ê²€ìƒ‰!"
+				<input class="textBar" type="text" placeholder="¿øÇÏ´Â °ø¸ğÀü °Ë»ö!"
 					style="font-size: 16px; width: 500px; height: 100%; padding: 10px; border: 0px; outline: none;">
 				<button class="searchBtn"
-					style="width: 50px; height: 100%; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">ê²€ìƒ‰</button>
+					style="width: 50px; height: 100%; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">°Ë»ö</button>
 			</div>
 		</div>
 	</header>
-	<!-- í—¤ë“œ ë -->
-
-	<!-- Breadcrumb Section Begin -->
-	<section class="breadcrumb-section spad set-bg"
-		data-setbg="img/grayPolygon.png" style="width: 2000px">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="breadcrumb-text">
-						<h4>ë‚´ì •ë³´</h4>
-						<div class="bt-option">
-							<a href="./index.html"><i class="fa fa-home"></i>ë©”ì¸</a> <span>ë‚´ì •ë³´</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Breadcrumb Section End -->
-
+	<!-- Çìµå ³¡ -->
+	
 	<%
-	if (memberInfo != null) {
-		personalcontestDAO MCL = new personalcontestDAO();//ë‚´ê°€ ì°¸ì—¬í•œ ê³µëª¨ì „ DAOí˜¸ì¶œ
-		conDetailDAO CDAO = new conDetailDAO();//ê³µëª¨ì „ DAO í˜¸ì¶œ
-		ArrayList<personalcontestVO> myConList = MCL.showPersonalContest(memberInfo.getMemId());//ë‚´ê°€ ì°¸ì—¬í•œ ê³µëª¨ì „ì˜ ì •ë³´ë¥¼ ArrayListì— ì¶”ê°€
-
-		int mojip = 0;
-		int hanuenjung = 0;
-		int end = 0;
-
-		for (int i = 0; i < myConList.size(); i++) {
-			if (myConList.get(i).getPcntType() == 0) {
-		mojip++;
-			} else if (myConList.get(i).getPcntType() == 1) {
-		hanuenjung++;
-			} else if (myConList.get(i).getPcntType() == 2) {
-		end++;
-			}
+	teamDAO TDAO=new teamDAO();
+	conDetailDAO CDAO=new conDetailDAO();
+	conDetailVO contest=null;
+	
+	ArrayList<teamVO> allTeam=TDAO.showAllTeam();
+	ArrayList<teamVO> leader=new ArrayList<teamVO>();
+	
+	for(int i=0;i<allTeam.size();i++){
+		if(allTeam.get(i).getTmType()==0){
+			leader.add(allTeam.get(i));
 		}
+	}
 	%>
 
-	<!-- ë‚´ì •ë³´ ì„¹ì…˜ -->
-	<section class="profile-section spad" style="margin-bottom: 10%">
-		<div class="section-title">
-			<h4 style="margin-left: 21.5%">ë‚´ì •ë³´</h4>
-		</div>
-		<div class="container" style="margin-left: 20%">
-			<div class="profile-agent-content">
-				<div class="row">
-					<div class="col-lg-4">
-						<div class="profile-agent-info">
-							<div class="pi-text" style="padding-top: 0px">
-								<div style="width: 70px; height: 70px">
-									<%
-									if (memberInfo != null && memberInfo.getMemLevel() < 33) {
-										out.println("<img src='img/tiger/tiger_profile01.png'>");
-									} else if (memberInfo != null && memberInfo.getMemLevel() < 66) {
-										out.println("<img src='img/tiger/tiger_profile02.png'>");
-									} else if (memberInfo != null && memberInfo.getMemLevel() <= 99) {
-										out.println("<img src=img/tiger/tiger_profile03.png>");
-									}
-									%>
-								</div>
-								<%
-								if (memberInfo != null) {
-									out.print("<h5>" + memberInfo.getMemUserName() + "</h5>");
-								}
-								%>
-								<%
-								if (memberInfo != null) {
-									out.print("<span>Level: " + memberInfo.getMemLevel() + "</span>");
-								}
-								%>
-							</div>
-						</div>
+	<!-- Blog Details Section Begin -->
+	<section class="blog-details-section spad"
+		style="width: 1000px; clear: both; margin: auto;">
+		<div class="section-title" style="margin-left: 60px">
+						<h4>ÆÀ¿ø ¸ğÁı °Ô½ÃÆÇ</h4>
 					</div>
-					<div class="col-lg-4">
-						<div class="profile-agent-widget">
-							<ul>
-								<li>íŒ€ì› ëª¨ì§‘ì¤‘ì¸ ê³µëª¨ì „ ê°¯ìˆ˜ <span style="color: red"><%=mojip%></span></li>
-								<li>í˜„ì¬ ì°¸ê°€ì¤‘ì¸ ê³µëª¨ì „ ê°¯ìˆ˜ <span style="color: red"><%=hanuenjung%></span></li>
-								<li>ëë‚œ ê³µëª¨ì „ ê°¯ìˆ˜ <span style="color: red"><%=end%></span></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<div class="profile-agent-newslatter">
-							<h5 align="center" style="color: red;">í‰ì </h5>
-							<p align="center"
-								style="color: blue; font-size: 35px; margin: 10%;">
-								<%
-								if (memberInfo != null) {
-									double avg = MS.showScore(memberInfo.getMemId());
-									if (avg == 0) {
-								%>
-							
-							<h6 align="center">ë‹¹ì‹ ì„ í‰ê°€í•œ ì‚¬ëŒì´ ì—†ìŠµë‹ˆë‹¤</h6>
-							<%
-							} else {
-							%>
-							<%=avg%>
-							<%
-							}
-							}
-							%>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
+		<div>
+			<button type="button" class="btn btn-primary"
+				style="margin-bottom: 10px; float: right; background: #1b5ac2; color: #ffffff; border: 0; outline: 0">ÀÛ¼ºÇÏ±â</button>
 		</div>
-	</section>
-	<!-- ë‚´ì •ë³´ ì„¹ì…˜ ë-->
 
+		<table class="table table-hover" style="width: 1000px;">
 
-	<div style="margin-bottom: 10%">
-		<div class="section-title" style="margin-top: 5%">
-			<h4 style="margin-left: 21.5%">ê°œì¸ì •ë³´ ìˆ˜ì •</h4>
-		</div>
-		<form action="memberInfoUpdate" method="post">
-			<table class="table table-hover"
-				style="width: 1100px; margin-left: 21.5%">
-				<tbody>
-					<tr>
-						<th style="width: 250px; background-color: #dcdcdc">ì´ë¦„</th>
-						<td style="width: 350px">
-							<div>
-								<ul>
-									<li class="menu" style="list-style: none"><a><%=memberInfo.getMemUserName()%></a>
-										<ul class="hide" style="list-style: none">
-											<li><input type="text"
-												value="<%=memberInfo.getMemUserName()%>" name="name"></li>
-										</ul></li>
-								</ul>
-							</div>
-						</td>
-						<th style="width: 250px; background-color: #dcdcdc">ë¹„ë°€ë²ˆí˜¸</th>
-						<td style="width: 350px"><div>
-								<ul>
-									<li class="menu" style="list-style: none"><a
-										style="color: red">ë³€ê²½í•˜ê¸°</a>
-										<ul class="hide" style="list-style: none">
-											<li><input type="password"
-												value="<%=memberInfo.getMemPw()%>" name="pw"></li>
-										</ul></li>
-								</ul>
-							</div></td>
-					</tr>
-					<tr>
-						<th style="width: 250px; background-color: #dcdcdc">ë‹‰ë„¤ì„</th>
-						<td style="width: 350px"><div>
-								<ul>
-									<li class="menu" style="list-style: none"><a><%=memberInfo.getMemNickName()%></a>
-										<ul class="hide" style="list-style: none">
-											<li><input type="text"
-												value="<%=memberInfo.getMemNickName()%>" name="nick"></li>
-										</ul></li>
-								</ul>
-							</div></td>
-						<th style="width: 250px; background-color: #dcdcdc">ì£¼ì†Œ</th>
-						<td style="width: 350px"><div>
-								<ul>
-									<li class="menu" style="list-style: none"><a><%=memberInfo.getMemAdress()%></a>
-										<ul class="hide" style="list-style: none">
-											<li><input type="text"
-												value="<%=memberInfo.getMemAdress()%>" name="add"></li>
-										</ul></li>
-								</ul>
-							</div></td>
-					</tr>
-					<tr>
-						<th style="width: 250px; background-color: #dcdcdc">ì´ë©”ì¼</th>
-						<td style="width: 350px"><div>
-								<ul>
-									<li class="menu" style="list-style: none"><a><%=memberInfo.getMemEmail()%></a>
-										<ul class="hide" style="list-style: none">
-											<li><input type="email"
-												value="<%=memberInfo.getMemEmail()%>" name="email"></li>
-										</ul></li>
-								</ul>
-							</div></td>
-						<th style="width: 250px; background-color: #dcdcdc">í˜„ì¬ ë ˆë²¨</th>
-						<td style="width: 350px"><%=memberInfo.getMemLevel()%></td>
-					</tr>
-					<tr>
-						<th style="width: 250px; background-color: #dcdcdc">ì „í™”ë²ˆí˜¸</th>
-						<td style="width: 350px"><div>
-								<ul>
-									<li class="menu" style="list-style: none"><a><%=memberInfo.getMemTel()%></a>
-										<ul class="hide" style="list-style: none">
-											<li><input type="text"
-												value="<%=memberInfo.getMemTel()%>" name="tel"></li>
-										</ul></li>
-								</ul>
-							</div></td>
-						<th style="width: 250px; background-color: #dcdcdc">ê°€ì… ë‚ ì§œ</th>
-						<td style="width: 350px"><%=memberInfo.getMemSignUpDate()%></td>
-					</tr>
-					<tr>
-						<th style="width: 250px; background-color: #dcdcdc">ì¸ì‚¿ë§</th>
-						<td style="width: 350px"><div>
-								<ul>
-									<li class="menu" style="list-style: none"><a><%=memberInfo.getMemHi()%></a>
-										<ul class="hide" style="list-style: none">
-											<li><input type="text"
-												value="<%=memberInfo.getMemHi()%>" name="hi"></li>
-										</ul></li>
-								</ul>
-							</div></td>
-						<th style="width: 250px"></th>
-						<td style="width: 350px"></td>
-					</tr>
-				</tbody>
-			</table>
-			<div style="margin-left: 45%">
-				<button type="submit" class="site-btn"
-					style="background-color: #4169E1" name="memberInfoUpdate"
-					value="<%=memberInfo.getMemId()%>">íšŒì›ì •ë³´ ìˆ˜ì •</button>
-			</div>
-		</form>
-	</div>
-
-
-	<!-- ë‚´ ì¼ê¸° ì„¹ì…˜ -->
-	<div style="margin-bottom: 10%">
-		<div class="section-title" style="margin-top: 5%">
-			<h4 style="margin-left: 21.5%">ë‚´ ì¼ê¸°</h4>
-		</div>
-		<table class="table table-hover"
-			style="width: 1100px; margin-left: 21.5%">
 			<thead>
-				<tr>
-					<th scope="col" style="width: 100px"></th>
-					<th scope="col" style="width: 600px">ì°¸ì—¬ ê³µëª¨ì „ ì´ë¦„</th>
-					<th scope="col" style="width: 100px">ì—­í• </th>
-					<th scope="col" style="width: 300px">ë§ˆê°ì¼</th>
+				<tr style="background-color: #c8c8c8; font-size:15px; text-align:center">
+					<th scope="col" style="width:100px">¸ğÁı¿©ºÎ</th>
+					<th scope="col" style="width:300px">Á¦¸ñ</th>
+					<th scope="col" style="width:100px">ÆÄÆ¼Àå</th>
+					<th scope="col" style="width:400px">Âü¿© °ø¸ğÀü Á¦¸ñ</th>
+					<th scope="col" style="width:100px">ÇöÈ²</th>
 				</tr>
 			</thead>
 			<tbody>
-				<%
-				if (myConList.size() == 0) {
-				%>
-				<tr>
-					<th></th>
-					<td>ì•„ì§ ì°¸ê°€í•œ ê³µëª¨ì „ì´ ì—†ìŠµë‹ˆë‹¤.</td>
-					<th></th>
+				<%for(int i=leader.size();i>0;i--){ %>
+				<tr style="font-size:13px">
+					<th scope="row"><%if(leader.get(i-1).getTmFull()==TDAO.showTeamMemberNum(leader.get(i-1).getTmNum())){%>
+						¸ğÁı¿Ï·á
+						<%}else{%>
+						¸ğÁıÁß
+						<%} %>
+						</th>
+					<td><a href="applicationTeam.jsp"><%=leader.get(i-1).getMemId() %>ÀÇ ÆÄÆ¼</a></td>
+					<td><%=leader.get(i-1).getMemId() %></td>
+					<td><%=CDAO.selectCon(leader.get(i-1).getCntNum()).getConName()  %></td>
+					<td style="text-align: center"><%=TDAO.showTeamMemberNum(leader.get(i-1).getTmNum()) %>/<%=leader.get(i-1).getTmFull() %></td>
 				</tr>
-				<%
-				} else if (myConList.size() > 0) {
-				for (int i = 0; i < myConList.size(); i++) {
-					if (myConList.get(i).getPcntContent() == null) {
-				%>
-				<tr>
-					<td style="color: blue">ì‘ì„± ì „</td>
-					<th style="background-color: #B8D7FF">
-						<div>
-							<ul>
-								<li class="menu" style="list-style: none"><a><%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConName()%></a>
-									<ul class="hide" style="list-style: none">
-										<li>
-											<section class="contact-form-section spad">
-												<div class="container">
-													<div class="row">
-														<div class="col-lg-12">
-															<div class="cf-content">
-																<form action="myDairyService" class="cc-form">
-																	<div style="float: left; margin-left: 2%">
-																		<select name="position">
-																			<option disabled value="" style="color: gray"
-																				selected>ì§€ì›í•œ ì§êµ°</option>
-																			<option value="ê¸°íš">ê¸°íš</option>
-																			<option value="ê°œë°œ">ê°œë°œ</option>
-																			<option value="ë””ìì¸">ë””ìì¸</option>
-																		</select>
-																	</div>
-																	<textarea placeholder="ë‚´ìš©" style="margin: 2%"
-																		name="Dairy"></textarea>
-																	<button type="submit" class="site-btn"
-																		style="background-color: #4169E1" name="contestNum"
-																		value="<%=myConList.get(i).getPcntNum()%>">ì‘ì„±í•˜ê¸°</button>
-																</form>
-															</div>
-														</div>
-													</div>
-												</div>
-											</section>
-										</li>
-									</ul></li>
-							</ul>
-						</div>
-					</th>
-					<th style="background-color: #B8D7FF"><%=myConList.get(i).getPcntPosition()%>
-					</td>
-					<th style="background-color: #B8D7FF">~<%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConToDate()%>
-						ê¹Œì§€
-					</th>
-				</tr>
-				<%
-				} else {
-				%>
-				<tr>
-					<td style="color: gray">ì‘ì„±ì™„ë£Œ</td>
-					<td>
-						<div>
-							<ul>
-								<li class="menu" style="list-style: none"><a><%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConName()%></a>
-									<ul class="hide" style="list-style: none">
-										<li>
-											<section class="contact-form-section spad">
-												<div class="container">
-													<div class="row">
-														<div class="col-lg-12">
-															<div class="cf-content">
-																<form action="myDairyService" class="cc-form">
-																	<div style="float: left; margin-left: 2%">
-																		<%=myConList.get(i).getPcntContent()%>
-																	</div>
-																</form>
-															</div>
-														</div>
-													</div>
-												</div>
-											</section>
-										</li>
-									</ul></li>
-							</ul>
-						</div>
-					</td>
-					<td><%=myConList.get(i).getPcntPosition()%></td>
-					<td>~<%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConToDate()%>
-						ê¹Œì§€
-					</td>
-				</tr>
-				<%
-				}
-				}
-				}
-				}
-				%>
+				<%} %>
 			</tbody>
 		</table>
-	</div>
-	<!-- ë‚´ ì¼ê¸° ì„¹ì…˜ ë -->
+	</section>
+	<!-- Contact Section End -->
+
 
 	<!-- Footer Section Begin -->
-	<footer class="footer-section">
+	<footer class="footer-section" style="margin-left: 5%">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-md-6">
@@ -576,9 +256,7 @@ if (memberInfo == null) {
 				<p>
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					Copyright &copy;
-					<script>
-						document.write(new Date().getFullYear());
-					</script>
+					<script>document.write(new Date().getFullYear());</script>
 					All rights reserved | This template is made with <i
 						class="fa fa-heart" aria-hidden="true"></i> by <a
 						href="https://colorlib.com" target="_blank">Colorlib</a>
@@ -590,7 +268,7 @@ if (memberInfo == null) {
 	<!-- Footer Section End -->
 
 	<script>
-		//ë¡œê·¸ì¸,íšŒì›ê°€ì… ë²„íŠ¼ ë©”ì†Œë“œ
+		//·Î±×ÀÎ,È¸¿ø°¡ÀÔ ¹öÆ° ¸Ş¼Òµå
 		$(function() {
 			$("#loginBtn img").mouseover(function() {
 				$(this).attr("src", "img/logo/loginOn.png");
@@ -600,7 +278,7 @@ if (memberInfo == null) {
 			});
 		});
 
-		//ë¡œê·¸ì•„ì›ƒ ë²„íŠ¼ ë©”ì†Œë“œ
+		//·Î±×¾Æ¿ô ¹öÆ° ¸Ş¼Òµå
 		$(function() {
 			$("#logoutBtn img").mouseover(function() {
 				$(this).attr("src", "img/logo/logoutOn.png");
