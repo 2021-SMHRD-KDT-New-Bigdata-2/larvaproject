@@ -51,8 +51,8 @@ public class memberDAO extends DBconnection {
 		String memTel = null;
 		String memAddress = null;
 		String memDate = null;
-		int memLevel = 1;
-		String memHi = "아직 인삿말이 없습니다.";
+		int memLevel = 0;
+		String memHi = null;
 
 		try {
 
@@ -161,6 +161,7 @@ public class memberDAO extends DBconnection {
 		return result;
 	}
 	
+	//해당 레벨의 멤버정보 호출 메소드
 	public memberVO getMemberInfo(int level) {
 		getConnection();
 		memberVO memberInfomation = null;
@@ -173,8 +174,8 @@ public class memberDAO extends DBconnection {
 		String memTel = null;
 		String memAddress = null;
 		String memDate = null;
-		int memLevel = 1;
-		String memHi = "아직 인삿말이 없습니다.";
+		int memLevel = 0;
+		String memHi = null;
 
 		try {
 				
@@ -210,6 +211,7 @@ public class memberDAO extends DBconnection {
 		return memberInfomation;
 	}
 	
+	//레벨이 높은 순대로 ArrayList에 삽입하는 메소드
 	public ArrayList<Integer> topLevel() {
 		getConnection();
 	
@@ -237,6 +239,59 @@ public class memberDAO extends DBconnection {
 			}
 		}
 		return memLevels;
+	}
+	
+	//모든 회원정보 불러오는 메소드
+	public ArrayList<memberVO> allMember() {
+
+		getConnection();
+		memberVO memberInfo = null;
+		ArrayList<memberVO> memberInfoList=new ArrayList<memberVO>();
+		
+		String memId = null;
+		String memPw = null;
+		String memUserName = null;
+		String memNickName = null;
+		String memEmail = null;
+		String memTel = null;
+		String memAddress = null;
+		String memDate = null;
+		int memLevel = 0;
+		String memHi = "";
+
+		try {
+
+			psmt = conn.prepareStatement("select * from member_info");
+
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				memId = rs.getString(1);
+				memPw = rs.getString(2);
+				memUserName = rs.getString(3);
+				memNickName = rs.getString(4);
+				memEmail = rs.getString(5);
+				memTel = rs.getString(6);
+				memAddress = rs.getString(7);
+				memDate = rs.getString(8).substring(0,10);
+				memLevel = rs.getInt(9);
+				memHi = rs.getString(10);
+
+				memberInfo = new memberVO(memId, memPw, memUserName, memNickName, memEmail, memTel, memAddress, memDate,
+						memLevel, memHi);
+				
+				memberInfoList.add(memberInfo);
+			}
+		} catch (Exception e) {
+			return memberInfoList;
+		} finally {
+			try {
+				dbClose();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return memberInfoList;
 	}
 
 }
