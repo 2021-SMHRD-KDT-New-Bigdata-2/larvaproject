@@ -1,8 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@page import="com.model.memberVO"%>
+<%@page import="com.model.scoreDAO"%>
 <!DOCTYPE html>
 <html lang="zxx">
-
+<%
+memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
+scoreDAO MS = new scoreDAO();
+if (memberInfo == null) {
+	out.println("<script>alert('로그인이 필요한 서비스입니다. 로그인페이지로 이동합니다.'); window.location='./LoginJSP.jsp';</script>");
+}
+%>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Aler Template">
@@ -45,11 +53,32 @@
 	padding: 12px 0;
 	color: white;
 }
-table {
-	width: 840px;
-	margin: 25px 0;
-	padding: 20px;
-	border-collapse: collapse;
+ 		table.table2{
+                border-collapse: separate;
+                border-spacing: 1px;
+                text-align: left;
+                line-height: 1.5;
+                border-top: 1px solid #ccc;
+                margin : 20px 10px;
+                border-bottom: 1px solid #ccc;
+        }
+        table.table2 tr {
+        		 
+                 width: 50px;
+                 padding: 10px;
+                font-weight: bold;
+                vertical-align: top;
+                border-top: 1px solid #ccc;
+        }
+        table.table2 td {
+        		display : table-row-group;
+      			 width: 500px;
+                 padding: 10px;
+                 vertical-align: top;
+                 border-top: 1px solid #ccc;
+
+
+
 }
 
 #category {
@@ -136,129 +165,110 @@ margin:1%;
     <!-- Offcanvas Menu Wrapper End -->
 
     <!-- Header Section Begin -->
-    <header class="header-section">
-        <div class="hs-top">
-            <div class="container">
-                <div class="ten">
-                        <div class="logo">
-                        	<a href="./index.html"><img src="img/logo/kka1.png" alt=""></a>
+   <header class="header-section">
+		<div
+			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 225px;">
+			<div class="hs-top"
+				style="margin-top: 10px; border-bottom: 0px; height: 225px;">
+				<div class="container">
+					<div class="ten" style="padding: 3%">
+						<div class="logo">
+							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png"></a>
 						</div>
-                        <nav class="nav-menu">
-                            <ul style="text-align:center; margin-left:15%;"><!-- 인라인 속성으로 변한 li들을 텍스트로 인식해 중앙정렬 하게 만들어 줌. -->
-                                <li class="active">
-                                	<a href="./index.html">메인</a>
-                                	</li>
-                                		<li><a href="#">마이페이지</a>
-                                    		<ul class="dropdown" style="display:inline-block; width:150px;">
-                                        		<li style="margin-right:40%"><a href="./mypageProfile.html">내정보</a></li>
-                                        		<li style="margin-right:10%"><a href="./mypageContest.html">지원한 공모전</a></li>
-                                        		<li style="margin-right:38%"><a href="./mypageTeam.html">나의 팀</a></li>
-                                        		<li style="margin-right:40%"><a href="./mypageMessege.html">쪽지함</a></li>
-                                   			</ul>
-                                		</li>
-                                	<li><a href="./agents.html">공모전</a></li>
-                                	<li><a href="./about.html">팀원모집</a></li>
-                            </ul>
-                        </nav>
-                        	
-                        
-                    </div>
-                <div class="">
-                	<a href="login.html" style="margin-left:90%"><img src="img/logo/login1.png" alt=""></a>
-                </div>
-            </div>
-            </div>
-            <div class="canvas-open">
-                    <span class="icon_menu"></span>
-             </div>
-
-        <div class="hs-nav">
-            <div class="container">
-            	<div class="row">
-                    <div class="pcntSearchText" style="margin:5%; margin-left:27%;">
-                    	<input class = "textBar" type="text" placeholder="원하는 공모전 검색!" size="50">
-                    	<button class="searchBtn">검색</button>
-             		</div>
-                </div>
-            </div>
-       </div>
-    </header>
+						<nav class="nav-menu" style="margin-top: 5%;">
+							<%
+							if (memberInfo == null) {
+								out.print(
+								"<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
+							} else if (memberInfo != null) {
+								out.print(
+								"<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
+							}
+							%>
+							<ul style="text-align: center; margin-left: 7%;">
+								<li class="active" style="font-size: 10px"><a
+									href="./mainPageJSP.jsp" style="color: #ffffff;">메인</a></li>
+								<li><a href="#" style="color: #ffffff;">마이페이지</a>
+									<ul class="dropdown"
+										style="display: inline-block; width: 150px;">
+										<li style="margin-right: 40%"><a
+											href="./mypageProfileJSP.jsp">내정보</a></li>
+										<li style="margin-right: 10%"><a
+											href="./mypageContestJSP.jsp">지원한 공모전</a></li>
+										<li style="margin-right: 38%"><a
+											href="./mypageTeamJSP.jsp">나의 팀</a></li>
+										<li style="margin-right: 40%"><a
+											href="./mypageMessageJSP.jsp">쪽지함</a></li>
+									</ul></li>
+								<li><a href="./ContestBoardJSP.jsp" style="color: #ffffff;">공모전</a></li>
+								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">팀원모집</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<div></div>
+			</div>
+		</div>
+		<div class="canvas-open">
+			<span class="icon_menu"></span>
+		</div>
+		<div
+			style="padding: 3%; background-color: #4169E1; box-shadow: 1px 1px gray; width: 2000px">
+			<div class="pcntSearchText"
+				style="margin-left: 33%; height: 40px; width: 600px; border: 2px solid #1b5ac2; background: #ffffff;">
+				<input class="textBar" type="text" placeholder="원하는 공모전 검색!"
+					style="font-size: 16px; width: 500px; height: 100%; padding: 10px; border: 0px; outline: none;">
+				<button class="searchBtn"
+					style="width: 50px; height: 100%; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">검색</button>
+			</div>
+		</div>
+	</header>
     <!-- Header End -->
 
-    <!-- Breadcrumb Section Begin -->
+ 
     
     </footer>
     <!-- Footer Section End -->
-	<body>
-		<section class="breadcrumb-section spad set-bg" data-setbg="img/breadcrumb-bg.jpg">
-        	<div class="container">
-	            <div class="row">
-	                <div class="col-lg-12">
-	                    <div class="breadcrumb-text">
-	                        <h4>팀 지원</h4>
-	                        <div class="bt-option">
-	                            <a href="./index.html"><i class="fa fa-home"></i>메인</a>
-	                            <span>팀원 모집</span>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-       		 </div>
-    	</section>
-    	
+	
     	
 	
 	
 	
 	
 	<body>
+	
+	<div>
 	
 	<div class="controller">
-	<div id="wriTitle"><b>게시글 작성</b></div>
-		<form action="write.do" method="post">
-			<table>
-				<tr>
-					<td width="100px">참가하려는 공모전</td>
-					<td><select name="bbsCategory" id="category" >
-							<option>공모전 이름</option>
-							<option>Java</option>
-							<option>C++</option>
-							<option>Python</option>
-							<option>IDL</option>
-							<option>Fortran</option>
-							<option>기타</option>
-					</select></td>
-				</tr>
-				<tr>
-					<td>제목</td>
-					<td><input type="text" name="bbsTitle" required id="title" />
-					</td>
-				</tr>
-				<tr>
-				<td>
-					내용
-				</td>
-					<td colspan="2"><textarea rows="12" cols="50"
-							name="bbsContent" required></textarea></td>
-				</tr>
-				<tr>
-					<td ><input type="submit" value="작성" class="button"></td>
-					<td ><input type="reset" value="내용 초기화" class="button"></td>
-				</tr>
+	<div ><h2><b>게시글 작성</b></h2>
+	<hr style="width:900px" color=black size=1px></div>
+		 <table class = "table2">
+                        <tr>
+                        <td>작성자</td>
+                        <td><input type = text name = name size=20> </td>
+                        </tr>
+ 
+                        <tr>
+                        <td>제목</td>
+                        <td><input type = text name = title size=60></td>
+                        </tr>
+ 
+                        <tr>
+                        <td>내용</td>
+                        <td><textarea name = content cols=85 rows=15></textarea></td>
+                        </tr>
+ 
 			</table>
-		</form>
+ 	<div>
+ 	   	<button type="button" class="btn btn-primary" style="margin-left : 84%;  background : #B70000; color : #ffffff; border : 0; outline : 0">등록</button>
+      	<button type="button" class="btn btn-primary" style=" background : #B70000; color : #ffffff; border : 0; outline : 0">초기화</button>
+     </div>
 		
 	</div>
 </body>
 </html>
-	</body>
 	
-	
-    
-    
-    
-</body>
-<footer class="footer-section">
+<footer class="footer-section" >
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6">
@@ -320,7 +330,29 @@ margin:1%;
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
             </div>
         </div>
-    </footer>
+    </footer>    
+    
+    <script>
+		//로그인,회원가입 버튼 메소드
+		$(function() {
+			$("#loginBtn img").mouseover(function() {
+				$(this).attr("src", "img/logo/loginOn.png");
+			});
+			$("#loginBtn img").mouseout(function() {
+				$(this).attr("src", "img/logo/loginOff.png");
+			});
+		});
+
+		//로그아웃 버튼 메소드
+		$(function() {
+			$("#logoutBtn img").mouseover(function() {
+				$(this).attr("src", "img/logo/logoutOn.png");
+			});
+			$("#logoutBtn img").mouseout(function() {
+				$(this).attr("src", "img/logo/logoutOff.png");
+			});
+		});
+	</script>
 <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
