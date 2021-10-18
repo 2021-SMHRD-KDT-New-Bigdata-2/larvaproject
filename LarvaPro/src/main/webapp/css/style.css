@@ -2575,8 +2575,7 @@ li .richText-btn[data-command=toggleCode] {
 }
 
 .as-item {
-width :180px;
-  
+width :200px;
   text-align: center;
   background: #ffffff;
   padding: 10px 5px 15px 5px;

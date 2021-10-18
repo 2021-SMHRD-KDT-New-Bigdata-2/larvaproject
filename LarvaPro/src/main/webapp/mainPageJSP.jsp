@@ -253,8 +253,7 @@ conDetailVO contest50 = contestDAO.selectCon(50);
       			     calendar.addEvent({
 				         title: '<%=conArr.get(i).getConName()%>',
 				         start: '<%=conArr.get(i).getConFromDate()%>',
-				         end: '<%=conArr.get(i).getConToDate()%>
-						'
+				         end: '<%=conArr.get(i).getConToDate()%>'
 										})
 					<%}%>
 						// 캘린더 랜더링
@@ -269,9 +268,9 @@ conDetailVO contest50 = contestDAO.selectCon(50);
 				</div>
 			</div>
 		</div>
-		
-		
-		
+
+
+
 		<div class="cal-right">
 			<div class="moim">
 				<div class="section-title" style="margin-left: -60px">
@@ -374,7 +373,14 @@ conDetailVO contest50 = contestDAO.selectCon(50);
 					<div class="ts-item">
 						<div class="ts-text">
 							<p style="color: red">level:99</p>
-							<img src="img/tiger/tiger03.png" alt="">
+									<%if (memberInfo != null && memberInfo.getMemLevel() < 33) {
+										out.println("<img src='img/tiger/tiger01.png'>");
+									} else if (memberInfo != null && memberInfo.getMemLevel() < 66) {
+										out.println("<img src='img/tiger/tiger02.png'>");
+									} else if (memberInfo != null && memberInfo.getMemLevel() <= 99) {
+										out.println("<img src='img/tiger/tiger03.png'>");
+									} %>
+								
 							<h5>닉네임</h5>
 							<span>인사말</span> <span>평점</span>
 							<p>공모전 수상 내역</p>
