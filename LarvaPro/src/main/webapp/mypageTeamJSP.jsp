@@ -203,15 +203,7 @@ if (memberInfo == null) {
 						<div class="section-title">
 							<h4>내 파티 현황</h4>
 						</div>
-						<%-- <div>
-								<ul>
-									<li class="menu" style="list-style: none"><a><%=memberInfo.getMemUserName()%></a>
-										<ul class="hide" style="list-style: none">
-											<li><input type="text"
-												value="<%=memberInfo.getMemUserName()%>" name="name"></li>
-										</ul></li>
-								</ul>
-							</div> --%>
+						s
 						<%
 						if (memberInfo != null) {
 
@@ -227,22 +219,42 @@ if (memberInfo == null) {
 							for (int i = 0; i < myTeam.size(); i++) {
 						%>
 						<div style="margin: 3%; float: left">
-							<table style="width: 400px">
+							<table style="width: 500px; flaot: static">
 								<tbody>
 									<tr>
 										<td
-											style="font-size: 20px; background-color: gray; color: white; width: 50px;"></td>
+											style="font-size: 15px; background-color: gray; color: white; width: 30px;"></td>
 										<td
-											style="font-size: 20px; background-color: gray; color: white; width: 300px;">
+											style="font-size: 15px; background-color: gray; color: white; width: 400px; text-align: left;">
 											<%=conD.selectCon(myTeam.get(i).getCntNum()).getConName()%>
 										</td>
 										<td
-											style="font-size: 20px; background-color: gray; color: white; width: 50px;"></td>
+											style="font-size: 15px; background-color: #8B4513; color: white; width: 70px;">역할</td>
 									</tr>
 									<tr>
-										<td style="font-size: 15px;">팀장</td>
-										<td style="font-size: 15px">팀원아이디</td>
-										<td style="font-size: 15px">역할</td>
+										<td style="font-size: 10px; color: red; flaot: left"></td>
+										<td style="font-size: 10px; flaot: static"><div>
+												<ul>
+													<li class="menu" style="list-style: none">
+														<%
+														if (myTeam.get(i).getTmType() == 0) {
+															out.print("★");
+														}
+														%><a> <%=myTeam.get(i).getMemId()%></a>
+														<ul class="hide" style="list-style: none">
+															<li>
+																<%
+																ArrayList<teamVO> myTeamMembers = teamDAO.showTeamMember(myTeam.get(i).getCntNum(), myTeam.get(i).getTmNum());
+																for (teamVO vos : myTeamMembers) {
+																	out.println(vos.getMemId() + "<br>");
+																}
+																%>
+															</li>
+														</ul>
+													</li>
+												</ul>
+											</div></td>
+										<td style="font-size: 10px; flaot: static"><%=myTeam.get(i).getPosition()%></td>
 									</tr>
 								</tbody>
 							</table>
