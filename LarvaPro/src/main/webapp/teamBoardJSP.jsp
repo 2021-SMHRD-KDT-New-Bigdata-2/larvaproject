@@ -160,14 +160,15 @@ memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
 					</div>
 		<div>
 			<button type="button" class="btn btn-primary"
-				style="margin-bottom: 10px; float: right; background: #1b5ac2; color: #ffffff; border: 0; outline: 0">작성하기</button>
+				style="margin-bottom: 10px; float: right; background: #1b5ac2; color: #ffffff; border: 0; outline: 0;"
+				name="writeTeam" onClick="location.href='recruitTeam.jsp'">작성하기</button>
 		</div>
 
 		<table class="table table-hover" style="width: 1000px;">
 
 			<thead>
 				<tr style="background-color: #c8c8c8; font-size:15px; text-align:center">
-					<th scope="col" style="width:100px">모집여부</th>
+					<th scope="col" style="width:100px; background-color: #8B4513; color:white">모집여부</th>
 					<th scope="col" style="width:300px">제목</th>
 					<th scope="col" style="width:100px">파티장</th>
 					<th scope="col" style="width:400px">참여 공모전 제목</th>

@@ -235,6 +235,29 @@ public class conDetailDAO extends DBconnection{
 		}
 		return list;
 	}
+	
+	//모든 공모전 남은 날짜 계산 메소드
+		public ArrayList<Integer> D_Day(){
+			
+			getConnection();
+			ArrayList<Integer> D_day=new ArrayList<Integer>();
+			
+			try {
+				psmt=conn.prepareStatement("SELECT TO_DATE(TO_CHAR(SYSDATE, 'YYYYMMDD')) - TO_DATE(CNT_TO_DATE) FROM contest");
+				rs=psmt.executeQuery();
+				
+				while(rs.next()) {
+					 D_day.add(rs.getInt(1));
+					 
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				dbClose();
+			}
+			return D_day;
+					
+		}
 }
 
 

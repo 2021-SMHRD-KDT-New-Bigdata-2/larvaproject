@@ -203,7 +203,6 @@ if (memberInfo == null) {
 						<div class="section-title">
 							<h4>내 파티 현황</h4>
 						</div>
-						s
 						<%
 						if (memberInfo != null) {
 

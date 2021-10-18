@@ -226,7 +226,6 @@ public class memberDAO extends DBconnection {
 			
 			while (rs.next()) {
 				memLevel = rs.getInt("mem_level");
-				System.out.println(rs.getInt("mem_level"));
 				memLevels.add(memLevel);
 			}
 		} catch (Exception e) {
