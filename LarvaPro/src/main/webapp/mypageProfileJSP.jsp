@@ -421,7 +421,7 @@ if (memberInfo == null) {
 				<%
 				} else if (myConList.size() > 0) {
 				for (int i = 0; i < myConList.size(); i++) {
-					if (myConList.get(i).getPcntContent() == null | myConList.get(i).getPcntContent().equals("null")) {
+					if (myConList.get(i).getPcntContent() == null) {
 				%>
 				<tr>
 					<td style="color: blue">작성 전</td>
