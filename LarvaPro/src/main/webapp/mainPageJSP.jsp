@@ -1,3 +1,5 @@
+<%@page import="com.model.scoreDAO"%>
+<%@page import="com.model.memberDAO"%>
 <%@page import="com.model.conDetailDAO"%>
 <%@page import="com.model.postVO"%>
 <%@page import="java.util.ArrayList"%>
@@ -18,6 +20,12 @@ ArrayList<conDetailVO> conArr = contestDAO.calList();
 conDetailVO contest100 = contestDAO.selectCon(100);
 conDetailVO contest90 = contestDAO.selectCon(90);
 conDetailVO contest50 = contestDAO.selectCon(50);
+
+memberDAO DAO =new memberDAO();
+ArrayList<Integer> level=DAO.topLevel();
+scoreDAO sDAO=new scoreDAO();
+
+memberVO anotherMemberInfo=null;
 
 // 공모전 ArrayList에 담아 가져와서!
 %>
@@ -369,25 +377,28 @@ conDetailVO contest50 = contestDAO.selectCon(50);
 				</div>
 			</div>
 			<div class="row" style="margin-left: 50px">
+			<%for(int i=0;i<3;i++){
+			anotherMemberInfo=DAO.getMemberInfo(level.get(i));
+			%>
 				<div class="col-md-4">
 					<div class="ts-item">
 						<div class="ts-text">
-							<p style="color: red">level:99</p>
-									<%if (memberInfo != null && memberInfo.getMemLevel() < 33) {
-										out.println("<img src='img/tiger/tiger01.png'>");
-									} else if (memberInfo != null && memberInfo.getMemLevel() < 66) {
-										out.println("<img src='img/tiger/tiger02.png'>");
-									} else if (memberInfo != null && memberInfo.getMemLevel() <= 99) {
-										out.println("<img src='img/tiger/tiger03.png'>");
-									} %>
-								
-							<h5>닉네임</h5>
-							<span>인사말</span> <span>평점</span>
-							<p>공모전 수상 내역</p>
+							<p style="color: red"><%=level.get(i) %></p>
+									<%if (memberInfo != null && level.get(i) < 100) {%>
+										<img src='img/tiger/tiger03.png'>
+									<%} else if (memberInfo != null && level.get(i) < 66) { %>
+										<img src='img/tiger/tiger02.png'>
+									<%} else if (memberInfo != null && level.get(i) < 33) {%>
+										<img src='img/tiger/tiger01.png'>
+									<%} %>
+							<h5><%=anotherMemberInfo.getMemNickName() %></h5>
+							<span><%=anotherMemberInfo.getMemHi() %></span> <span>평점:<%=sDAO.showScore(anotherMemberInfo.getMemId()) %></span>
+							<p><%=anotherMemberInfo.getMemEmail() %></p>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<%} %>
+				<!-- <div class="col-md-4">
 					<div class="ts-item">
 						<div class="ts-text">
 							<p style="color: red">level:76</p>
@@ -408,7 +419,7 @@ conDetailVO contest50 = contestDAO.selectCon(50);
 							<p>공모전 수상 내역</p>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</section>

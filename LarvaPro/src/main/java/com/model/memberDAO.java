@@ -1,5 +1,7 @@
 package com.model;
 
+import java.util.ArrayList;
+
 public class memberDAO extends DBconnection {
 
 	// 회원가입 메소드
@@ -157,6 +159,84 @@ public class memberDAO extends DBconnection {
 			}
 		}
 		return result;
+	}
+	
+	public memberVO getMemberInfo(int level) {
+		getConnection();
+		memberVO memberInfomation = null;
+		
+		String memId = null;
+		String memPw = null;
+		String memUserName = null;
+		String memNickName = null;
+		String memEmail = null;
+		String memTel = null;
+		String memAddress = null;
+		String memDate = null;
+		int memLevel = 1;
+		String memHi = "아직 인삿말이 없습니다.";
+
+		try {
+				
+			psmt = conn.prepareStatement("select * from member_info where mem_level = ?");
+			psmt.setInt(1, level);
+
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				memId = rs.getString(1);
+				memPw = rs.getString(2);
+				memUserName = rs.getString(3);
+				memNickName = rs.getString(4);
+				memEmail = rs.getString(5);
+				memTel = rs.getString(6);
+				memAddress = rs.getString(7);
+				memDate = rs.getString(8).substring(0,10);
+				memLevel = rs.getInt(9);
+				memHi = rs.getString(10);
+
+				memberInfomation = new memberVO(memId, memPw, memUserName, memNickName, memEmail, memTel, memAddress, memDate,
+						memLevel, memHi);
+			}
+		} catch (Exception e) {
+			return memberInfomation;
+		} finally {
+			try {
+				dbClose();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return memberInfomation;
+	}
+	
+	public ArrayList<Integer> topLevel() {
+		getConnection();
+	
+		ArrayList<Integer> memLevels=new ArrayList<Integer>();
+		int memLevel = 0;
+		
+		try {
+				
+			psmt = conn.prepareStatement("select * from member_info order by mem_level DESC");
+
+			rs = psmt.executeQuery();
+			
+			while (rs.next()) {
+				memLevel = rs.getInt("mem_level");
+				System.out.println(rs.getInt("mem_level"));
+				memLevels.add(memLevel);
+			}
+		} catch (Exception e) {
+			return memLevels;
+		} finally {
+			try {
+				dbClose();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return memLevels;
 	}
 
 }
