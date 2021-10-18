@@ -1,6 +1,6 @@
 
+<%@page import="com.model.scoreDAO"%>
 <%@page import="com.model.conDetailDAO"%>
-<%@page import="com.model.postVO"%>
 <%@page import="com.model.conDetailVO"%>
 <%@page import="com.model.teamDAO"%>
 <%@page import="com.model.teamVO"%>
@@ -13,10 +13,11 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <%
-memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession"); 
-if(memberInfo==null){
-	out.println("<script>alert('로그인이 필요한 서비스입니다. 로그인페이지로 이동합니다.'); window.location='./LoginJSP.jsp';</script>");
-}
+	memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
+	scoreDAO MS = new scoreDAO();
+	if (memberInfo == null) {
+		out.println("<script>alert('로그인이 필요한 서비스입니다. 로그인페이지로 이동합니다.'); window.location='./LoginJSP.jsp';</script>");
+	}
 %>
 <head>
 <meta charset="UTF-8">
@@ -24,7 +25,7 @@ if(memberInfo==null){
 <meta name="keywords" content="Aler, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Aler | Template</title>
+<title>지원한 공모전</title>
 
 <!-- Google Font -->
 <link
@@ -46,18 +47,19 @@ if(memberInfo==null){
 <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <style>
-#noteHead {
-	font-size: 25px;
-	width: 100px;
-}
-
-#noteContent {
-	font-size: 18px;
-	margin: 1%;
-}
+	#noteHead {
+		font-size: 25px;
+		width: 100px;
+	}
+	
+	#noteContent {
+		font-size: 18px;
+		margin: 1%;
+	}
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+	
 </script>
 <body>
 	<!-- Page Preloder -->
@@ -107,12 +109,14 @@ if(memberInfo==null){
 						</div>
 						<nav class="nav-menu" style="margin-top: 5%;">
 							<%
-								if(memberInfo==null){
-					            	out.print("<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
-					            }else if(memberInfo!=null){
-					            	out.print("<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
-					            }
-				            %>
+								if (memberInfo == null) {
+									out.print(
+									"<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
+								} else if (memberInfo != null) {
+									out.print(
+									"<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
+								}
+							%>
 							<ul style="text-align: center; margin-left: 7%;">
 								<li class="active" style="font-size: 10px"><a
 									href="./mainPageJSP.jsp" style="color: #ffffff;">메인</a></li>
@@ -155,15 +159,14 @@ if(memberInfo==null){
 
 	<!-- 중간 헤드 시작 -->
 	<section class="breadcrumb-section spad set-bg"
-		data-setbg="img/grayPolygon.png" style="width:2000px">
+		data-setbg="img/grayPolygon.png" style="width: 2000px">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb-text">
 						<h4>지원한 공모전</h4>
 						<div class="bt-option">
-							<a href="./index.html"><i class="fa fa-home"></i>메인</a><span>지원한
-								공모전</span>
+							<a href="./index.html"><i class="fa fa-home"></i>메인</a><span>지원한 공모전</span>
 						</div>
 					</div>
 				</div>
@@ -171,29 +174,65 @@ if(memberInfo==null){
 		</div>
 	</section>
 	<!-- 중간 헤드 끝 -->
-
+	<%
+		if (memberInfo != null) {
+			personalcontestDAO MCL = new personalcontestDAO();//내가 참여한 공모전 DAO호출
+			conDetailDAO CDAO = new conDetailDAO();//공모전 DAO 호출
+			ArrayList<personalcontestVO> myConList = MCL.showPersonalContest(memberInfo.getMemId());//내가 참여한 공모전의 정보를 ArrayList에 추가
+	
+			int mojip = 0;
+			int hanuenjung = 0;
+			int end = 0;
+	
+			for (int i = 0; i < myConList.size(); i++) {
+				if (myConList.get(i).getPcntType() == 0) {
+					mojip++;
+				} else if (myConList.get(i).getPcntType() == 1) {
+					hanuenjung++;
+				} else if (myConList.get(i).getPcntType() == 2) {
+					end++;
+				}
+			}
+	%>
 	<!-- 내정보 섹션 -->
-	<section class="profile-section spad">
-		<div class="container">
+	<section class="profile-section spad" style="margin-bottom: 10%">
+		<div class="section-title">
+			<h4 style="margin-left: 21.5%">내정보</h4>
+		</div>
+		<div class="container" style="margin-left: 20%">
 			<div class="profile-agent-content">
 				<div class="row">
 					<div class="col-lg-4">
 						<div class="profile-agent-info">
-							<div class="pi-text">
-								<h5>김기연</h5>
-								<span>실버</span>
+							<div class="pi-text" style="padding-top: 0px">
+								<div style="width: 70px; height: 70px">
+									<%
+										if (memberInfo != null && memberInfo.getMemLevel() < 33) {
+											out.println("<img src='img/tiger/tiger_profile01.png'>");
+										} else if (memberInfo != null && memberInfo.getMemLevel() < 66) {
+											out.println("<img src='img/tiger/tiger_profile02.png'>");
+										} else if (memberInfo != null && memberInfo.getMemLevel() <= 99) {
+											out.println("<img src=img/tiger/tiger_profile03.png>");
+										}
+									%>
+								</div>
+								<%
+									if (memberInfo != null) {
+										out.print("<h5>" + memberInfo.getMemUserName() + "</h5>");
+									}
+									if (memberInfo != null) {
+										out.print("<span>Level: " + memberInfo.getMemLevel() + "</span>");
+									}
+								%>
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-4">
 						<div class="profile-agent-widget">
 							<ul>
-								<li><a href="#" style="color: black">진행중인 공모전 갯수</a><span
-									style="color: red">3</span></li>
-								<li><a href="#" style="color: black">팀원 모집중인 공모전 갯수</a><span
-									style="color: red">1</span></li>
-								<li><a href="#" style="color: black">끝난 공모전 갯수 </a><span
-									style="color: red">4</span></li>
+								<li>팀원 모집중인 공모전 갯수 <span style="color: red"><%=mojip%></span></li>
+								<li>현재 참가중인 공모전 갯수 <span style="color: red"><%=hanuenjung%></span></li>
+								<li>끝난 공모전 갯수 <span style="color: red"><%=end%></span></li>
 							</ul>
 						</div>
 					</div>
@@ -201,7 +240,17 @@ if(memberInfo==null){
 						<div class="profile-agent-newslatter">
 							<h5 align="center" style="color: red;">평점</h5>
 							<p align="center"
-								style="color: blue; font-size: 35px; margin: 10%;">4.3</p>
+								style="color: blue; font-size: 35px; margin: 10%;">
+								<%
+								if (memberInfo != null) {
+									double avg = MS.showScore(memberInfo.getMemId());
+									if (avg == 0) {
+								%>
+							<h6 align="center">당신을 평가한 사람이 없습니다</h6>
+								<%} else {%>
+									<%=avg%>
+								<%}	}%>
+							</p>
 						</div>
 					</div>
 				</div>
@@ -209,23 +258,27 @@ if(memberInfo==null){
 		</div>
 	</section>
 	<!-- 내정보 섹션 끝-->
-	<% 
-		personalcontestDAO pcdao = new personalcontestDAO();
-    	ArrayList<personalcontestVO> pc_list = new ArrayList<personalcontestVO>();
-    	if(memberInfo.getMemId()!=null){
-    	pc_list = pcdao.showPersonalContest(memberInfo.getMemId());
-    	}
-    	conDetailVO con = new conDetailVO();
-    	conDetailDAO condao = new conDetailDAO();
-    	
-    	teamDAO teamdao = new teamDAO();
-    	postVO pc = new postVO();
-    %>
+
+	<%
+		if (memberInfo.getMemId() != null) {
+			conDetailVO con = new conDetailVO();
+			teamDAO teamdao = new teamDAO();
+	
+			ArrayList<teamVO> team_list = new ArrayList<teamVO>();
+	
+			team_list = teamdao.selectMyTeam(memberInfo.getMemId());
+	%>
 	<!-- 공모전 내역 섹션 -->
+
 	<section class="property-section profile-page spad">
+		<%
+			if (team_list.size() != 0) {
+		%>
 		<div class="container">
 			<div class="row">
-				<%for(int i=0;i<pc_list.size();i++){%>
+				<%
+					for (int i = 0; i < team_list.size(); i++) {
+				%>
 				<div class="col-lg-4">
 					<div class="property-item">
 						<div class="pi-pic set-bg"
@@ -236,33 +289,47 @@ if(memberInfo==null){
 						<div class="pi-text">
 							<!-- 마지막 일자 -->
 							<a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-							<div class="pt-price"><%=condao.selectCon(pc_list.get(i).getPcntNum()).getConToDate()%><span>까지</span>
+							<div class="pt-price">
+								<%=CDAO.selectCon(team_list.get(i).getCntNum()).getConToDate()%><span>까지</span>
 							</div>
 							<!-- 제목 -->
 							<h5>
-								<a href="#"> <%
-										
-									condao.selectCon(pc_list.get(i).getPcntNum()).getConName();
-									%>
-								</a>
+								<a href="#"><%=CDAO.selectCon(team_list.get(i).getCntNum()).getConName()%></a>
 							</h5>
 							<ul>
 								<!-- 분야 -->
-								<li><i class="fa fa-object-group"></i> <%=condao.selectCon(pc_list.get(i).getPcntNum()).getConField()%>
+								<li><i class="fa fa-object-group"></i>
+									<%=CDAO.selectCon(team_list.get(i).getCntNum()).getConField()%>
 								</li>
 								<!-- 인원수 -->
-								<li><i class="fa fa-bathtub"></i> <%=teamdao.showTeamMemberNum(condao.selectCon(pc_list.get(i).getPcntNum()).getConNum(),teamdao.searchTeamNum(memberInfo.getMemId())) %>
+								<li><i class="fa fa-bathtub"></i>
+									<%=teamdao.showTeamMemberNum(teamdao.searchTeamNum(memberInfo.getMemId()).get(i).getTmNum())%>
 								</li>
 								<!-- 팀원들 이름 -->
-								<li><i class="fa fa-bed"></i> <%=teamdao.showTeamMemberId(condao.selectCon(pc_list.get(i).getPcntNum()).getConNum(),teamdao.searchTeamNum(memberInfo.getMemId()))) %>
-								</li>
+								<li><i class="fa fa-bed"></i>
+									<%
+										 for (int j = i; j < i + 1; j++) {
+										 	out.println(teamdao.showTeamMemberId(teamdao.searchTeamNum(memberInfo.getMemId()).get(j).getMemId()));
+										 }
+									 %>
+								 </li>
 								<!-- 모집여부 -->
-								<li style="color: red"><i class="fa fa-bed"></i></li>
+								<li style="color: red"><i class="fa fa-bed"></i>
+									<%
+										 int maxnum = teamdao.selectMyTeam(memberInfo.getMemId()).get(i).getTmFull();
+										 int currentnum = teamdao.showTeamMemberNum(teamdao.searchTeamNum(memberInfo.getMemId()).get(i).getTmNum());
+										 if (currentnum < maxnum) {
+										 	out.print("모집 중");
+										 } else if (currentnum >= maxnum) {
+										 	out.print("모집 완료");
+										 }
+									 %>
+								 </li>
 							</ul>
 						</div>
 					</div>
 				</div>
-				<%} %>
+				<%}	%>
 				<div class="col-lg-12">
 					<div class="property-pagination">
 						<a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#"
@@ -271,7 +338,9 @@ if(memberInfo==null){
 				</div>
 			</div>
 		</div>
+		<%}}}%>
 	</section>
+
 	<!-- 공모전 내용 섹션 끝 -->
 	<!-- Property Comparison Section End -->
 
@@ -385,7 +454,9 @@ if(memberInfo==null){
 				<p>
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					Copyright &copy;
-					<script>document.write(new Date().getFullYear());</script>
+					<script>
+						document.write(new Date().getFullYear());
+					</script>
 					All rights reserved | This template is made with <i
 						class="fa fa-heart" aria-hidden="true"></i> by <a
 						href="https://colorlib.com" target="_blank">Colorlib</a>
@@ -398,26 +469,26 @@ if(memberInfo==null){
 
 
 	<script>
-    //로그인,회원가입 버튼 메소드
-    $(function(){
-    	$("#loginBtn img").mouseover(function(){
-    		$(this).attr("src","img/logo/loginOn.png");
-    	});
-    	$("#loginBtn img").mouseout(function(){
-    		$(this).attr("src","img/logo/loginOff.png");
-    	});
-    });
-    
-    //로그아웃 버튼 메소드
-    $(function(){
-    	$("#logoutBtn img").mouseover(function(){
-    		$(this).attr("src","img/logo/logoutOn.png");
-    	});
-    	$("#logoutBtn img").mouseout(function(){
-    		$(this).attr("src","img/logo/logoutOff.png");
-    	});
-    });
-    </script>
+		//로그인,회원가입 버튼 메소드
+		$(function() {
+			$("#loginBtn img").mouseover(function() {
+				$(this).attr("src", "img/logo/loginOn.png");
+			});
+			$("#loginBtn img").mouseout(function() {
+				$(this).attr("src", "img/logo/loginOff.png");
+			});
+		});
+
+		//로그아웃 버튼 메소드
+		$(function() {
+			$("#logoutBtn img").mouseover(function() {
+				$(this).attr("src", "img/logo/logoutOn.png");
+			});
+			$("#logoutBtn img").mouseout(function() {
+				$(this).attr("src", "img/logo/logoutOff.png");
+			});
+		});
+	</script>
 
 	<!-- Js Plugins -->
 	<script src="js/jquery-3.3.1.min.js"></script>
