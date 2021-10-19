@@ -1,13 +1,14 @@
+<%@page import="com.model.conDetailDAO"%>
 <%@page import="com.model.conDetailVO"%>
 <%@page import="com.model.memberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page import="java.sql.*"%>
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 <!DOCTYPE html>
 <html lang="zxx">
 <% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession");%>
 <% conDetailVO con=new conDetailVO(); %>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
-</script>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Aler Template">
@@ -80,10 +81,10 @@
 						</div>
                         <nav class="nav-menu" style="margin-top:5%;">
                             <%if(memberInfo==null){
-            	out.print("<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
-            }else if(memberInfo!=null){
-            	out.print("<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
-            }%>
+            					out.print("<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
+          						  }else if(memberInfo!=null){
+            					out.print("<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
+          						  }%>
                             <ul style="text-align:center; margin-left:7%;">
                                 <li class="active" style="font-size : 10px">
                                 	<a href="./mainPageJSP.jsp" style="color:#ffffff;">메인</a>
@@ -123,6 +124,38 @@
 
     <!-- Blog Details Section Begin -->
     
+    <%
+              	conDetailDAO dao=new conDetailDAO(); 
+              	try {
+	          			Class.forName("oracle.jdbc.driver.OracleDriver");
+	          			
+	          			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
+	          			String user = "campus_k3_1006";
+	          			String password = "smhrd3";
+	          			int idx = Integer.parseInt(request.getParameter("idx"));
+	
+	          			String sql = "SELECT * FROM contest where cnt_num = ?";
+	          			Connection conn = DriverManager.getConnection(url,user,password);
+	          			PreparedStatement stmt = conn.prepareStatement(sql);
+						stmt.setInt(1, idx);
+	
+	          			//2. 데이터베이스 연결 객체(Connection) 생성
+						ResultSet rs=stmt.executeQuery();
+						if(rs.next()){
+							int num=rs.getInt(1);
+							String name=rs.getString(2);
+							String host=rs.getString(3);
+							String field=rs.getString(4);
+							String qualification=rs.getString(5);
+							String fromDate=rs.getString(6);
+							String toDate=rs.getString(7);
+							String homePage=rs.getString(8);
+							String smallImg=rs.getString(9);
+							String bigImg=rs.getString(10);
+							String content=rs.getString(11);
+							
+                    
+                    %>
     
     <section class="blog-details-section spad">
     	<div><h3 class="fw-bolder mb-1" style="margin-left:20%"><b>공모전 대외활동 정보</b></h3>
@@ -132,32 +165,33 @@
             	<div>
                 	<div>
                     <article>
+                    
                         <header class="mb-4" style="padding:3%">
                             <div class="section-title" style="padding-top:2%;">
-            				<h4><%=con.getConName() %></h4>
+            				<h4><%=name %></h4>
               				</div>
                             <a class="badge bg-secondary text-decoration-none link-light" >IT</a>
                             <a class="badge bg-secondary text-decoration-none link-light" >UCC/사진</a>
                         </header>
-                        <figure class="mb-4" style="float:left; margin-left:5%"><img src="https://www.wevity.com/upload/contest/20211001103134_ddf5bb76.jpg" alt="..." /></figure>
+                        <figure class="mb-4" style="float:left; margin-left:5%"><img src=<%=smallImg %> alt="..." /></figure>
                         <section class="mb-5">
                         	<hr width="350px">
                       			<table class="content" style="margin-left:35%;">
       							<tbody>
         							<tr>
-          								<td width = "100" height="50"><b>분야</b></td><td> Ipsum</td>
+          								<td width = "100" height="50"><b>분야</b></td><td><%=field %></td>
      					   			</tr>
         							<tr>
-          								<td width = "100" height="50"><b>응모대상</b></td><td>Ipsum</td>
+          								<td width = "100" height="50"><b>응모대상</b></td><td><%=qualification %></td>
      					   			</tr>
         							<tr>
-          								<td width = "100" height="50"><b>주최/주관</b><td>Ipsum</td>
+          								<td width = "100" height="50"><b>주최/주관</b><td><%=field %></td>
      					   			</tr>
       								<tr>
-          								<td width = "100" height="50"><b>후원/협찬</b></td><td>Ipsum</td>
+          								<td width = "100" height="50"><b>후원/협찬</b></td><td></td>
      					   			</tr>
         							<tr>
-          								<td width = "100" height="50"><b>접수기간</b></td><td>Ipsum</td>
+          								<td width = "100" height="50"><b>접수기간</b></td><td><%=fromDate%>+"~"+<%=toDate%></td>
      					   			</tr>
      					   			<tr>
           								<td width = "100" height="50"><b>총상금</b></td><td>Ipsum</td>
@@ -167,36 +201,20 @@
    					 			<hr style="width:350px">
    					 		<div class="section-title" style="padding:3%"><h4>상세내용</h4></div>
    					 		<div style="margin-left:3%">
-   					 		<p class="fs-5 mb-4">2021 부산청년주간 e스포츠 챌린지 (카트타고 LOL하자)<br>
-
-■ 게임종목 : 리그 오브 레전드(5인 1팀) / 카트라이더(4인 1팀, 스피드전)<br>
-<br>
-■ 모집대상 : 부산에 거주 또는 활동하는 만 15세 이상 34세 이하로 구성된 팀(공고일 기준)<br>
-- 게임별 선착순 16팀 : 신청 과정에 부산 거주, 활동 및 연령 확인 정보를 제출 확인 후 선착순 선정<br>
-<br>
-■ 대회기간 : 2021년 9월 24일(금) ~ 10월 2일(토)<br>
-<br>
-■ 대회장소 : 각 가정 또는 PC 접속이 가능한 곳<br>
-<br>
-■ 신청기간 : 2021년 9월 16일(목) 20:00 ~ 9월 22일(수) 15:00 ※게임별 선착순 16팀<br>
-<br>
-■ 신청방법 : 온라인 대회 관리 및 게임매칭 플랫폼 레벨업지지 부산청년주간 대회<br>
-- 리그 오브 레전드<br>
-- 카트라이더(스피드전)<br>
-※ 신청 시작 시간은 9/16(목) 20시입니다. 사전에 플랫폼 가입 및 세부 내용을 확인하실 수 있도록 대회 페이지를 미리 열어 놓았습니다.<br>
-<br>
-■ 시상내역 ※우승팀 시상은 10/4(월) 15:00~16:00 청년주간 행사에서 진행될 예정<br>
-- 최종 우승 2개 팀에 부산광역시장상 수여(리그 오브 레전드 1팀, 카트라이더 1팀)<br>
-- 우승팀과 샌드박스 프로팀 이벤트 경기 진행<br>
-<br>
-■ 문의 : 부산청년주간 기획단<br>
-- 051-241-7863<br>
-- busanyouthweek@gmail.com<br></p>
+   					 		<p class="fs-5 mb-4"><%=bigImg %><br><br></p>
+   					 		<p><%=content %></p>
                				</div>
                      		<figure>
                      		</figure>
                         </section>
+
                     </article>
+                        <% stmt.executeUpdate(sql);
+                        rs.close();
+                        stmt.close();
+                        conn.close();
+                        } }catch(Exception e) { } 
+                        %>
                     
                     <!-- Comments section-->
                     <section class="mb-5">
@@ -336,19 +354,18 @@
     </script>
 
 
-
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.richtext.min.js"></script>
-    <script src="js/image-uploader.min.js"></script>
-    <script src="js/main.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/mixitup.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/jquery.nice-select.min.js"></script>
+	<script src="js/jquery.slicknav.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.richtext.min.js"></script>
+	<script src="js/image-uploader.min.js"></script>
+	<script src="js/main.js"></script>
 </body>
 
 </html>

@@ -5,8 +5,10 @@
 <%@page import="java.util.List"%>
 <%@page import="com.model.conDetailVO"%>
 <%@page import="com.model.memberVO"%>
+<%@ page import="java.sql.*" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    
 <html lang="zxx">
 <% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession");%>
 <% conDetailVO con= new conDetailVO(); %>
@@ -166,23 +168,62 @@
 	private String conContent; //공모전 상세 -->
 	
 			<%
-				if(list != null){ // 데이터베이스에 데이터가 있으면
-					for (int i = 0; i < list.size(); i++) {
-					conDetailVO board = list.get(i); // 반환된 list에 담긴 참조값 할당
-			%>
-			<tr>
+			
+	int total = 0;
+	
+	try {
+		Class.forName("oracle.jdbc.driver.OracleDriver");			
+		String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
+		String user = "campus_k3_1006";
+		String password = "smhrd3";
+		Connection conn = DriverManager.getConnection(url,user,password);
+		Statement stmt = conn.createStatement();
+
+		String sqlCount = "SELECT COUNT(*) FROM contest";
+		ResultSet rs = stmt.executeQuery(sqlCount);
+		
+		if(rs.next()){
+			total = rs.getInt(1);
+		}
+		rs.close();
+		out.print("총 게시물 : " + total + "개");
+		
+		String sqlList = "SELECT cnt_num,cnt_name, cnt_from_date, cnt_to_date from contest order by cnt_from_date DESC";
+		rs = stmt.executeQuery(sqlList);
+			
+		if(total==0){
+		
+	%>
+	<tr align="center" bgcolor="#FFFFFF" height="30">
+		<td colspan="6">등록된 글이 없습니다.</td>
+	</tr>
+	<%}else{
+		}while(rs.next()){
+			int idx=rs.getInt(1);
+			String name=rs.getString(2);
+			String fromDate=rs.getString(3).substring(0,10);
+			String toDate=rs.getString(4).substring(0,10);		
+		%>
 
 
-	  	
     <tr>
-      <th scope="row"><%=i+1%></th>
-      <td><a href="ContestDetailsJSP.jsp" style="color : black;"><%=list.get(i).getConName() %></a></td>
+    		
+      <th scope="row"><%=idx%></th>       
+      <td><a href="ContestDetailsJSP.jsp?idx=<%=idx%>" style="color : black;"><%=name%></a></td>
       <td>admin</td>
-      <td><%=list.get(i).getConFromDate()+"~<br>"+list.get(i).getConToDate() %></td>
+      <td><%=fromDate+"~<br>"+toDate %></td>
       <td><%=0 %></td>
       <td><%=0 %></td>
     </tr>
-    	<%}}%>
+    	<%}
+		rs.close();
+		stmt.close();
+		conn.close();
+		}catch(Exception e ){
+			out.println(e.toString());
+		}
+	
+	%>
     
     
   </tbody>
@@ -309,8 +350,7 @@
     	});
     });
     </script>
-
-    <!-- Js Plugins -->
+<!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
@@ -322,6 +362,7 @@
     <script src="js/jquery.richtext.min.js"></script>
     <script src="js/image-uploader.min.js"></script>
     <script src="js/main.js"></script>
+    
 </body>
 
 </html>
