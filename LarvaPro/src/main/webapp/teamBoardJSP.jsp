@@ -138,15 +138,15 @@ memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
 	<!-- 헤드 끝 -->
 
 	<%
-	teamDAO TDAO=new teamDAO();
-	conDetailDAO CDAO=new conDetailDAO();
-	conDetailVO contest=null;
-	
-	ArrayList<teamVO> allTeam=TDAO.showAllTeam();
-	ArrayList<teamVO> leader=new ArrayList<teamVO>();
-	
-	for(int i=0;i<allTeam.size();i++){
-		if(allTeam.get(i).getTmType()==0){
+	teamDAO TDAO = new teamDAO();
+	conDetailDAO CDAO = new conDetailDAO();
+	conDetailVO contest = null;
+
+	ArrayList<teamVO> allTeam = TDAO.showAllTeam();
+	ArrayList<teamVO> leader = new ArrayList<teamVO>();
+
+	for (int i = 0; i < allTeam.size(); i++) {
+		if (allTeam.get(i).getTmType() == 0) {
 			leader.add(allTeam.get(i));
 		}
 	}
@@ -179,14 +179,19 @@ memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
 			</thead>
 			<tbody>
 				<%for(int i=leader.size();i>0;i--){ %>
-				<tr style="font-size: 13px">
-					<th scope="row">
-						<%if(leader.get(i-1).getTmFull()==TDAO.showTeamMemberNum(leader.get(i-1).getTmNum())){%>
-						모집완료 <%}else{%> 모집중 <%} %>
-					</th>
-					<td><a href="applicationTeam.jsp"> <%if (leader.get(i-1).getTitle()==null){ %>
-							<%=leader.get(i-1).getMemId() %>의 파티 <%}else {%> <%=leader.get(i-1).getTitle() %>
-							<%} %></a></td>
+				<tr style="font-size:13px">
+					<th scope="row"><%if(leader.get(i-1).getTmFull()==TDAO.showTeamMemberNum(leader.get(i-1).getTmNum())){%>
+						모집완료
+						<%}else{%>
+						모집중
+						<%} %>
+						</th>
+					<td><a href="applicationTeam.jsp">
+					<%if (leader.get(i-1).getTitle()==null){ %>
+					<%=leader.get(i-1).getMemId() %>의 파티
+					<%}else {%>
+					<%=leader.get(i-1).getTitle() %>
+					<%} %></a></td>
 					<td><%=leader.get(i-1).getMemId() %></td>
 					<td><%=CDAO.selectCon(leader.get(i-1).getCntNum()).getConName()  %></td>
 					<td style="text-align: center"><%=TDAO.showTeamMemberNum(leader.get(i-1).getTmNum()) %>/<%=leader.get(i-1).getTmFull() %></td>
@@ -259,7 +264,9 @@ memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
 				<p>
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					Copyright &copy;
-					<script>document.write(new Date().getFullYear());</script>
+					<script>
+						document.write(new Date().getFullYear());
+					</script>
 					All rights reserved | This template is made with <i
 						class="fa fa-heart" aria-hidden="true"></i> by <a
 						href="https://colorlib.com" target="_blank">Colorlib</a>
