@@ -136,7 +136,7 @@ memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
 		</div>
 	</header>
 	<!-- 헤드 끝 -->
-	
+
 	<%
 	teamDAO TDAO=new teamDAO();
 	conDetailDAO CDAO=new conDetailDAO();
@@ -156,8 +156,8 @@ memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
 	<section class="blog-details-section spad"
 		style="width: 1000px; clear: both; margin: auto;">
 		<div class="section-title" style="margin-left: 60px">
-						<h4>팀원 모집 게시판</h4>
-					</div>
+			<h4>팀원 모집 게시판</h4>
+		</div>
 		<div>
 			<button type="button" class="btn btn-primary"
 				style="margin-bottom: 10px; float: right; background: #1b5ac2; color: #ffffff; border: 0; outline: 0;"
@@ -167,24 +167,26 @@ memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
 		<table class="table table-hover" style="width: 1000px;">
 
 			<thead>
-				<tr style="background-color: #c8c8c8; font-size:15px; text-align:center">
-					<th scope="col" style="width:100px; background-color: #8B4513; color:white">모집여부</th>
-					<th scope="col" style="width:300px">제목</th>
-					<th scope="col" style="width:100px">파티장</th>
-					<th scope="col" style="width:400px">참여 공모전 제목</th>
-					<th scope="col" style="width:100px">현황</th>
+				<tr
+					style="background-color: #c8c8c8; font-size: 15px; text-align: center">
+					<th scope="col"
+						style="width: 100px; background-color: #8B4513; color: white">모집여부</th>
+					<th scope="col" style="width: 300px">제목</th>
+					<th scope="col" style="width: 100px">파티장</th>
+					<th scope="col" style="width: 400px">참여 공모전 제목</th>
+					<th scope="col" style="width: 100px">현황</th>
 				</tr>
 			</thead>
 			<tbody>
 				<%for(int i=leader.size();i>0;i--){ %>
-				<tr style="font-size:13px">
-					<th scope="row"><%if(leader.get(i-1).getTmFull()==TDAO.showTeamMemberNum(leader.get(i-1).getTmNum())){%>
-						모집완료
-						<%}else{%>
-						모집중
-						<%} %>
-						</th>
-					<td><a href="applicationTeam.jsp"><%=leader.get(i-1).getMemId() %>의 파티</a></td>
+				<tr style="font-size: 13px">
+					<th scope="row">
+						<%if(leader.get(i-1).getTmFull()==TDAO.showTeamMemberNum(leader.get(i-1).getTmNum())){%>
+						모집완료 <%}else{%> 모집중 <%} %>
+					</th>
+					<td><a href="applicationTeam.jsp"> <%if (leader.get(i-1).getTitle()==null){ %>
+							<%=leader.get(i-1).getMemId() %>의 파티 <%}else {%> <%=leader.get(i-1).getTitle() %>
+							<%} %></a></td>
 					<td><%=leader.get(i-1).getMemId() %></td>
 					<td><%=CDAO.selectCon(leader.get(i-1).getCntNum()).getConName()  %></td>
 					<td style="text-align: center"><%=TDAO.showTeamMemberNum(leader.get(i-1).getTmNum()) %>/<%=leader.get(i-1).getTmFull() %></td>

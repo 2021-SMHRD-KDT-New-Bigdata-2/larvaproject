@@ -189,7 +189,7 @@ public class teamDAO extends DBconnection {
 		getConnection();
 
 		try {
-			psmt = conn.prepareStatement("SELECT tm_num, MAX(tm_num) FROM team_member GROUP BY tm_num");
+			psmt = conn.prepareStatement("select * from team_member order by tm_num DESC");
 			rs = psmt.executeQuery();
 
 			while (rs.next()) {
