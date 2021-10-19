@@ -292,5 +292,56 @@ public class memberDAO extends DBconnection {
 		}
 		return memberInfoList;
 	}
+	
+	// 로그인 메소드(id)
+		public memberVO loginId(String id) {
+
+			getConnection();
+			memberVO memberInfo = null;
+
+			String memId = null;
+			String memPw = null;
+			String memUserName = null;
+			String memNickName = null;
+			String memEmail = null;
+			String memTel = null;
+			String memAddress = null;
+			String memDate = null;
+			int memLevel = 0;
+			String memHi = null;
+
+			try {
+
+				psmt = conn.prepareStatement("select * from member_info where mem_id = ?");
+				psmt.setString(1, id);
+
+				rs = psmt.executeQuery();
+
+				if (rs.next()) {
+					memId = rs.getString(1);
+					memPw = rs.getString(2);
+					memUserName = rs.getString(3);
+					memNickName = rs.getString(4);
+					memEmail = rs.getString(5);
+					memTel = rs.getString(6);
+					memAddress = rs.getString(7);
+					memDate = rs.getString(8).substring(0,10);
+					memLevel = rs.getInt(9);
+					memHi = rs.getString(10);
+
+					memberInfo = new memberVO(memId, memPw, memUserName, memNickName, memEmail, memTel, memAddress, memDate,
+							memLevel, memHi);
+				}
+			} catch (Exception e) {
+				return memberInfo;
+			} finally {
+				try {
+					dbClose();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return memberInfo;
+		}
 
 }
