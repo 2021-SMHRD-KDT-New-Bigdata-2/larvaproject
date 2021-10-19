@@ -429,75 +429,48 @@ memberVO anotherMemberInfo=null;
 
 
 	<!-- Footer Section Begin -->
-	<footer class="footer-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 col-md-6">
-					<div class="fs-about">
-						<div class="fs-logo">
-							<a href="#"> <img src="img/f-logo.png" alt="">
-							</a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-							ut aliquip ex ea</p>
-						<div class="fs-social">
-							<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-								class="fa fa-twitter"></i></a> <a href="#"><i
-								class="fa fa-youtube-play"></i></a> <a href="#"><i
-								class="fa fa-instagram"></i></a> <a href="#"><i
-								class="fa fa-pinterest-p"></i></a>
-						</div>
+	<footer>
+		<div id ="footer" style = "background-color : rgb(44,44,44); clear:both; height:350px;" >
+			<div class="footer">
+			<h1>
+			 <a href="./mainPageJSP.jsp">
+			 	<imag src="img/logo/mainLogo.png" alt ="logo">
+			 </a>
+			</h1>
+			<div id ="footer-area">
+				<div style="margin-left:10%; color:#fff;">
+				<br>
+					<p>
+						<span style="font-family:dotum; font-size:25px">
+							<strong> (주) 깔꼼 </strong>
+						</span>
+					</p>
+					<p>
+						<span style ="font-size:20px">
+							<span style="font-family:dotum">
+							
+							대표 : 애벌레   &nbsp;&nbsp;&nbsp;&nbsp; 주소 : 광주광역시 스마트인재개발원
+							<br>
+							공모전 제휴 문의 : eberle@naver.com &nbsp;&nbsp; 마케팅 제휴 : eberle@naver.com 
+							<br>
+							홍보문의 : eberle@naver.com
+							<br>
+							고객문의:eberle@naver.com / 1555-1555(09:00~18:00)
+							<br>
+							사업자등록번호 : 000-00-0000 | tel: 1588-1588&nbsp;
+							<br>
+							<br>
+								㈜깔꼼은 통신판매중개자로서 통신판매의 당사자가 아닙니다. 따라서, 등록된 공모전 및 활동에 대하여 ㈜깔꼼은 어떠한 책임도 지지 않습니다.
+							<br>	
+						Copyright © kakaostyle Corp. All rights reserved
+							</span>
+						</span>
+					</p>
+				
 					</div>
-				</div>
-				<div class="col-lg-2 col-sm-6">
-					<div class="fs-widget">
-						<h5>Help</h5>
-						<ul>
-							<li><a href="#">Privacy Policy</a></li>
-							<li><a href="#">Contact Support</a></li>
-							<li><a href="#">Knowledgebase</a></li>
-							<li><a href="#">Careers</a></li>
-							<li><a href="#">FAQs</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col-sm-6">
-					<div class="fs-widget">
-						<h5>Links</h5>
-						<ul>
-							<li><a href="#">Contact</a></li>
-							<li><a href="#">Create Property</a></li>
-							<li><a href="#">My Properties</a></li>
-							<li><a href="#">Register</a></li>
-							<li><a href="#">Login</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="fs-widget">
-						<h5>Newsletter</h5>
-						<p>Deserunt mollit anim id est laborum.</p>
-						<form action="#" class="subscribe-form">
-							<input type="text" placeholder="Email">
-							<button type="submit" class="site-btn">Subscribe</button>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="copyright-text">
-				<p>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright &copy;
-					<script>
-						document.write(new Date().getFullYear());
-					</script>
-					All rights reserved | This template is made with <i
-						class="fa fa-heart" aria-hidden="true"></i> by <a
-						href="https://colorlib.com" target="_blank">Colorlib</a>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				</p>
-			</div>
+				
+				
+			 </div></div>
 		</div>
 	</footer>
 	<!-- Footer Section End -->
