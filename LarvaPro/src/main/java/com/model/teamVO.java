@@ -14,6 +14,11 @@ public class teamVO {
 		MemId = memId;
 	}
 
+	public teamVO(int tmNum) {
+		super();
+		this.tmNum = tmNum;
+	}
+
 	public teamVO(String memId, int tmNum) {
 		super();
 		MemId = memId;

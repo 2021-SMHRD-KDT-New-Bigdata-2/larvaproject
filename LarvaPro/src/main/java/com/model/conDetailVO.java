@@ -1,23 +1,27 @@
 package com.model;
 
 public class conDetailVO {
-	
-	private int conNum; //공모전 번호
+
+	private int conNum; // 공모전 번호
 	private String conName;// 공모전 이름
-	private String conHost;//주체,주관
-	private String conField; //응모분야
-	private String conQualfication; //참가자격
-	private String conFromDate; //시작날짜
-	private String conToDate; //끝 날짜
-	private String conHomePage; //홈페이지>>공모전 주체하는 홈페이지
-	private String conPostBig; //큰 포스터
-	private String conPostSmall; //작은 포스터
-	private String conContent; //공모전 상세
-	
+	private String conHost;// 주체,주관
+	private String conField; // 응모분야
+	private String conQualfication; // 참가자격
+	private String conFromDate; // 시작날짜
+	private String conToDate; // 끝 날짜
+	private String conHomePage; // 홈페이지>>공모전 주체하는 홈페이지
+	private String conPostBig; // 큰 포스터
+	private String conPostSmall; // 작은 포스터
+	private String conContent; // 공모전 상세
+
 	public conDetailVO() {
 		super();
 	}
-	
+
+	public conDetailVO(String conPostSmall) {
+		super();
+		this.conPostSmall = conPostSmall;
+	}
 
 	public conDetailVO(String conName, String conFromDate, String conToDate) {
 		super();
@@ -25,7 +29,6 @@ public class conDetailVO {
 		this.conFromDate = conFromDate;
 		this.conToDate = conToDate;
 	}
-
 
 	public conDetailVO(int conNum, String conName, String conHost, String conField, String conQualfication,
 			String conFromDate, String conToDate, String conHomePage, String conPostBig, String conPostSmall,
@@ -132,9 +135,4 @@ public class conDetailVO {
 		this.conContent = conContent;
 	}
 
-	
-
-
 }
-	
-
