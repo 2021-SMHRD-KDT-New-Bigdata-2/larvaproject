@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class teamDAO extends DBconnection {
 
-	// 팀 생성
+	// 팀 생성 (팀원 전용)
 	public int createTeam(teamVO vo) {
 
 		int cnt = 0;
@@ -13,12 +13,14 @@ public class teamDAO extends DBconnection {
 
 			getConnection();
 
-			psmt = conn.prepareStatement("insert into team_member values(?,?,?,?,?)");
+			psmt = conn.prepareStatement("insert into team_member values(?,?,?,?,?,?)");
 
 			psmt.setString(1, vo.getMemId());
 			psmt.setInt(2, vo.getCntNum());
 			psmt.setInt(3, vo.getTmNum());
 			psmt.setInt(4, vo.getTmType());
+			psmt.setString(5, vo.getPosition());
+			psmt.setInt(6, vo.getTmFull());
 
 			cnt = psmt.executeUpdate();
 
@@ -29,6 +31,36 @@ public class teamDAO extends DBconnection {
 		}
 		return cnt;
 	}
+	
+	// 팀 생성 (파티장 전용)
+		public int createTeamLeader(teamVO vo) {
+
+			int cnt = 0;
+
+			try {
+
+				getConnection();
+
+				psmt = conn.prepareStatement("insert into team_member values(?,?,?,?,?,?,?,?)");
+
+				psmt.setString(1, vo.getMemId());
+				psmt.setInt(2, vo.getCntNum());
+				psmt.setInt(3, vo.getTmNum());
+				psmt.setInt(4, vo.getTmType());
+				psmt.setString(5, vo.getPosition());
+				psmt.setInt(6, vo.getTmFull());
+				psmt.setString(7, vo.getTitle());
+				psmt.setString(8, vo.getContent());
+				
+				cnt = psmt.executeUpdate();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				dbClose();
+			}
+			return cnt;
+		}
 
 	// 모든 팀 정보 조회(마이페이지에서 가져올 때)
 	public ArrayList<teamVO> showAllTeam() {

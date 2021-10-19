@@ -31,8 +31,7 @@ create table member_info(
 	mem_address varchar2(100) not null,
 	mem_sign_up_date date not null
 );
-	
-	select*from member_info
+	select * from TEAM_MEMBER
 
 /* 공모전 테이블 */
 create table contest(

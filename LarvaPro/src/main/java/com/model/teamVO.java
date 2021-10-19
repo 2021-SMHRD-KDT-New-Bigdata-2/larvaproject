@@ -8,7 +8,38 @@ public class teamVO {
 	private int tmType;
 	private String position;
 	private int tmFull;
+	private String title;
+	private String content;
 
+	public teamVO(String memId, int cntNum, int tmNum, int tmType, String position, int tmFull, String title,
+			String content) {
+		super();
+		MemId = memId;
+		this.cntNum = cntNum;
+		this.tmNum = tmNum;
+		this.tmType = tmType;
+		this.position = position;
+		this.tmFull = tmFull;
+		this.title = title;
+		this.content = content;
+	}
+
+	public teamVO(String memId, int cntNum, int tmNum, int tmType, String position, int tmFull) {
+		super();
+		MemId = memId;
+		this.cntNum = cntNum;
+		this.tmNum = tmNum;
+		this.tmType = tmType;
+		this.position = position;
+		this.tmFull = tmFull;
+	}
+
+	public teamVO(String memId, int tmNum) {
+		super();
+		MemId = memId;
+		this.tmNum = tmNum;
+	}
+	
 	public teamVO(String memId) {
 		super();
 		MemId = memId;
@@ -19,11 +50,6 @@ public class teamVO {
 		this.tmNum = tmNum;
 	}
 
-	public teamVO(String memId, int tmNum) {
-		super();
-		MemId = memId;
-		this.tmNum = tmNum;
-	}
 
 	public String getPosition() {
 		return position;
@@ -38,16 +64,6 @@ public class teamVO {
 	}
 
 	public void setTmFull(int tmFull) {
-		this.tmFull = tmFull;
-	}
-
-	public teamVO(String memId, int cntNum, int tmNum, int tmType, String position, int tmFull) {
-		super();
-		MemId = memId;
-		this.cntNum = cntNum;
-		this.tmNum = tmNum;
-		this.tmType = tmType;
-		this.position = position;
 		this.tmFull = tmFull;
 	}
 
@@ -81,6 +97,22 @@ public class teamVO {
 
 	public void setTmType(int tmType) {
 		this.tmType = tmType;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 }

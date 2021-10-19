@@ -5,8 +5,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.model.conDetailDAO"%>
 <%@page import="com.model.conDetailVO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@page import="com.model.memberVO"%>
 <%@page import="com.model.scoreDAO"%>
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
 <%
 memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
 if (memberInfo == null) {
-	out.println("<script>alert('·Î±×ÀÎÀÌ ÇÊ¿äÇÑ ¼­ºñ½ºÀÔ´Ï´Ù. ·Î±×ÀÎÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.'); window.location='./LoginJSP.jsp';</script>");
+	out.println("<script>alert('ë¡œê·¸ì¸ì´ í•„ìš”í•œ ì„œë¹„ìŠ¤ìž…ë‹ˆë‹¤. ë¡œê·¸ì¸íŽ˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.'); window.location='./LoginJSP.jsp';</script>");
 }
 %>
 <head>
@@ -23,7 +23,7 @@ if (memberInfo == null) {
 <meta name="keywords" content="Aler, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>±ò²Ä</title>
+<title>ê¹”ê¼¼</title>
 
 <!-- Google Font -->
 <link
@@ -117,7 +117,7 @@ if (memberInfo == null) {
 	</div>
 	<!-- Offcanvas Menu Wrapper End -->
 
-	<!-- Çìµå ½ÃÀÛ -->
+	<!-- í—¤ë“œ ì‹œìž‘ -->
 	<header class="header-section">
 		<div
 			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 225px;">
@@ -141,21 +141,21 @@ if (memberInfo == null) {
 							%>
 							<ul style="text-align: center; margin-left: 7%;">
 								<li style="font-size: 10px"><a href="./mainPageJSP.jsp"
-									style="color: #ffffff;">¸ÞÀÎ</a></li>
-								<li><a href="#" style="color: #ffffff;">¸¶ÀÌÆäÀÌÁö</a>
+									style="color: #ffffff;">ë©”ì¸</a></li>
+								<li><a href="#" style="color: #ffffff;">ë§ˆì´íŽ˜ì´ì§€</a>
 									<ul class="dropdown"
 										style="display: inline-block; width: 150px;">
 										<li style="margin-right: 40%"><a
-											href="./mypageProfileJSP.jsp">³»Á¤º¸</a></li>
+											href="./mypageProfileJSP.jsp">ë‚´ì •ë³´</a></li>
 										<li style="margin-right: 10%"><a
-											href="./mypageContestJSP.jsp">Áö¿øÇÑ °ø¸ðÀü</a></li>
+											href="./mypageContestJSP.jsp">ì§€ì›í•œ ê³µëª¨ì „</a></li>
 										<li style="margin-right: 38%"><a
-											href="./mypageTeamJSP.jsp">³ªÀÇ ÆÀ</a></li>
+											href="./mypageTeamJSP.jsp">ë‚˜ì˜ íŒ€</a></li>
 										<li style="margin-right: 40%"><a
-											href="./mypageMessageJSP.jsp">ÂÊÁöÇÔ</a></li>
+											href="./mypageMessageJSP.jsp">ìª½ì§€í•¨</a></li>
 									</ul></li>
-								<li><a href="./ContestBoradJSP.jsp" style="color: #ffffff;">°ø¸ðÀü</a></li>
-								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">ÆÀ¿ø¸ðÁý</a></li>
+								<li><a href="./ContestBoradJSP.jsp" style="color: #ffffff;">ê³µëª¨ì „</a></li>
+								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">íŒ€ì›ëª¨ì§‘</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -170,14 +170,14 @@ if (memberInfo == null) {
 			style="padding: 3%; background-color: #4169E1; box-shadow: 1px 1px gray; width: 2000px">
 			<div class="pcntSearchText"
 				style="margin-left: 33%; height: 40px; width: 600px; border: 2px solid #1b5ac2; background: #ffffff;">
-				<input class="textBar" type="text" placeholder="¿øÇÏ´Â °ø¸ðÀü °Ë»ö!"
+				<input class="textBar" type="text" placeholder="ì›í•˜ëŠ” ê³µëª¨ì „ ê²€ìƒ‰!"
 					style="font-size: 16px; width: 500px; height: 100%; padding: 10px; border: 0px; outline: none;">
 				<button class="searchBtn"
-					style="width: 50px; height: 100%; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">°Ë»ö</button>
+					style="width: 50px; height: 100%; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">ê²€ìƒ‰</button>
 			</div>
 		</div>
 	</header>
-	<!-- Çìµå ³¡ -->
+	<!-- í—¤ë“œ ë -->
 
 	<%
 	conDetailDAO CDAO = new conDetailDAO();
@@ -200,21 +200,21 @@ if (memberInfo == null) {
 	<!-- Property Comparison Section Begin -->
 
 	<section class="contact-form-section spad" style="margin-left: 30%">
-		<h4 style="border: 2px">¸ðÁý±Û¾²±â</h4>
+		<h4 style="border: 2px">ëª¨ì§‘ê¸€ì“°ê¸°</h4>
 		<hr>
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="cf-content" style="margin_bottom: 10%">
-					<form action="#" class="cc-form">
+					<form action="mojipService" class="cc-form">
 						<div>
-							<select name="" style="height: 46px">
-								<option value="none" style="color: gray" autofocus="autofocus">°ø¸ðÀü
-									Á¶È¸</option>
+							<select name="cntNum" style="height: 46px">
+								<option value="none" style="color: gray" autofocus="autofocus">ê³µëª¨ì „
+									ì¡°íšŒ</option>
 								<%
 								for (int i = 0; i < soonCon.size(); i++) {
 								%>
 								<option
-									value="<%=allCon.get(soonCon.get(i).getIndex()).getConName()%>"><%=allCon.get(soonCon.get(i).getIndex()).getConName()%>
+									value="<%=allCon.get(soonCon.get(i).getIndex()).getConNum()%>"><%=allCon.get(soonCon.get(i).getIndex()).getConName()%>
 									D<%=soonCon.get(i).getD_day()%>
 								</option>
 								<%
@@ -223,16 +223,16 @@ if (memberInfo == null) {
 							</select>
 						</div>
 						<div class="group-input">
-							<input type="text" name="title" placeholder="Á¦¸ñÀ» ÀÛ¼ºÇÏ¼¼¿ä"
+							<input type="text" name="title" placeholder="ì œëª©ì„ ìž‘ì„±í•˜ì„¸ìš”"
 								style="width: 300px; margin-left: 3%"> <input
-								type="text" name="position" placeholder="ÆÀÀå´ÔÀÇ ¿ªÇÒ"
+								type="text" name="position" placeholder="íŒ€ìž¥ë‹˜ì˜ ì—­í• "
 								style="width: 150px"> <input type="text" name="full"
-								placeholder="ÇÊ¿äÀÎ¿ø" style="width: 100px">
+								placeholder="í•„ìš”ì¸ì›" style="width: 100px">
 						</div>
 						<textarea
-							placeholder="ÆÀ¿ø ¸ðÁý¿¡ °üÇÑ ³»¿ëÀ» ÀÛ¼º¹Ù¶ø´Ï´Ù. ÆÀ¿øÀÌ ¾î¶² ¿ªÇÒÀ» ¼öÇàÇØ¾ßÇÏ´ÂÁöµµ ÀÛ¼ºÇØÁÖ¼¼¿ä."></textarea>
+							placeholder="íŒ€ì› ëª¨ì§‘ì— ê´€í•œ ë‚´ìš©ì„ ìž‘ì„±ë°”ëžë‹ˆë‹¤. íŒ€ì›ì´ ì–´ë–¤ ì—­í• ì„ ìˆ˜í–‰í•´ì•¼í•˜ëŠ”ì§€ë„ ìž‘ì„±í•´ì£¼ì„¸ìš”." name="content"></textarea>
 						<button type="submit" class="site-btn" name="memberId"
-							value="<%=memberInfo.getMemId()%>">ÀÛ¼ºÇÏ±â</button>
+							value="<%=memberInfo.getMemId()%>">ìž‘ì„±í•˜ê¸°</button>
 					</form>
 				</div>
 			</div>
@@ -366,7 +366,7 @@ if (memberInfo == null) {
 	<!-- Footer Section End -->
 
 	<script>
-		//·Î±×ÀÎ,È¸¿ø°¡ÀÔ ¹öÆ° ¸Þ¼Òµå
+		//ë¡œê·¸ì¸,íšŒì›ê°€ìž… ë²„íŠ¼ ë©”ì†Œë“œ
 		$(function() {
 			$("#loginBtn img").mouseover(function() {
 				$(this).attr("src", "img/logo/loginOn.png");
@@ -376,7 +376,7 @@ if (memberInfo == null) {
 			});
 		});
 
-		//·Î±×¾Æ¿ô ¹öÆ° ¸Þ¼Òµå
+		//ë¡œê·¸ì•„ì›ƒ ë²„íŠ¼ ë©”ì†Œë“œ
 		$(function() {
 			$("#logoutBtn img").mouseover(function() {
 				$(this).attr("src", "img/logo/logoutOn.png");
