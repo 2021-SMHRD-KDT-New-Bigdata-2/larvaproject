@@ -5,8 +5,8 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.model.conDetailVO"%>
 <%@page import="com.model.memberVO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -27,7 +27,7 @@ scoreDAO sDAO=new scoreDAO();
 
 memberVO anotherMemberInfo=null;
 
-// °ø¸ğÀü ArrayList¿¡ ´ã¾Æ °¡Á®¿Í¼­!
+// ê³µëª¨ì „ ArrayListì— ë‹´ì•„ ê°€ì ¸ì™€ì„œ!
 %>
 <head>
 <meta charset="UTF-8">
@@ -37,7 +37,7 @@ memberVO anotherMemberInfo=null;
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Aler | Template</title>
 
-<!-- ÄÌ¸°´õ -->
+<!-- ì¼ˆë¦°ë” -->
 <!-- jquery CDN -->
 <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
 <script src="jquery-3.6.0.min.js"></script>
@@ -47,7 +47,7 @@ memberVO anotherMemberInfo=null;
 	rel='stylesheet' />
 <script
 	src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
-<!-- fullcalendar ¾ğ¾î CDN -->
+<!-- fullcalendar ì–¸ì–´ CDN -->
 <script
 	src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
 
@@ -108,7 +108,7 @@ memberVO anotherMemberInfo=null;
 	</div>
 	<!-- Offcanvas Menu Wrapper End -->
 
-	<!-- Çìµå ½ÃÀÛ -->
+	<!-- í—¤ë“œ ì‹œì‘ -->
 	<header class="header-section">
 		<div
 			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 225px;">
@@ -131,21 +131,21 @@ memberVO anotherMemberInfo=null;
 							%>
 							<ul style="text-align: center; margin-left: 7%;">
 								<li class="active" style="font-size: 10px"><a
-									href="./mainPageJSP.jsp" style="color: #ffffff;">¸ŞÀÎ</a></li>
-								<li><a href="#" style="color: #ffffff;">¸¶ÀÌÆäÀÌÁö</a>
+									href="./mainPageJSP.jsp" style="color: #ffffff;">ë©”ì¸</a></li>
+								<li><a href="#" style="color: #ffffff;">ë§ˆì´í˜ì´ì§€</a>
 									<ul class="dropdown"
 										style="display: inline-block; width: 150px;">
 										<li style="margin-right: 40%"><a
-											href="./mypageProfileJSP.jsp">³»Á¤º¸</a></li>
+											href="./mypageProfileJSP.jsp">ë‚´ì •ë³´</a></li>
 										<li style="margin-right: 10%"><a
-											href="./mypageContestJSP.jsp">Áö¿øÇÑ °ø¸ğÀü</a></li>
+											href="./mypageContestJSP.jsp">ì§€ì›í•œ ê³µëª¨ì „</a></li>
 										<li style="margin-right: 38%"><a
-											href="./mypageTeamJSP.jsp">³ªÀÇ ÆÀ</a></li>
+											href="./mypageTeamJSP.jsp">ë‚˜ì˜ íŒ€</a></li>
 										<li style="margin-right: 40%"><a
-											href="./mypageMessageJSP.jsp">ÂÊÁöÇÔ</a></li>
+											href="./mypageMessageJSP.jsp">ìª½ì§€í•¨</a></li>
 									</ul></li>
-								<li><a href="./ContestBoardJSP.jsp" style="color: #ffffff;">°ø¸ğÀü</a></li>
-								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">ÆÀ¿ø¸ğÁı</a></li>
+								<li><a href="./ContestBoardJSP.jsp" style="color: #ffffff;">ê³µëª¨ì „</a></li>
+								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">íŒ€ì›ëª¨ì§‘</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -160,14 +160,17 @@ memberVO anotherMemberInfo=null;
 			style="padding: 3%; background-color: #4169E1; box-shadow: 1px 1px gray; width: 2000px">
 			<div class="pcntSearchText"
 				style="margin-left: 33%; height: 40px; width: 600px; border: 2px solid #1b5ac2; background: #ffffff;">
-				<input class="textBar" type="text" placeholder="¿øÇÏ´Â °ø¸ğÀü °Ë»ö!"
-					style="font-size: 16px; width: 500px; height: 100%; padding: 10px; border: 0px; outline: none;">
+				<form action="searchService">
+				<input class="textBar" type="text" placeholder="ì›í•˜ëŠ” ê³µëª¨ì „ ê²€ìƒ‰!"
+					style="font-size: 16px; width: 500px; height: 100%; padding: 10px; border: 0px; outline: none;"
+					name="search">
 				<button class="searchBtn"
-					style="width: 50px; height: 100%; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">°Ë»ö</button>
+					style="width: 50px; height: 100%; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">ê²€ìƒ‰</button>
+					</form>
 			</div>
 		</div>
 	</header>
-	<!-- Çìµå ³¡ -->
+	<!-- í—¤ë“œ ë -->
 
 	<!-- Hero Section Begin -->
 	<section class="hero-section"
@@ -195,8 +198,8 @@ memberVO anotherMemberInfo=null;
 		<div class="cal-left">
 			<div class="calendar" style="margin-left: 430px; margin-top: 70px;">
 				<div class="section-title" style="margin-left: 10px">
-					<h5>°ø¸ğÀü ÀÏÁ¤</h5>
-					<!-- calendar ÅÂ±× -->
+					<h5>ê³µëª¨ì „ ì¼ì •</h5>
+					<!-- calendar íƒœê·¸ -->
 					<div id='calendar-container'
 						style="margin-top: 10px; padding: 20px; width: 550px; margin-left: -15px">
 						<div id='calendar'></div>
@@ -204,38 +207,38 @@ memberVO anotherMemberInfo=null;
 					<script>
    (function(){
              $(function(){
-               // calendar element Ãëµæ
+               // calendar element ì·¨ë“
                var calendarEl = $('#calendar')[0];
-               // full-calendar »ı¼ºÇÏ±â
+               // full-calendar ìƒì„±í•˜ê¸°
                var calendar = new FullCalendar.Calendar(calendarEl, {
-                 height: '495px', // calendar ³ôÀÌ ¼³Á¤
-                 expandRows: true, // È­¸é¿¡ ¸Â°Ô ³ôÀÌ Àç¼³Á¤
-                 slotMinTime: '08:00', // Day Ä¶¸°´õ¿¡¼­ ½ÃÀÛ ½Ã°£
-                 slotMaxTime: '20:00', // Day Ä¶¸°´õ¿¡¼­ Á¾·á ½Ã°£
-                 // ÇØ´õ¿¡ Ç¥½ÃÇÒ Åø¹Ù
+                 height: '495px', // calendar ë†’ì´ ì„¤ì •
+                 expandRows: true, // í™”ë©´ì— ë§ê²Œ ë†’ì´ ì¬ì„¤ì •
+                 slotMinTime: '08:00', // Day ìº˜ë¦°ë”ì—ì„œ ì‹œì‘ ì‹œê°„
+                 slotMaxTime: '20:00', // Day ìº˜ë¦°ë”ì—ì„œ ì¢…ë£Œ ì‹œê°„
+                 // í•´ë”ì— í‘œì‹œí•  íˆ´ë°”
                  headerToolbar: {
                    left: 'prev,next today',
                    center: 'title',
                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
                  },
-              initialView: 'dayGridMonth', // ÃÊ±â ·Îµå µÉ¶§ º¸ÀÌ´Â Ä¶¸°´õ È­¸é(±âº» ¼³Á¤: ´Ş)
-                 initialDate: '2021-10-22', // ÃÊ±â ³¯Â¥ ¼³Á¤ (¼³Á¤ÇÏÁö ¾ÊÀ¸¸é ¿À´Ã ³¯Â¥°¡ º¸ÀÎ´Ù.)
-                 navLinks: true, // ³¯Â¥¸¦ ¼±ÅÃÇÏ¸é Day Ä¶¸°´õ³ª Week Ä¶¸°´õ·Î ¸µÅ©
-                 editable: true, // ¼öÁ¤ °¡´É?
-                 selectable: true, // ´Ş·Â ÀÏÀÚ µå·¡±× ¼³Á¤°¡´É
-                 nowIndicator: true, // ÇöÀç ½Ã°£ ¸¶Å©
-                 dayMaxEvents: true, // ÀÌº¥Æ®°¡ ¿À¹öµÇ¸é ³ôÀÌ Á¦ÇÑ (+ ¸î °³½ÄÀ¸·Î Ç¥Çö)
-                 locale: 'ko', // ÇÑ±¹¾î ¼³Á¤
-                 eventAdd: function(obj) { // ÀÌº¥Æ®°¡ Ãß°¡µÇ¸é ¹ß»ıÇÏ´Â ÀÌº¥Æ®
+              initialView: 'dayGridMonth', // ì´ˆê¸° ë¡œë“œ ë ë•Œ ë³´ì´ëŠ” ìº˜ë¦°ë” í™”ë©´(ê¸°ë³¸ ì„¤ì •: ë‹¬)
+                 initialDate: '2021-10-22', // ì´ˆê¸° ë‚ ì§œ ì„¤ì • (ì„¤ì •í•˜ì§€ ì•Šìœ¼ë©´ ì˜¤ëŠ˜ ë‚ ì§œê°€ ë³´ì¸ë‹¤.)
+                 navLinks: true, // ë‚ ì§œë¥¼ ì„ íƒí•˜ë©´ Day ìº˜ë¦°ë”ë‚˜ Week ìº˜ë¦°ë”ë¡œ ë§í¬
+                 editable: true, // ìˆ˜ì • ê°€ëŠ¥?
+                 selectable: true, // ë‹¬ë ¥ ì¼ì ë“œë˜ê·¸ ì„¤ì •ê°€ëŠ¥
+                 nowIndicator: true, // í˜„ì¬ ì‹œê°„ ë§ˆí¬
+                 dayMaxEvents: true, // ì´ë²¤íŠ¸ê°€ ì˜¤ë²„ë˜ë©´ ë†’ì´ ì œí•œ (+ ëª‡ ê°œì‹ìœ¼ë¡œ í‘œí˜„)
+                 locale: 'ko', // í•œêµ­ì–´ ì„¤ì •
+                 eventAdd: function(obj) { // ì´ë²¤íŠ¸ê°€ ì¶”ê°€ë˜ë©´ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸
                    console.log(obj);
                  },
-                 eventChange: function(obj) { // ÀÌº¥Æ®°¡ ¼öÁ¤µÇ¸é ¹ß»ıÇÏ´Â ÀÌº¥Æ®
+                 eventChange: function(obj) { // ì´ë²¤íŠ¸ê°€ ìˆ˜ì •ë˜ë©´ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸
                    console.log(obj);
                  },
-                 eventRemove: function(obj){ // ÀÌº¥Æ®°¡ »èÁ¦µÇ¸é ¹ß»ıÇÏ´Â ÀÌº¥Æ®
+                 eventRemove: function(obj){ // ì´ë²¤íŠ¸ê°€ ì‚­ì œë˜ë©´ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸
                    console.log(obj);
                  },
-                 select: function(arg) { // Ä¶¸°´õ¿¡¼­ µå·¡±×·Î ÀÌº¥Æ®¸¦ »ı¼ºÇÒ ¼ö ÀÖ´Ù.
+                 select: function(arg) { // ìº˜ë¦°ë”ì—ì„œ ë“œë˜ê·¸ë¡œ ì´ë²¤íŠ¸ë¥¼ ìƒì„±í•  ìˆ˜ ìˆë‹¤.
                    var title = prompt('Event Title:');
                    if (title) {
                      calendar.addEvent({
@@ -247,7 +250,7 @@ memberVO anotherMemberInfo=null;
                    }
                    calendar.unselect()
                  },
-                 // ÀÌº¥Æ® 
+                 // ì´ë²¤íŠ¸ 
                  
         // 
         events: [
@@ -255,7 +258,7 @@ memberVO anotherMemberInfo=null;
         ]
       });
 
-       // ¿©±â¼­ ÀÌº¥Æ® Ãß°¡s
+       // ì—¬ê¸°ì„œ ì´ë²¤íŠ¸ ì¶”ê°€s
 
       		<%for (int i = 0; i < conArr.size(); i += 5) {%>
       			     calendar.addEvent({
@@ -264,7 +267,7 @@ memberVO anotherMemberInfo=null;
 				         end: '<%=conArr.get(i).getConToDate()%>'
 										})
 					<%}%>
-						// Ä¶¸°´õ ·£´õ¸µ
+						// ìº˜ë¦°ë” ëœë”ë§
 								calendar.render();
 							});
 
@@ -282,7 +285,7 @@ memberVO anotherMemberInfo=null;
 		<div class="cal-right">
 			<div class="moim">
 				<div class="section-title" style="margin-left: -60px">
-					<h5>ºÒÅ¸´Â ¸ğÀÓ</h5>
+					<h5>ë¶ˆíƒ€ëŠ” ëª¨ì„</h5>
 				</div>
 
 				<section class="agent-section spad">
@@ -299,19 +302,18 @@ memberVO anotherMemberInfo=null;
 										<div class="as-text">
 											<div class="at-title">
 												<h6></h6>
-
 											</div>
 											<ul>
-												<li>Á¦¸ñ <span>215</span></li>
-												<li>ÆÀÀå <span>0</span></li>
-												<li>ÆÀ ÀÎ¿ø <span>1/4</span></li>
+												<li>ì œëª© <span>215</span></li>
+												<li>íŒ€ì¥ <span>0</span></li>
+												<li>íŒ€ ì¸ì› <span>1/4</span></li>
 											</ul>
-											<a href="#" class="primary-btn">Áö¿øÇÏ±â</a>
+											<a href="#" class="primary-btn">ì§€ì›í•˜ê¸°</a>
 										</div>
 									</div>
 								</div>
 								<div class="row"></div>
-								<div class="as-item2" style="padding-right: 5px">
+								<div class="as-item" style="padding-right: 5px">
 									<div class="as-item"
 										style="box-shadow: 2px 3px 8px 0px gray; width: 190px;">
 										<div class="as-pic">
@@ -320,14 +322,13 @@ memberVO anotherMemberInfo=null;
 										<div class="as-text">
 											<div class="at-title">
 												<h6></h6>
-
 											</div>
 											<ul>
 												<li>Property <span>215</span></li>
-												<li>ÆÀÀå <span>´Ğ³×ÀÓ</span></li>
-												<li>ÆÀ ÀÎ¿ø <span>2/4</span></li>
+												<li>íŒ€ì¥ <span>ë‹‰ë„¤ì„</span></li>
+												<li>íŒ€ ì¸ì› <span>2/4</span></li>
 											</ul>
-											<a href="#" class="primary-btn">Áö¿øÇÏ±â</a>
+											<a href="#" class="primary-btn">ì§€ì›í•˜ê¸°</a>
 										</div>
 									</div>
 								</div>
@@ -345,10 +346,10 @@ memberVO anotherMemberInfo=null;
 											</div>
 											<ul>
 												<li>Property <span>215</span></li>
-												<li>ÆÀÀå <span>´Ğ³×ÀÓ</span></li>
-												<li>ÆÀ ÀÎ¿ø <span>3/4</span></li>
+												<li>íŒ€ì¥ <span>ë‹‰ë„¤ì„</span></li>
+												<li>íŒ€ ì¸ì› <span>3/4</span></li>
 											</ul>
-											<a href="#" class="primary-btn">Áö¿øÇÏ±â</a>
+											<a href="#" class="primary-btn">ì§€ì›í•˜ê¸°</a>
 										</div>
 									</div>
 								</div>
@@ -372,7 +373,7 @@ memberVO anotherMemberInfo=null;
 			<div class="row">
 				<div class="col-lg-8 col-md-8">
 					<div class="section-title" style="margin-left: 60px">
-						<h4>ÀÌ´ŞÀÇ ·©Å·</h4>
+						<h4>ì´ë‹¬ì˜ ë­í‚¹</h4>
 					</div>
 				</div>
 			</div>
@@ -392,7 +393,7 @@ memberVO anotherMemberInfo=null;
 										<img src='img/tiger/tiger01.png'>
 									<%} %>
 							<h5><%=anotherMemberInfo.getMemNickName() %></h5>
-							<span><%=anotherMemberInfo.getMemHi() %></span> <span>ÆòÁ¡:<%=sDAO.showScore(anotherMemberInfo.getMemId()) %></span>
+							<span><%=anotherMemberInfo.getMemHi() %></span> <span>í‰ì :<%=sDAO.showScore(anotherMemberInfo.getMemId()) %></span>
 							<p><%=anotherMemberInfo.getMemEmail() %></p>
 						</div>
 					</div>
@@ -403,9 +404,9 @@ memberVO anotherMemberInfo=null;
 						<div class="ts-text">
 							<p style="color: red">level:76</p>
 							<img src="img/tiger/tiger02.png" alt="">
-							<h5>´Ğ³×ÀÓ</h5>
-							<span>ÀÎ»ç¸»</span> <span>ÆòÁ¡</span>
-							<p>°ø¸ğÀü ¼ö»ó ³»¿ª</p>
+							<h5>ë‹‰ë„¤ì„</h5>
+							<span>ì¸ì‚¬ë§</span> <span>í‰ì </span>
+							<p>ê³µëª¨ì „ ìˆ˜ìƒ ë‚´ì—­</p>
 						</div>
 					</div>
 				</div>
@@ -414,9 +415,9 @@ memberVO anotherMemberInfo=null;
 						<div class="ts-text">
 							<p style="color: red">level:22</p>
 							<img src="img/tiger/tiger01.png" alt="">
-							<h5>´Ğ³×ÀÓ</h5>
-							<span>ÀÎ»ç¸»</span> <span>ÆòÁ¡</span>
-							<p>°ø¸ğÀü ¼ö»ó ³»¿ª</p>
+							<h5>ë‹‰ë„¤ì„</h5>
+							<span>ì¸ì‚¬ë§</span> <span>í‰ì </span>
+							<p>ê³µëª¨ì „ ìˆ˜ìƒ ë‚´ì—­</p>
 						</div>
 					</div>
 				</div> -->
@@ -502,7 +503,7 @@ memberVO anotherMemberInfo=null;
 	<!-- Footer Section End -->
 
 	<script>
-		//·Î±×ÀÎ,È¸¿ø°¡ÀÔ ¹öÆ° ¸Ş¼Òµå
+		//ë¡œê·¸ì¸,íšŒì›ê°€ì… ë²„íŠ¼ ë©”ì†Œë“œ
 		$(function() {
 			$("#loginBtn img").mouseover(function() {
 				$(this).attr("src", "img/logo/loginOn.png");
@@ -512,7 +513,7 @@ memberVO anotherMemberInfo=null;
 			});
 		});
 
-		//·Î±×¾Æ¿ô ¹öÆ° ¸Ş¼Òµå
+		//ë¡œê·¸ì•„ì›ƒ ë²„íŠ¼ ë©”ì†Œë“œ
 		$(function() {
 			$("#logoutBtn img").mouseover(function() {
 				$(this).attr("src", "img/logo/logoutOn.png");
