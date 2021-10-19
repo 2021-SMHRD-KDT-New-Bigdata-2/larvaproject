@@ -1,4 +1,3 @@
-
 <%@page import="com.model.scoreDAO"%>
 <%@page import="com.model.conDetailDAO"%>
 <%@page import="com.model.conDetailVO"%>
@@ -13,11 +12,11 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <%
-	memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
-	scoreDAO MS = new scoreDAO();
-	if (memberInfo == null) {
-		out.println("<script>alert('로그인이 필요한 서비스입니다. 로그인페이지로 이동합니다.'); window.location='./LoginJSP.jsp';</script>");
-	}
+memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
+scoreDAO MS = new scoreDAO();
+if (memberInfo == null) {
+	out.println("<script>alert('로그인이 필요한 서비스입니다. 로그인페이지로 이동합니다.'); window.location='./LoginJSP.jsp';</script>");
+}
 %>
 <head>
 <meta charset="UTF-8">
@@ -47,15 +46,15 @@
 <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <style>
-	#noteHead {
-		font-size: 25px;
-		width: 100px;
-	}
-	
-	#noteContent {
-		font-size: 18px;
-		margin: 1%;
-	}
+#noteHead {
+	font-size: 25px;
+	width: 100px;
+}
+
+#noteContent {
+	font-size: 18px;
+	margin: 1%;
+}
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
@@ -109,13 +108,13 @@
 						</div>
 						<nav class="nav-menu" style="margin-top: 5%;">
 							<%
-								if (memberInfo == null) {
-									out.print(
-									"<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
-								} else if (memberInfo != null) {
-									out.print(
-									"<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
-								}
+							if (memberInfo == null) {
+								out.print(
+								"<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
+							} else if (memberInfo != null) {
+								out.print(
+								"<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
+							}
 							%>
 							<ul style="text-align: center; margin-left: 7%;">
 								<li class="active" style="font-size: 10px"><a
@@ -166,7 +165,8 @@
 					<div class="breadcrumb-text">
 						<h4>지원한 공모전</h4>
 						<div class="bt-option">
-							<a href="./index.html"><i class="fa fa-home"></i>메인</a><span>지원한 공모전</span>
+							<a href="./index.html"><i class="fa fa-home"></i>메인</a><span>지원한
+								공모전</span>
 						</div>
 					</div>
 				</div>
@@ -175,24 +175,24 @@
 	</section>
 	<!-- 중간 헤드 끝 -->
 	<%
-		if (memberInfo != null) {
-			personalcontestDAO MCL = new personalcontestDAO();//내가 참여한 공모전 DAO호출
-			conDetailDAO CDAO = new conDetailDAO();//공모전 DAO 호출
-			ArrayList<personalcontestVO> myConList = MCL.showPersonalContest(memberInfo.getMemId());//내가 참여한 공모전의 정보를 ArrayList에 추가
-	
-			int mojip = 0;
-			int hanuenjung = 0;
-			int end = 0;
-	
-			for (int i = 0; i < myConList.size(); i++) {
-				if (myConList.get(i).getPcntType() == 0) {
-					mojip++;
-				} else if (myConList.get(i).getPcntType() == 1) {
-					hanuenjung++;
-				} else if (myConList.get(i).getPcntType() == 2) {
-					end++;
-				}
+	if (memberInfo != null) {
+		personalcontestDAO MCL = new personalcontestDAO();//내가 참여한 공모전 DAO호출
+		conDetailDAO CDAO = new conDetailDAO();//공모전 DAO 호출
+		ArrayList<personalcontestVO> myConList = MCL.showPersonalContest(memberInfo.getMemId());//내가 참여한 공모전의 정보를 ArrayList에 추가
+
+		int mojip = 0;
+		int hanuenjung = 0;
+		int end = 0;
+
+		for (int i = 0; i < myConList.size(); i++) {
+			if (myConList.get(i).getPcntType() == 0) {
+		mojip++;
+			} else if (myConList.get(i).getPcntType() == 1) {
+		hanuenjung++;
+			} else if (myConList.get(i).getPcntType() == 2) {
+		end++;
 			}
+		}
 	%>
 	<!-- 내정보 섹션 -->
 	<section class="profile-section spad" style="margin-bottom: 10%">
@@ -207,22 +207,22 @@
 							<div class="pi-text" style="padding-top: 0px">
 								<div style="width: 70px; height: 70px">
 									<%
-										if (memberInfo != null && memberInfo.getMemLevel() < 33) {
-											out.println("<img src='img/tiger/tiger_profile01.png'>");
-										} else if (memberInfo != null && memberInfo.getMemLevel() < 66) {
-											out.println("<img src='img/tiger/tiger_profile02.png'>");
-										} else if (memberInfo != null && memberInfo.getMemLevel() <= 99) {
-											out.println("<img src=img/tiger/tiger_profile03.png>");
-										}
+									if (memberInfo != null && memberInfo.getMemLevel() < 33) {
+										out.println("<img src='img/tiger/tiger_profile01.png'>");
+									} else if (memberInfo != null && memberInfo.getMemLevel() < 66) {
+										out.println("<img src='img/tiger/tiger_profile02.png'>");
+									} else if (memberInfo != null && memberInfo.getMemLevel() <= 99) {
+										out.println("<img src=img/tiger/tiger_profile03.png>");
+									}
 									%>
 								</div>
 								<%
-									if (memberInfo != null) {
-										out.print("<h5>" + memberInfo.getMemUserName() + "</h5>");
-									}
-									if (memberInfo != null) {
-										out.print("<span>Level: " + memberInfo.getMemLevel() + "</span>");
-									}
+								if (memberInfo != null) {
+									out.print("<h5>" + memberInfo.getMemUserName() + "</h5>");
+								}
+								if (memberInfo != null) {
+									out.print("<span>Level: " + memberInfo.getMemLevel() + "</span>");
+								}
 								%>
 							</div>
 						</div>
@@ -246,10 +246,14 @@
 									double avg = MS.showScore(memberInfo.getMemId());
 									if (avg == 0) {
 								%>
+							
 							<h6 align="center">당신을 평가한 사람이 없습니다</h6>
-								<%} else {%>
-									<%=avg%>
-								<%}	}%>
+							<%} else {%>
+							<%=avg%>
+							<%
+							}
+							}
+							%>
 							</p>
 						</div>
 					</div>
@@ -260,101 +264,173 @@
 	<!-- 내정보 섹션 끝-->
 
 	<%
-		if (memberInfo.getMemId() != null) {
-			conDetailVO con = new conDetailVO();
-			teamDAO teamdao = new teamDAO();
-	
-			ArrayList<teamVO> team_list = new ArrayList<teamVO>();
-			
-	
-			team_list = teamdao.selectMyTeam(memberInfo.getMemId());
+	if (memberInfo.getMemId() != null) {
+		conDetailVO con = new conDetailVO();
+		teamDAO teamdao = new teamDAO();
+
+		ArrayList<teamVO> team_list = new ArrayList<teamVO>();
+		ArrayList<teamVO> myTeamMembers = null;
+
+		team_list = teamdao.selectMyTeam(memberInfo.getMemId());
 	%>
 	<!-- 공모전 내역 섹션 -->
-
-	<section class="property-section profile-page spad">
+	<section class="profile-section spad" style="margin-bottom: 10%">
+		<div class="section-title">
+			<h4 style="margin-left: 21.5%">참여한 공모전</h4>
+		</div>
 		<%
-			if (team_list.size() != 0) {
+		if (team_list.size() != 0) {
 		%>
 		<div class="container">
 			<div class="row">
 				<%
-					for (int i = 0; i < team_list.size(); i++) {
+				for (int i = 0; i < team_list.size(); i++) {
 				%>
-				<div class="col-lg-4">
+				<div class="col-lg-4" style="width:360px;height:400px;">
 					<div class="property-item">
 						<div class="pi-pic set-bg">
-							<img src="<%= request.getContextPath() + CDAO.bringSmallImg(team_list.get(i).getCntNum()) %>"/>
+							<img
+								src="<%=CDAO.bringSmallImg(team_list.get(i).getCntNum())%>" width = 100%; height = "400px" />
 							<!-- 남은 일자 -->
 							<div class="label">
 								<%
-									int date = CDAO.oneContestD_Day(team_list.get(i).getCntNum());
-									if(date>0){ %>
-										+<%=date%>
-									<%}else{%>
-										-<%=date%>
-								<%} %>
+								int date = CDAO.oneContestD_Day(team_list.get(i).getCntNum());
+								if (date > 0) {
+								%>
+								+<%=date%>
+								<%
+								} else {
+								%>
+								-<%=date%>
+								<%
+								}
+								%>
 							</div>
 						</div>
-						<div class="pi-text">
+						<div class="pi-text" style="background-color : white;width:360px;height:160px;">
 							<!-- 마지막 일자 -->
 							<a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
 							<div class="pt-price">
 								<%=CDAO.selectCon(team_list.get(i).getCntNum()).getConToDate()%><span>까지</span>
 							</div>
 							<!-- 제목 -->
-							<h5>
+							<h5 style="height:50px;">
 								<a href="#"><%=CDAO.selectCon(team_list.get(i).getCntNum()).getConName()%></a>
 							</h5>
 							<ul>
 								<!-- 분야 -->
-								<li><i class="fa fa-object-group"></i>
-									<%=CDAO.selectCon(team_list.get(i).getCntNum()).getConField()%>
+								<li><i class="fa fa-object-group"></i> <%=CDAO.selectCon(team_list.get(i).getCntNum()).getConField()%>
 								</li>
 								<!-- 인원수 -->
-								<li><i class="fa fa-bathtub"></i>
-									<%=teamdao.showTeamMemberNum(teamdao.searchTeamNum(memberInfo.getMemId()).get(i).getTmNum())%>
+								<li><i class="fa fa-bathtub"></i> <%=teamdao.showTeamMemberNum(teamdao.searchTeamNum(memberInfo.getMemId()).get(i).getTmNum())%>
 								</li>
 								<!-- 팀원들 이름 -->
-								<li><i class="fa fa-bed"></i>
-									<%
-										 for (int j = i; j < i + 1; j++) {
-										 	out.println(teamdao.showTeamMemberId(teamdao.searchTeamNum(memberInfo.getMemId()).get(j).getMemId()));
-										 }
+								<li><i class="fa fa-bed"></i> <%
+									 myTeamMembers = teamdao.showTeamMember(team_list.get(i).getCntNum(), team_list.get(i).getTmNum());
+									 for (teamVO vos : myTeamMembers) {
+									 	out.println(vos.getMemId() + " ");
+									 }
 									 %>
-								 </li>
+								</li>
 								<!-- 모집여부 -->
-								<li style="color: red"><i class="fa fa-bed"></i>
-									<%
-										if(date<=0){
-											int maxnum = teamdao.selectMyTeam(memberInfo.getMemId()).get(i).getTmFull();
-											int nownum = teamdao.showTeamMemberNum(teamdao.searchTeamNum(memberInfo.getMemId()).get(i).getTmNum());
-											if (nownum < maxnum) {
-												out.print("모집 중");
-											} else if (nownum >= maxnum) {
-												out.print("모집 완료");
-											}
-										}else{
-											out.print("모집 완료");
-										}
+								<li style="color: red"><i class="fa fa-bed"></i> <%
+									 if (date <= 0) {
+									 	int maxnum = teamdao.selectMyTeam(memberInfo.getMemId()).get(i).getTmFull();
+									 	int nownum = teamdao.showTeamMemberNum(teamdao.searchTeamNum(memberInfo.getMemId()).get(i).getTmNum());
+									 	if (nownum < maxnum) {
+									 		out.print("모집 중");
+									 	} else if (nownum >= maxnum) {
+									 		out.print("모집 완료");
+									 	}
+									 } else {
+									 	out.print("모집 완료");
+									 }
 									 %>
-								 </li>
+						 		</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-				<%}	%>
-				<div class="col-lg-12">
-					<div class="property-pagination">
-						<a href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#"
-							class="icon"><span class="arrow_right"></span></a>
-					</div>
-				</div>
+				<%
+				}
+				%>
 			</div>
 		</div>
-		<%}}}%>
+			<%
+			}
+			%>
 	</section>
-
 	<!-- 공모전 내용 섹션 끝 -->
+	
+	<!-- 내 공모전 내역 섹션 -->
+	<div style="margin-bottom: 10%">
+		<div class="section-title" style="margin-top: 5%">
+			<h4 style="margin-left: 21.5%">공모전 내역</h4>
+		</div>
+		<table class="table table-hover"
+			style="width: 1100px; margin-left: 21.5%">
+			<thead>
+				<tr>
+					<th scope="col" style="width: 600px;text-align: center;">참여 공모전 이름</th>
+					<th scope="col" style="width: 100px;text-align: center;">역할</th>
+					<th scope="col" style="width: 300px;text-align: center;">마감일</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%
+				if (myConList.size() == 0) {
+				%>
+				<tr>
+					<td colspan='3' style="text-align: center;">아직 참가한 공모전이 없습니다.</td>
+				</tr>
+				<%
+				} else if (myConList.size() > 0) {
+				for (int i = 0; i < myConList.size(); i++) {
+					if (myConList.get(i).getPcntContent() == null) {
+				%>
+				<tr>
+					<td>
+						<div>
+							<ul>
+								<li class="menu" style="list-style: none"><a><%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConName()%></a>
+									<ul class="hide" style="list-style: none">
+										<li>
+											<section class="contact-form-section spad">
+												<div class="container">
+													<div class="row">
+														<div class="col-lg-12">
+															<div class="cf-content">
+																<form action="myDairyService" class="cc-form">
+																	<div style="float: left; margin-left: 2%">
+																		<%=myConList.get(i).getPcntContent()%>
+																	</div>
+																</form>
+															</div>
+														</div>
+													</div>
+												</div>
+											</section>
+										</li>
+									</ul></li>
+							</ul>
+						</div>
+					</td>
+					<td><%=myConList.get(i).getPcntPosition()%></td>
+					<td>~<%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConToDate()%>
+						까지
+					</td>
+				</tr>
+				<%
+				}
+				}
+				}
+				}
+				}
+				%>
+			</tbody>
+		</table>
+	</div>
+	<!-- 내 일기 섹션 끝 -->
 	<!-- Property Comparison Section End -->
 
 	<!-- Contact Section Begin -->
