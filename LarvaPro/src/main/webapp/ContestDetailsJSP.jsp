@@ -173,8 +173,9 @@
                             <a class="badge bg-secondary text-decoration-none link-light" >IT</a>
                             <a class="badge bg-secondary text-decoration-none link-light" >UCC/사진</a>
                         </header>
-                        <figure class="mb-4" style="float:left; margin-left:5%"><img src=<%=smallImg %> alt="..." /></figure>
+                        
                         <section class="mb-5">
+                        <figure class="mb-4" style="float:left; margin-left:5%"><img src=<%=smallImg %> alt="..." style="width:250px; height:300px"/></figure>
                         	<hr width="350px">
                       			<table class="content" style="margin-left:35%;">
       							<tbody>
@@ -191,7 +192,7 @@
           								<td width = "100" height="50"><b>후원/협찬</b></td><td></td>
      					   			</tr>
         							<tr>
-          								<td width = "100" height="50"><b>접수기간</b></td><td><%=fromDate%>+"~"+<%=toDate%></td>
+          								<td width = "100" height="50"><b>접수기간</b></td><td><%=fromDate%> ~ <%=toDate%></td>
      					   			</tr>
      					   			<tr>
           								<td width = "100" height="50"><b>총상금</b></td><td>Ipsum</td>
