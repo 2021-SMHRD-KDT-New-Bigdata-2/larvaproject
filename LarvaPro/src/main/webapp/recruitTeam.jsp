@@ -1,3 +1,4 @@
+<%@page import="com.model.DdayVO"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
@@ -177,49 +178,61 @@ if (memberInfo == null) {
 		</div>
 	</header>
 	<!-- 헤드 끝 -->
-	
+
 	<%
-	conDetailDAO CDAO=new conDetailDAO();
-	ArrayList<conDetailVO> allCon=new ArrayList<conDetailVO>();
-	ArrayList<Integer> D_day=CDAO.D_Day();
-	
-	ArrayList<conDetailVO> soonCon=new ArrayList<conDetailVO>();
-	
-	for(int i=0;i<100;i++){
-		allCon.add(CDAO.selectCon(i));
+	conDetailDAO CDAO = new conDetailDAO();
+	ArrayList<conDetailVO> allCon = new ArrayList<conDetailVO>();
+	ArrayList<DdayVO> D_day = CDAO.D_Day();
+
+	ArrayList<DdayVO> soonCon = new ArrayList<DdayVO>();
+
+	for (int i = 0; i < 100; i++) {
+		allCon.add(CDAO.selectCon(i + 1));
 	}
-	
-	for(int i=0;i<100;i++){
-		if(D_day.get(i)<0 && D_day.get(i)>-20){
-			soonCon.add(allCon.get(i));
+
+	for (int i = 0; i < 100; i++) {
+		if (D_day.get(i).getD_day() < 0 && D_day.get(i).getD_day() > -20) {
+			soonCon.add(D_day.get(i));
 		}
 	}
-	
 	%>
 
 	<!-- Property Comparison Section Begin -->
 
-	<section class="contact-form-section spad" style="margin-left:30%">
+	<section class="contact-form-section spad" style="margin-left: 30%">
 		<h4 style="border: 2px">모집글쓰기</h4>
 		<hr>
 		<div class="row">
 			<div class="col-lg-12">
-				<div class="cf-content">
+				<div class="cf-content" style="margin_bottom: 10%">
 					<form action="#" class="cc-form">
 						<div>
-							<select name="" style="height:46px">
-								<option value="none" style="color: gray" autofocus="autofocus">공모전 조회</option>
-								<%for(int i=0;i<soonCon.size();i++){ %>
-								<option value="" onClick="#">천하제일 무술대회2020101060607070</option>
-								<%} %>
+							<select name="" style="height: 46px">
+								<option value="none" style="color: gray" autofocus="autofocus">공모전
+									조회</option>
+								<%
+								for (int i = 0; i < soonCon.size(); i++) {
+								%>
+								<option
+									value="<%=allCon.get(soonCon.get(i).getIndex()).getConName()%>"><%=allCon.get(soonCon.get(i).getIndex()).getConName()%>
+									D<%=soonCon.get(i).getD_day()%>
+								</option>
+								<%
+								}
+								%>
 							</select>
 						</div>
 						<div class="group-input">
-							<input type="text" placeholder="제목을 작성하세요" style="width: 300px; margin-left:3%">
-							<input type="text" placeholder="팀장님의 역할" style="width: 150px">
+							<input type="text" name="title" placeholder="제목을 작성하세요"
+								style="width: 300px; margin-left: 3%"> <input
+								type="text" name="position" placeholder="팀장님의 역할"
+								style="width: 150px"> <input type="text" name="full"
+								placeholder="필요인원" style="width: 100px">
 						</div>
-						<textarea placeholder="내용"></textarea>
-						<button type="submit" class="site-btn">저장하기</button>
+						<textarea
+							placeholder="팀원 모집에 관한 내용을 작성바랍니다. 팀원이 어떤 역할을 수행해야하는지도 작성해주세요."></textarea>
+						<button type="submit" class="site-btn" name="memberId"
+							value="<%=memberInfo.getMemId()%>">작성하기</button>
 					</form>
 				</div>
 			</div>

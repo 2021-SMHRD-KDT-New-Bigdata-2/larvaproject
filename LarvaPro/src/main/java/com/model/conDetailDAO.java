@@ -241,30 +241,6 @@ public class conDetailDAO extends DBconnection {
 		return list;
 	}
 
-	// 모든 공모전 남은 날짜 계산 메소드
-	public ArrayList<Integer> D_Day() {
-
-		getConnection();
-		ArrayList<Integer> D_day = new ArrayList<Integer>();
-
-		try {
-			psmt = conn.prepareStatement(
-					"SELECT TO_DATE(TO_CHAR(SYSDATE, 'YYYYMMDD')) - TO_DATE(CNT_TO_DATE) FROM contest");
-			rs = psmt.executeQuery();
-
-			while (rs.next()) {
-				D_day.add(rs.getInt(1));
-
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			dbClose();
-		}
-		return D_day;
-
-	}
-
 	// 해당 공모전 남은 날짜 계산 메소드
 	public int oneContestD_Day(int cnt_num) {
 
@@ -312,6 +288,36 @@ public class conDetailDAO extends DBconnection {
 			dbClose();
 		}
 		return img;
+	}
+	
+	//모든 공모전 남은 날짜 계산 메소드
+	public ArrayList<DdayVO> D_Day(){
+		
+		getConnection();
+		ArrayList<DdayVO> D_day=new ArrayList<DdayVO>();
+		
+		int Dday=0;
+		int cnt=0;
+		
+		try {
+			psmt=conn.prepareStatement("SELECT TO_DATE(TO_CHAR(SYSDATE, 'YYYYMMDD')) - TO_DATE(CNT_TO_DATE) FROM contest");
+			rs=psmt.executeQuery();
+			
+			while(rs.next()) {
+				 Dday=rs.getInt(1);
+				 
+				 DdayVO vo=new DdayVO(Dday,cnt);
+				 D_day.add(vo);
+				 cnt++;
+				 
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+		return D_day;
+				
 	}
 
 }
