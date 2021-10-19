@@ -17,19 +17,18 @@ import com.model.searchDAO;
 public class searchService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		searchDAO dao=new searchDAO();
-		String search=request.getParameter("search");
-		
-		ArrayList<conDetailVO> vo=dao.searchThings("%"+search+"%");
+	protected void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		searchDAO dao = new searchDAO();
+		String search = request.getParameter("search");
+
+		ArrayList<conDetailVO> vo = dao.searchThings("%" + search + "%");
+
 		request.setAttribute("search", vo);
-		
-		System.out.println("°á°ú : "+vo.get(0).getConName());
-		 
-		RequestDispatcher rd=request.getRequestDispatcher("searchResultJSP.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("searchResultJSP.jsp");
 		rd.forward(request, response);
-		 
+
 	}
 
 }

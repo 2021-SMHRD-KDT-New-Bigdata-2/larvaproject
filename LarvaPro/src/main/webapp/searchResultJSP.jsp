@@ -146,7 +146,7 @@ ArrayList<conDetailVO> result=(ArrayList<conDetailVO>)request.getAttribute("sear
 	<!-- 헤드 끝 -->
 
 
-	<!-- Blog Details Section Begin -->
+	<!-- 검색결과 표현섹션 -->
 	<section class="blog-details-section spad"
 		style="width: 1000px; clear: both; margin: auto;">
 		<h1 class="fw-bolder mb-1">
@@ -158,7 +158,6 @@ ArrayList<conDetailVO> result=(ArrayList<conDetailVO>)request.getAttribute("sear
 			<button type="button" class="btn btn-primary"
 				style="margin-right: 10px; margin-bottom: 10px; float: right; background: #1b5ac2; color: #ffffff; border: 0; outline: 0">내글보기</button>
 		</div>
-
 		<table class="table table-hover" style="width: 1000px;">
 			<thead>
 				<tr>
@@ -186,9 +185,8 @@ ArrayList<conDetailVO> result=(ArrayList<conDetailVO>)request.getAttribute("sear
 			<button class="search" type="button" id="button-addon2"
 				style="margin-top: 3%; background: #1b5ac2; color: #ffffff">Button</button>
 		</div>
-
 	</section>
-	<!-- Contact Section End -->
+	<!-- 검색결과 표현섹션 -->
 
 
 	<!-- Footer Section Begin -->
