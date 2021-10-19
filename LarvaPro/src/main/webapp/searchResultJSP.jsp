@@ -1,13 +1,15 @@
 <%@page import="com.model.searchDAO"%>
-<%@page import="java.util.List"%>
+<%@page import="com.model.DdayVO"%>
+<%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="com.model.conDetailDAO"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
+<%@page import="com.model.conDetailDAO"%>
 <%@page import="com.model.conDetailVO"%>
-<%@page import="com.model.memberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="com.model.memberVO"%>
+<!DOCTYPE html>
 <html lang="zxx">
 <%
 memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
@@ -16,10 +18,6 @@ searchDAO SDAO=new searchDAO();
 ArrayList<conDetailVO> result=(ArrayList<conDetailVO>)request.getAttribute("search");
 
 %>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
-	
-</script>
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="Aler Template">
@@ -47,8 +45,45 @@ ArrayList<conDetailVO> result=(ArrayList<conDetailVO>)request.getAttribute("sear
 <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
+<style>
+#noteHead {
+	font-size: 25px;
+	width: 100px;
+}
 
+#noteContent {
+	font-size: 18px;
+	margin: 1%;
+	.
+	menu
+	a
+	{
+	cursor
+	:
+	pointer;
+}
 
+.menu a {
+	cursor: pointer;
+}
+
+.menu .hide {
+	display: none;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$(".menu>button").click(function() {
+			var submenu = $(this).next("ul");
+			if (submenu.is(":visible")) {
+				submenu.slideUp();
+			} else {
+				submenu.slideDown();
+			}
+		});
+	});
+</script>
 <body>
 	<!-- Page Preloder -->
 	<div id="preloder">
@@ -84,30 +119,29 @@ ArrayList<conDetailVO> result=(ArrayList<conDetailVO>)request.getAttribute("sear
 	<!-- Offcanvas Menu Wrapper End -->
 
 	<!-- 헤드 시작 -->
-	<header class="header-section">
+	<header class="header-section" style="margin: 0px">
 		<div
-			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 225px;">
-			<div class="hs-top"
-				style="margin-top: 10px; border-bottom: 0px; height: 225px;">
+			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 155px;">
+			<div class="hs-top" style="margin-top: 0px; height: 165px;">
 				<div class="container">
-					<div class="ten" style="padding: 3%">
+					<div class="ten" style="padding: 1px">
 						<div class="logo">
 							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png"
-								style="witdh: 162px; height: 102px"></a>
+								style="margin-top: 10px"></a>
 						</div>
-						<nav class="nav-menu" style="margin-top: 5%;">
+						<nav class="nav-menu">
 							<%
 							if (memberInfo == null) {
 								out.print(
-								"<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
+								"<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin-top:25px'></a>");
 							} else if (memberInfo != null) {
 								out.print(
-								"<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
+								"<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin-top:25px'></a>");
 							}
 							%>
 							<ul style="text-align: center; margin-left: 7%;">
-								<li class="active" style="font-size: 10px"><a
-									href="./mainPageJSP.jsp" style="color: #ffffff;">메인</a></li>
+								<li style="font-size: 10px"><a href="./mainPageJSP.jsp"
+									style="color: #ffffff;">메인</a></li>
 								<li><a href="#" style="color: #ffffff;">마이페이지</a>
 									<ul class="dropdown"
 										style="display: inline-block; width: 150px;">
@@ -133,64 +167,102 @@ ArrayList<conDetailVO> result=(ArrayList<conDetailVO>)request.getAttribute("sear
 			<span class="icon_menu"></span>
 		</div>
 		<div
-			style="padding: 3%; background-color: #4169E1; box-shadow: 1px 1px gray; width: 2000px">
+			style="padding: 48px; background-color: #4169E1; box-shadow: 1px 1px gray; width: 2000px">
 			<div class="pcntSearchText"
-				style="margin-left: 33%; height: 40px; width: 600px; border: 2px solid #1b5ac2; background: #ffffff;">
-				<input class="textBar" type="text" placeholder="원하는 공모전 검색!"
-					style="font-size: 16px; width: 500px; height: 100%; padding: 10px; border: 0px; outline: none;">
-				<button class="searchBtn"
-					style="width: 50px; height: 100%; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">검색</button>
+				style="margin-left: 33%; width: 600px; border: 2px solid #1b5ac2; background: #ffffff;">
+				<form action="searchService">
+					<input class="textBar" type="text" placeholder="원하는 공모전 검색!"
+						style="font-size: 16px; width: 500px; height: 100%; padding: 10px; border: 0px; outline: none;"
+						name="search">
+					<button class="search"
+						style="width: 90px; height: 40px; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">검색</button>
+				</form>
 			</div>
 		</div>
 	</header>
 	<!-- 헤드 끝 -->
 
-
 	<!-- 검색결과 표현섹션 -->
 	<section class="blog-details-section spad"
-		style="width: 1000px; clear: both; margin: auto;">
-		<h1 class="fw-bolder mb-1">
-			<b>검색결과</b>
-		</h1>
-		<div>
-			<button type="button" class="btn btn-primary"
-				style="margin-bottom: 10px; float: right; background: #1b5ac2; color: #ffffff; border: 0; outline: 0">쓰기</button>
-			<button type="button" class="btn btn-primary"
-				style="margin-right: 10px; margin-bottom: 10px; float: right; background: #1b5ac2; color: #ffffff; border: 0; outline: 0">내글보기</button>
-		</div>
-		<table class="table table-hover" style="width: 1000px;">
+		style="width: 1400px; clear: both; margin-left: 29%;">
+		<div class="section-title" style="margin-left: 10px">
+					<h4>공모전 검색 결과</h4></div>
+		<table class="table table-hover" style="width: 1100px;">
 			<thead>
-				<tr>
-					<th scope="col">제목</th>
-					<th scope="col">주최</th>
-					<th scope="col">기간</th>
-					<th scope="col">지원자격</th>
+				<tr style="font-size: 15px">
+					<th scope="col" style="width: 500px;">제목</th>
+					<th scope="col" style="width: 300px;">주최</th>
+					<th scope="col" style="width: 200px;">기간</th>
+					<th scope="col" style="width: 100px;">지원자격</th>
 				</tr>
 			</thead>
-			<% for(int i=0;i<result.size();i++){%>
-				<tr>
-					<th scope="col"><%=result.get(i).getConName()%></th>
-					<th scope="col"><%=result.get(i).getConHost()%></th>
-					<th scope="col"><%=result.get(i).getConFromDate().substring(0,10)%>~<%=result.get(i).getConToDate().substring(0,10)%></th>
-					<th scope="col"><%=result.get(i).getConQualfication()%></th>
+			<% for(int i=0;i<result.size();i++){
+				int idx=result.get(i).getConNum();
+			%>
+				<tr style="font-size: 13px">
+					<td scope="col"><a href="ContestDetailsJSP.jsp?idx=<%=idx%>"><%=result.get(i).getConName()%></a></td>
+					<td scope="col"><%=result.get(i).getConHost()%></td>
+					<td scope="col"><%=result.get(i).getConFromDate().substring(0,10)%>~<%=result.get(i).getConToDate().substring(0,10)%></td>
+					<td scope="col"><%=result.get(i).getConQualfication()%></td>
 				</tr>
 				<%} %>
 			</tbody>
 		</table>
-
-		<div class="input-group mb-3">
-			<input type="text" class="find" placeholder="찾는 내용 입력"
-				aria-label="Recipient's username" aria-describedby="button-addon2"
-				style="width: 500px; margin-top: 3%">
-			<button class="search" type="button" id="button-addon2"
-				style="margin-top: 3%; background: #1b5ac2; color: #ffffff">Button</button>
-		</div>
 	</section>
 	<!-- 검색결과 표현섹션 -->
 
 
+	<!-- Contact Section Begin -->
+	<section class="contact-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="contact-info">
+						<div class="ci-item">
+							<div class="ci-icon">
+								<i class="fa fa-map-marker"></i>
+							</div>
+							<div class="ci-text">
+								<h5>Address</h5>
+								<p>160 Pennsylvania Ave NW, Washington, Castle, PA
+									16101-5161</p>
+							</div>
+						</div>
+						<div class="ci-item">
+							<div class="ci-icon">
+								<i class="fa fa-mobile"></i>
+							</div>
+							<div class="ci-text">
+								<h5>Phone</h5>
+								<ul>
+									<li>125-711-811</li>
+									<li>125-668-886</li>
+								</ul>
+							</div>
+						</div>
+						<div class="ci-item">
+							<div class="ci-icon">
+								<i class="fa fa-headphones"></i>
+							</div>
+							<div class="ci-text">
+								<h5>Support</h5>
+								<p>Support.aler@gmail.com</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="cs-map">
+			<iframe
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d735515.5813275519!2d-80.41163541934742!3d43.93644386501528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882a55bbf3de23d7%3A0x3ada5af229b47375!2sMono%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sbd!4v1583262687289!5m2!1sen!2sbd"
+				height="450" style="border: 0;" allowfullscreen=""></iframe>
+		</div>
+	</section>
+	<!-- Contact Section End -->
+
 	<!-- Footer Section Begin -->
-	<footer class="footer-section" style="margin-left: 5%">
+	<footer class="footer-section">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-md-6">
