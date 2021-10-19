@@ -147,8 +147,8 @@
 							String host=rs.getString(3);
 							String field=rs.getString(4);
 							String qualification=rs.getString(5);
-							String fromDate=rs.getString(6);
-							String toDate=rs.getString(7);
+							String fromDate=rs.getString(6).substring(0,10);
+							String toDate=rs.getString(7).substring(0,10);
 							String homePage=rs.getString(8);
 							String smallImg=rs.getString(9);
 							String bigImg=rs.getString(10);
@@ -170,13 +170,9 @@
                             <div class="section-title" style="padding-top:2%;">
             				<h4><%=name %></h4>
               				</div>
-                            <a class="badge bg-secondary text-decoration-none link-light" >IT</a>
-                            <a class="badge bg-secondary text-decoration-none link-light" >UCC/사진</a>
                         </header>
-                        
+                        <figure class="mb-4" ><img src=<%=smallImg %> style="float:left; margin-left:5%; width:25%; height: 35%"  alt="..." /></figure>
                         <section class="mb-5">
-                        <figure class="mb-4" style="float:left; margin-left:5%"><img src=<%=smallImg %> alt="..." style="width:250px; height:300px"/></figure>
-                        	<hr width="350px">
                       			<table class="content" style="margin-left:35%;">
       							<tbody>
         							<tr>
@@ -186,13 +182,13 @@
           								<td width = "100" height="50"><b>응모대상</b></td><td><%=qualification %></td>
      					   			</tr>
         							<tr>
-          								<td width = "100" height="50"><b>주최/주관</b><td><%=field %></td>
+          								<td width = "100" height="50"><b>주최/주관</b><td><%=host %></td>
      					   			</tr>
       								<tr>
-          								<td width = "100" height="50"><b>후원/협찬</b></td><td></td>
+          								<td width = "100" height="50"><b>후원/협찬</b></td><%=host %><td></td>
      					   			</tr>
         							<tr>
-          								<td width = "100" height="50"><b>접수기간</b></td><td><%=fromDate%> ~ <%=toDate%></td>
+          								<td width = "100" height="50"><b>접수기간</b></td><td><%=fromDate%>~<%=toDate%></td>
      					   			</tr>
      					   			<tr>
           								<td width = "100" height="50"><b>총상금</b></td><td>Ipsum</td>
@@ -202,7 +198,7 @@
    					 			<hr style="width:350px">
    					 		<div class="section-title" style="padding:3%"><h4>상세내용</h4></div>
    					 		<div style="margin-left:3%">
-   					 		<p class="fs-5 mb-4"><%=bigImg %><br><br></p>
+   					 		<p class="fs-5 mb-4"><img src=<%=bigImg %>><br><br></p>
    					 		<p><%=content %></p>
                				</div>
                      		<figure>
