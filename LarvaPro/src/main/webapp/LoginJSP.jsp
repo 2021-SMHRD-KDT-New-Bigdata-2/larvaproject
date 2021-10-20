@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>깔꼼 로그인</title>
 <style>
 * {
 	margin: 0;

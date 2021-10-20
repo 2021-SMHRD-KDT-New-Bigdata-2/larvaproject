@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    <%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>ê¹”ê¼¼</title>
 </head>
 <body>
 	<%
-	out.println("<script>alert('È¸¿ø°¡ÀÔÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù. ·Î±×ÀÎ ÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.'); window.location='./LoginJSP.jsp';</script>");
+	out.println("<script>alert('íšŒì›ê°€ì…ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ë¡œê·¸ì¸ í˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.'); window.location='./LoginJSP.jsp';</script>");
 	%>
 
 </body>

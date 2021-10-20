@@ -6,15 +6,15 @@
 <%@page import="com.model.conDetailVO"%>
 <%@page import="com.model.memberVO"%>
 <%@ page import="java.sql.*" %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    <%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <html lang="zxx">
 <% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession");%>
 <% conDetailVO con= new conDetailVO(); %>
 <%
 	conDetailDAO manager = new conDetailDAO();
-	List<conDetailVO> list = manager.getList(); // getList ¸Þ¼­µå È£Ãâ
+	List<conDetailVO> list = manager.getList(); // getList ë©”ì„œë“œ í˜¸ì¶œ
 	
 %>
 
@@ -27,7 +27,7 @@
     <meta name="keywords" content="Aler, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>±ò²Ä</title>
+    <title>ê¹”ê¼¼</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
@@ -82,90 +82,102 @@
     </div>
     <!-- Offcanvas Menu Wrapper End -->
 
-   <!-- Çìµå ½ÃÀÛ -->
-    <header class="header-section">
-    	<div style="background-image: url('img/mainTopBig.png'); width:2000px; height:225px;">
-        	<div class="hs-top" style="margin-top:10px; border-bottom: 0px; height:225px;">
-            	<div class="container">
-                	<div class="ten" style="padding:3%">
-                        <div class="logo">
-                        	<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png" style="witdh:162px; height:102px"></a>
+   <header class="header-section" style="margin:0px">
+		<div
+			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 155px;">
+			<div class="hs-top"
+				style="margin-top: 0px; height: 165px;">
+				<div class="container">
+					<div class="ten" style="padding: 1px">
+						<div class="logo">
+							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png" style="margin-top:10px"></a>
 						</div>
-                        <nav class="nav-menu" style="margin-top:5%;">
-                            <%if(memberInfo==null){
-            					out.print("<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
-           					 }else if(memberInfo!=null){
-            					out.print("<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
-            				 }%>
-                            <ul style="text-align:center; margin-left:7%;">
-                                <li class="active" style="font-size : 10px">
-                                	<a href="./mainPageJSP.jsp" style="color:#ffffff;">¸ÞÀÎ</a>
-                                	</li>
-                                		<li><a href="#" style="color:#ffffff;">¸¶ÀÌÆäÀÌÁö</a>
-                                    		<ul class="dropdown" style="display:inline-block; width:150px;">
-                                        		<li style="margin-right:40%"><a href="./mypageProfileJSP.jsp">³»Á¤º¸</a></li>
-                                        		<li style="margin-right:10%"><a href="./mypageContestJSP.jsp">Áö¿øÇÑ °ø¸ðÀü</a></li>
-                                        		<li style="margin-right:38%"><a href="./mypageTeamJSP.jsp">³ªÀÇ ÆÀ</a></li>
-                                        		<li style="margin-right:40%"><a href="./mypageMessageJSP.jsp">ÂÊÁöÇÔ</a></li>
-                                   			</ul>
-                                		</li>
-                                	<li><a href="./ContestBoardJSP.jsp" style="color:#ffffff;">°ø¸ðÀü</a></li>
-                                	<li><a href="./teamBoardJSP.jsp" style="color:#ffffff;">ÆÀ¿ø¸ðÁý</a></li>
-                            </ul>
-                        </nav>
-                    	</div>
-                    </div>
-                <div>
-
-             	</div>
-            </div>
-            </div>
-            <div class="canvas-open">
-            <span class="icon_menu"></span>
-            </div>
-            	<div style="padding:3%; background-color: #4169E1; box-shadow: 1px 1px gray; width: 2000px">
-                    <div class="pcntSearchText" style="margin-left:33%; height :40px; width : 600px;border:2px solid #1b5ac2; background : #ffffff;">
-                    	<input class = "textBar" type="text" placeholder="¿øÇÏ´Â °ø¸ðÀü °Ë»ö!" 
-                    	style="font-size : 16px; width : 500px; height:100%; padding : 10px; border : 0px; outline : none;">
-                    	<button class="searchBtn" style="width :50px;height :100%;border:0px;background : #1b5ac2; outline:none;float:right; color : #ffffff">°Ë»ö</button>
-             		</div>
-                </div>
-    	</header>
-    <!-- Çìµå ³¡ -->
+						<nav class="nav-menu">
+							<%
+							if (memberInfo == null) {
+								out.print(
+								"<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin-top:25px'></a>");
+							} else if (memberInfo != null) {
+								out.print(
+								"<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin-top:25px'></a>");
+							}
+							%>
+							<ul style="text-align: center; margin-left: 7%;">
+								<li style="font-size: 10px"><a
+									href="./mainPageJSP.jsp" style="color: #ffffff;">ë©”ì¸</a></li>
+								<li><a href="#" style="color: #ffffff;">ë§ˆì´íŽ˜ì´ì§€</a>
+									<ul class="dropdown"
+										style="display: inline-block; width: 150px;">
+										<li style="margin-right: 40%"><a
+											href="./mypageProfileJSP.jsp">ë‚´ì •ë³´</a></li>
+										<li style="margin-right: 10%"><a
+											href="./mypageContestJSP.jsp">ì§€ì›í•œ ê³µëª¨ì „</a></li>
+										<li style="margin-right: 38%"><a
+											href="./mypageTeamJSP.jsp">ë‚˜ì˜ íŒ€</a></li>
+										<li style="margin-right: 40%"><a
+											href="./mypageMessageJSP.jsp">ìª½ì§€í•¨</a></li>
+									</ul></li>
+								<li><a href="./ContestBoard.jsp" style="color: #ffffff;">ê³µëª¨ì „</a></li>
+								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">íŒ€ì›ëª¨ì§‘</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<div></div>
+			</div>
+		</div>
+		<div class="canvas-open">
+			<span class="icon_menu"></span>
+		</div>
+		<div
+			style="padding: 48px; background-color: #4169E1; box-shadow: 1px 1px gray; width: 2000px">
+			<div class="pcntSearchText"
+				style="margin-left: 33%; width: 600px; height: 44; border: 2px solid #1b5ac2; background: #ffffff;">
+				<form action="searchService">
+					<input class="textBar" type="text" placeholder="ì›í•˜ëŠ” ê³µëª¨ì „ ê²€ìƒ‰!"
+						style="font-size: 16px; width: 500px; height: 0%; padding: 20px; border: 0px; outline: none;"
+						name="search">
+					<button class="search"
+						style="width: 90px; height: 40px; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">ê²€ìƒ‰</button>
+				</form>
+			</div>
+		</div>
+	</header>
+	<!-- í—¤ë“œ ë -->
 
 
     <!-- Blog Details Section Begin -->
     <section class="blog-details-section spad" style ="width : 1000px; clear : both; margin : auto;">
- 	   <h1 class="fw-bolder mb-1"><b>°ø¸ðÀü Á¤º¸</b></h1>
+ 	   <h1 class="fw-bolder mb-1"><b>ê³µëª¨ì „ ì •ë³´</b></h1>
  	   <div>
- 	   	<button type="button" class="btn btn-primary" style="margin-bottom : 10px;float: right; background : #1b5ac2; color : #ffffff; border : 0; outline : 0">¾²±â</button>
-      	<button type="button" class="btn btn-primary" style="margin-right : 10px; margin-bottom : 10px;float: right; background : #1b5ac2; color : #ffffff; border : 0; outline : 0">³»±Ûº¸±â</button>
+ 	   	<button type="button" class="btn btn-primary" style="margin-bottom : 10px;float: right; background : #1b5ac2; color : #ffffff; border : 0; outline : 0">ì“°ê¸°</button>
+      	<button type="button" class="btn btn-primary" style="margin-right : 10px; margin-bottom : 10px;float: right; background : #1b5ac2; color : #ffffff; border : 0; outline : 0">ë‚´ê¸€ë³´ê¸°</button>
       </div>
 
 	<table class="table table-hover" style="width:1000px;" >
 
   <thead>
     <tr>
-      <th scope="col">¹øÈ£</th>
-      <th scope="col">Á¦¸ñ</th>
-      <th scope="col">ÀÛ¼ºÀÚ</th>
-      <th scope="col">³¯Â¥</th>
-      <th scope="col">Á¶È¸¼ö</th>
-      <th scope="col">´ñ±Û¼ö</th>
+      <th scope="col">ë²ˆí˜¸</th>
+      <th scope="col">ì œëª©</th>
+      <th scope="col">ìž‘ì„±ìž</th>
+      <th scope="col">ë‚ ì§œ</th>
+      <th scope="col">ì¡°íšŒìˆ˜</th>
+      <th scope="col">ëŒ“ê¸€ìˆ˜</th>
     </tr>
   </thead>
   <tbody>
-  <!-- private int conNum; //°ø¸ðÀü ¹øÈ£
-	private String conName;// °ø¸ðÀü ÀÌ¸§
-	private String conHost;//ÁÖÃ¼,ÁÖ°ü
-	private String conField; //ÀÀ¸ðºÐ¾ß
-	private String conQualfication; //Âü°¡ÀÚ°Ý
-	private String conFromDate; //½ÃÀÛ³¯Â¥
-	private String conToDate; //³¡ ³¯Â¥
-	private String conHomePage; //È¨ÆäÀÌÁö>>°ø¸ðÀü ÁÖÃ¼ÇÏ´Â È¨ÆäÀÌÁö
-	private String conPostBig; //Å« Æ÷½ºÅÍ
-	private String conPostSmall; //ÀÛÀº Æ÷½ºÅÍ
-	private String conContent; //°ø¸ðÀü »ó¼¼ -->
+  <!-- private int conNum; //ê³µëª¨ì „ ë²ˆí˜¸
+	private String conName;// ê³µëª¨ì „ ì´ë¦„
+	private String conHost;//ì£¼ì²´,ì£¼ê´€
+	private String conField; //ì‘ëª¨ë¶„ì•¼
+	private String conQualfication; //ì°¸ê°€ìžê²©
+	private String conFromDate; //ì‹œìž‘ë‚ ì§œ
+	private String conToDate; //ë ë‚ ì§œ
+	private String conHomePage; //í™ˆíŽ˜ì´ì§€>>ê³µëª¨ì „ ì£¼ì²´í•˜ëŠ” í™ˆíŽ˜ì´ì§€
+	private String conPostBig; //í° í¬ìŠ¤í„°
+	private String conPostSmall; //ìž‘ì€ í¬ìŠ¤í„°
+	private String conContent; //ê³µëª¨ì „ ìƒì„¸ -->
 
 			<%
 			
@@ -185,7 +197,7 @@
 			total = rs.getInt(1);
 		}
 		rs.close();
-		out.print("ÃÑ °Ô½Ã¹° : " + total + "°³");
+		out.print("ì´ ê²Œì‹œë¬¼ : " + total + "ê°œ");
 		
 		String sqlList = "SELECT rownum,cnt_name, cnt_from_date, cnt_to_date from(select cnt_num,cnt_name, cnt_from_date, cnt_to_date from contest order by cnt_from_date DESC) where cnt_num between 40 and 59";
 		rs = stmt.executeQuery(sqlList);
@@ -194,7 +206,7 @@
 		
 	%>
 	<tr align="center" bgcolor="#FFFFFF" height="30">
-		<td colspan="6">µî·ÏµÈ ±ÛÀÌ ¾ø½À´Ï´Ù.</td>
+		<td colspan="6">ë“±ë¡ëœ ê¸€ì´ ì—†ìŠµë‹ˆë‹¤.</td>
 	</tr>
 	<%}else{
 		}while(rs.next()){
@@ -254,7 +266,7 @@
 </div>
 
 	   <div class="input-group mb-3">
-      <input type="text" class="find"  placeholder="Ã£´Â ³»¿ë ÀÔ·Â" aria-label="Recipient's username" aria-describedby="button-addon2" style = "width : 500px; margin-top : 3%">
+      <input type="text" class="find"  placeholder="ì°¾ëŠ” ë‚´ìš© ìž…ë ¥" aria-label="Recipient's username" aria-describedby="button-addon2" style = "width : 500px; margin-top : 3%">
       <button class="search" type="button" id="button-addon2" style="margin-top : 3%; background : #1b5ac2; color : #ffffff">Button</button>
     </div>
 
@@ -329,7 +341,7 @@
     <!-- Footer Section End -->
 
 <script>
-    //·Î±×ÀÎ,È¸¿ø°¡ÀÔ ¹öÆ° ¸Þ¼Òµå
+    //ë¡œê·¸ì¸,íšŒì›ê°€ìž… ë²„íŠ¼ ë©”ì†Œë“œ
     $(function(){
     	$("#loginBtn img").mouseover(function(){
     		$(this).attr("src","img/logo/loginOn.png");
@@ -339,7 +351,7 @@
     	});
     });
     
-    //·Î±×¾Æ¿ô ¹öÆ° ¸Þ¼Òµå
+    //ë¡œê·¸ì•„ì›ƒ ë²„íŠ¼ ë©”ì†Œë“œ
     $(function(){
     	$("#logoutBtn img").mouseover(function(){
     		$(this).attr("src","img/logo/logoutOn.png");

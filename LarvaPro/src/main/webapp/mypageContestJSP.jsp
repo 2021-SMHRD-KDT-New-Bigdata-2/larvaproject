@@ -7,15 +7,15 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.model.personalcontestDAO"%>
 <%@page import="com.model.memberVO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx">
 <%
 memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
 scoreDAO MS = new scoreDAO();
 if (memberInfo == null) {
-	out.println("<script>alert('·Î±×ÀÎÀÌ ÇÊ¿äÇÑ ¼­ºñ½ºÀÔ´Ï´Ù. ·Î±×ÀÎÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.'); window.location='./LoginJSP.jsp';</script>");
+	out.println("<script>alert('ë¡œê·¸ì¸ì´ í•„ìš”í•œ ì„œë¹„ìŠ¤ì…ë‹ˆë‹¤. ë¡œê·¸ì¸í˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.'); window.location='./LoginJSP.jsp';</script>");
 }
 %>
 <head>
@@ -24,7 +24,7 @@ if (memberInfo == null) {
 <meta name="keywords" content="Aler, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Áö¿øÇÑ °ø¸ğÀü</title>
+<title>ì§€ì›í•œ ê³µëª¨ì „</title>
 
 <!-- Google Font -->
 <link
@@ -94,7 +94,7 @@ if (memberInfo == null) {
 	</div>
 	<!-- Offcanvas Menu Wrapper End -->
 
-	<!-- Çìµå ½ÃÀÛ -->
+	<!-- í—¤ë“œ ì‹œì‘ -->
 	<header class="header-section">
 		<div
 			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 225px;">
@@ -118,21 +118,21 @@ if (memberInfo == null) {
 							%>
 							<ul style="text-align: center; margin-left: 7%;">
 								<li class="active" style="font-size: 10px"><a
-									href="./mainPageJSP.jsp" style="color: #ffffff;">¸ŞÀÎ</a></li>
-								<li><a href="#" style="color: #ffffff;">¸¶ÀÌÆäÀÌÁö</a>
+									href="./mainPageJSP.jsp" style="color: #ffffff;">ë©”ì¸</a></li>
+								<li><a href="#" style="color: #ffffff;">ë§ˆì´í˜ì´ì§€</a>
 									<ul class="dropdown"
 										style="display: inline-block; width: 150px;">
 										<li style="margin-right: 40%"><a
-											href="./mypageProfileJSP.jsp">³»Á¤º¸</a></li>
+											href="./mypageProfileJSP.jsp">ë‚´ì •ë³´</a></li>
 										<li style="margin-right: 10%"><a
-											href="./mypageContestJSP.jsp">Áö¿øÇÑ °ø¸ğÀü</a></li>
+											href="./mypageContestJSP.jsp">ì§€ì›í•œ ê³µëª¨ì „</a></li>
 										<li style="margin-right: 38%"><a
-											href="./mypageTeamJSP.jsp">³ªÀÇ ÆÀ</a></li>
+											href="./mypageTeamJSP.jsp">ë‚˜ì˜ íŒ€</a></li>
 										<li style="margin-right: 40%"><a
-											href="./mypageMessageJSP.jsp">ÂÊÁöÇÔ</a></li>
+											href="./mypageMessageJSP.jsp">ìª½ì§€í•¨</a></li>
 									</ul></li>
-								<li><a href="./ContestBoardJSP.jsp" style="color: #ffffff;">°ø¸ğÀü</a></li>
-								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">ÆÀ¿ø¸ğÁı</a></li>
+								<li><a href="./ContestBoardJSP.jsp" style="color: #ffffff;">ê³µëª¨ì „</a></li>
+								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">íŒ€ì›ëª¨ì§‘</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -147,38 +147,38 @@ if (memberInfo == null) {
 			style="padding: 3%; background-color: #4169E1; box-shadow: 1px 1px gray; width: 2000px">
 			<div class="pcntSearchText"
 				style="margin-left: 33%; height: 40px; width: 600px; border: 2px solid #1b5ac2; background: #ffffff;">
-				<input class="textBar" type="text" placeholder="¿øÇÏ´Â °ø¸ğÀü °Ë»ö!"
+				<input class="textBar" type="text" placeholder="ì›í•˜ëŠ” ê³µëª¨ì „ ê²€ìƒ‰!"
 					style="font-size: 16px; width: 500px; height: 100%; padding: 10px; border: 0px; outline: none;">
 				<button class="searchBtn"
-					style="width: 50px; height: 100%; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">°Ë»ö</button>
+					style="width: 50px; height: 100%; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">ê²€ìƒ‰</button>
 			</div>
 		</div>
 	</header>
-	<!-- Çìµå ³¡ -->
+	<!-- í—¤ë“œ ë -->
 
-	<!-- Áß°£ Çìµå ½ÃÀÛ -->
+	<!-- ì¤‘ê°„ í—¤ë“œ ì‹œì‘ -->
 	<section class="breadcrumb-section spad set-bg"
 		data-setbg="img/grayPolygon.png" style="width: 2000px">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb-text">
-						<h4>Áö¿øÇÑ °ø¸ğÀü</h4>
+						<h4>ì§€ì›í•œ ê³µëª¨ì „</h4>
 						<div class="bt-option">
-							<a href="./index.html"><i class="fa fa-home"></i>¸ŞÀÎ</a><span>Áö¿øÇÑ
-								°ø¸ğÀü</span>
+							<a href="./index.html"><i class="fa fa-home"></i>ë©”ì¸</a><span>ì§€ì›í•œ
+								ê³µëª¨ì „</span>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Áß°£ Çìµå ³¡ -->
+	<!-- ì¤‘ê°„ í—¤ë“œ ë -->
 	<%
 	if (memberInfo != null) {
-		personalcontestDAO MCL = new personalcontestDAO();//³»°¡ Âü¿©ÇÑ °ø¸ğÀü DAOÈ£Ãâ
-		conDetailDAO CDAO = new conDetailDAO();//°ø¸ğÀü DAO È£Ãâ
-		ArrayList<personalcontestVO> myConList = MCL.showPersonalContest(memberInfo.getMemId());//³»°¡ Âü¿©ÇÑ °ø¸ğÀüÀÇ Á¤º¸¸¦ ArrayList¿¡ Ãß°¡
+		personalcontestDAO MCL = new personalcontestDAO();//ë‚´ê°€ ì°¸ì—¬í•œ ê³µëª¨ì „ DAOí˜¸ì¶œ
+		conDetailDAO CDAO = new conDetailDAO();//ê³µëª¨ì „ DAO í˜¸ì¶œ
+		ArrayList<personalcontestVO> myConList = MCL.showPersonalContest(memberInfo.getMemId());//ë‚´ê°€ ì°¸ì—¬í•œ ê³µëª¨ì „ì˜ ì •ë³´ë¥¼ ArrayListì— ì¶”ê°€
 
 		int mojip = 0;
 		int hanuenjung = 0;
@@ -194,10 +194,10 @@ if (memberInfo == null) {
 			}
 		}
 	%>
-	<!-- ³»Á¤º¸ ¼½¼Ç -->
+	<!-- ë‚´ì •ë³´ ì„¹ì…˜ -->
 	<section class="profile-section spad" style="margin-bottom: 10%">
 		<div class="section-title">
-			<h4 style="margin-left: 21.5%">³»Á¤º¸</h4>
+			<h4 style="margin-left: 21.5%">ë‚´ì •ë³´</h4>
 		</div>
 		<div class="container" style="margin-left: 20%">
 			<div class="profile-agent-content">
@@ -230,15 +230,15 @@ if (memberInfo == null) {
 					<div class="col-lg-4">
 						<div class="profile-agent-widget">
 							<ul>
-								<li>ÆÀ¿ø ¸ğÁıÁßÀÎ °ø¸ğÀü °¹¼ö <span style="color: red"><%=mojip%></span></li>
-								<li>ÇöÀç Âü°¡ÁßÀÎ °ø¸ğÀü °¹¼ö <span style="color: red"><%=hanuenjung%></span></li>
-								<li>³¡³­ °ø¸ğÀü °¹¼ö <span style="color: red"><%=end%></span></li>
+								<li>íŒ€ì› ëª¨ì§‘ì¤‘ì¸ ê³µëª¨ì „ ê°¯ìˆ˜ <span style="color: red"><%=mojip%></span></li>
+								<li>í˜„ì¬ ì°¸ê°€ì¤‘ì¸ ê³µëª¨ì „ ê°¯ìˆ˜ <span style="color: red"><%=hanuenjung%></span></li>
+								<li>ëë‚œ ê³µëª¨ì „ ê°¯ìˆ˜ <span style="color: red"><%=end%></span></li>
 							</ul>
 						</div>
 					</div>
 					<div class="col-lg-4">
 						<div class="profile-agent-newslatter">
-							<h5 align="center" style="color: red;">ÆòÁ¡</h5>
+							<h5 align="center" style="color: red;">í‰ì </h5>
 							<p align="center"
 								style="color: blue; font-size: 35px; margin: 10%;">
 								<%
@@ -247,7 +247,7 @@ if (memberInfo == null) {
 									if (avg == 0) {
 								%>
 							
-							<h6 align="center">´ç½ÅÀ» Æò°¡ÇÑ »ç¶÷ÀÌ ¾ø½À´Ï´Ù</h6>
+							<h6 align="center">ë‹¹ì‹ ì„ í‰ê°€í•œ ì‚¬ëŒì´ ì—†ìŠµë‹ˆë‹¤</h6>
 							<%} else {%>
 							<%=avg%>
 							<%
@@ -261,7 +261,7 @@ if (memberInfo == null) {
 			</div>
 		</div>
 	</section>
-	<!-- ³»Á¤º¸ ¼½¼Ç ³¡-->
+	<!-- ë‚´ì •ë³´ ì„¹ì…˜ ë-->
 
 	<%
 	if (memberInfo.getMemId() != null) {
@@ -273,10 +273,10 @@ if (memberInfo == null) {
 
 		team_list = teamdao.selectMyTeam(memberInfo.getMemId());
 	%>
-	<!-- °ø¸ğÀü ³»¿ª ¼½¼Ç -->
+	<!-- ê³µëª¨ì „ ë‚´ì—­ ì„¹ì…˜ -->
 	<section class="profile-section spad" style="margin-bottom: 10%">
 		<div class="section-title">
-			<h4 style="margin-left: 21.5%">Âü¿©ÇÑ °ø¸ğÀü</h4>
+			<h4 style="margin-left: 21.5%">ì°¸ì—¬í•œ ê³µëª¨ì „</h4>
 		</div>
 		<%
 		if (team_list.size() != 0) {
@@ -291,7 +291,7 @@ if (memberInfo == null) {
 						<div class="pi-pic set-bg">
 							<img
 								src="<%=CDAO.bringSmallImg(team_list.get(i).getCntNum())%>" width = 100%; height = "400px" />
-							<!-- ³²Àº ÀÏÀÚ -->
+							<!-- ë‚¨ì€ ì¼ì -->
 							<div class="label">
 								<%
 								int date = CDAO.oneContestD_Day(team_list.get(i).getCntNum());
@@ -308,23 +308,23 @@ if (memberInfo == null) {
 							</div>
 						</div>
 						<div class="pi-text" style="background-color : white;width:360px;height:160px;">
-							<!-- ¸¶Áö¸· ÀÏÀÚ -->
+							<!-- ë§ˆì§€ë§‰ ì¼ì -->
 							<a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
 							<div class="pt-price">
-								<%=CDAO.selectCon(team_list.get(i).getCntNum()).getConToDate()%><span>±îÁö</span>
+								<%=CDAO.selectCon(team_list.get(i).getCntNum()).getConToDate()%><span>ê¹Œì§€</span>
 							</div>
-							<!-- Á¦¸ñ -->
+							<!-- ì œëª© -->
 							<h5 style="height:50px;">
 								<a href="#"><%=CDAO.selectCon(team_list.get(i).getCntNum()).getConName()%></a>
 							</h5>
 							<ul>
-								<!-- ºĞ¾ß -->
+								<!-- ë¶„ì•¼ -->
 								<li><i class="fa fa-object-group"></i> <%=CDAO.selectCon(team_list.get(i).getCntNum()).getConField()%>
 								</li>
-								<!-- ÀÎ¿ø¼ö -->
+								<!-- ì¸ì›ìˆ˜ -->
 								<li><i class="fa fa-bathtub"></i> <%=teamdao.showTeamMemberNum(teamdao.searchTeamNum(memberInfo.getMemId()).get(i).getTmNum())%>
 								</li>
-								<!-- ÆÀ¿øµé ÀÌ¸§ -->
+								<!-- íŒ€ì›ë“¤ ì´ë¦„ -->
 								<li><i class="fa fa-bed"></i> <%
 									 myTeamMembers = teamdao.showTeamMember(team_list.get(i).getCntNum(), team_list.get(i).getTmNum());
 									 for (teamVO vos : myTeamMembers) {
@@ -332,18 +332,18 @@ if (memberInfo == null) {
 									 }
 									 %>
 								</li>
-								<!-- ¸ğÁı¿©ºÎ -->
+								<!-- ëª¨ì§‘ì—¬ë¶€ -->
 								<li style="color: red"><i class="fa fa-bed"></i> <%
 									 if (date <= 0) {
 									 	int maxnum = teamdao.selectMyTeam(memberInfo.getMemId()).get(i).getTmFull();
 									 	int nownum = teamdao.showTeamMemberNum(teamdao.searchTeamNum(memberInfo.getMemId()).get(i).getTmNum());
 									 	if (nownum < maxnum) {
-									 		out.print("¸ğÁı Áß");
+									 		out.print("ëª¨ì§‘ ì¤‘");
 									 	} else if (nownum >= maxnum) {
-									 		out.print("¸ğÁı ¿Ï·á");
+									 		out.print("ëª¨ì§‘ ì™„ë£Œ");
 									 	}
 									 } else {
-									 	out.print("¸ğÁı ¿Ï·á");
+									 	out.print("ëª¨ì§‘ ì™„ë£Œ");
 									 }
 									 %>
 						 		</li>
@@ -360,20 +360,20 @@ if (memberInfo == null) {
 			}
 			%>
 	</section>
-	<!-- °ø¸ğÀü ³»¿ë ¼½¼Ç ³¡ -->
+	<!-- ê³µëª¨ì „ ë‚´ìš© ì„¹ì…˜ ë -->
 	
-	<!-- ³» °ø¸ğÀü ³»¿ª ¼½¼Ç -->
+	<!-- ë‚´ ê³µëª¨ì „ ë‚´ì—­ ì„¹ì…˜ -->
 	<div style="margin-bottom: 10%">
 		<div class="section-title" style="margin-top: 5%">
-			<h4 style="margin-left: 21.5%">°ø¸ğÀü ³»¿ª</h4>
+			<h4 style="margin-left: 21.5%">ê³µëª¨ì „ ë‚´ì—­</h4>
 		</div>
 		<table class="table table-hover"
 			style="width: 1100px; margin-left: 21.5%">
 			<thead>
 				<tr>
-					<th scope="col" style="width: 600px;text-align: center;">Âü¿© °ø¸ğÀü ÀÌ¸§</th>
-					<th scope="col" style="width: 100px;text-align: center;">¿ªÇÒ</th>
-					<th scope="col" style="width: 300px;text-align: center;">¸¶°¨ÀÏ</th>
+					<th scope="col" style="width: 600px;text-align: center;">ì°¸ì—¬ ê³µëª¨ì „ ì´ë¦„</th>
+					<th scope="col" style="width: 100px;text-align: center;">ì—­í• </th>
+					<th scope="col" style="width: 300px;text-align: center;">ë§ˆê°ì¼</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -381,7 +381,7 @@ if (memberInfo == null) {
 				if (myConList.size() == 0) {
 				%>
 				<tr>
-					<td colspan='3' style="text-align: center;">¾ÆÁ÷ Âü°¡ÇÑ °ø¸ğÀüÀÌ ¾ø½À´Ï´Ù.</td>
+					<td colspan='3' style="text-align: center;">ì•„ì§ ì°¸ê°€í•œ ê³µëª¨ì „ì´ ì—†ìŠµë‹ˆë‹¤.</td>
 				</tr>
 				<%
 				} else if (myConList.size() > 0) {
@@ -417,7 +417,7 @@ if (memberInfo == null) {
 					</td>
 					<td><%=myConList.get(i).getPcntPosition()%></td>
 					<td>~<%=CDAO.selectCon(myConList.get(i).getPcntNum()).getConToDate()%>
-						±îÁö
+						ê¹Œì§€
 					</td>
 				</tr>
 				<%
@@ -430,135 +430,63 @@ if (memberInfo == null) {
 			</tbody>
 		</table>
 	</div>
-	<!-- ³» ÀÏ±â ¼½¼Ç ³¡ -->
+	<!-- ë‚´ ì¼ê¸° ì„¹ì…˜ ë -->
 	<!-- Property Comparison Section End -->
 
 	<!-- Contact Section Begin -->
-	<section class="contact-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="contact-info">
-						<div class="ci-item">
-							<div class="ci-icon">
-								<i class="fa fa-map-marker"></i>
-							</div>
-							<div class="ci-text">
-								<h5>Address</h5>
-								<p>160 Pennsylvania Ave NW, Washington, Castle, PA
-									16101-5161</p>
-							</div>
-						</div>
-						<div class="ci-item">
-							<div class="ci-icon">
-								<i class="fa fa-mobile"></i>
-							</div>
-							<div class="ci-text">
-								<h5>Phone</h5>
-								<ul>
-									<li>125-711-811</li>
-									<li>125-668-886</li>
-								</ul>
-							</div>
-						</div>
-						<div class="ci-item">
-							<div class="ci-icon">
-								<i class="fa fa-headphones"></i>
-							</div>
-							<div class="ci-text">
-								<h5>Support</h5>
-								<p>Support.aler@gmail.com</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="cs-map">
-			<iframe
-				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d735515.5813275519!2d-80.41163541934742!3d43.93644386501528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882a55bbf3de23d7%3A0x3ada5af229b47375!2sMono%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sbd!4v1583262687289!5m2!1sen!2sbd"
-				height="450" style="border: 0;" allowfullscreen=""></iframe>
-		</div>
-	</section>
+	
 	<!-- Contact Section End -->
 
 	<!-- Footer Section Begin -->
-	<footer class="footer-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 col-md-6">
-					<div class="fs-about">
-						<div class="fs-logo">
-							<a href="#"> <img src="img/f-logo.png" alt="">
-							</a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-							ut aliquip ex ea</p>
-						<div class="fs-social">
-							<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-								class="fa fa-twitter"></i></a> <a href="#"><i
-								class="fa fa-youtube-play"></i></a> <a href="#"><i
-								class="fa fa-instagram"></i></a> <a href="#"><i
-								class="fa fa-pinterest-p"></i></a>
-						</div>
+	<footer>
+		<div id ="footer" style = "background-color : rgb(44,44,44); clear:both; height:350px;" >
+			<div class="footer">
+			<h1>
+			 <a href="./mainPageJSP.jsp">
+			 	<imag src="img/logo/mainLogo.png" alt ="logo">
+			 </a>
+			</h1>
+			<div id ="footer-area">
+				<div style="margin-left:10%; color:#fff;">
+				<br>
+					<p>
+						<span style="font-family:dotum; font-size:25px">
+							<strong> (ì£¼) ê¹”ê¼¼ </strong>
+						</span>
+					</p>
+					<p>
+						<span style ="font-size:20px">
+							<span style="font-family:dotum">
+							
+							ëŒ€í‘œ : ì• ë²Œë ˆ   &nbsp;&nbsp;&nbsp;&nbsp; ì£¼ì†Œ : ê´‘ì£¼ê´‘ì—­ì‹œ ìŠ¤ë§ˆíŠ¸ì¸ì¬ê°œë°œì›
+							<br>
+							ê³µëª¨ì „ ì œíœ´ ë¬¸ì˜ : eberle@naver.com &nbsp;&nbsp; ë§ˆì¼€íŒ… ì œíœ´ : eberle@naver.com 
+							<br>
+							í™ë³´ë¬¸ì˜ : eberle@naver.com
+							<br>
+							ê³ ê°ë¬¸ì˜:eberle@naver.com / 1555-1555(09:00~18:00)
+							<br>
+							ì‚¬ì—…ìë“±ë¡ë²ˆí˜¸ : 000-00-0000 | tel: 1588-1588&nbsp;
+							<br>
+							<br>
+								ãˆœê¹”ê¼¼ì€ í†µì‹ íŒë§¤ì¤‘ê°œìë¡œì„œ í†µì‹ íŒë§¤ì˜ ë‹¹ì‚¬ìê°€ ì•„ë‹™ë‹ˆë‹¤. ë”°ë¼ì„œ, ë“±ë¡ëœ ê³µëª¨ì „ ë° í™œë™ì— ëŒ€í•˜ì—¬ ãˆœê¹”ê¼¼ì€ ì–´ë– í•œ ì±…ì„ë„ ì§€ì§€ ì•ŠìŠµë‹ˆë‹¤.
+							<br>	
+						Copyright Â© kakaostyle Corp. All rights reserved
+							</span>
+						</span>
+					</p>
+				
 					</div>
-				</div>
-				<div class="col-lg-2 col-sm-6">
-					<div class="fs-widget">
-						<h5>Help</h5>
-						<ul>
-							<li><a href="#">Privacy Policy</a></li>
-							<li><a href="#">Contact Support</a></li>
-							<li><a href="#">Knowledgebase</a></li>
-							<li><a href="#">Careers</a></li>
-							<li><a href="#">FAQs</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col-sm-6">
-					<div class="fs-widget">
-						<h5>Links</h5>
-						<ul>
-							<li><a href="#">Contact</a></li>
-							<li><a href="#">Create Property</a></li>
-							<li><a href="#">My Properties</a></li>
-							<li><a href="#">Register</a></li>
-							<li><a href="#">Login</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="fs-widget">
-						<h5>Newsletter</h5>
-						<p>Deserunt mollit anim id est laborum.</p>
-						<form action="#" class="subscribe-form">
-							<input type="text" placeholder="Email">
-							<button type="submit" class="site-btn">Subscribe</button>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="copyright-text">
-				<p>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright &copy;
-					<script>
-						document.write(new Date().getFullYear());
-					</script>
-					All rights reserved | This template is made with <i
-						class="fa fa-heart" aria-hidden="true"></i> by <a
-						href="https://colorlib.com" target="_blank">Colorlib</a>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				</p>
-			</div>
+				
+				
+			 </div></div>
 		</div>
 	</footer>
 	<!-- Footer Section End -->
 
 
 	<script>
-		//·Î±×ÀÎ,È¸¿ø°¡ÀÔ ¹öÆ° ¸Ş¼Òµå
+		//ë¡œê·¸ì¸,íšŒì›ê°€ì… ë²„íŠ¼ ë©”ì†Œë“œ
 		$(function() {
 			$("#loginBtn img").mouseover(function() {
 				$(this).attr("src", "img/logo/loginOn.png");
@@ -568,7 +496,7 @@ if (memberInfo == null) {
 			});
 		});
 
-		//·Î±×¾Æ¿ô ¹öÆ° ¸Ş¼Òµå
+		//ë¡œê·¸ì•„ì›ƒ ë²„íŠ¼ ë©”ì†Œë“œ
 		$(function() {
 			$("#logoutBtn img").mouseover(function() {
 				$(this).attr("src", "img/logo/logoutOn.png");

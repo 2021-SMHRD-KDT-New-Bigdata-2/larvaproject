@@ -1,3 +1,4 @@
+
 <%@page import="java.util.HashSet"%>
 <%@page import="com.model.conDetailDAO"%>
 <%@page import="com.model.teamVO"%>
@@ -7,14 +8,14 @@
 <%@page import="com.model.conDetailVO"%>
 <%@page import="com.model.teamDAO"%>
 <%@page import="com.model.memberVO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx">
 <%
 memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
 if (memberInfo == null) {
-	out.println("<script>alert('·Î±×ÀÎÀÌ ÇÊ¿äÇÑ ¼­ºñ½ºÀÔ´Ï´Ù. ·Î±×ÀÎÆäÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.'); window.location='./LoginJSP.jsp';</script>");
+	out.println("<script>alert('ë¡œê·¸ì¸ì´ í•„ìš”í•œ ì„œë¹„ìŠ¤ì…ë‹ˆë‹¤. ë¡œê·¸ì¸í˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.'); window.location='./LoginJSP.jsp';</script>");
 }
 %>
 <head>
@@ -23,7 +24,7 @@ if (memberInfo == null) {
 <meta name="keywords" content="Aler, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>±ò²Ä</title>
+<title>ê¹”ê¼¼</title>
 
 <!-- Google Font -->
 <link
@@ -113,7 +114,7 @@ if (memberInfo == null) {
 	</div>
 	<!-- Offcanvas Menu Wrapper End -->
 
-	<!-- Çìµå ½ÃÀÛ -->
+	<!-- í—¤ë“œ ì‹œì‘ -->
 	<header class="header-section">
 		<div
 			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 225px;">
@@ -137,21 +138,21 @@ if (memberInfo == null) {
 							%>
 							<ul style="text-align: center; margin-left: 7%;">
 								<li class="active" style="font-size: 10px"><a
-									href="./mainPageJSP.jsp" style="color: #ffffff;">¸ŞÀÎ</a></li>
-								<li><a href="#" style="color: #ffffff;">¸¶ÀÌÆäÀÌÁö</a>
+									href="./mainPageJSP.jsp" style="color: #ffffff;">ë©”ì¸</a></li>
+								<li><a href="#" style="color: #ffffff;">ë§ˆì´í˜ì´ì§€</a>
 									<ul class="dropdown"
 										style="display: inline-block; width: 150px;">
 										<li style="margin-right: 40%"><a
-											href="./mypageProfileJSP.jsp">³»Á¤º¸</a></li>
+											href="./mypageProfileJSP.jsp">ë‚´ì •ë³´</a></li>
 										<li style="margin-right: 10%"><a
-											href="./mypageContestJSP.jsp">Áö¿øÇÑ °ø¸ğÀü</a></li>
+											href="./mypageContestJSP.jsp">ì§€ì›í•œ ê³µëª¨ì „</a></li>
 										<li style="margin-right: 38%"><a
-											href="./mypageTeamJSP.jsp">³ªÀÇ ÆÀ</a></li>
+											href="./mypageTeamJSP.jsp">ë‚˜ì˜ íŒ€</a></li>
 										<li style="margin-right: 40%"><a
-											href="./mypageMessageJSP.jsp">ÂÊÁöÇÔ</a></li>
+											href="./mypageMessageJSP.jsp">ìª½ì§€í•¨</a></li>
 									</ul></li>
-								<li><a href="./ContestBoradJSP.jsp" style="color: #ffffff;">°ø¸ğÀü</a></li>
-								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">ÆÀ¿ø¸ğÁı</a></li>
+								<li><a href="./ContestBoradJSP.jsp" style="color: #ffffff;">ê³µëª¨ì „</a></li>
+								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">íŒ€ì›ëª¨ì§‘</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -166,33 +167,33 @@ if (memberInfo == null) {
 			style="padding: 3%; background-color: #4169E1; box-shadow: 1px 1px gray; width: 2000px">
 			<div class="pcntSearchText"
 				style="margin-left: 33%; height: 40px; width: 600px; border: 2px solid #1b5ac2; background: #ffffff;">
-				<input class="textBar" type="text" placeholder="¿øÇÏ´Â °ø¸ğÀü °Ë»ö!"
+				<input class="textBar" type="text" placeholder="ì›í•˜ëŠ” ê³µëª¨ì „ ê²€ìƒ‰!"
 					style="font-size: 16px; width: 500px; height: 100%; padding: 10px; border: 0px; outline: none;">
 				<button class="searchBtn"
-					style="width: 50px; height: 100%; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">°Ë»ö</button>
+					style="width: 50px; height: 100%; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">ê²€ìƒ‰</button>
 			</div>
 		</div>
 	</header>
-	<!-- Çìµå ³¡ -->
+	<!-- í—¤ë“œ ë -->
 
-	<!-- Áß°£ Çìµå ½ÃÀÛ -->
+	<!-- ì¤‘ê°„ í—¤ë“œ ì‹œì‘ -->
 	<section class="breadcrumb-section spad set-bg"
 		data-setbg="img/grayPolygon.png" style="width: 2000px">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb-text">
-						<h4>³ªÀÇ ÆÀ</h4>
+						<h4>ë‚˜ì˜ íŒ€</h4>
 						<div class="bt-option">
-							<a href="./index.html"><i class="fa fa-home"></i>¸ŞÀÎ</a> <span>³ªÀÇ
-								ÆÀ</span>
+							<a href="./index.html"><i class="fa fa-home"></i>ë©”ì¸</a> <span>ë‚˜ì˜
+								íŒ€</span>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- Áß°£ Çìµå ³¡ -->
+	<!-- ì¤‘ê°„ í—¤ë“œ ë -->
 
 	<!-- Property Comparison Section Begin -->
 	<div class="property-comparison-section spad">
@@ -201,7 +202,7 @@ if (memberInfo == null) {
 				<div class="col-lg-12 p-0">
 					<div class="pc-table">
 						<div class="section-title">
-							<h4>³» ÆÄÆ¼ ÇöÈ²</h4>
+							<h4>ë‚´ íŒŒí‹° í˜„í™©</h4>
 						</div>
 						<%
 						if (memberInfo != null) {
@@ -228,7 +229,7 @@ if (memberInfo == null) {
 											<%=conD.selectCon(myTeam.get(i).getCntNum()).getConName()%>
 										</td>
 										<td
-											style="font-size: 15px; background-color: #8B4513; color: white; width: 70px;">¿ªÇÒ</td>
+											style="font-size: 15px; background-color: #8B4513; color: white; width: 70px;">ì—­í• </td>
 									</tr>
 									<tr>
 										<td style="font-size: 10px; color: red; flaot: left"></td>
@@ -237,7 +238,7 @@ if (memberInfo == null) {
 													<li class="menu" style="list-style: none">
 														<%
 														if (myTeam.get(i).getTmType() == 0) {
-															out.print("¡Ú");
+															out.print("â˜…");
 														}
 														%><a> <%=myTeam.get(i).getMemId()%></a>
 														<ul class="hide" style="list-style: none">
@@ -264,18 +265,18 @@ if (memberInfo == null) {
 						%>
 
 						<!-- <section class="contact-form-section spad">
-							<h3 style="margin: 3%">ÂÊÁöº¸³»±â</h3>
+							<h3 style="margin: 3%">ìª½ì§€ë³´ë‚´ê¸°</h3>
 							<div class="container">
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="cf-content">
 											<form action="#" class="cc-form">
 												<div class="group-input">
-													<input type="text" placeholder="¹Ş´Â»ç¶÷">
+													<input type="text" placeholder="ë°›ëŠ”ì‚¬ëŒ">
 												</div>
 												<textarea
-													placeholder="ÆÀ¿ø ¸ğÁı¿¡ ´ëÇÑ ³»¿ë¸¸ ÀÛ¼º ¹Ù¶ø´Ï´Ù. ¹«ºĞº°ÇÑ ±¤°í, µµ¹è´Â Á¦Àç´ë»óÀÔ´Ï´Ù."></textarea>
-												<button type="submit" class="site-btn">º¸³»±â</button>
+													placeholder="íŒ€ì› ëª¨ì§‘ì— ëŒ€í•œ ë‚´ìš©ë§Œ ì‘ì„± ë°”ëë‹ˆë‹¤. ë¬´ë¶„ë³„í•œ ê´‘ê³ , ë„ë°°ëŠ” ì œì¬ëŒ€ìƒì…ë‹ˆë‹¤."></textarea>
+												<button type="submit" class="site-btn">ë³´ë‚´ê¸°</button>
 											</form>
 										</div>
 									</div>
@@ -290,130 +291,57 @@ if (memberInfo == null) {
 	<!-- Property Comparison Section End -->
 
 	<!-- Contact Section Begin -->
-	<section class="contact-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="contact-info">
-						<div class="ci-item">
-							<div class="ci-icon">
-								<i class="fa fa-map-marker"></i>
-							</div>
-							<div class="ci-text">
-								<h5>Address</h5>
-								<p>160 Pennsylvania Ave NW, Washington, Castle, PA
-									16101-5161</p>
-							</div>
-						</div>
-						<div class="ci-item">
-							<div class="ci-icon">
-								<i class="fa fa-mobile"></i>
-							</div>
-							<div class="ci-text">
-								<h5>Phone</h5>
-								<ul>
-									<li>125-711-811</li>
-									<li>125-668-886</li>
-								</ul>
-							</div>
-						</div>
-						<div class="ci-item">
-							<div class="ci-icon">
-								<i class="fa fa-headphones"></i>
-							</div>
-							<div class="ci-text">
-								<h5>Support</h5>
-								<p>Support.aler@gmail.com</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="cs-map">
-			<iframe
-				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d735515.5813275519!2d-80.41163541934742!3d43.93644386501528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882a55bbf3de23d7%3A0x3ada5af229b47375!2sMono%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sbd!4v1583262687289!5m2!1sen!2sbd"
-				height="450" style="border: 0;" allowfullscreen=""></iframe>
-		</div>
-	</section>
+	
 	<!-- Contact Section End -->
 
 	<!-- Footer Section Begin -->
-	<footer class="footer-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 col-md-6">
-					<div class="fs-about">
-						<div class="fs-logo">
-							<a href="#"> <img src="img/f-logo.png" alt="">
-							</a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-							ut aliquip ex ea</p>
-						<div class="fs-social">
-							<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-								class="fa fa-twitter"></i></a> <a href="#"><i
-								class="fa fa-youtube-play"></i></a> <a href="#"><i
-								class="fa fa-instagram"></i></a> <a href="#"><i
-								class="fa fa-pinterest-p"></i></a>
-						</div>
+	<footer>
+		<div id ="footer" style = "background-color : rgb(44,44,44); clear:both; height:350px;" >
+			<div class="footer">
+			<h1>
+			 <a href="./mainPageJSP.jsp">
+			 	<imag src="img/logo/mainLogo.png" alt ="logo">
+			 </a>
+			</h1>
+			<div id ="footer-area">
+				<div style="margin-left:10%; color:#fff;">
+				<br>
+					<p>
+						<span style="font-family:dotum; font-size:25px">
+							<strong> (ì£¼) ê¹”ê¼¼ </strong>
+						</span>
+					</p>
+					<p>
+						<span style ="font-size:20px">
+							<span style="font-family:dotum">
+							
+							ëŒ€í‘œ : ì• ë²Œë ˆ   &nbsp;&nbsp;&nbsp;&nbsp; ì£¼ì†Œ : ê´‘ì£¼ê´‘ì—­ì‹œ ìŠ¤ë§ˆíŠ¸ì¸ì¬ê°œë°œì›
+							<br>
+							ê³µëª¨ì „ ì œíœ´ ë¬¸ì˜ : eberle@naver.com &nbsp;&nbsp; ë§ˆì¼€íŒ… ì œíœ´ : eberle@naver.com 
+							<br>
+							í™ë³´ë¬¸ì˜ : eberle@naver.com
+							<br>
+							ê³ ê°ë¬¸ì˜:eberle@naver.com / 1555-1555(09:00~18:00)
+							<br>
+							ì‚¬ì—…ìë“±ë¡ë²ˆí˜¸ : 000-00-0000 | tel: 1588-1588&nbsp;
+							<br>
+							<br>
+								ãˆœê¹”ê¼¼ì€ í†µì‹ íŒë§¤ì¤‘ê°œìë¡œì„œ í†µì‹ íŒë§¤ì˜ ë‹¹ì‚¬ìê°€ ì•„ë‹™ë‹ˆë‹¤. ë”°ë¼ì„œ, ë“±ë¡ëœ ê³µëª¨ì „ ë° í™œë™ì— ëŒ€í•˜ì—¬ ãˆœê¹”ê¼¼ì€ ì–´ë– í•œ ì±…ì„ë„ ì§€ì§€ ì•ŠìŠµë‹ˆë‹¤.
+							<br>	
+						Copyright Â© kakaostyle Corp. All rights reserved
+							</span>
+						</span>
+					</p>
+				
 					</div>
-				</div>
-				<div class="col-lg-2 col-sm-6">
-					<div class="fs-widget">
-						<h5>Help</h5>
-						<ul>
-							<li><a href="#">Privacy Policy</a></li>
-							<li><a href="#">Contact Support</a></li>
-							<li><a href="#">Knowledgebase</a></li>
-							<li><a href="#">Careers</a></li>
-							<li><a href="#">FAQs</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col-sm-6">
-					<div class="fs-widget">
-						<h5>Links</h5>
-						<ul>
-							<li><a href="#">Contact</a></li>
-							<li><a href="#">Create Property</a></li>
-							<li><a href="#">My Properties</a></li>
-							<li><a href="#">Register</a></li>
-							<li><a href="#">Login</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="fs-widget">
-						<h5>Newsletter</h5>
-						<p>Deserunt mollit anim id est laborum.</p>
-						<form action="#" class="subscribe-form">
-							<input type="text" placeholder="Email">
-							<button type="submit" class="site-btn">Subscribe</button>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="copyright-text">
-				<p>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright &copy;
-					<script>
-						document.write(new Date().getFullYear());
-					</script>
-					All rights reserved | This template is made with <i
-						class="fa fa-heart" aria-hidden="true"></i> by <a
-						href="https://colorlib.com" target="_blank">Colorlib</a>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				</p>
-			</div>
+				
+				
+			 </div></div>
 		</div>
 	</footer>
 	<!-- Footer Section End -->
-
 	<script>
-		//·Î±×ÀÎ,È¸¿ø°¡ÀÔ ¹öÆ° ¸Ş¼Òµå
+		//ë¡œê·¸ì¸,íšŒì›ê°€ì… ë²„íŠ¼ ë©”ì†Œë“œ
 		$(function() {
 			$("#loginBtn img").mouseover(function() {
 				$(this).attr("src", "img/logo/loginOn.png");
@@ -423,7 +351,7 @@ if (memberInfo == null) {
 			});
 		});
 
-		//·Î±×¾Æ¿ô ¹öÆ° ¸Ş¼Òµå
+		//ë¡œê·¸ì•„ì›ƒ ë²„íŠ¼ ë©”ì†Œë“œ
 		$(function() {
 			$("#logoutBtn img").mouseover(function() {
 				$(this).attr("src", "img/logo/logoutOn.png");

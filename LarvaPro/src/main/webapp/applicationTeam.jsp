@@ -5,8 +5,8 @@
 <%@page import="com.model.teamDAO"%>
 <%@page import="com.model.teamVO"%>
 <%@page import="com.model.memberVO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx">
 <%
@@ -32,7 +32,7 @@ memberVO member=MDAO.loginId(team.getMemId());
 <meta name="keywords" content="Aler, unica, creative, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>±ò²Ä | Template</title>
+<title>ê¹”ê¼¼</title>
 
 <!-- Google Font -->
 <link
@@ -100,16 +100,15 @@ memberVO member=MDAO.loginId(team.getMemId());
 	</div>
 	<!-- Offcanvas Menu Wrapper End -->
 
-	<!-- Çìµå ½ÃÀÛ -->
-	<header class="header-section" style="margin: 0px">
+	<header class="header-section" style="margin:0px">
 		<div
 			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 155px;">
-			<div class="hs-top" style="margin-top: 0px; height: 165px;">
+			<div class="hs-top"
+				style="margin-top: 0px; height: 165px;">
 				<div class="container">
 					<div class="ten" style="padding: 1px">
 						<div class="logo">
-							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png"
-								style="margin-top: 10px"></a>
+							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png" style="margin-top:10px"></a>
 						</div>
 						<nav class="nav-menu">
 							<%
@@ -122,22 +121,22 @@ memberVO member=MDAO.loginId(team.getMemId());
 							}
 							%>
 							<ul style="text-align: center; margin-left: 7%;">
-								<li style="font-size: 10px"><a href="./mainPageJSP.jsp"
-									style="color: #ffffff;">¸ŞÀÎ</a></li>
-								<li><a href="#" style="color: #ffffff;">¸¶ÀÌÆäÀÌÁö</a>
+								<li style="font-size: 10px"><a
+									href="./mainPageJSP.jsp" style="color: #ffffff;">ë©”ì¸</a></li>
+								<li><a href="#" style="color: #ffffff;">ë§ˆì´í˜ì´ì§€</a>
 									<ul class="dropdown"
 										style="display: inline-block; width: 150px;">
 										<li style="margin-right: 40%"><a
-											href="./mypageProfileJSP.jsp">³»Á¤º¸</a></li>
+											href="./mypageProfileJSP.jsp">ë‚´ì •ë³´</a></li>
 										<li style="margin-right: 10%"><a
-											href="./mypageContestJSP.jsp">Áö¿øÇÑ °ø¸ğÀü</a></li>
+											href="./mypageContestJSP.jsp">ì§€ì›í•œ ê³µëª¨ì „</a></li>
 										<li style="margin-right: 38%"><a
-											href="./mypageTeamJSP.jsp">³ªÀÇ ÆÀ</a></li>
+											href="./mypageTeamJSP.jsp">ë‚˜ì˜ íŒ€</a></li>
 										<li style="margin-right: 40%"><a
-											href="./mypageMessageJSP.jsp">ÂÊÁöÇÔ</a></li>
+											href="./mypageMessageJSP.jsp">ìª½ì§€í•¨</a></li>
 									</ul></li>
-								<li><a href="./ContestBoard.jsp" style="color: #ffffff;">°ø¸ğÀü</a></li>
-								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">ÆÀ¿ø¸ğÁı</a></li>
+								<li><a href="./ContestBoard.jsp" style="color: #ffffff;">ê³µëª¨ì „</a></li>
+								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">íŒ€ì›ëª¨ì§‘</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -153,16 +152,16 @@ memberVO member=MDAO.loginId(team.getMemId());
 			<div class="pcntSearchText"
 				style="margin-left: 33%; width: 600px; border: 2px solid #1b5ac2; background: #ffffff;">
 				<form action="searchService">
-					<input class="textBar" type="text" placeholder="¿øÇÏ´Â °ø¸ğÀü °Ë»ö!"
+					<input class="textBar" type="text" placeholder="ì›í•˜ëŠ” ê³µëª¨ì „ ê²€ìƒ‰!"
 						style="font-size: 16px; width: 500px; height: 100%; padding: 10px; border: 0px; outline: none;"
 						name="search">
 					<button class="search"
-						style="width: 90px; height: 40px; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">°Ë»ö</button>
+						style="width: 90px; height: 40px; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">ê²€ìƒ‰</button>
 				</form>
 			</div>
 		</div>
 	</header>
-	<!-- Çìµå ³¡ -->
+	<!-- í—¤ë“œ ë -->
 
 	<div class="container mt-5"
 		style="background-color: #F6F6F6; border-radius: 10px; margin-top: -10%">
@@ -171,7 +170,7 @@ memberVO member=MDAO.loginId(team.getMemId());
 				<article>
 					<header class="mb-4"
 						style="padding-top: 1%; color: green; font-size: 13px; margin-bottom: 0px">
-						ÆÀ¿ø ¸ğÁı >
+						íŒ€ì› ëª¨ì§‘ >
 						<h3 style="padding: 1%"><%=team.getTitle() %></h3>
 						<h5 style="padding: 1%; margin-top: 1%"><%=member.getMemNickName() %> | LV <%=member.getMemLevel() %> |
 							<%=member.getMemEmail() %></h5>
@@ -190,33 +189,33 @@ memberVO member=MDAO.loginId(team.getMemId());
 						<table class="content" style="margin-left: 50%;">
 							<tbody>
 								<tr>
-									<td width="100" height="50"><b>ºĞ¾ß</b></td>
+									<td width="100" height="50"><b>ë¶„ì•¼</b></td>
 									<td style="color: #4169E1"><%=contest.getConField() %></td>
 								</tr>
 								<tr>
-									<td width="100" height="50"><b>ÀÀ¸ğ´ë»ó</b></td>
+									<td width="100" height="50"><b>ì‘ëª¨ëŒ€ìƒ</b></td>
 									<td style="color: #4169E1"><%=contest.getConQualfication() %></td>
 								</tr>
 								<tr>
-									<td width="100" height="50"><b>ÁÖÃÖ/ÁÖ°ü</b>
+									<td width="100" height="50"><b>ì£¼ìµœ/ì£¼ê´€</b>
 									<td style="color: #4169E1"><%=contest.getConHost() %></td>
 								</tr>
 								<tr>
-									<td width="100" height="50"><b>ÈÄ¿ø/ÇùÂù</b></td>
+									<td width="100" height="50"><b>í›„ì›/í˜‘ì°¬</b></td>
 									<td style="color: #4169E1"><%=contest.getClass() %></td>
 								</tr>
 								<tr>
-									<td width="100" height="50"><b>Á¢¼ö±â°£</b></td>
+									<td width="100" height="50"><b>ì ‘ìˆ˜ê¸°ê°„</b></td>
 									<td style="color: #4169E1"><%=contest.getConFromDate() %>~<%=contest.getConToDate() %></td>
 								</tr>
 								<tr>
-									<td width="100" height="50"><b>ÃÑ»ó±İ</b></td>
-									<td style="color: #4169E1">100¾ï</td>
+									<td width="100" height="50"><b>ì´ìƒê¸ˆ</b></td>
+									<td style="color: #4169E1">100ì–µ</td>
 								</tr>
 							</tbody>
 						</table>
 						<hr width="350px" style="margin-left: 50%">
-						<!-- ³»Á¤º¸ ¼½¼Ç -->
+						<!-- ë‚´ì •ë³´ ì„¹ì…˜ -->
 						<section class="profile-section spad"
 							style="margin-bottom: 2%; padding: 2%">
 							<div class="container">
@@ -233,15 +232,15 @@ memberVO member=MDAO.loginId(team.getMemId());
 										<div class="col-lg-4">
 											<div class="profile-agent-widget">
 												<ul>
-													<li>ÆÀÀåÀÇ ¿ªÇÒ <span style="color: #4169E1"><%=team.getPosition() %></span></li>
-													<li>¸ğÁı ÀÎ¿ø ¼ö <span style="color: #4169E1"><%=team.getTmFull() %></span></li>
-													<li>ÀÌ¸ŞÀÏ <span style="color: #4169E1"><%=member.getMemEmail() %></span></li>
+													<li>íŒ€ì¥ì˜ ì—­í•  <span style="color: #4169E1"><%=team.getPosition() %></span></li>
+													<li>ëª¨ì§‘ ì¸ì› ìˆ˜ <span style="color: #4169E1"><%=team.getTmFull() %></span></li>
+													<li>ì´ë©”ì¼ <span style="color: #4169E1"><%=member.getMemEmail() %></span></li>
 												</ul>
 											</div>
 										</div>
 										<div class="col-lg-4">
 											<div class="profile-agent-newslatter">
-												<h5 align="center" style="color: red;">ÆÀÀåÀÇ ÆòÁ¡</h5>
+												<h5 align="center" style="color: red;">íŒ€ì¥ì˜ í‰ì </h5>
 												<p align="center"
 													style="color: blue; font-size: 35px; margin: 10%;"><%=score.showScore(member.getMemId()) %></p>
 											</div>
@@ -250,7 +249,7 @@ memberVO member=MDAO.loginId(team.getMemId());
 								</div>
 							</div>
 						</section>
-						<!-- ³»Á¤º¸ ¼½¼Ç ³¡-->
+						<!-- ë‚´ì •ë³´ ì„¹ì…˜ ë-->
 						<section class="profile-section spad"
 							style="margin-bottom: 2%; padding: 2%">
 							<div class="container">
@@ -277,13 +276,13 @@ memberVO member=MDAO.loginId(team.getMemId());
 		<form action="deleteTeamService">
 		<button type="submit" class="btn btn-primary" 
 			style="background: #1b5ac2; color: #ffffff; border: 0; outline: 0; margin-left: 45%;;"
-			name="delete" value="<%=team.getTmNum()%>">»èÁ¦ÇÏ±â</button>
+			name="delete" value="<%=team.getTmNum()%>">ì‚­ì œí•˜ê¸°</button>
 		</form>
 		<%}else{ %>
 		<form action="joinTeamService">
 		<button type="submit" class="btn btn-primary"
 			style="margin-left: 45%; background: #1b5ac2; color: #ffffff; border: 0; outline: 0;"
-			name="join" value="<%=team.getTmNum()%>">Âü¿©ÇÏ±â</button>
+			name="join" value="<%=team.getTmNum()%>">ì°¸ì—¬í•˜ê¸°</button>
 			<input value="<%=memberInfo.getMemId()%>" name="joinMemberId">
 		</form>
 		<%} %>
@@ -293,7 +292,7 @@ memberVO member=MDAO.loginId(team.getMemId());
 </body>
 
 <script>
-	//·Î±×ÀÎ,È¸¿ø°¡ÀÔ ¹öÆ° ¸Ş¼Òµå
+	//ë¡œê·¸ì¸,íšŒì›ê°€ì… ë²„íŠ¼ ë©”ì†Œë“œ
 	$(function() {
 		$("#loginBtn img").mouseover(function() {
 			$(this).attr("src", "img/logo/loginOn.png");
@@ -303,7 +302,7 @@ memberVO member=MDAO.loginId(team.getMemId());
 		});
 	});
 
-	//·Î±×¾Æ¿ô ¹öÆ° ¸Ş¼Òµå
+	//ë¡œê·¸ì•„ì›ƒ ë²„íŠ¼ ë©”ì†Œë“œ
 	$(function() {
 		$("#logoutBtn img").mouseover(function() {
 			$(this).attr("src", "img/logo/logoutOn.png");
@@ -313,7 +312,45 @@ memberVO member=MDAO.loginId(team.getMemId());
 		});
 	});
 </script>
-
+<!-- Footer Section Begin -->
+	
+			<div id ="footer-area">
+				<div style="margin-left:10%; color:#fff;">
+				<br>
+					<p>
+						<span style="font-family:dotum; font-size:25px">
+							<strong> (ì£¼) ê¹”ê¼¼ </strong>
+						</span>
+					</p>
+					<p>
+						<span style ="font-size:20px">
+							<span style="font-family:dotum">
+							
+							ëŒ€í‘œ : ì• ë²Œë ˆ   &nbsp;&nbsp;&nbsp;&nbsp; ì£¼ì†Œ : ê´‘ì£¼ê´‘ì—­ì‹œ ìŠ¤ë§ˆíŠ¸ì¸ì¬ê°œë°œì›
+							<br>
+							ê³µëª¨ì „ ì œíœ´ ë¬¸ì˜ : eberle@naver.com &nbsp;&nbsp; ë§ˆì¼€íŒ… ì œíœ´ : eberle@naver.com 
+							<br>
+							í™ë³´ë¬¸ì˜ : eberle@naver.com
+							<br>
+							ê³ ê°ë¬¸ì˜:eberle@naver.com / 1555-1555(09:00~18:00)
+							<br>
+							ì‚¬ì—…ìë“±ë¡ë²ˆí˜¸ : 000-00-0000 | tel: 1588-1588&nbsp;
+							<br>
+							<br>
+								ãˆœê¹”ê¼¼ì€ í†µì‹ íŒë§¤ì¤‘ê°œìë¡œì„œ í†µì‹ íŒë§¤ì˜ ë‹¹ì‚¬ìê°€ ì•„ë‹™ë‹ˆë‹¤. ë”°ë¼ì„œ, ë“±ë¡ëœ ê³µëª¨ì „ ë° í™œë™ì— ëŒ€í•˜ì—¬ ãˆœê¹”ê¼¼ì€ ì–´ë– í•œ ì±…ì„ë„ ì§€ì§€ ì•ŠìŠµë‹ˆë‹¤.
+							<br>	
+						Copyright Â© kakaostyle Corp. All rights reserved
+							</span>
+						</span>
+					</p>
+				
+					</div>
+				
+				
+			 </div></div>
+		</div>
+	</footer>
+	<!-- Footer Section End -->
 <!-- Js Plugins -->
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

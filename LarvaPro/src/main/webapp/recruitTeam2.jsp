@@ -118,31 +118,29 @@ int idx = Integer.parseInt(request.getParameter("idx"));
 	</div>
 	<!-- Offcanvas Menu Wrapper End -->
 
-	<!-- 헤드 시작 -->
-	<header class="header-section">
+	<header class="header-section" style="margin:0px">
 		<div
-			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 225px;">
+			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 155px;">
 			<div class="hs-top"
-				style="margin-top: 10px; border-bottom: 0px; height: 225px;">
+				style="margin-top: 0px; height: 165px;">
 				<div class="container">
-					<div class="ten" style="padding: 3%">
+					<div class="ten" style="padding: 1px">
 						<div class="logo">
-							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png"
-								style="witdh: 162px; height: 102px"></a>
+							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png" style="margin-top:10px"></a>
 						</div>
-						<nav class="nav-menu" style="margin-top: 5%;">
+						<nav class="nav-menu">
 							<%
 							if (memberInfo == null) {
 								out.print(
-								"<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
+								"<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin-top:25px'></a>");
 							} else if (memberInfo != null) {
 								out.print(
-								"<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
+								"<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin-top:25px'></a>");
 							}
 							%>
 							<ul style="text-align: center; margin-left: 7%;">
-								<li style="font-size: 10px"><a href="./mainPageJSP.jsp"
-									style="color: #ffffff;">메인</a></li>
+								<li style="font-size: 10px"><a
+									href="./mainPageJSP.jsp" style="color: #ffffff;">메인</a></li>
 								<li><a href="#" style="color: #ffffff;">마이페이지</a>
 									<ul class="dropdown"
 										style="display: inline-block; width: 150px;">
@@ -155,7 +153,7 @@ int idx = Integer.parseInt(request.getParameter("idx"));
 										<li style="margin-right: 40%"><a
 											href="./mypageMessageJSP.jsp">쪽지함</a></li>
 									</ul></li>
-								<li><a href="./ContestBoradJSP.jsp" style="color: #ffffff;">공모전</a></li>
+								<li><a href="./ContestBoard.jsp" style="color: #ffffff;">공모전</a></li>
 								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">팀원모집</a></li>
 							</ul>
 						</nav>
@@ -168,13 +166,16 @@ int idx = Integer.parseInt(request.getParameter("idx"));
 			<span class="icon_menu"></span>
 		</div>
 		<div
-			style="padding: 3%; background-color: #4169E1; box-shadow: 1px 1px gray; width: 2000px">
+			style="padding: 48px; background-color: #4169E1; box-shadow: 1px 1px gray; width: 2000px">
 			<div class="pcntSearchText"
-				style="margin-left: 33%; height: 40px; width: 600px; border: 2px solid #1b5ac2; background: #ffffff;">
-				<input class="textBar" type="text" placeholder="원하는 공모전 검색!"
-					style="font-size: 16px; width: 500px; height: 100%; padding: 10px; border: 0px; outline: none;">
-				<button class="searchBtn"
-					style="width: 50px; height: 100%; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">검색</button>
+				style="margin-left: 33%; width: 600px; border: 2px solid #1b5ac2; background: #ffffff;">
+				<form action="searchService">
+					<input class="textBar" type="text" placeholder="원하는 공모전 검색!"
+						style="font-size: 16px; width: 500px; height: 100%; padding: 10px; border: 0px; outline: none;"
+						name="search">
+					<button class="search"
+						style="width: 90px; height: 40px; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">검색</button>
+				</form>
 			</div>
 		</div>
 	</header>
@@ -194,14 +195,14 @@ int idx = Integer.parseInt(request.getParameter("idx"));
 				<div class="cf-content" style="margin_bottom: 10%">
 					<form action="mojipService" class="cc-form">
 						<div>
-							<a><%=CDAO.selectCon(idx).getConName() %></a>
+							<a style="margin-right:62% "><%=CDAO.selectCon(idx).getConName() %></a>
 						</div>
 						<div class="group-input">
 							<input type="text" name="title" placeholder="제목을 작성하세요"
-								style="width: 300px; margin-left: 3%"> <input
+								style="width: 300px; margin-top: 3%"> <input
 								type="text" name="position" placeholder="팀장님의 역할"
-								style="width: 150px"> <input type="text" name="full"
-								placeholder="필요인원" style="width: 100px">
+								style="width: 150px; margin-top: 3%"> <input type="text" name="full"
+								placeholder="필요인원" style="width: 100px; margin-top: 3%">
 						</div>
 						<textarea
 							placeholder="팀원 모집에 관한 내용을 작성바랍니다. 팀원이 어떤 역할을 수행해야하는지도 작성해주세요." name="content"></textarea>
@@ -217,124 +218,52 @@ int idx = Integer.parseInt(request.getParameter("idx"));
 
 
 	<!-- Contact Section Begin -->
-	<section class="contact-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="contact-info">
-						<div class="ci-item">
-							<div class="ci-icon">
-								<i class="fa fa-map-marker"></i>
-							</div>
-							<div class="ci-text">
-								<h5>Address</h5>
-								<p>160 Pennsylvania Ave NW, Washington, Castle, PA
-									16101-5161</p>
-							</div>
-						</div>
-						<div class="ci-item">
-							<div class="ci-icon">
-								<i class="fa fa-mobile"></i>
-							</div>
-							<div class="ci-text">
-								<h5>Phone</h5>
-								<ul>
-									<li>125-711-811</li>
-									<li>125-668-886</li>
-								</ul>
-							</div>
-						</div>
-						<div class="ci-item">
-							<div class="ci-icon">
-								<i class="fa fa-headphones"></i>
-							</div>
-							<div class="ci-text">
-								<h5>Support</h5>
-								<p>Support.aler@gmail.com</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="cs-map">
-			<iframe
-				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d735515.5813275519!2d-80.41163541934742!3d43.93644386501528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882a55bbf3de23d7%3A0x3ada5af229b47375!2sMono%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sbd!4v1583262687289!5m2!1sen!2sbd"
-				height="450" style="border: 0;" allowfullscreen=""></iframe>
-		</div>
-	</section>
+	
 	<!-- Contact Section End -->
 
 	<!-- Footer Section Begin -->
-	<footer class="footer-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 col-md-6">
-					<div class="fs-about">
-						<div class="fs-logo">
-							<a href="#"> <img src="img/f-logo.png" alt="">
-							</a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-							ut aliquip ex ea</p>
-						<div class="fs-social">
-							<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-								class="fa fa-twitter"></i></a> <a href="#"><i
-								class="fa fa-youtube-play"></i></a> <a href="#"><i
-								class="fa fa-instagram"></i></a> <a href="#"><i
-								class="fa fa-pinterest-p"></i></a>
-						</div>
+	<footer>
+		<div id ="footer" style = "background-color : rgb(44,44,44); clear:both; height:350px;" >
+			<div class="footer">
+			<h1>
+			 <a href="./mainPageJSP.jsp">
+			 	<imag src="img/logo/mainLogo.png" alt ="logo">
+			 </a>
+			</h1>
+			<div id ="footer-area">
+				<div style="margin-left:10%; color:#fff;">
+				<br>
+					<p>
+						<span style="font-family:dotum; font-size:25px">
+							<strong> (주) 깔꼼 </strong>
+						</span>
+					</p>
+					<p>
+						<span style ="font-size:20px">
+							<span style="font-family:dotum">
+							
+							대표 : 애벌레   &nbsp;&nbsp;&nbsp;&nbsp; 주소 : 광주광역시 스마트인재개발원
+							<br>
+							공모전 제휴 문의 : eberle@naver.com &nbsp;&nbsp; 마케팅 제휴 : eberle@naver.com 
+							<br>
+							홍보문의 : eberle@naver.com
+							<br>
+							고객문의:eberle@naver.com / 1555-1555(09:00~18:00)
+							<br>
+							사업자등록번호 : 000-00-0000 | tel: 1588-1588&nbsp;
+							<br>
+							<br>
+								㈜깔꼼은 통신판매중개자로서 통신판매의 당사자가 아닙니다. 따라서, 등록된 공모전 및 활동에 대하여 ㈜깔꼼은 어떠한 책임도 지지 않습니다.
+							<br>	
+						Copyright © kakaostyle Corp. All rights reserved
+							</span>
+						</span>
+					</p>
+				
 					</div>
-				</div>
-				<div class="col-lg-2 col-sm-6">
-					<div class="fs-widget">
-						<h5>Help</h5>
-						<ul>
-							<li><a href="#">Privacy Policy</a></li>
-							<li><a href="#">Contact Support</a></li>
-							<li><a href="#">Knowledgebase</a></li>
-							<li><a href="#">Careers</a></li>
-							<li><a href="#">FAQs</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col-sm-6">
-					<div class="fs-widget">
-						<h5>Links</h5>
-						<ul>
-							<li><a href="#">Contact</a></li>
-							<li><a href="#">Create Property</a></li>
-							<li><a href="#">My Properties</a></li>
-							<li><a href="#">Register</a></li>
-							<li><a href="#">Login</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="fs-widget">
-						<h5>Newsletter</h5>
-						<p>Deserunt mollit anim id est laborum.</p>
-						<form action="#" class="subscribe-form">
-							<input type="text" placeholder="Email">
-							<button type="submit" class="site-btn">Subscribe</button>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="copyright-text">
-				<p>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright &copy;
-					<script>
-						document.write(new Date().getFullYear());
-					</script>
-					All rights reserved | This template is made with <i
-						class="fa fa-heart" aria-hidden="true"></i> by <a
-						href="https://colorlib.com" target="_blank">Colorlib</a>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				</p>
-			</div>
+				
+				
+			 </div></div>
 		</div>
 	</footer>
 	<!-- Footer Section End -->
