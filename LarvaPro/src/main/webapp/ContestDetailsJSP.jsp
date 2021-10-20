@@ -257,18 +257,18 @@ conDetailVO con = new conDetailVO();
 														style="display: none;"></li>
 													<li><button type="submit" class="beHead"
 															style="width: 150px; height: 50px; margin-bottom: 10px; margin-left: 40px; margin-right: 40px; float: right; background: #1b5ac2; color: #ffffff; border: 0; outline: 0;">
-															희망 공모전 추가</button></li>
+															나의 공모전 추가</button></li>
 												</ul>
 											</td>
 											<td><button type="button" class="beHead"
 													style="width: 150px; height: 50px; margin-bottom: 10px; margin-left: 40px; margin-right: 40px; float: right; background: #1b5ac2; color: #ffffff; border: 0; outline: 0;"
 													name="beHead"
 													onclick="location.href='recruitTeam2.jsp?idx=<%=idx%>'">
-													파티장 하기</button></td>
+													파티원 모집하기</button></td>
 											<td><button type="button" class="beMember"
 													style="width: 150px; height: 50px; margin-bottom: 10px; margin-left: 40px; margin-right: 40px; float: right; background: #1b5ac2; color: #ffffff; border: 0; outline: 0;"
 													name="beMember" onclick="location.href='teamBoardJSP.jsp'">
-													파티원 하기</button></td>
+													모집게시판</button></td>
 										</tr>
 									</table>
 								</form>

@@ -9,7 +9,6 @@
 <body>
 
 	<%
-	session.invalidate();
 	out.println("<script>alert('작성완료. 목록으로 이동합니다.'); window.location='./recruitTeam.jsp';</script>");
 	%>
 

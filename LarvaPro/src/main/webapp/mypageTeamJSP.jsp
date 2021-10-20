@@ -115,43 +115,42 @@ if (memberInfo == null) {
 	<!-- Offcanvas Menu Wrapper End -->
 
 	<!-- 헤드 시작 -->
-	<header class="header-section">
+	<header class="header-section" style="margin:0px">
 		<div
-			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 225px;">
+			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 155px;">
 			<div class="hs-top"
-				style="margin-top: 10px; border-bottom: 0px; height: 225px;">
+				style="margin-top: 0px; height: 165px;">
 				<div class="container">
-					<div class="ten" style="padding: 3%">
+					<div class="ten" style="padding: 1px">
 						<div class="logo">
-							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png"
-								style="witdh: 162px; height: 102px"></a>
+							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png" style="margin-top:10px"></a>
 						</div>
-						<nav class="nav-menu" style="margin-top: 5%;">
+						<nav class="nav-menu">
 							<%
 							if (memberInfo == null) {
 								out.print(
-								"<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
+								"<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin-top:25px'></a>");
 							} else if (memberInfo != null) {
 								out.print(
-								"<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
+								"<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin-top:25px'></a>");
 							}
 							%>
 							<ul style="text-align: center; margin-left: 7%;">
-								<li class="active" style="font-size: 10px"><a
+								<li style="font-size: 10px"><a
 									href="./mainPageJSP.jsp" style="color: #ffffff;">메인</a></li>
 								<li><a href="#" style="color: #ffffff;">마이페이지</a>
 									<ul class="dropdown"
 										style="display: inline-block; width: 150px;">
 										<li style="margin-right: 40%"><a
 											href="./mypageProfileJSP.jsp">내정보</a></li>
-										<li style="margin-right: 10%"><a
-											href="./mypageContestJSP.jsp">지원한 공모전</a></li>
+										<li style="margin-right: 28%"><a
+											href="./mypageContestJSP.jsp">내 공모전</a></li>
 										<li style="margin-right: 38%"><a
 											href="./mypageTeamJSP.jsp">나의 팀</a></li>
 										<li style="margin-right: 40%"><a
 											href="./mypageMessageJSP.jsp">쪽지함</a></li>
 									</ul></li>
-								<li><a href="./ContestBorad.jsp" style="color: #ffffff;">공모전</a></li>
+								<li><a href="./ContestBoard.jsp" style="color: #ffffff;">공모전</a></li>
 								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">팀원모집</a></li>
 							</ul>
 						</nav>
@@ -164,13 +163,16 @@ if (memberInfo == null) {
 			<span class="icon_menu"></span>
 		</div>
 		<div
-			style="padding: 3%; background-color: #4169E1; box-shadow: 1px 1px gray; width: 2000px">
+			style="padding: 48px; background-color: #4169E1; box-shadow: 1px 1px gray; width: 2000px">
 			<div class="pcntSearchText"
-				style="margin-left: 33%; height: 40px; width: 600px; border: 2px solid #1b5ac2; background: #ffffff;">
-				<input class="textBar" type="text" placeholder="원하는 공모전 검색!"
-					style="font-size: 16px; width: 500px; height: 100%; padding: 10px; border: 0px; outline: none;">
-				<button class="searchBtn"
-					style="width: 50px; height: 100%; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">검색</button>
+				style="margin-left: 33%; width: 600px; border: 2px solid #1b5ac2; background: #ffffff;">
+				<form action="searchService">
+					<input class="textBar" type="text" placeholder="원하는 공모전 검색!"
+						style="font-size: 16px; width: 500px; height: 100%; padding: 10px; border: 0px; outline: none;"
+						name="search">
+					<button class="search"
+						style="width: 90px; height: 40px; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">검색</button>
+				</form>
 			</div>
 		</div>
 	</header>
@@ -229,7 +231,7 @@ if (memberInfo == null) {
 											<%=conD.selectCon(myTeam.get(i).getCntNum()).getConName()%>
 										</td>
 										<td
-											style="font-size: 15px; background-color: #4169E1; color: white; width: 70px;">역할</td>
+											style="font-size: 15px; background-color: #4169E1; color: white; width: 70px;">모집중</td>
 									</tr>
 									<tr>
 										<td style="font-size: 10px; color: red; flaot: left"></td>
@@ -240,14 +242,14 @@ if (memberInfo == null) {
 														if (myTeam.get(i).getTmType() == 0) {
 															out.print("★");
 														}
-														%><a> <%=myTeam.get(i).getMemId()%></a>
+														%><a> <%=myTeam.get(i).getMemId()%> ,<%=myTeam.get(i).getPosition()%></a>
 														<ul class="hide" style="list-style: none">
 															<li>
 																<%
 																ArrayList<teamVO> myTeamMembers = teamDAO.showTeamMember(myTeam.get(i).getCntNum(), myTeam.get(i).getTmNum());
 																for (teamVO vos : myTeamMembers) {
 																	if(vos.getTmType()==1){
-																		out.println(vos.getMemId() + "<br>");	
+																		out.println(vos.getMemId()+", "+vos.getPosition()+ "<br>");	
 																	}
 																}
 							
@@ -257,7 +259,7 @@ if (memberInfo == null) {
 													</li>
 												</ul>
 											</div></td>
-										<td style="font-size: 10px; flaot: static"><%=myTeam.get(i).getPosition()%></td>
+										<td style="font-size: 10px; flaot: static"></td>
 									</tr>
 								</tbody>
 							</table>

@@ -19,6 +19,10 @@ public class myDairyService extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
+		if(request.getParameter("delete")!=null) {
+			personalcontestDAO PSDAO=new personalcontestDAO();
+			PSDAO.deleteOnePersonalConetest(request.getParameter("contestNum"));
+		}
 		String myConCnt = request.getParameter("contestNum");
 		String myConRole = request.getParameter("position");
 		String myDairy = request.getParameter("Dairy");
@@ -27,7 +31,6 @@ public class myDairyService extends HttpServlet {
 		int result = PSDAO.updateDairy(myConCnt,myConRole,myDairy);
 
 		if (result > 0) {
-			System.out.println("일기 작성완료");
 			response.sendRedirect("mypageProfileJSP.jsp");
 		}
 	}

@@ -155,27 +155,17 @@ List<conDetailVO> list = manager.getList(); // getList 메서드 호출
 
 	<!-- Blog Details Section Begin -->
 	<section class="blog-details-section spad"
-		style="width: 1000px; clear: both; margin: auto;">
-		<h1 class="fw-bolder mb-1">
+		style="width: 1100px; clear: both; margin: auto;">
+		<h2 class="fw-bolder mb-1">
 			<b>공모전 정보</b>
-		</h1>
-		<div>
-			<button type="button" class="btn btn-primary"
-				style="margin-bottom: 10px; float: right; background: #1b5ac2; color: #ffffff; border: 0; outline: 0">쓰기</button>
-			<button type="button" class="btn btn-primary"
-				style="margin-right: 10px; margin-bottom: 10px; float: right; background: #1b5ac2; color: #ffffff; border: 0; outline: 0">내글보기</button>
-		</div>
-
-		<table class="table table-hover" style="width: 1000px;">
-
+		</h2>
+		<table class="table table-hover" style="width: 1100px;">
 			<thead>
 				<tr>
-					<th scope="col">번호</th>
-					<th scope="col">제목</th>
-					<th scope="col">작성자</th>
-					<th scope="col">날짜</th>
-					<th scope="col">조회수</th>
-					<th scope="col">댓글수</th>
+					<th scope="col" style="width:100px">번호</th>
+					<th scope="col" style="width:500px">제목</th>
+					<th scope="col" style="width:100px">작성자</th>
+					<th scope="col" style="width:160px">공모전 기간</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -208,7 +198,7 @@ List<conDetailVO> list = manager.getList(); // getList 메서드 호출
 						total = rs.getInt(1);
 					}
 					rs.close();
-					out.print("총 게시물 : " + total + "개");
+					out.print("<a style='color:#4169E1'>총 게시물 : " + total + "개</a>");
 
 					String sqlList = "SELECT cnt_num,cnt_name, cnt_from_date, cnt_to_date from(select cnt_num,cnt_name, cnt_from_date, cnt_to_date from contest order by cnt_from_date DESC) where cnt_num>=80";
 					rs = stmt.executeQuery(sqlList);
@@ -229,12 +219,10 @@ List<conDetailVO> list = manager.getList(); // getList 메서드 호출
 				%>
 				<tr>
 					<th scope="row"><%=idx%></th>
-					<td><a href="ContestDetailsJSP.jsp?idx=<%=idx%>"
+					<td style="font-size: 15px"><a href="ContestDetailsJSP.jsp?idx=<%=idx%>"
 						style="color: black;"><%=name%></a></td>
-					<td>admin</td>
-					<td><%=fromDate + "~<br>" + toDate%></td>
-					<td><%=0%></td>
-					<td><%=0%></td>
+					<td style="font-size: 15px">admin</td>
+					<td style="font-size: 15px"><%=fromDate + "~" + toDate%></td>
 				</tr>
 				<%
 				}
@@ -259,21 +247,10 @@ List<conDetailVO> list = manager.getList(); // getList 메서드 호출
 					href="ContestBoard2.jsp">2</a></li>
 				<li class="page-item"><a class="page-link"
 					href="ContestBoard3.jsp">3</a></li>
-				<li class="page-item"><a class="page-link" href="#">4</a></li>
-				<li class="page-item"><a class="page-link" href="#">5</a></li>
 				<li class="page-item"><a class="page-link" href="#">&raquo;</a>
 				</li>
 			</ul>
 		</div>
-
-		<div class="input-group mb-3">
-			<input type="text" class="find" placeholder="찾는 내용 입력"
-				aria-label="Recipient's username" aria-describedby="button-addon2"
-				style="width: 500px; margin-top: 3%">
-			<button class="search" type="button" id="button-addon2"
-				style="margin-top: 3%; background: #1b5ac2; color: #ffffff">Button</button>
-		</div>
-
 	</section>
 	<!-- Contact Section End -->
 

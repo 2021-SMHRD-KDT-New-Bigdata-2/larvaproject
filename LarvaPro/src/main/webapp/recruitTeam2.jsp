@@ -193,7 +193,7 @@ int idx = Integer.parseInt(request.getParameter("idx"));
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="cf-content" style="margin_bottom: 10%">
-					<form action="mojipService" class="cc-form">
+					<form action="mojipService2" class="cc-form">
 						<div>
 							<a style="margin-right:62% "><%=CDAO.selectCon(idx).getConName() %></a>
 						</div>

@@ -25,7 +25,7 @@ public class teamDAO extends DBconnection {
 			psmt.setString(8, vo.getContent());
 
 			cnt = psmt.executeUpdate();
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -36,7 +36,7 @@ public class teamDAO extends DBconnection {
 	
 	// 팀 생성 (파티장 전용)
 		public int createTeamLeader(teamVO vo) {
-
+			
 			int cnt = 0;
 
 			try {
