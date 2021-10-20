@@ -19,6 +19,8 @@ drop sequence score_number;
 drop sequence post_comment_number;
 drop sequence note_number;
 
+insert 
+
 /* 회원 정보 테이블 */
 create table member_info(
 	mem_id varchar2(20) not null

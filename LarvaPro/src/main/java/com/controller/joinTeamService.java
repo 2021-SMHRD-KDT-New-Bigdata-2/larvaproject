@@ -29,7 +29,7 @@ public class joinTeamService extends HttpServlet {
 		int cnt=TDAO.createTeam(teamJoiner);
 		
 		if(cnt>0) {
-			System.out.println("참가성공");
+			response.sendRedirect("teamJoinSuccess.jsp");
 		}
 	}
 

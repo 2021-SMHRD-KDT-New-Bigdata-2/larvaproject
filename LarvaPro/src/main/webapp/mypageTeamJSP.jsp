@@ -8,7 +8,7 @@
 <%@page import="com.model.conDetailVO"%>
 <%@page import="com.model.teamDAO"%>
 <%@page import="com.model.memberVO"%>
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -151,7 +151,7 @@ if (memberInfo == null) {
 										<li style="margin-right: 40%"><a
 											href="./mypageMessageJSP.jsp">쪽지함</a></li>
 									</ul></li>
-								<li><a href="./ContestBoradJSP.jsp" style="color: #ffffff;">공모전</a></li>
+								<li><a href="./ContestBorad.jsp" style="color: #ffffff;">공모전</a></li>
 								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">팀원모집</a></li>
 							</ul>
 						</nav>
@@ -229,7 +229,7 @@ if (memberInfo == null) {
 											<%=conD.selectCon(myTeam.get(i).getCntNum()).getConName()%>
 										</td>
 										<td
-											style="font-size: 15px; background-color: #8B4513; color: white; width: 70px;">역할</td>
+											style="font-size: 15px; background-color: #4169E1; color: white; width: 70px;">역할</td>
 									</tr>
 									<tr>
 										<td style="font-size: 10px; color: red; flaot: left"></td>
@@ -246,8 +246,11 @@ if (memberInfo == null) {
 																<%
 																ArrayList<teamVO> myTeamMembers = teamDAO.showTeamMember(myTeam.get(i).getCntNum(), myTeam.get(i).getTmNum());
 																for (teamVO vos : myTeamMembers) {
-																	out.println(vos.getMemId() + "<br>");
+																	if(vos.getTmType()==1){
+																		out.println(vos.getMemId() + "<br>");	
+																	}
 																}
+							
 																%>
 															</li>
 														</ul>
@@ -291,52 +294,45 @@ if (memberInfo == null) {
 	<!-- Property Comparison Section End -->
 
 	<!-- Contact Section Begin -->
-	
+
 	<!-- Contact Section End -->
 
 	<!-- Footer Section Begin -->
 	<footer>
-		<div id ="footer" style = "background-color : rgb(44,44,44); clear:both; height:350px;" >
+		<div id="footer"
+			style="background-color: rgb(44, 44, 44); clear: both; height: 350px;">
 			<div class="footer">
-			<h1>
-			 <a href="./mainPageJSP.jsp">
-			 	<imag src="img/logo/mainLogo.png" alt ="logo">
-			 </a>
-			</h1>
-			<div id ="footer-area">
-				<div style="margin-left:10%; color:#fff;">
-				<br>
-					<p>
-						<span style="font-family:dotum; font-size:25px">
-							<strong> (주) 깔꼼 </strong>
-						</span>
-					</p>
-					<p>
-						<span style ="font-size:20px">
-							<span style="font-family:dotum">
-							
-							대표 : 애벌레   &nbsp;&nbsp;&nbsp;&nbsp; 주소 : 광주광역시 스마트인재개발원
-							<br>
-							공모전 제휴 문의 : eberle@naver.com &nbsp;&nbsp; 마케팅 제휴 : eberle@naver.com 
-							<br>
-							홍보문의 : eberle@naver.com
-							<br>
-							고객문의:eberle@naver.com / 1555-1555(09:00~18:00)
-							<br>
-							사업자등록번호 : 000-00-0000 | tel: 1588-1588&nbsp;
-							<br>
-							<br>
-								㈜깔꼼은 통신판매중개자로서 통신판매의 당사자가 아닙니다. 따라서, 등록된 공모전 및 활동에 대하여 ㈜깔꼼은 어떠한 책임도 지지 않습니다.
-							<br>	
-						Copyright © kakaostyle Corp. All rights reserved
+				<h1>
+					<a href="./mainPageJSP.jsp"> <imag src="img/logo/mainLogo.png"
+							alt="logo"></a>
+				</h1>
+				<div id="footer-area">
+					<div style="margin-left: 10%; color: #fff;">
+						<br>
+						<p>
+							<span style="font-family: dotum; font-size: 25px"> <strong>
+									(주) 깔꼼 </strong>
 							</span>
-						</span>
-					</p>
-				
+						</p>
+						<p>
+							<span style="font-size: 20px"> <span
+								style="font-family: dotum"> 대표 : 애벌레
+									&nbsp;&nbsp;&nbsp;&nbsp; 주소 : 광주광역시 스마트인재개발원 <br> 공모전 제휴
+									문의 : eberle@naver.com &nbsp;&nbsp; 마케팅 제휴 : eberle@naver.com <br>
+									홍보문의 : eberle@naver.com <br> 고객문의:eberle@naver.com /
+									1555-1555(09:00~18:00) <br> 사업자등록번호 : 000-00-0000 | tel:
+									1588-1588&nbsp; <br> <br> ㈜깔꼼은 통신판매중개자로서 통신판매의 당사자가
+									아닙니다. 따라서, 등록된 공모전 및 활동에 대하여 ㈜깔꼼은 어떠한 책임도 지지 않습니다. <br>
+									Copyright © kakaostyle Corp. All rights reserved
+							</span>
+							</span>
+						</p>
+
 					</div>
-				
-				
-			 </div></div>
+
+
+				</div>
+			</div>
 		</div>
 	</footer>
 	<!-- Footer Section End -->
