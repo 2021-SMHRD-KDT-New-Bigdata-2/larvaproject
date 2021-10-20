@@ -283,7 +283,8 @@ memberVO member=MDAO.loginId(team.getMemId());
 		<form action="joinTeamService">
 		<button type="submit" class="btn btn-primary"
 			style="margin-left: 45%; background: #1b5ac2; color: #ffffff; border: 0; outline: 0;"
-			name="join" value="<%=memberInfo.getMemId()%>">참여하기</button>
+			name="join" value="<%=team.getTmNum()%>">참여하기</button>
+			<input value="<%=memberInfo.getMemId()%>" name="joinMemberId">
 		</form>
 		<%} %>
 	</div>

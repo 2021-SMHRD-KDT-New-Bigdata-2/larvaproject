@@ -13,7 +13,7 @@ public class teamDAO extends DBconnection {
 
 			getConnection();
 
-			psmt = conn.prepareStatement("insert into team_member values(?,?,?,?,?,?)");
+			psmt = conn.prepareStatement("insert into team_member values(?,?,?,?,?,?,?,?)");
 
 			psmt.setString(1, vo.getMemId());
 			psmt.setInt(2, vo.getCntNum());
@@ -21,6 +21,8 @@ public class teamDAO extends DBconnection {
 			psmt.setInt(4, vo.getTmType());
 			psmt.setString(5, vo.getPosition());
 			psmt.setInt(6, vo.getTmFull());
+			psmt.setString(7, vo.getTitle());
+			psmt.setString(8, vo.getContent());
 
 			cnt = psmt.executeUpdate();
 
