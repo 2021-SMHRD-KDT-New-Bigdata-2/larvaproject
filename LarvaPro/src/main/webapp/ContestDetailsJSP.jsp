@@ -135,6 +135,7 @@
 
 	<%
     	conDetailDAO dao=new conDetailDAO(); 
+	
        	try {
    			Class.forName("oracle.jdbc.driver.OracleDriver");
    			
