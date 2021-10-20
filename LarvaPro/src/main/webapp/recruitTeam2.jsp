@@ -116,17 +116,16 @@ int idx = Integer.parseInt(request.getParameter("idx"));
 				class="fa fa-pinterest-p"></i></a>
 		</div>
 	</div>
-	<!-- Offcanvas Menu Wrapper End -->
-
-	<header class="header-section" style="margin:0px">
+	<!-- 헤드 시작 -->
+	<header class="header-section" style="margin: 0px">
 		<div
 			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 155px;">
-			<div class="hs-top"
-				style="margin-top: 0px; height: 165px;">
+			<div class="hs-top" style="margin-top: 0px; height: 165px;">
 				<div class="container">
 					<div class="ten" style="padding: 1px">
 						<div class="logo">
-							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png" style="margin-top:10px"></a>
+							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png"
+								style="margin-top: 10px"></a>
 						</div>
 						<nav class="nav-menu">
 							<%
@@ -139,15 +138,15 @@ int idx = Integer.parseInt(request.getParameter("idx"));
 							}
 							%>
 							<ul style="text-align: center; margin-left: 7%;">
-								<li style="font-size: 10px"><a
-									href="./mainPageJSP.jsp" style="color: #ffffff;">메인</a></li>
+								<li style="font-size: 10px"><a href="./mainPageJSP.jsp"
+									style="color: #ffffff;">메인</a></li>
 								<li><a href="#" style="color: #ffffff;">마이페이지</a>
 									<ul class="dropdown"
 										style="display: inline-block; width: 150px;">
 										<li style="margin-right: 40%"><a
 											href="./mypageProfileJSP.jsp">내정보</a></li>
-										<li style="margin-right: 10%"><a
-											href="./mypageContestJSP.jsp">지원한 공모전</a></li>
+										<li style="margin-right: 28%"><a
+											href="./mypageContestJSP.jsp">내 공모전</a></li>
 										<li style="margin-right: 38%"><a
 											href="./mypageTeamJSP.jsp">나의 팀</a></li>
 										<li style="margin-right: 40%"><a

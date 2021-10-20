@@ -244,7 +244,7 @@ if (memberInfo == null) {
 								%>
 								<%
 								if (memberInfo != null) {
-									out.print("<span>Level: " + memberInfo.getMemLevel() + "</span>");
+									out.print("<span>LV. " + memberInfo.getMemLevel() + "</span>");
 								}
 								%>
 							</div>

@@ -5,7 +5,7 @@
 <%@page import="com.model.teamDAO"%>
 <%@page import="com.model.teamVO"%>
 <%@page import="com.model.memberVO"%>
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -100,15 +100,15 @@ memberVO member=MDAO.loginId(team.getMemId());
 	</div>
 	<!-- Offcanvas Menu Wrapper End -->
 
-	<header class="header-section" style="margin:0px">
+	<header class="header-section" style="margin: 0px">
 		<div
 			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 155px;">
-			<div class="hs-top"
-				style="margin-top: 0px; height: 165px;">
+			<div class="hs-top" style="margin-top: 0px; height: 165px;">
 				<div class="container">
 					<div class="ten" style="padding: 1px">
 						<div class="logo">
-							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png" style="margin-top:10px"></a>
+							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png"
+								style="margin-top: 10px"></a>
 						</div>
 						<nav class="nav-menu">
 							<%
@@ -121,8 +121,8 @@ memberVO member=MDAO.loginId(team.getMemId());
 							}
 							%>
 							<ul style="text-align: center; margin-left: 7%;">
-								<li style="font-size: 10px"><a
-									href="./mainPageJSP.jsp" style="color: #ffffff;">메인</a></li>
+								<li style="font-size: 10px"><a href="./mainPageJSP.jsp"
+									style="color: #ffffff;">메인</a></li>
 								<li><a href="#" style="color: #ffffff;">마이페이지</a>
 									<ul class="dropdown"
 										style="display: inline-block; width: 150px;">
@@ -172,7 +172,10 @@ memberVO member=MDAO.loginId(team.getMemId());
 						style="padding-top: 1%; color: green; font-size: 13px; margin-bottom: 0px">
 						팀원 모집 >
 						<h3 style="padding: 1%"><%=team.getTitle() %></h3>
-						<h5 style="padding: 1%; margin-top: 1%"><%=member.getMemNickName() %> | LV <%=member.getMemLevel() %> |
+						<h5 style="padding: 1%; margin-top: 1%"><%=member.getMemNickName() %>
+							| LV
+							<%=member.getMemLevel() %>
+							|
 							<%=member.getMemEmail() %></h5>
 						<hr>
 					</header>
@@ -225,7 +228,18 @@ memberVO member=MDAO.loginId(team.getMemId());
 											<div class="profile-agent-info">
 												<div class="pi-text" style="padding-top: 0px">
 													<div style="width: 70px; height: 70px"></div>
-
+													<%if (member.getMemLevel() > 66) {%>
+													<img src='img/tiger/tiger03.png'>
+													<%} else if (member.getMemLevel() < 66 && member.getMemLevel() > 33 ) { %>
+													<img src='img/tiger/tiger02.png'>
+													<%} else if (member.getMemLevel() < 33) {%>
+													<img src='img/tiger/tiger01.png'>
+													<%} %>
+													<ul>
+													<li><%=member.getMemUserName() %></li>
+													<li>LV.<%=member.getMemLevel() %></li>
+													<li><%=member.getMemUserName() %></li>
+													</ul>
 												</div>
 											</div>
 										</div>
@@ -258,7 +272,8 @@ memberVO member=MDAO.loginId(team.getMemId());
 
 									<div class="col-lg-4">
 										<div class="row" style="width: 1000px">
-											<span style="font-size: 15px"> <%=team.getContent() %> </span>
+											<span style="font-size: 15px"> <%=team.getContent() %>
+											</span>
 										</div>
 									</div>
 								</div>
@@ -274,15 +289,15 @@ memberVO member=MDAO.loginId(team.getMemId());
 	<div style="padding-bottom: 10%">
 		<%if (memberInfo.getMemId().equals(member.getMemId())){ %>
 		<form action="deleteTeamService">
-		<button type="submit" class="btn btn-primary" 
-			style="background: #1b5ac2; color: #ffffff; border: 0; outline: 0; margin-left: 45%;;"
-			name="delete" value="<%=team.getTmNum()%>">삭제하기</button>
+			<button type="submit" class="btn btn-primary"
+				style="background: #1b5ac2; color: #ffffff; border: 0; outline: 0; margin-left: 45%;"
+				name="delete" value="<%=team.getTmNum()%>">삭제하기</button>
 		</form>
 		<%}else{ %>
 		<form action="joinTeamService">
-		<button type="submit" class="btn btn-primary"
-			style="margin-left: 45%; background: #1b5ac2; color: #ffffff; border: 0; outline: 0;"
-			name="join" value="<%=team.getTmNum()%>">참여하기</button>
+			<button type="submit" class="btn btn-primary"
+				style="margin-left: 45%; background: #1b5ac2; color: #ffffff; border: 0; outline: 0;"
+				name="join" value="<%=team.getTmNum()%>">참여하기</button>
 			<input value="<%=memberInfo.getMemId()%>" name="joinMemberId">
 		</form>
 		<%} %>
@@ -313,44 +328,37 @@ memberVO member=MDAO.loginId(team.getMemId());
 	});
 </script>
 <!-- Footer Section Begin -->
-	
-			<div id ="footer-area">
-				<div style="margin-left:10%; color:#fff;">
-				<br>
-					<p>
-						<span style="font-family:dotum; font-size:25px">
-							<strong> (주) 깔꼼 </strong>
-						</span>
-					</p>
-					<p>
-						<span style ="font-size:20px">
-							<span style="font-family:dotum">
-							
-							대표 : 애벌레   &nbsp;&nbsp;&nbsp;&nbsp; 주소 : 광주광역시 스마트인재개발원
-							<br>
-							공모전 제휴 문의 : eberle@naver.com &nbsp;&nbsp; 마케팅 제휴 : eberle@naver.com 
-							<br>
-							홍보문의 : eberle@naver.com
-							<br>
-							고객문의:eberle@naver.com / 1555-1555(09:00~18:00)
-							<br>
-							사업자등록번호 : 000-00-0000 | tel: 1588-1588&nbsp;
-							<br>
-							<br>
-								㈜깔꼼은 통신판매중개자로서 통신판매의 당사자가 아닙니다. 따라서, 등록된 공모전 및 활동에 대하여 ㈜깔꼼은 어떠한 책임도 지지 않습니다.
-							<br>	
-						Copyright © kakaostyle Corp. All rights reserved
-							</span>
-						</span>
-					</p>
-				
-					</div>
-				
-				
-			 </div></div>
-		</div>
-	</footer>
-	<!-- Footer Section End -->
+
+<div id="footer-area">
+	<div style="margin-left: 10%; color: #fff;">
+		<br>
+		<p>
+			<span style="font-family: dotum; font-size: 25px"> <strong>
+					(주) 깔꼼 </strong>
+			</span>
+		</p>
+		<p>
+			<span style="font-size: 20px"> <span
+				style="font-family: dotum"> 대표 : 애벌레 &nbsp;&nbsp;&nbsp;&nbsp;
+					주소 : 광주광역시 스마트인재개발원 <br> 공모전 제휴 문의 : eberle@naver.com
+					&nbsp;&nbsp; 마케팅 제휴 : eberle@naver.com <br> 홍보문의 :
+					eberle@naver.com <br> 고객문의:eberle@naver.com /
+					1555-1555(09:00~18:00) <br> 사업자등록번호 : 000-00-0000 | tel:
+					1588-1588&nbsp; <br> <br> ㈜깔꼼은 통신판매중개자로서 통신판매의 당사자가 아닙니다.
+					따라서, 등록된 공모전 및 활동에 대하여 ㈜깔꼼은 어떠한 책임도 지지 않습니다. <br> Copyright ©
+					kakaostyle Corp. All rights reserved
+			</span>
+			</span>
+		</p>
+
+	</div>
+
+
+</div>
+</div>
+</div>
+</footer>
+<!-- Footer Section End -->
 <!-- Js Plugins -->
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

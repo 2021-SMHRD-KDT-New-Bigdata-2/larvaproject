@@ -233,8 +233,6 @@ List<conDetailVO> list = manager.getList(); // getList 메서드 호출
 				out.println(e.toString());
 				}
 				%>
-
-
 			</tbody>
 		</table>
 		<div style="margin-left: 40%">

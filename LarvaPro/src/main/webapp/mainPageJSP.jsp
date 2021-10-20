@@ -109,15 +109,15 @@ memberVO anotherMemberInfo=null;
 	<!-- Offcanvas Menu Wrapper End -->
 
 	<!-- 헤드 시작 -->
-	<header class="header-section" style="margin:0px">
+	<header class="header-section" style="margin: 0px">
 		<div
 			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 155px;">
-			<div class="hs-top"
-				style="margin-top: 0px; height: 165px;">
+			<div class="hs-top" style="margin-top: 0px; height: 165px;">
 				<div class="container">
 					<div class="ten" style="padding: 1px">
 						<div class="logo">
-							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png" style="margin-top:10px"></a>
+							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png"
+								style="margin-top: 10px"></a>
 						</div>
 						<nav class="nav-menu">
 							<%
@@ -130,8 +130,8 @@ memberVO anotherMemberInfo=null;
 							}
 							%>
 							<ul style="text-align: center; margin-left: 7%;">
-								<li style="font-size: 10px"><a
-									href="./mainPageJSP.jsp" style="color: #ffffff;">메인</a></li>
+								<li style="font-size: 10px"><a href="./mainPageJSP.jsp"
+									style="color: #ffffff;">메인</a></li>
 								<li><a href="#" style="color: #ffffff;">마이페이지</a>
 									<ul class="dropdown"
 										style="display: inline-block; width: 150px;">
@@ -180,10 +180,8 @@ memberVO anotherMemberInfo=null;
 				<div class="hs-item set-bg">
 					<a href="#"><img src="<%=contest100.getConPostBig()%>"></a>
 				</div>
-
 				<div class="hs-item set-bg">
 					<a href="#"><img src="<%=contest90.getConPostBig()%>"></a>
-
 				</div>
 				<div class="hs-item set-bg">
 					<a href="#"><img src="<%=contest50.getConPostBig()%>"></a>
@@ -378,20 +376,20 @@ memberVO anotherMemberInfo=null;
 				</div>
 			</div>
 			<div class="row" style="margin-left: 50px">
-			<%for(int i=0;i<3;i++){
+				<%for(int i=0;i<3;i++){
 			anotherMemberInfo=DAO.getMemberInfo(level.get(i));
 			%>
 				<div class="col-md-4">
 					<div class="ts-item">
 						<div class="ts-text">
 							<p style="color: red"><%=level.get(i) %></p>
-									<%if (level.get(i) > 66) {%>
-										<img src='img/tiger/tiger03.png'>
-									<%} else if (level.get(i) < 66 && level.get(i) > 33 ) { %>
-										<img src='img/tiger/tiger02.png'>
-									<%} else if ( level.get(i) < 33) {%>
-										<img src='img/tiger/tiger01.png'>
-									<%} %>
+							<%if (level.get(i) > 66) {%>
+							<img src='img/tiger/tiger03.png'>
+							<%} else if (level.get(i) < 66 && level.get(i) > 33 ) { %>
+							<img src='img/tiger/tiger02.png'>
+							<%} else if ( level.get(i) < 33) {%>
+							<img src='img/tiger/tiger01.png'>
+							<%} %>
 							<h5><%=anotherMemberInfo.getMemNickName() %></h5>
 							<span><%=anotherMemberInfo.getMemHi() %></span> <span>평점:<%=sDAO.showScore(anotherMemberInfo.getMemId()) %></span>
 							<p><%=anotherMemberInfo.getMemEmail() %></p>
@@ -430,47 +428,38 @@ memberVO anotherMemberInfo=null;
 
 	<!-- Footer Section Begin -->
 	<footer>
-		<div id ="footer" style = "background-color : rgb(44,44,44); clear:both; height:350px;" >
+		<div id="footer"
+			style="background-color: rgb(44, 44, 44); clear: both; height: 350px;">
 			<div class="footer">
-			<h1>
-			 <a href="./mainPageJSP.jsp">
-			 	<imag src="img/logo/mainLogo.png" alt ="logo">
-			 </a>
-			</h1>
-			<div id ="footer-area">
-				<div style="margin-left:10%; color:#fff;">
-				<br>
-					<p>
-						<span style="font-family:dotum; font-size:25px">
-							<strong> (주) 깔꼼 </strong>
-						</span>
-					</p>
-					<p>
-						<span style ="font-size:20px">
-							<span style="font-family:dotum">
-							
-							대표 : 애벌레   &nbsp;&nbsp;&nbsp;&nbsp; 주소 : 광주광역시 스마트인재개발원
-							<br>
-							공모전 제휴 문의 : eberle@naver.com &nbsp;&nbsp; 마케팅 제휴 : eberle@naver.com 
-							<br>
-							홍보문의 : eberle@naver.com
-							<br>
-							고객문의:eberle@naver.com / 1555-1555(09:00~18:00)
-							<br>
-							사업자등록번호 : 000-00-0000 | tel: 1588-1588&nbsp;
-							<br>
-							<br>
-								㈜깔꼼은 통신판매중개자로서 통신판매의 당사자가 아닙니다. 따라서, 등록된 공모전 및 활동에 대하여 ㈜깔꼼은 어떠한 책임도 지지 않습니다.
-							<br>	
-						Copyright © kakaostyle Corp. All rights reserved
+				<h1>
+					<a href="./mainPageJSP.jsp"> <imag src="img/logo/mainLogo.png"
+							alt="logo"></a>
+				</h1>
+				<div id="footer-area">
+					<div style="margin-left: 10%; color: #fff;">
+						<br>
+						<p>
+							<span style="font-family: dotum; font-size: 25px"> <strong>
+									(주) 깔꼼 </strong>
 							</span>
-						</span>
-					</p>
-				
+						</p>
+						<p>
+							<span style="font-size: 20px"> <span
+								style="font-family: dotum"> 대표 : 애벌레
+									&nbsp;&nbsp;&nbsp;&nbsp; 주소 : 광주광역시 스마트인재개발원 <br> 공모전 제휴
+									문의 : eberle@naver.com &nbsp;&nbsp; 마케팅 제휴 : eberle@naver.com <br>
+									홍보문의 : eberle@naver.com <br> 고객문의:eberle@naver.com /
+									1555-1555(09:00~18:00) <br> 사업자등록번호 : 000-00-0000 | tel:
+									1588-1588&nbsp; <br> <br> ㈜깔꼼은 통신판매중개자로서 통신판매의 당사자가
+									아닙니다. 따라서, 등록된 공모전 및 활동에 대하여 ㈜깔꼼은 어떠한 책임도 지지 않습니다. <br>
+									Copyright © kakaostyle Corp. All rights reserved
+							</span>
+							</span>
+						</p>
+
 					</div>
-				
-				
-			 </div></div>
+				</div>
+			</div>
 		</div>
 	</footer>
 	<!-- Footer Section End -->
