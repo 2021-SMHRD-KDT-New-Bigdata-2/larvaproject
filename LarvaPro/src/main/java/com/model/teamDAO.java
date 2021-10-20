@@ -198,7 +198,7 @@ public class teamDAO extends DBconnection {
 			psmt = conn.prepareStatement("select * from team_member order by tm_num DESC");
 			rs = psmt.executeQuery();
 
-			while (rs.next()) {
+			if (rs.next()) {
 				maxTeam = rs.getInt("tm_num");
 			}
 

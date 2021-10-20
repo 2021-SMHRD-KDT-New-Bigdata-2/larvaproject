@@ -7,10 +7,8 @@
 <title>깔꼼</title>
 </head>
 <body>
-
 	<%
-	out.println("<script>alert('작성완료. 목록으로 이동합니다.'); window.location='./recruitTeam.jsp';</script>");
+	out.println("<script>alert('작성완료. 목록으로 이동합니다.'); window.location='./teamBoardJSP.jsp';</script>");
 	%>
-
 </body>
 </html>

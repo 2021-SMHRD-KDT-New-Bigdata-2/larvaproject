@@ -210,7 +210,7 @@ if (memberInfo == null) {
 					<form action="mojipService" class="cc-form">
 						<div>
 							<select name="cntNum" style="height: 46px">
-								<option value="none" style="color: gray" autofocus="autofocus">공모전
+								<option value="none" style="color: gray" disabled>공모전
 									조회</option>
 								<%
 								for (int i = 0; i < soonCon.size(); i++) {

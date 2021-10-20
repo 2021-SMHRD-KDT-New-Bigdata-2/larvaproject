@@ -355,7 +355,6 @@ memberVO anotherMemberInfo=null;
 						</div>
 					</div>
 				</section>
-
 			</div>
 		</div>
 	</div>
