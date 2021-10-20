@@ -8,14 +8,12 @@ public class scoreVO {
 	private String scReceiveId;
 	private int scReceive;
 	
-	public scoreVO(int cntNum, String memId, String scReceiveId, int scReceive) {
+	public scoreVO(String memId, int scReceive,String scReceiveId) {
 		super();
-		this.cntNum = cntNum;
 		this.memId = memId;
 		this.scReceiveId = scReceiveId;
 		this.scReceive = scReceive;
 	}
-	
 	public int getScNum() {
 		return scNum;
 	}

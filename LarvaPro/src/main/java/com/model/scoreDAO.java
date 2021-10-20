@@ -11,12 +11,11 @@ public class scoreDAO extends DBconnection {
 
 			getConnection();
 
-			psmt = conn.prepareStatement("insert into score values(post_comment_number.nextval,?,?,?,?)");
+			psmt = conn.prepareStatement("insert into score values(score_number.nextval,?,null,?,?)");
 
-			psmt.setInt(1, vo.getCntNum());
-			psmt.setString(2, vo.getMemId());
-			psmt.setString(3, vo.getScReceiveId());
-			psmt.setInt(4, vo.getScReceive());
+			psmt.setString(1, vo.getMemId());
+			psmt.setString(2, vo.getScReceiveId());
+			psmt.setInt(3, vo.getScReceive());
 
 			cnt = psmt.executeUpdate();
 
@@ -41,7 +40,7 @@ public class scoreDAO extends DBconnection {
 			rs = psmt.executeQuery();
 
 			if (rs.next()) {
-				avg = rs.getDouble(1);
+				avg = Math.round(rs.getDouble(1)*100)/100.0;
 			}
 
 		} catch (Exception e) {

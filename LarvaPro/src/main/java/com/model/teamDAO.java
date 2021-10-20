@@ -218,7 +218,7 @@ public class teamDAO extends DBconnection {
 		try {
 			getConnection();
 
-			psmt = conn.prepareStatement("select * from team_member where cnt_num=? and tm_num=?");
+			psmt = conn.prepareStatement("select * from team_member where cnt_num=? and tm_num=? order by tm_type");
 
 			psmt.setInt(1, cnt_num);
 			psmt.setInt(2, tm_num);
