@@ -307,4 +307,25 @@ public class teamDAO extends DBconnection {
 		}
 		return vo;
 	}
+	
+	//파티 해체
+	
+public int deleteTeam(int tm_num) {
+	
+	getConnection();
+	int cnt=0;
+	try {
+		
+		psmt = conn.prepareStatement("DELETE FROM team_member WHERE tm_num = ?");
+
+		psmt.setInt(1, tm_num);
+
+		cnt = psmt.executeUpdate();
+		
+	}catch(Exception e){
+		e.printStackTrace();
+	}finally {
+		dbClose();
+	}return cnt;
+}
 }

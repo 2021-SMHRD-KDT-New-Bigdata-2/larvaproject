@@ -273,10 +273,19 @@ memberVO member=MDAO.loginId(team.getMemId());
 		</div>
 	</div>
 	<div style="padding-bottom: 10%">
-		<button type="button" class="btn btn-primary"
+		<%if (memberInfo.getMemId().equals(member.getMemId())){ %>
+		<form action="deleteTeamService">
+		<button type="submit" class="btn btn-primary" 
+			style="background: #1b5ac2; color: #ffffff; border: 0; outline: 0; margin-left: 45%;;"
+			name="delete" value="<%=team.getTmNum()%>">삭제하기</button>
+		</form>
+		<%}else{ %>
+		<form action="joinTeamService">
+		<button type="submit" class="btn btn-primary"
 			style="margin-left: 45%; background: #1b5ac2; color: #ffffff; border: 0; outline: 0;"
-			name="writeTeam" onClick="location.href='recruitTeam.jsp'">참여하기</button>
-		<%if (memberInfo.getMemId().equals("idx")) %>
+			name="join" value="<%=memberInfo.getMemId()%>">참여하기</button>
+		</form>
+		<%} %>
 	</div>
 
 
