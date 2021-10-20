@@ -306,12 +306,12 @@ memberVO anotherMemberInfo=null;
 												<li>팀장 <span>0</span></li>
 												<li>팀 인원 <span>1/4</span></li>
 											</ul>
-											<a href="#" class="primary-btn">지원하기</a>
+										<a href="#" class="primary-btn">지원하기</a>
 										</div>
 									</div>
 								</div>
 								<div class="row"></div>
-								<div class="as-item" style="padding-right: 5px">
+								<div class="as-item2" style="padding-right: 5px">
 									<div class="as-item"
 										style="box-shadow: 2px 3px 8px 0px gray; width: 190px;">
 										<div class="as-pic">
