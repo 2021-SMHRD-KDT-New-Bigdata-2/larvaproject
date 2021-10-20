@@ -148,7 +148,7 @@ if (memberInfo == null) {
 										<li style="margin-right: 40%"><a
 											href="./mypageMessageJSP.jsp">쪽지함</a></li>
 									</ul></li>
-								<li><a href="./ContestBoardJSP.jsp" style="color: #ffffff;">공모전</a></li>
+								<li><a href="./ContestBoard.jsp" style="color: #ffffff;">공모전</a></li>
 								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">팀원모집</a></li>
 							</ul>
 						</nav>

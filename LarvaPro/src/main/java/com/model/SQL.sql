@@ -11,7 +11,8 @@ create table member_info(
 	mem_sign_up_date date not null
 );
 
-select*from personal_contest
+insert into personal_contest values(personal_contest_number.nextval,ktu6511,99,'날먹',null,1)
+
 
 /* 공모전 테이블 */
 create table contest(

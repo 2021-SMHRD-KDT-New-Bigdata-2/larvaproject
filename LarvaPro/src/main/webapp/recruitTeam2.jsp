@@ -16,6 +16,7 @@ memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
 if (memberInfo == null) {
 	out.println("<script>alert('로그인이 필요한 서비스입니다. 로그인페이지로 이동합니다.'); window.location='./LoginJSP.jsp';</script>");
 }
+int idx = Integer.parseInt(request.getParameter("idx"));
 %>
 <head>
 <meta charset="UTF-8">
@@ -181,20 +182,6 @@ if (memberInfo == null) {
 
 	<%
 	conDetailDAO CDAO = new conDetailDAO();
-	ArrayList<conDetailVO> allCon = new ArrayList<conDetailVO>();
-	ArrayList<DdayVO> D_day = CDAO.D_Day();
-
-	ArrayList<DdayVO> soonCon = new ArrayList<DdayVO>();
-
-	for (int i = 0; i < 100; i++) {
-		allCon.add(CDAO.selectCon(i + 1));
-	}
-
-	for (int i = 0; i < 100; i++) {
-		if (D_day.get(i).getD_day() < 0 && D_day.get(i).getD_day() > -30) {
-			soonCon.add(D_day.get(i));
-		}
-	}
 	%>
 
 	<!-- Property Comparison Section Begin -->
@@ -207,20 +194,7 @@ if (memberInfo == null) {
 				<div class="cf-content" style="margin_bottom: 10%">
 					<form action="mojipService" class="cc-form">
 						<div>
-							<select name="cntNum" style="height: 46px">
-								<option value="none" style="color: gray" autofocus="autofocus">공모전
-									조회</option>
-								<%
-								for (int i = 0; i < soonCon.size(); i++) {
-								%>
-								<option
-									value="<%=allCon.get(soonCon.get(i).getIndex()).getConNum()%>"><%=allCon.get(soonCon.get(i).getIndex()).getConName()%>
-									D<%=soonCon.get(i).getD_day()%>
-								</option>
-								<%
-								}
-								%>
-							</select>
+							<a><%=CDAO.selectCon(idx).getConName() %></a>
 						</div>
 						<div class="group-input">
 							<input type="text" name="title" placeholder="제목을 작성하세요"
@@ -230,8 +204,7 @@ if (memberInfo == null) {
 								placeholder="필요인원" style="width: 100px">
 						</div>
 						<textarea
-							placeholder="팀원 모집에 관한 내용을 작성바랍니다. 팀원이 어떤 역할을 수행해야하는지도 작성해주세요."
-							name="content"></textarea>
+							placeholder="팀원 모집에 관한 내용을 작성바랍니다. 팀원이 어떤 역할을 수행해야하는지도 작성해주세요." name="content"></textarea>
 						<button type="submit" class="site-btn" name="memberId"
 							value="<%=memberInfo.getMemId()%>">작성하기</button>
 					</form>

@@ -7,8 +7,12 @@
 <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 <!DOCTYPE html>
 <html lang="zxx">
-<% memberVO memberInfo=(memberVO)session.getAttribute("loginMemberSession");%>
-<% conDetailVO con=new conDetailVO(); %>
+<%
+memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
+%>
+<%
+conDetailVO con = new conDetailVO();
+%>
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="Aler Template">
@@ -85,11 +89,15 @@
 								style="witdh: 162px; height: 102px"></a>
 						</div>
 						<nav class="nav-menu" style="margin-top: 5%;">
-							<%if(memberInfo==null){
-            					out.print("<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
-          						  }else if(memberInfo!=null){
-            					out.print("<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
-          						  }%>
+							<%
+							if (memberInfo == null) {
+								out.print(
+								"<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
+							} else if (memberInfo != null) {
+								out.print(
+								"<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
+							}
+							%>
 							<ul style="text-align: center; margin-left: 7%;">
 								<li class="active" style="font-size: 10px"><a
 									href="./mainPageJSP.jsp" style="color: #ffffff;">메인</a></li>
@@ -134,43 +142,42 @@
 	<!-- Blog Details Section Begin -->
 
 	<%
-    	conDetailDAO dao=new conDetailDAO(); 
-	
-       	try {
-   			Class.forName("oracle.jdbc.driver.OracleDriver");
-   			
-   			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
-   			String user = "campus_k3_1006";
-   			String password = "smhrd3";
-   			int idx = Integer.parseInt(request.getParameter("idx"));
+	conDetailDAO dao = new conDetailDAO();
 
-   			String sql = "SELECT * FROM contest where cnt_num = ?";
-   			Connection conn = DriverManager.getConnection(url,user,password);
-   			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, idx);
+	try {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
 
-     	//2. 데이터베이스 연결 객체(Connection) 생성
-		ResultSet rs=stmt.executeQuery();
-       			
+		String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
+		String user = "campus_k3_1006";
+		String password = "smhrd3";
+		int idx = Integer.parseInt(request.getParameter("idx"));
+
+		String sql = "SELECT * FROM contest where cnt_num = ?";
+		Connection conn = DriverManager.getConnection(url, user, password);
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setInt(1, idx);
+
+		//2. 데이터베이스 연결 객체(Connection) 생성
+		ResultSet rs = stmt.executeQuery();
+
 		int num = 0;
-  		String pcntPosition = null;
-  		String pcntContent = null;
-  		int pcntType = 0;
-  			
-		if(rs.next()){
-			num=rs.getInt(1);
-			String name=rs.getString(2);
-			String host=rs.getString(3);
-			String field=rs.getString(4);
-			String qualification=rs.getString(5);
-			String fromDate=rs.getString(6).substring(0,10);
-			String toDate=rs.getString(7).substring(0,10);
-			String homePage=rs.getString(8);
-			String smallImg=rs.getString(9);
-			String bigImg=rs.getString(10);
-			String content=rs.getString(11);
-			
-     %>
+		String pcntPosition = null;
+		String pcntContent = null;
+		int pcntType = 0;
+
+		if (rs.next()) {
+			num = rs.getInt(1);
+			String name = rs.getString(2);
+			String host = rs.getString(3);
+			String field = rs.getString(4);
+			String qualification = rs.getString(5);
+			String fromDate = rs.getString(6).substring(0, 10);
+			String toDate = rs.getString(7).substring(0, 10);
+			String homePage = rs.getString(8);
+			String smallImg = rs.getString(9);
+			String bigImg = rs.getString(10);
+			String content = rs.getString(11);
+	%>
 
 	<section class="blog-details-section spad">
 		<div>
@@ -186,11 +193,11 @@
 					<article>
 						<header class="mb-4" style="padding: 3%">
 							<div class="section-title" style="padding-top: 2%;">
-								<h4><%=name %></h4>
+								<h4><%=name%></h4>
 							</div>
 						</header>
 						<figure class="mb-4">
-							<img src=<%=smallImg %>
+							<img src=<%=smallImg%>
 								style="float: left; margin-left: 5%; width: 25%; height: 35%"
 								alt="..." />
 						</figure>
@@ -199,18 +206,18 @@
 								<tbody>
 									<tr>
 										<td width="100" height="50"><b>분야</b></td>
-										<td><%=field %></td>
+										<td><%=field%></td>
 									</tr>
 									<tr>
 										<td width="100" height="50"><b>응모대상</b></td>
-										<td><%=qualification %></td>
+										<td><%=qualification%></td>
 									</tr>
 									<tr>
 										<td width="100" height="50"><b>주최/주관</b>
-										<td><%=host %></td>
+										<td><%=host%></td>
 									</tr>
 									<tr>
-										<td width="100" height="50"><b>후원/협찬</b></td><%=host %><td></td>
+										<td width="100" height="50"><b>후원/협찬</b></td><%=host%><td></td>
 									</tr>
 									<tr>
 										<td width="100" height="50"><b>접수기간</b></td>
@@ -228,13 +235,12 @@
 							</div>
 							<div style="margin-left: 3%">
 								<p class="fs-5 mb-4">
-									<img src=<%=bigImg %>><br>
-									<br>
+									<img src=<%=bigImg%>><br> <br>
 								</p>
-								<p><%=content %></p>
+								<p><%=content%></p>
 							</div>
 							<div>
-								<form action="PersonalContestService">
+								<form action="PersonalContestService" action="mojipService">
 									<table style="margin: auto;">
 										<tr>
 											<td>
@@ -254,7 +260,8 @@
 											</td>
 											<td><button type="button" class="beHead"
 													style="width: 150px; height: 50px; margin-bottom: 10px; margin-left: 40px; margin-right: 40px; float: right; background: #1b5ac2; color: #ffffff; border: 0; outline: 0;"
-													name="beHead" onclick="location.href='recruitTeam.jsp'">
+													name="beHead"
+													onclick="location.href='recruitTeam2.jsp?idx=<%=idx%>'">
 													파티장 하기</button></td>
 											<td><button type="button" class="beMember"
 													style="width: 150px; height: 50px; margin-bottom: 10px; margin-left: 40px; margin-right: 40px; float: right; background: #1b5ac2; color: #ffffff; border: 0; outline: 0;"
@@ -269,12 +276,16 @@
 						</section>
 
 					</article>
-					<% stmt.executeUpdate(sql);
-                        rs.close();
-                        stmt.close();
-                        conn.close();
-                        } }catch(Exception e) { } 
-                        %>
+					<%
+					stmt.executeUpdate(sql);
+					rs.close();
+					stmt.close();
+					conn.close();
+					}
+
+					} catch (Exception e) {
+					}
+					%>
 
 					<!-- Comments section-->
 					<section class="mb-5">
@@ -412,7 +423,9 @@
 				<p>
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					Copyright &copy;
-					<script>document.write(new Date().getFullYear());</script>
+					<script>
+						document.write(new Date().getFullYear());
+					</script>
 					All rights reserved | This template is made with <i
 						class="fa fa-heart" aria-hidden="true"></i> by <a
 						href="https://colorlib.com" target="_blank">Colorlib</a>
@@ -424,26 +437,26 @@
 	<!-- Footer Section End -->
 
 	<script>
-    //로그인,회원가입 버튼 메소드
-    $(function(){
-    	$("#loginBtn img").mouseover(function(){
-    		$(this).attr("src","img/logo/loginOn.png");
-    	});
-    	$("#loginBtn img").mouseout(function(){
-    		$(this).attr("src","img/logo/loginOff.png");
-    	});
-    });
-    
-    //로그아웃 버튼 메소드
-    $(function(){
-    	$("#logoutBtn img").mouseover(function(){
-    		$(this).attr("src","img/logo/logoutOn.png");
-    	});
-    	$("#logoutBtn img").mouseout(function(){
-    		$(this).attr("src","img/logo/logoutOff.png");
-    	});
-    });
-    </script>
+		//로그인,회원가입 버튼 메소드
+		$(function() {
+			$("#loginBtn img").mouseover(function() {
+				$(this).attr("src", "img/logo/loginOn.png");
+			});
+			$("#loginBtn img").mouseout(function() {
+				$(this).attr("src", "img/logo/loginOff.png");
+			});
+		});
+
+		//로그아웃 버튼 메소드
+		$(function() {
+			$("#logoutBtn img").mouseover(function() {
+				$(this).attr("src", "img/logo/logoutOn.png");
+			});
+			$("#logoutBtn img").mouseout(function() {
+				$(this).attr("src", "img/logo/logoutOff.png");
+			});
+		});
+	</script>
 
 
 	<!-- Js Plugins -->

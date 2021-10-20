@@ -160,8 +160,8 @@ memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
 		</div>
 		<div>
 			<button type="button" class="btn btn-primary"
-			style="margin-bottom: 10px; float: right; background: #1b5ac2; color: #ffffff; border: 0; outline: 0;"
-			name="writeTeam" onClick="location.href='ContestDetailsJSP.jsp'">작성하기</button>
+				style="margin-bottom: 10px; float: right; background: #1b5ac2; color: #ffffff; border: 0; outline: 0;"
+				name="writeTeam" onClick="location.href='recruitTeam.jsp'">작성하기</button>
 		</div>
 
 		<table class="table table-hover" style="width: 1000px;">
@@ -180,19 +180,14 @@ memberVO memberInfo = (memberVO) session.getAttribute("loginMemberSession");
 				<%for(int i=leader.size();i>0;i--){ 
 				int party=leader.get(i-1).getTmNum();
 				%>
-				<tr style="font-size:13px">
-					<th scope="row"><%if(leader.get(i-1).getTmFull()==TDAO.showTeamMemberNum(leader.get(i-1).getTmNum())){%>
-						모집완료
-						<%}else{%>
-						모집중
-						<%} %>
-						</th>
-						<td><a href="applicationTeam.jsp?idx=<%=party%>">
-					<%if (leader.get(i-1).getTitle()==null){ %>
-					<%=leader.get(i-1).getMemId() %>의 파티
-					<%}else {%>
-					<%=leader.get(i-1).getTitle() %>
-					<%} %></a></td>
+				<tr style="font-size: 13px">
+					<th scope="row">
+						<%if(leader.get(i-1).getTmFull()==TDAO.showTeamMemberNum(leader.get(i-1).getTmNum())){%>
+						모집완료 <%}else{%> 모집중 <%} %>
+					</th>
+					<td><a href="applicationTeam.jsp?idx=<%=party%>"> <%if (leader.get(i-1).getTitle()==null){ %>
+							<%=leader.get(i-1).getMemId() %>의 파티 <%}else {%> <%=leader.get(i-1).getTitle() %>
+							<%} %></a></td>
 					<td><%=leader.get(i-1).getMemId() %></td>
 					<td><%=CDAO.selectCon(leader.get(i-1).getCntNum()).getConName()  %></td>
 					<td style="text-align: center"><%=TDAO.showTeamMemberNum(leader.get(i-1).getTmNum()) %>/<%=leader.get(i-1).getTmFull() %></td>

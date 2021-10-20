@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.model.conDetailVO;
 import com.model.teamDAO;
 import com.model.teamVO;
 
@@ -21,7 +22,6 @@ public class mojipService extends HttpServlet {
 
 		String strCntNum = request.getParameter("cntNum");
 		int cntNum = Integer.valueOf(strCntNum);
-
 		String title = request.getParameter("title");
 		String position = request.getParameter("position");
 		String strFull = request.getParameter("full");
@@ -35,11 +35,16 @@ public class mojipService extends HttpServlet {
 
 		teamVO leaderTeam = new teamVO(memberId, cntNum, max, 0, position, full, title, content);
 		int result = TDAO.createTeamLeader(leaderTeam);
-
+		
+		
 		if (result > 0) {
 			response.sendRedirect("makeTeamSuccess.jsp");
 		}
-
+		
+		
+		
+		
+		
 	}
 
 }
