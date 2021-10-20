@@ -187,7 +187,7 @@
 		rs.close();
 		out.print("ÃÑ °Ô½Ã¹° : " + total + "°³");
 		
-		String sqlList = "SELECT rownum,cnt_name, cnt_from_date, cnt_to_date from(select cnt_num,cnt_name, cnt_from_date, cnt_to_date from contest order by cnt_from_date DESC) where cnt_num>=80";
+		String sqlList = "SELECT rownum,cnt_name, cnt_from_date, cnt_to_date from(select cnt_num,cnt_name, cnt_from_date, cnt_to_date from contest order by cnt_from_date DESC) where cnt_num between 60 and 79";
 		rs = stmt.executeQuery(sqlList);
 			
 		if(total==0){
@@ -232,10 +232,10 @@
     <li class="page-item disabled">
       <a class="page-link" href="#">&laquo;</a>
     </li>
-    <li class="page-item active">
+    <li class="page-item ">
       <a class="page-link" href="ContestBoard.jsp">1</a>
     </li>
-    <li class="page-item">
+    <li class="page-item active">
       <a class="page-link" href="ContestBoard2.jsp">2</a>
     </li>
     <li class="page-item">
