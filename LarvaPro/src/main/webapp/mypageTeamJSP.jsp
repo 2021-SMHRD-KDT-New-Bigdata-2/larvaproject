@@ -1,4 +1,4 @@
-
+<%@page import="com.model.scoreDAO"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="com.model.conDetailDAO"%>
 <%@page import="com.model.teamVO"%>
@@ -9,7 +9,7 @@
 <%@page import="com.model.teamDAO"%>
 <%@page import="com.model.memberVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="zxx">
 <%
@@ -56,11 +56,9 @@ if (memberInfo == null) {
 	margin: 1%;
 	.
 	menu
-	a
-	{
-	cursor
-	:
-	pointer;
+	a {
+	cursor: pointer;
+	}
 }
 
 .menu .hide {
@@ -115,42 +113,43 @@ if (memberInfo == null) {
 	<!-- Offcanvas Menu Wrapper End -->
 
 	<!-- 헤드 시작 -->
-	<header class="header-section" style="margin:0px">
+	<header class="header-section">
 		<div
-			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 155px;">
+			style="background-image: url('img/mainTopBig.png'); width: 2000px; height: 225px;">
 			<div class="hs-top"
-				style="margin-top: 0px; height: 165px;">
+				style="margin-top: 10px; border-bottom: 0px; height: 225px;">
 				<div class="container">
-					<div class="ten" style="padding: 1px">
+					<div class="ten" style="padding: 3%">
 						<div class="logo">
-							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png" style="margin-top:10px"></a>
+							<a href="./mainPageJSP.jsp"><img src="img/logo/mainLogo.png"
+								style="witdh: 162px; height: 102px"></a>
 						</div>
-						<nav class="nav-menu">
+						<nav class="nav-menu" style="margin-top: 5%;">
 							<%
 							if (memberInfo == null) {
 								out.print(
-								"<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin-top:25px'></a>");
+								"<a href='./LoginJSP.jsp' style='margin-left:90%;' id='loginBtn'><img src='img/logo/loginOff.png' width='180px' height='32px' style='margin:1%'></a>");
 							} else if (memberInfo != null) {
 								out.print(
-								"<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin-top:25px'></a>");
+								"<a href='./LogoutJSP.jsp' style='margin-left:95%;' id='logoutBtn'><img src='img/logo/logoutOff.png' width='110px' height='32px' style='margin:1%'></a>");
 							}
 							%>
 							<ul style="text-align: center; margin-left: 7%;">
-								<li style="font-size: 10px"><a
+								<li class="active" style="font-size: 10px"><a
 									href="./mainPageJSP.jsp" style="color: #ffffff;">메인</a></li>
 								<li><a href="#" style="color: #ffffff;">마이페이지</a>
 									<ul class="dropdown"
 										style="display: inline-block; width: 150px;">
 										<li style="margin-right: 40%"><a
 											href="./mypageProfileJSP.jsp">내정보</a></li>
-										<li style="margin-right: 28%"><a
-											href="./mypageContestJSP.jsp">내 공모전</a></li>
+										<li style="margin-right: 10%"><a
+											href="./mypageContestJSP.jsp">지원한 공모전</a></li>
 										<li style="margin-right: 38%"><a
 											href="./mypageTeamJSP.jsp">나의 팀</a></li>
 										<li style="margin-right: 40%"><a
 											href="./mypageMessageJSP.jsp">쪽지함</a></li>
 									</ul></li>
-								<li><a href="./ContestBoard.jsp" style="color: #ffffff;">공모전</a></li>
+								<li><a href="./ContestBoradJSP.jsp" style="color: #ffffff;">공모전</a></li>
 								<li><a href="./teamBoardJSP.jsp" style="color: #ffffff;">팀원모집</a></li>
 							</ul>
 						</nav>
@@ -163,16 +162,13 @@ if (memberInfo == null) {
 			<span class="icon_menu"></span>
 		</div>
 		<div
-			style="padding: 48px; background-color: #4169E1; box-shadow: 1px 1px gray; width: 2000px">
+			style="padding: 3%; background-color: #4169E1; box-shadow: 1px 1px gray; width: 2000px">
 			<div class="pcntSearchText"
-				style="margin-left: 33%; width: 600px; border: 2px solid #1b5ac2; background: #ffffff;">
-				<form action="searchService">
-					<input class="textBar" type="text" placeholder="원하는 공모전 검색!"
-						style="font-size: 16px; width: 500px; height: 100%; padding: 10px; border: 0px; outline: none;"
-						name="search">
-					<button class="search"
-						style="width: 90px; height: 40px; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">검색</button>
-				</form>
+				style="margin-left: 33%; height: 40px; width: 600px; border: 2px solid #1b5ac2; background: #ffffff;">
+				<input class="textBar" type="text" placeholder="원하는 공모전 검색!"
+					style="font-size: 16px; width: 500px; height: 100%; padding: 10px; border: 0px; outline: none;">
+				<button class="searchBtn"
+					style="width: 50px; height: 100%; border: 0px; background: #1b5ac2; outline: none; float: right; color: #ffffff">검색</button>
 			</div>
 		</div>
 	</header>
@@ -212,6 +208,7 @@ if (memberInfo == null) {
 							teamVO vo = null;
 							teamDAO teamDAO = new teamDAO();
 							conDetailDAO conD = new conDetailDAO();
+							scoreDAO scDAO = new scoreDAO();
 
 							personalcontestDAO PCDAO = new personalcontestDAO();
 							ArrayList<personalcontestVO> myContest = PCDAO.showPersonalContest(memberInfo.getMemId());
@@ -219,122 +216,120 @@ if (memberInfo == null) {
 							ArrayList<teamVO> myTeam = teamDAO.selectMyTeam(memberInfo.getMemId());
 
 							for (int i = 0; i < myTeam.size(); i++) {
-						%>
-						<div style="margin: 3%; float: left">
-							<table style="width: 500px; flaot: static">
-								<tbody>
-									<tr>
-										<td
-											style="font-size: 15px; background-color: gray; color: white; width: 30px;"></td>
-										<td
-											style="font-size: 15px; background-color: gray; color: white; width: 400px; text-align: left;">
-											<%=conD.selectCon(myTeam.get(i).getCntNum()).getConName()%>
-										</td>
-										<td
-											style="font-size: 15px; background-color: #4169E1; color: white; width: 70px;">모집중</td>
-									</tr>
-									<tr>
-										<td style="font-size: 10px; color: red; flaot: left"></td>
-										<td style="font-size: 10px; flaot: static"><div>
-												<ul>
-													<li class="menu" style="list-style: none">
-														<%
-														if (myTeam.get(i).getTmType() == 0) {
-															out.print("★");
-														}
-														%><a> <%=myTeam.get(i).getMemId()%> ,<%=myTeam.get(i).getPosition()%></a>
-														<ul class="hide" style="list-style: none">
-															<li>
-																<%
-																ArrayList<teamVO> myTeamMembers = teamDAO.showTeamMember(myTeam.get(i).getCntNum(), myTeam.get(i).getTmNum());
-																for (teamVO vos : myTeamMembers) {
-																	if(vos.getTmType()==1){
-																		out.println(vos.getMemId()+", "+vos.getPosition()+ "<br>");	
-																	}
-																}
-							
-																%>
-															</li>
-														</ul>
-													</li>
-												</ul>
-											</div></td>
-										<td style="font-size: 10px; flaot: static"></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<%
-						}
-						}
-						%>
-
-						<!-- <section class="contact-form-section spad">
-							<h3 style="margin: 3%">쪽지보내기</h3>
-							<div class="container">
-								<div class="row">
-									<div class="col-lg-12">
-										<div class="cf-content">
-											<form action="#" class="cc-form">
-												<div class="group-input">
-													<input type="text" placeholder="받는사람">
-												</div>
-												<textarea
-													placeholder="팀원 모집에 대한 내용만 작성 바랍니다. 무분별한 광고, 도배는 제재대상입니다."></textarea>
-												<button type="submit" class="site-btn">보내기</button>
-											</form>
-										</div>
-									</div>
+								%>
+								<div style="margin: 3%; float: left">
+									<form action="ScoreService">
+									<table style= "position: static;">
+										<tbody>
+											<tr>
+												<td colspan='4' style="font-size: 15px; padding : 0px 0px 0px 10px; ; background-color: #4169E1; color: white; width: 100%; height: 50px; text-align:left;">
+													<%= conD.selectCon(myTeam.get(i).getCntNum()).getConName()%>
+												</td>
+											</tr>
+											<tr>
+												<td style="font-size: 13px; padding:0; background-color: gray; color: white; width: 150px; height: 50px;">팀원 아이디</td>
+												<td style="font-size: 13px; padding:0; background-color: gray; color: white; width: 100px; height: 50px;">역할</td>
+												<td style="font-size: 13px; padding:0; background-color: gray; color: white; width: 50px; height: 50px;">평점</td>
+												<td style="font-size: 13px; padding:0; background-color: gray; color: white; width: 150px; height: 50px;">평점 주기</td>
+											</tr>
+											<%
+												ArrayList<teamVO> myTeamMembers = teamDAO.showTeamMember(myTeam.get(i).getCntNum(), myTeam.get(i).getTmNum());
+												for (teamVO vos : myTeamMembers) {%>
+											<tr>
+											<!-- 팀원들 이름 노출 -->
+												<td style="font-size: 13px; padding:0; width: 150px; height: 46px; border-style: solid; border-width: 1px; border-color:gray;">
+															<%if (vos.getTmType() == 0) {
+																out.print("★");
+															}%>
+															<%= vos.getMemId()%>
+												</td>
+												<!-- 포지션 -->
+												<td style="font-size: 13px; padding:0; border-style: solid; border-width: 1px; border-color:gray;"><%= myTeam.get(i).getPosition()%></td>
+												<!-- 평균 평점 -->
+												<td style="font-size: 13px; padding:0; border-style: solid; border-width: 1px; border-color:gray;"><%= scDAO.showScore(vos.getMemId())%></td>
+												<!-- 점수 주기 -->
+												<td style="border-style: solid; border-width: 1px; border-color:gray; padding:0; font-size:13px; width:50px; height:34px;" align="center" >
+													<select name="receiveScore">
+														<option value="5">5점</option>
+														<option value="4">4점</option>
+														<option value="3">3점</option>
+														<option value="2">2점</option>
+														<option value="1">1점</option>
+													</select>
+													<%if(memberInfo.getMemId().equals(vos.getMemId())){ %>
+		        										<button type="submit" name="receiveId" value="<%= vos.getMemId()%>" disabled="disabled"
+		        										style="font-size: 13px; background-color:gray; color:#ffffff; margin: 3px 0px; padding:0; border:0px; border-radius:5px; width:50px; height:34px;"
+		        										>주기</button>
+		        									<%} else{ %>
+		        										<button type="submit" name="receiveId" value="<%= vos.getMemId()%>" onclick="insert();"
+		        										style="font-size: 13px; background-color:#1b5ac2; color:#ffffff; margin: 3px 0px; padding:0; border:0px; border-radius:5px; width:50px; height:34px;"
+		        										>주기</button>
+		        									<%} %>
+												</td>
+											</tr>
+											<%}%>
+										</tbody>
+									</table>
+									</form>
 								</div>
-							</div>
-						</section> -->
+								<%
+								}
+								}
+								%>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	<!-- Property Comparison Section End -->
 
 	<!-- Contact Section Begin -->
-
+	
 	<!-- Contact Section End -->
 
 	<!-- Footer Section Begin -->
 	<footer>
-		<div id="footer"
-			style="background-color: rgb(44, 44, 44); clear: both; height: 350px;">
+		<div id ="footer" style = "background-color : rgb(44,44,44); clear:both; height:350px;" >
 			<div class="footer">
-				<h1>
-					<a href="./mainPageJSP.jsp"> <imag src="img/logo/mainLogo.png"
-							alt="logo"></a>
-				</h1>
-				<div id="footer-area">
-					<div style="margin-left: 10%; color: #fff;">
-						<br>
-						<p>
-							<span style="font-family: dotum; font-size: 25px"> <strong>
-									(주) 깔꼼 </strong>
+			<h1>
+			 <a href="./mainPageJSP.jsp">
+			 	<imag src="img/logo/mainLogo.png" alt ="logo">
+			 </a>
+			</h1>
+			<div id ="footer-area">
+				<div style="margin-left:10%; color:#fff;">
+				<br>
+					<p>
+						<span style="font-family:dotum; font-size:25px">
+							<strong> (주) 깔꼼 </strong>
+						</span>
+					</p>
+					<p>
+						<span style ="font-size:20px">
+							<span style="font-family:dotum">
+							
+							대표 : 애벌레   &nbsp;&nbsp;&nbsp;&nbsp; 주소 : 광주광역시 스마트인재개발원
+							<br>
+							공모전 제휴 문의 : eberle@naver.com &nbsp;&nbsp; 마케팅 제휴 : eberle@naver.com 
+							<br>
+							홍보문의 : eberle@naver.com
+							<br>
+							고객문의:eberle@naver.com / 1555-1555(09:00~18:00)
+							<br>
+							사업자등록번호 : 000-00-0000 | tel: 1588-1588&nbsp;
+							<br>
+							<br>
+								㈜깔꼼은 통신판매중개자로서 통신판매의 당사자가 아닙니다. 따라서, 등록된 공모전 및 활동에 대하여 ㈜깔꼼은 어떠한 책임도 지지 않습니다.
+							<br>	
+						Copyright © kakaostyle Corp. All rights reserved
 							</span>
-						</p>
-						<p>
-							<span style="font-size: 20px"> <span
-								style="font-family: dotum"> 대표 : 애벌레
-									&nbsp;&nbsp;&nbsp;&nbsp; 주소 : 광주광역시 스마트인재개발원 <br> 공모전 제휴
-									문의 : eberle@naver.com &nbsp;&nbsp; 마케팅 제휴 : eberle@naver.com <br>
-									홍보문의 : eberle@naver.com <br> 고객문의:eberle@naver.com /
-									1555-1555(09:00~18:00) <br> 사업자등록번호 : 000-00-0000 | tel:
-									1588-1588&nbsp; <br> <br> ㈜깔꼼은 통신판매중개자로서 통신판매의 당사자가
-									아닙니다. 따라서, 등록된 공모전 및 활동에 대하여 ㈜깔꼼은 어떠한 책임도 지지 않습니다. <br>
-									Copyright © kakaostyle Corp. All rights reserved
-							</span>
-							</span>
-						</p>
-
+						</span>
+					</p>
+				
 					</div>
-
-
-				</div>
-			</div>
+				
+				
+			 </div></div>
 		</div>
 	</footer>
 	<!-- Footer Section End -->
