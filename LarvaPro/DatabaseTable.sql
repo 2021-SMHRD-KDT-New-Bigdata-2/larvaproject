@@ -19,7 +19,7 @@ drop sequence score_number;
 drop sequence post_comment_number;
 drop sequence note_number;
 
-select* from team_member
+select * from team_member order by tm_num DESC
 
 /* 회원 정보 테이블 */
 create table member_info(
